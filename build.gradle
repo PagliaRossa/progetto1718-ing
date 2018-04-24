@@ -75,6 +75,9 @@ dependencies {
     // For internal usage
     compile 'com.google.guava:guava:21.0'
     
+    // For JSON encode and decode
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'	
+
     // Compile all jars in the lib directory of the project
     //compile fileTree(dir:'lib', include: ['*.jar'])
     
