@@ -1,6 +1,6 @@
 package it.uniba.analysis;
 
-class Analysis {
+public class Analysis {
 	
 	//TODO
 	//void usersList();
@@ -14,7 +14,7 @@ class Analysis {
 	//TODO
 	//void channelMembers(String channel);
 	
-	void help() {
+	public void help() {
 		String help = new String();
 		
 		help += "These are all available command for sna4slack\n\n";
