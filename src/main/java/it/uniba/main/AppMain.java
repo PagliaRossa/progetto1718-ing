@@ -1,8 +1,5 @@
 package it.uniba.main;
 
-import java.util.Scanner;
-import it.uniba.analysis.*;
-
 /**
  * The main class for the project. It must be customized to meet the project
  * assignment specifications.
