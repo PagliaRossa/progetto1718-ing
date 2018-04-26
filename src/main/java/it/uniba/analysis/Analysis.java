@@ -2,7 +2,7 @@ package it.uniba.analysis;
 
 public class Analysis {
 	
-	void help() {
+	public void help() {
 		String help = new String();
 		
 		help += "These are all available command for sna4slack\n\n";
