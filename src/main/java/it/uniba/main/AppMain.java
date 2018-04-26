@@ -35,7 +35,7 @@ public final class AppMain {
 			else if (command.equals("exit"))
 				break;
 			else if ((!command.equals("sna4slack") && (!command.equals("exit"))))
-				System.out.println("Wrong command , use sna4slack command for help");
+				System.out.println("Wrong command , use sna4slack command for help !");
 		}
 	}
 
