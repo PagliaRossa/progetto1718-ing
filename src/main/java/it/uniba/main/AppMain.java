@@ -27,21 +27,15 @@ public final class AppMain {
 	public static void main(final String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		Analysis request = new Analysis();
+		System.out.println("Welcome in sna4slack , insert command into next line");
 		while(true) {
-			System.out.println("Insert command: ");
-			
 			String command = scanner.nextLine();
-			//if (command.startsWith("users list"))
-			//	request.usersList();
-			//if (command.startsWith("channel list"))
-				//request.channelList();
-			//if (command.startsWith("users sorted by channel"))
-				//request.usersSortedByChannel();
-			//if (command.startsWith("channel members"))
-				//request.channelMembers(command);
 			if (command.equals("sna4slack"))
 				request.help();
-			else System.out.println("Wrong command , use sna4slack command for help\n");
+			else if (command.equals("exit"))
+				break;
+			else if ((!command.equals("sna4slack") && (!command.equals("exit"))))
+				System.out.println("Wrong command , use sna4slack command for help");
 		}
 	}
 
