@@ -8,6 +8,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import it.uniba.analysis.Zip;
+import it.uniba.analysis.Channel;
 
 public class Analysis {
 	
@@ -57,3 +58,4 @@ public class Analysis {
 		System.out.println(help);
 	}
 }
+
