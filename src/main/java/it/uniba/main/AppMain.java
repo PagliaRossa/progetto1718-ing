@@ -31,11 +31,13 @@ public final class AppMain {
 		System.out.println("Welcome in sna4slack , insert command into next line");
 		while(true) {
 			String command = scanner.nextLine();
+			if (command.startsWith("usersList"))
+				request.usersList(command);
 			if (command.equals("sna4slack"))
 				request.help();
 			else if (command.equals("exit"))
 				break;
-			else if ((!command.equals("sna4slack") && (!command.equals("exit"))))
+			else if ((!command.equals("sna4slack") && (!command.equals("exit"))) && (!command.startsWith("usersList")))
 				System.out.println("Wrong command , use sna4slack command for help !");
 		}
 	}
