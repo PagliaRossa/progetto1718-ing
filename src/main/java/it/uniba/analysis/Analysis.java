@@ -8,15 +8,16 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import it.uniba.analysis.Zip;
-import it.uniba.analysis.Channel;
 
 public class Analysis {
 	
 	private Vector<User> Users;
 	private String lastWorkspace;
+	private Vector<Channel> Channels;
 	
 	Vector<User> getUsers() {return this.Users;}
 	String getLastWorkspace() {return this.lastWorkspace;}
+	Vector<Channel> Channels() {return this.Channels;}
 	
 	public void usersList(String input) {
 		Zip zip = new Zip();
@@ -39,6 +40,8 @@ public class Analysis {
 		}
 	}
 	
+	public void channelsList(String input) {}
+	
 	private String printUsers() {
 		String str = new String();
 		str += "This is users list :\n\n";
@@ -52,7 +55,8 @@ public class Analysis {
 		String help = new String();
 		
 		help += "These are all available command for sna4slack\n\n";
-		help += "usersList  zipUrl                 Show users list in selected workspace with zipUrl\n";
+		help += "usersList zipUrl                 Show users list in selected workspace with zipUrl\n";
+		help += "channelsList zipUrl               Show channel list in selected workspace with zipUrl\n";
 		help += "sna4slack                         Show this help interface";
 		
 		System.out.println(help);
