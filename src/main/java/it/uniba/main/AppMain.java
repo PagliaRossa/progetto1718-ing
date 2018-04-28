@@ -37,16 +37,15 @@ public final class AppMain {
 			if (command.startsWith("channelsList") && !command.equals("channelsList"))
 				if (request.channelsList(command) == true)
 					System.out.println(request.printChannels());
-			if (command.startsWith("memberChannel") && !command.equals("memChannel"))
-				if (request.memberChannel(command) == true)
-					System.out.println(request.printUserInChannel());
+			if (command.startsWith("membersChannel") && !command.equals("membersChannel"))
+				request.membersChannel(command);
 			if (command.equals("sna4slack"))
 				request.help();
 			if (command.equals("exit"))
 				break;
-			if ((!command.equals("sna4slack") && (!command.equals("exit"))) && (!command.startsWith("usersList")) && (!command.startsWith("channelsList") && (!command.startsWith("memChannel"))))
+			if ((!command.equals("sna4slack") && (!command.equals("exit"))) && (!command.startsWith("usersList")) && (!command.startsWith("channelsList") && (!command.startsWith("membersChannel"))))
 				System.out.println("Wrong command , use sna4slack command for help !");
-			if (command.equals("usersList") || command.equals("channelsList") || command.equals("memChannel"))
+			if (command.equals("usersList") || command.equals("channelsList") || command.equals("membersChannel"))
 				System.out.println("Command incomplete , use sna4slack command for help !");
 		}
 	}

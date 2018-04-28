@@ -63,9 +63,22 @@ public class Analysis {
 		}
 	}
 	
-	public boolean memberChannel(String input) {
-		
-		return true;
+	public void membersChannel(String input) {
+		String sub = input.substring(15);
+		String split[] = sub.split(" ");
+		String zipurl = split[0];
+		zipurl = zipurl.substring(0,zipurl.length()-1);
+		if (usersList(zipurl) == true) {
+			channelsList(zipurl);
+			boolean flag = false;
+			for(int i=0;i<Channels.size();i++) {
+				if (Channels.get(i).getName() == split[1])
+				flag = true;
+			}
+			if (flag == false) {
+				System.out.println("Channel not found");
+			}else printUserInChannel(split[1]);
+		}
 	}
 	
 	public String printUsers() {
@@ -86,9 +99,21 @@ public class Analysis {
 		return str;
 	}
 	
-	public String printUserInChannel() {
+	public String printUserInChannel(String input) {
 		String str = new String();
-		
+		int index = -1;
+		for(int i=0;i<Channels.size();i++) {
+			if (Channels.get(i).getName() == input) {
+				index = i;
+				str += "These are members of" + input + "\n\n";
+			}
+		}
+		for(int i=0;i<Channels.get(index).getMembers().size();i++) {
+			for(int j=0;j<Users.size();j++) {
+				if (Users.get(j).getId() == Channels.get(index).getMembers().get(i))
+					str += 	Users.get(j).getName();
+			}
+		}
 		return str;
 	}
 	
@@ -98,7 +123,7 @@ public class Analysis {
 		help += "These are all available command for sna4slack\n\n";
 		help += "usersList zipUrl                     Show users list in selected workspace with zipUrl\n";
 		help += "channelsList zipUrl                  Show channel list in selected workspace with zipUrl\n";
-		help += "memChannel zipUrl channelName        Show member list in selected channel\n";
+		help += "membersChannel zipUrl channelName     Show member list in selected channel\n";
 		help += "sna4slack                            Show this help interface";
 		
 		System.out.println(help);
