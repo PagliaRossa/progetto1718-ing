@@ -35,13 +35,15 @@ public final class AppMain {
 				request.usersList(command);
 			if (command.startsWith("channelsList") && !command.equals("channelsList"))
 				request.channelsList(command);
+			if (command.startsWith("memChannel") && !command.equals("memChannel"))
+				request.memChannel(command);
 			if (command.equals("sna4slack"))
 				request.help();
 			if (command.equals("exit"))
 				break;
-			if ((!command.equals("sna4slack") && (!command.equals("exit"))) && (!command.startsWith("usersList")) && (!command.startsWith("channelsList")))
+			if ((!command.equals("sna4slack") && (!command.equals("exit"))) && (!command.startsWith("usersList")) && (!command.startsWith("channelsList") && (!command.startsWith("memChannel"))))
 				System.out.println("Wrong command , use sna4slack command for help !");
-			if (command.equals("usersList") || command.equals("channelsList"))
+			if (command.equals("usersList") || command.equals("channelsList") || command.equals("memChannel"))
 				System.out.println("Command incomplete , use sna4slack command for help !");
 		}
 	}

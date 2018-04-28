@@ -61,6 +61,11 @@ public class Analysis {
 		}
 	}
 	
+	public void memChannel(String input) {
+		Vector<Channel> chlist = new Vector<Channel>();
+		
+	}
+	
 	private String printUsers() {
 		String str = new String();
 		str += "This is users list :\n\n";
@@ -79,12 +84,22 @@ public class Analysis {
 		return str;
 	}
 	
+/*	private String printmemChannels() {
+		String str = new String();
+		str += "This is member for this channel list :\n\n";
+		for(int i=0;i<Channels.size();i++) {
+			str += Channels.get(i).getName() + "\n";
+		}
+		return str;
+	}*/
+	
 	public void help() {
 		String help = new String();
 		
 		help += "These are all available command for sna4slack\n\n";
 		help += "usersList zipUrl                 Show users list in selected workspace with zipUrl\n";
 		help += "channelsList zipUrl              Show channel list in selected workspace with zipUrl\n";
+		help += "memChannel channelName           Show member list in selected channel\n";
 		help += "sna4slack                        Show this help interface";
 		
 		System.out.println(help);
