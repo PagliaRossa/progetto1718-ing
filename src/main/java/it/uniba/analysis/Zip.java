@@ -21,4 +21,17 @@ class Zip {
 		}
 		return json;
 	}
+	
+	String setChannelFile(String zipUrl) {
+		String json = new String();
+		try {
+			ZipFile zip = new ZipFile(zipUrl);
+			InputStream source = zip.getInputStream(zip.getEntry("channels.json"));
+			json = IOUtils.toString(source);
+			zip.close();
+		}catch(IOException e) {
+			System.out.println("File not found");
+		}
+		return json;
+	}
 }
