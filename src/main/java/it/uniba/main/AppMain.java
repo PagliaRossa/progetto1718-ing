@@ -32,11 +32,14 @@ public final class AppMain {
 		while(true) {
 			String command = scanner.nextLine();
 			if (command.startsWith("usersList") && !command.equals("usersList"))
-				request.usersList(command);
+				if (request.usersList(command) == true)
+					System.out.println(request.printUsers());
 			if (command.startsWith("channelsList") && !command.equals("channelsList"))
-				request.channelsList(command);
-			if (command.startsWith("memChannel") && !command.equals("memChannel"))
-				request.memChannel(command);
+				if (request.channelsList(command) == true)
+					System.out.println(request.printChannels());
+			if (command.startsWith("memberChannel") && !command.equals("memChannel"))
+				if (request.memberChannel(command) == true)
+					System.out.println(request.printUserInChannel());
 			if (command.equals("sna4slack"))
 				request.help();
 			if (command.equals("exit"))
