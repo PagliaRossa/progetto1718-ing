@@ -40,7 +40,33 @@ public class Analysis {
 		}
 	}
 	
-	public void channelsList(String input) {}
+	public void channelsList(String input) {
+		Zip zip = new Zip();
+		if (input.substring(12) != getLastWorkspace()) {
+			String json = zip.setChannelFile(input.substring(12));
+			Channels = new Vector<Channel>();
+			this.lastWorkspace = input.substring(12);
+			JSONParser parser = new JSONParser();
+			try {
+				JSONArray array = (JSONArray) parser.parse(json);
+				for(int i=0;i<array.size();i++) {
+					JSONObject obj = (JSONObject) array.get(i);
+					Channel channel = new Channel();
+					channel.setId((String) obj.get("id"));
+					channel.setName((String) obj.get("name"));
+					JSONArray array2 =(JSONArray) obj.get("members");
+					Vector<String> members = new Vector<String>(); 
+					for(int j=0;j<array2.size();j++) {
+						members.add((String) obj.get(j));
+					}
+					channel.setMembers(members);
+				}
+				System.out.println(printChannels());
+			}catch(ParseException p) {
+				System.out.println("JSON not valid");
+			}
+		}
+	}
 	
 	private String printUsers() {
 		String str = new String();
@@ -48,6 +74,11 @@ public class Analysis {
 		for(int i=0;i<Users.size();i++) {
 			str += Users.get(i).getName() + "\n";
 		}
+		return str;
+	}
+	
+	private String printChannels() {
+		String str = new String();
 		return str;
 	}
 	
