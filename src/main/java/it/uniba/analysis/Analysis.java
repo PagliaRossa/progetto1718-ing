@@ -51,7 +51,7 @@ public class Analysis {
 				JSONArray array2 =(JSONArray) obj.get("members");
 				Vector<String> members = new Vector<String>(); 
 				for(int j=0;j<array2.size();j++) {
-					members.add((String) obj.get(j));
+					members.add((String) array2.get(j));
 				}
 				channel.setMembers(members);
 				Channels.add(channel);
@@ -115,7 +115,7 @@ public class Analysis {
 		for(int i=0;i<Channels.get(index).getMembers().size();i++) {
 			for(int j=0;j<Users.size();j++) {
 				if (Users.get(j).getId().equals(Channels.get(index).getMembers().get(i)))
-					str += 	Users.get(j).getName();
+					str += 	Users.get(j).getName() + "\n";
 			}
 		}
 		return str;
