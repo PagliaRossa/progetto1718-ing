@@ -5,10 +5,7 @@ class User {
 	private String id;
 	private String name;
 
-	User(final String idNew, final String nameNew) {
-		this.id = idNew;
-		this.name = nameNew;
-	}
+	User() { }
 	void setId(final String idNew) {
 		this.id = idNew;
 	}

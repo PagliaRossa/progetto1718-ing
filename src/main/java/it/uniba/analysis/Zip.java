@@ -12,11 +12,11 @@ class Zip {
 	@SuppressWarnings("deprecation")
 	String setUsersFile(final String input) {
 		String json = new String();
-		String remove = new String("usersList ");
-		String zipUrl = input.substring(remove.length());
+		final String remove = "usersList ";
+		final String zipUrl = input.substring(remove.length());
 		try {
-			ZipFile zip = new ZipFile(zipUrl);
-			InputStream source = zip.getInputStream(zip.getEntry("users.json"));
+			final ZipFile zip = new ZipFile(zipUrl);
+			final InputStream source = zip.getInputStream(zip.getEntry("users.json"));
 			json = IOUtils.toString(source);
 			zip.close();
 		} catch (IOException e) {
@@ -28,11 +28,11 @@ class Zip {
 	@SuppressWarnings("deprecation")
 	String setChannelFile(final String input) {
 		String json = new String();
-		String remove = new String("channelsList ");
-		String zipUrl = input.substring(remove.length());
+		final String remove = "channelsList ";
+		final String zipUrl = input.substring(remove.length());
 		try {
-			ZipFile zip = new ZipFile(zipUrl);
-			InputStream source = zip.getInputStream(zip.getEntry("channels.json"));
+			final ZipFile zip = new ZipFile(zipUrl);
+			final InputStream source = zip.getInputStream(zip.getEntry("channels.json"));
 			json = IOUtils.toString(source);
 			zip.close();
 		} catch (IOException e) {

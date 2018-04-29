@@ -21,15 +21,17 @@ public class Analysis {
 		}
 
 	public boolean usersList(final String input) {
-		Zip zip = new Zip();
-		String json = zip.setUsersFile(input);
+		final Zip zip = new Zip();
+		final String json = zip.setUsersFile(input);
 		users = new Vector<User>();
-		JSONParser parser = new JSONParser();
+		final JSONParser parser = new JSONParser();
 		try {
-			JSONArray array = (JSONArray) parser.parse(json);
+			final JSONArray array = (JSONArray) parser.parse(json);
+			final User utente = new User();
 			for (int i = 0; i < array.size(); i++) {
-				JSONObject obj = (JSONObject) array.get(i);
-				User utente = new User((String) obj.get("id"), (String) obj.get("real_name"));
+				final JSONObject obj = (JSONObject) array.get(i);
+				utente.setId((String) obj.get("id"));
+				utente.setName("real_name");
 				users.addElement(utente);
 			}
 			return true;
@@ -40,19 +42,19 @@ public class Analysis {
 	}
 
 	public boolean channelsList(final String input) {
-		Zip zip = new Zip();
-		String json = zip.setChannelFile(input);
+		final Zip zip = new Zip();
+		final String json = zip.setChannelFile(input);
 		channels = new Vector<Channel>();
-		JSONParser parser = new JSONParser();
+		final JSONParser parser = new JSONParser();
 		try {
-			JSONArray array = (JSONArray) parser.parse(json);
+			final Channel channel = new Channel();
+			final Vector<String> members = new Vector<String>();
+			final JSONArray array = (JSONArray) parser.parse(json);
 			for (int i = 0; i < array.size(); i++) {
-				JSONObject obj = (JSONObject) array.get(i);
-				Channel channel = new Channel();
+				final JSONObject obj = (JSONObject) array.get(i);
 				channel.setId((String) obj.get("id"));
 				channel.setName((String) obj.get("name"));
-				JSONArray array2 = (JSONArray) obj.get("members");
-				Vector<String> members = new Vector<String>(); 
+				final JSONArray array2 = (JSONArray) obj.get("members");
 				for (int j = 0; j < array2.size(); j++) {
 					members.add((String) array2.get(j));
 				}
@@ -67,26 +69,26 @@ public class Analysis {
 	}
 
 	public void membersChannel(final String input) {
-		String remove = new String("membersChannel ");
-		String sub = input.substring(remove.length());
-		String[] split = sub.split(" ");
-		String url = split[1];
+		final String remove = "membersChannel ";
+		final String sub = input.substring(remove.length());
+		final String[] split = sub.split(" ");
+		final String url = split[1];
 		String zipurl = "usersList " + url;
 		if (usersList(zipurl)) {
 			zipurl = "channelsList " + url;
 			channelsList(zipurl);
 			boolean found = false;
-			String channelName = split[0];
+			final String channelName = split[0];
 			for (int i = 0; i < channels.size(); i++) {
 				if (channels.get(i).getName().equals(channelName)) {
 					found = true;
 					break;
 				}
 			}
-			if (!found) {
-				System.out.println("Channel not found");
-			} else {
+			if (found) {
 				System.out.println(printUserInChannel(channelName));
+			} else {
+				System.out.println("Channel not found");
 			}
 		}
 	}
