@@ -3,29 +3,41 @@ package it.uniba.analysis;
 import java.util.Vector;
 
 class Channel {
-	
+
 	private String id;
 	private String name;
-	private Vector<String>members;
-	
-	Channel(String id,String name,Vector<String> members){
-		this.id = id;
-		this.name = name;
-		this.members = members;
+	private Vector<String> members;
+
+	Channel(final String idNew, final String nameNew, final Vector<String> membersNew) {
+		this.id = idNew;
+		this.name = nameNew;
+		this.members = membersNew;
 	}
-	
-	Channel(){}
-	void setId(String id) {
-		this.id = id;
+
+	Channel() { }
+
+	void setId(final String idNew) {
+		this.id = idNew;
 	}
-	void setName(String name) {
-		this.name = name;
+
+	void setName(final String nameNew) {
+		this.name = nameNew;
 	}
-	void setMembers(Vector<String> members) {
-		this.members = members;
+
+	void setMembers(final Vector<String> membersNew) {
+		this.members = membersNew;
 	}
-	String getId() { return this.id;}
-	String getName() { return this.name;}
-	Vector<String> getMembers() { return this.members;}
-	
+
+	String getId() {
+		return this.id;
+	}
+
+	String getName() {
+		return this.name;
+	}
+
+	Vector<String> getMembers() {
+		return this.members;
+	}
+
 }
