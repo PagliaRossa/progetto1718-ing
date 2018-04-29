@@ -116,7 +116,7 @@ public class Analysis {
 		for (int i = 0; i < channels.size(); i++) {
 			if (channels.get(i).getName().equals(input)) {
 				index = i;
-				str += "These are members of " + input + "\n\n";
+				str += "These are members of " + input + " :\n\n";
 			}
 		}
 		for (int i = 0; i < channels.get(index).getMembers().size(); i++) {
@@ -137,6 +137,7 @@ public class Analysis {
 		help += "channelsList zipUrl                     Show channel list in selected workspace with zipUrl\n";
 		help += "membersChannel channelName zipUrl       Show member list in selected channel\n";
 		help += "sna4slack                               Show this help interface";
+		help += "exit                                    Terminate this application";
 
 		System.out.println(help);
 	}
