@@ -32,6 +32,7 @@ public class Analysis {
 			System.out.println(printUsers());
 		}catch(ParseException p) {
 			System.out.println("JSON not valid");
+			
 		}
 	}
 	
