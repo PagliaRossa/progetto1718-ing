@@ -19,7 +19,7 @@ public class Analysis {
 	
 	public boolean usersList(String input) {
 		Zip zip = new Zip();
-		String json = zip.setUsersFile(input.substring(10));
+		String json = zip.setUsersFile(input);
 		Users = new Vector<User>();
 		JSONParser parser = new JSONParser();
 		try {
@@ -38,7 +38,7 @@ public class Analysis {
 	
 	public boolean channelsList(String input) {
 		Zip zip = new Zip();
-		String json = zip.setChannelFile(input.substring(13));
+		String json = zip.setChannelFile(input);
 		Channels = new Vector<Channel>();
 		JSONParser parser = new JSONParser();
 		try {
@@ -66,18 +66,22 @@ public class Analysis {
 	public void membersChannel(String input) {
 		String sub = input.substring(15);
 		String split[] = sub.split(" ");
-		String zipurl = split[0];
-		zipurl = zipurl.substring(0,zipurl.length()-1);
+		String url = split[1];
+		String zipurl = "usersList " + url;
 		if (usersList(zipurl) == true) {
+			zipurl = "channelsList " + url;
 			channelsList(zipurl);
-			boolean flag = false;
+			boolean found = false;
+			String channelName = split[0];
 			for(int i=0;i<Channels.size();i++) {
-				if (Channels.get(i).getName() == split[1])
-				flag = true;
+				if (Channels.get(i).getName().equals(channelName)) {
+					found = true;
+					break;
+				}
 			}
-			if (flag == false) {
+			if (!found) {
 				System.out.println("Channel not found");
-			}else printUserInChannel(split[1]);
+			}else System.out.println(printUserInChannel(channelName));
 		}
 	}
 	
@@ -101,16 +105,16 @@ public class Analysis {
 	
 	public String printUserInChannel(String input) {
 		String str = new String();
-		int index = -1;
+		int index = 0;
 		for(int i=0;i<Channels.size();i++) {
-			if (Channels.get(i).getName() == input) {
+			if (Channels.get(i).getName().equals(input)) {
 				index = i;
-				str += "These are members of" + input + "\n\n";
+				str += "These are members of " + input + "\n\n";
 			}
 		}
 		for(int i=0;i<Channels.get(index).getMembers().size();i++) {
 			for(int j=0;j<Users.size();j++) {
-				if (Users.get(j).getId() == Channels.get(index).getMembers().get(i))
+				if (Users.get(j).getId().equals(Channels.get(index).getMembers().get(i)))
 					str += 	Users.get(j).getName();
 			}
 		}
@@ -121,10 +125,10 @@ public class Analysis {
 		String help = new String();
 		
 		help += "These are all available command for sna4slack\n\n";
-		help += "usersList zipUrl                     Show users list in selected workspace with zipUrl\n";
-		help += "channelsList zipUrl                  Show channel list in selected workspace with zipUrl\n";
-		help += "membersChannel zipUrl channelName     Show member list in selected channel\n";
-		help += "sna4slack                            Show this help interface";
+		help += "usersList zipUrl                          Show users list in selected workspace with zipUrl\n";
+		help += "channelsList zipUrl                       Show channel list in selected workspace with zipUrl\n";
+		help += "membersChannel channelName zipUrl         Show member list in selected channel\n";
+		help += "sna4slack                                 Show this help interface";
 		
 		System.out.println(help);
 	}
