@@ -1,21 +1,26 @@
 package it.uniba.analysis;
 
 class User {
-	
+
 	private String id;
 	private String name;
-	
-	User(String id,String name){
-		this.id = id;
-		this.name = name;
+
+	User(final String idNew, final String nameNew) {
+		this.id = idNew;
+		this.name = nameNew;
 	}
-	void setId(String id) {
-		this.id = id;
+	void setId(final String idNew) {
+		this.id = idNew;
 	}
-	void setName(String name) {
-		this.name = name;
+
+	void setName(final String nameNew) {
+		this.name = nameNew;
 	}
-	String getId() { return this.id;}
-	String getName() { return this.name;}
-	
+
+	String getId() {
+		return this.id;
+	}
+	String getName() {
+		return this.name;
+	}
 }

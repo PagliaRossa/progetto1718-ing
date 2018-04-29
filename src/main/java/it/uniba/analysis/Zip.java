@@ -7,32 +7,35 @@ import java.util.zip.ZipFile;
 import org.apache.commons.io.IOUtils;
 
 class Zip {
-	
+
+
 	@SuppressWarnings("deprecation")
-	String setUsersFile(String input) {
+	String setUsersFile(final String input) {
 		String json = new String();
-		String zipUrl = input.substring(10);
+		String remove = new String("usersList ");
+		String zipUrl = input.substring(remove.length());
 		try {
 			ZipFile zip = new ZipFile(zipUrl);
 			InputStream source = zip.getInputStream(zip.getEntry("users.json"));
 			json = IOUtils.toString(source);
 			zip.close();
-		}catch(IOException e) {
+		} catch (IOException e) {
 			System.out.println("File not found");
 		}
 		return json;
 	}
-	
+
 	@SuppressWarnings("deprecation")
-	String setChannelFile(String input) {
+	String setChannelFile(final String input) {
 		String json = new String();
-		String zipUrl = input.substring(13);
+		String remove = new String("channelsList ");
+		String zipUrl = input.substring(remove.length());
 		try {
 			ZipFile zip = new ZipFile(zipUrl);
 			InputStream source = zip.getInputStream(zip.getEntry("channels.json"));
 			json = IOUtils.toString(source);
 			zip.close();
-		}catch(IOException e) {
+		} catch (IOException e) {
 			System.out.println("File not found");
 		}
 		return json;
