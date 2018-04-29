@@ -70,14 +70,21 @@ public class Analysis {
 	public void membersChannel(final String input) {
 		String remove = new String("membersChannel ");
 		String sub = input.substring(remove.length());
-		String[] split = sub.split(" ");
-		String url = split[1];
+		String url = new String();
+		String channelName = new String();
+		for (int i = 0; i < sub.length(); i++) {
+			if (sub.charAt(i) == ' ') {
+				url = sub.substring(i+1,sub.length());
+				channelName = sub.substring(0,i);
+				break;
+			}
+		}
 		String zipurl = "usersList " + url;
+		System.out.println(zipurl);
 		if (usersList(zipurl)) {
 			zipurl = "channelsList " + url;
 			channelsList(zipurl);
 			boolean found = false;
-			String channelName = split[0];
 			for (int i = 0; i < channels.size(); i++) {
 				if (channels.get(i).getName().equals(channelName)) {
 					found = true;
