@@ -136,7 +136,7 @@ public class Analysis {
 		help += "usersList zipUrl                        Show users list in selected workspace with zipUrl\n";
 		help += "channelsList zipUrl                     Show channel list in selected workspace with zipUrl\n";
 		help += "membersChannel channelName zipUrl       Show member list in selected channel\n";
-		help += "sna4slack                               Show this help interface";
+		help += "sna4slack                               Show this help interface\n";
 		help += "exit                                    Terminate this application";
 
 		System.out.println(help);
