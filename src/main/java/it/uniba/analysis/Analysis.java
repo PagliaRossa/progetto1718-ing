@@ -80,7 +80,6 @@ public class Analysis {
 			}
 		}
 		String zipurl = "usersList " + url;
-		System.out.println(zipurl);
 		if (usersList(zipurl)) {
 			zipurl = "channelsList " + url;
 			channelsList(zipurl);
@@ -97,6 +96,18 @@ public class Analysis {
 				System.out.println(printUserInChannel(channelName));
 			}
 		}
+	}
+	
+	public void usersSortedByChannel(final String input) {
+		String remove = "usersSortedByChannel ";
+		String sub = input.substring(remove.length());
+		String zipurl = "usersList " + sub;
+		if (usersList(zipurl)) {
+			zipurl = "channelsList " + sub;
+			channelsList(zipurl);
+			System.out.println(printUsersSortedByChannel());
+		}
+			
 	}
 
 	public String printUsers() {
@@ -117,7 +128,7 @@ public class Analysis {
 		return str;
 	}
 
-	public String printUserInChannel(final String input) {
+	private String printUserInChannel(final String input) {
 		String str = new String();
 		int index = 0;
 		for (int i = 0; i < channels.size(); i++) {
@@ -132,6 +143,22 @@ public class Analysis {
 					str += 	users.get(j).getName() + "\n";
 				}
 			}
+		}
+		return str;
+	}
+	
+	private String printUsersSortedByChannel() {
+		String str = new String();
+		for (int i = 0; i < channels.size(); i++) {
+			str += channels.get(i).getName() + " :\n";
+			for (int j = 0; j < channels.get(i).getMembers().size(); j++) {
+				for (int k = 0; k < users.size(); k++) {
+					if (users.get(k).getId().equals(channels.get(i).getMembers().get(j))) {
+						str += "- " + users.get(k).getName() + "\n";
+					}
+				}
+			}
+			str += "\n";
 		}
 		return str;
 	}
