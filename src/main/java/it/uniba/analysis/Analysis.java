@@ -35,7 +35,8 @@ public class Analysis {
 			return true;
 		} catch (ParseException p) {
 			System.out.println("JSON not valid");
-			return false;
+
+     	return false;
 		}
 	}
 
@@ -69,14 +70,21 @@ public class Analysis {
 	public void membersChannel(final String input) {
 		String remove = new String("membersChannel ");
 		String sub = input.substring(remove.length());
-		String[] split = sub.split(" ");
-		String url = split[1];
+		String url = new String();
+		String channelName = new String();
+		for (int i = 0; i < sub.length(); i++) {
+			if (sub.charAt(i) == ' ') {
+				url = sub.substring(i+1,sub.length());
+				channelName = sub.substring(0,i);
+				break;
+			}
+		}
 		String zipurl = "usersList " + url;
+		System.out.println(zipurl);
 		if (usersList(zipurl)) {
 			zipurl = "channelsList " + url;
 			channelsList(zipurl);
 			boolean found = false;
-			String channelName = split[0];
 			for (int i = 0; i < channels.size(); i++) {
 				if (channels.get(i).getName().equals(channelName)) {
 					found = true;
@@ -115,7 +123,7 @@ public class Analysis {
 		for (int i = 0; i < channels.size(); i++) {
 			if (channels.get(i).getName().equals(input)) {
 				index = i;
-				str += "These are members of " + input + "\n\n";
+				str += "These are members of " + input + " :\n\n";
 			}
 		}
 		for (int i = 0; i < channels.get(index).getMembers().size(); i++) {
@@ -135,7 +143,8 @@ public class Analysis {
 		help += "usersList zipUrl                        Show users list in selected workspace with zipUrl\n";
 		help += "channelsList zipUrl                     Show channel list in selected workspace with zipUrl\n";
 		help += "membersChannel channelName zipUrl       Show member list in selected channel\n";
-		help += "sna4slack                               Show this help interface";
+		help += "sna4slack                               Show this help interface\n";
+		help += "exit                                    Terminate this application";
 
 		System.out.println(help);
 	}
