@@ -169,7 +169,8 @@ public class Analysis {
 		help += "These are all available command for sna4slack\n\n";
 		help += "usersList zipUrl                        Show users list in selected workspace with zipUrl\n";
 		help += "channelsList zipUrl                     Show channel list in selected workspace with zipUrl\n";
-		help += "membersChannel channelName zipUrl       Show member list in selected channel\n";
+		help += "membersChannel channelName zipUrl       Show member list in selected channel in selected workspace with zipUrl\n";
+		help += "usersSortedByChannel zipUrl             Show users sortedy by channel in selected workspace with zipUrl\n";
 		help += "sna4slack                               Show this help interface\n";
 		help += "exit                                    Terminate this application";
 
