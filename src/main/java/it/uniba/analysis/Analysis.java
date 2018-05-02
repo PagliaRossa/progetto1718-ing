@@ -35,9 +35,8 @@ public class Analysis {
 			return true;
 		} catch (ParseException p) {
 			System.out.println("JSON not valid");
-
-     	return false;
 		}
+		return false;
 	}
 
 	public boolean channelsList(final String input) {

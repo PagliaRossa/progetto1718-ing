@@ -28,13 +28,13 @@ public final class AppMain {
 	public static void main(final String[] command) {
 		Analysis request = new Analysis();
 			if (command[0].equals("usersList") && (command[1] != null)) {
-					if (request.usersList(command[1])) {
-						request.printUsers();
+					if(request.usersList(command[1])) {
+						System.out.println(request.printUsers());
 					}
 			}
 			if (command[0].equals("channelsList") && (command[1] != null)) {
 					if (request.channelsList(command[1])) {
-						request.printChannels();
+						System.out.println(request.printChannels());
 				}
 			}
 			if (command[0].equals("membersChannel")) {
