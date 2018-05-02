@@ -12,10 +12,8 @@ class Zip {
 	@SuppressWarnings("deprecation")
 	String setUsersFile(final String input) {
 		String json = new String();
-		String remove = new String("usersList ");
-		String zipUrl = input.substring(remove.length());
 		try {
-			ZipFile zip = new ZipFile(zipUrl);
+			ZipFile zip = new ZipFile(input);
 			InputStream source = zip.getInputStream(zip.getEntry("users.json"));
 			json = IOUtils.toString(source);
 			zip.close();
@@ -28,10 +26,8 @@ class Zip {
 	@SuppressWarnings("deprecation")
 	String setChannelFile(final String input) {
 		String json = new String();
-		String remove = new String("channelsList ");
-		String zipUrl = input.substring(remove.length());
 		try {
-			ZipFile zip = new ZipFile(zipUrl);
+			ZipFile zip = new ZipFile(input);
 			InputStream source = zip.getInputStream(zip.getEntry("channels.json"));
 			json = IOUtils.toString(source);
 			zip.close();

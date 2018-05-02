@@ -67,25 +67,12 @@ public class Analysis {
 		}
 	}
 
-	public void membersChannel(final String input) {
-		String remove = new String("membersChannel ");
-		String sub = input.substring(remove.length());
-		String url = new String();
-		String channelName = new String();
-		for (int i = 0; i < sub.length(); i++) {
-			if (sub.charAt(i) == ' ') {
-				url = sub.substring(i+1,sub.length());
-				channelName = sub.substring(0,i);
-				break;
-			}
-		}
-		String zipurl = "usersList " + url;
-		if (usersList(zipurl)) {
-			zipurl = "channelsList " + url;
-			channelsList(zipurl);
+	public void membersChannel(final String input,final String input2) {
+		if (usersList(input2)) {
+			channelsList(input2);
 			boolean found = false;
 			for (int i = 0; i < channels.size(); i++) {
-				if (channels.get(i).getName().equals(channelName)) {
+				if (channels.get(i).getName().equals(input)) {
 					found = true;
 					break;
 				}
@@ -93,18 +80,14 @@ public class Analysis {
 			if (!found) {
 				System.out.println("Channel not found");
 			} else {
-				System.out.println(printUserInChannel(channelName));
+				System.out.println(printUserInChannel(input));
 			}
 		}
 	}
 	
 	public void usersSortedByChannel(final String input) {
-		String remove = "usersSortedByChannel ";
-		String sub = input.substring(remove.length());
-		String zipurl = "usersList " + sub;
-		if (usersList(zipurl)) {
-			zipurl = "channelsList " + sub;
-			channelsList(zipurl);
+		if (usersList(input)) {
+			channelsList(input);
 			System.out.println(printUsersSortedByChannel());
 		}
 			
@@ -172,7 +155,6 @@ public class Analysis {
 		help += "membersChannel channelName zipUrl       Show member list in selected channel in selected workspace with zipUrl\n";
 		help += "usersSortedByChannel zipUrl             Show users sortedy by channel in selected workspace with zipUrl\n";
 		help += "sna4slack                               Show this help interface\n";
-		help += "exit                                    Terminate this application";
 
 		System.out.println(help);
 	}
