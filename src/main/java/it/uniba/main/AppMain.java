@@ -25,44 +25,32 @@ public final class AppMain {
 	 * @param args
 	 *            The command-line arguments.
 	 */
-	public static void main(final String[] args) {
-		Scanner scanner = new Scanner(System.in);
+	public static void main(final String[] command) {
 		Analysis request = new Analysis();
-		System.out.println("Welcome in sna4slack , insert command into next line");
-		while (true) {
-			String command = scanner.nextLine();
-			if (command.startsWith("usersList") && !command.equals("usersList")) {
-				if (request.usersList(command)) {
-					System.out.println(request.printUsers());
+			if (command[0].equals("usersList") && (command[1] != null)) {
+					if (request.usersList(command[1])) {
+						request.printUsers();
+					}
+			}
+			if (command[0].equals("channelsList") && (command[1] != null)) {
+					if (request.channelsList(command[1])) {
+						request.printChannels();
 				}
 			}
-			if (command.startsWith("channelsList") && !command.equals("channelsList")) {
-				if (request.channelsList(command)) {
-					System.out.println(request.printChannels());
+			if (command[0].equals("membersChannel")) {
+				if (command[1] != null && command[2] != null) {
+					request.membersChannel(command[1],command[2]);
 				}
 			}
-			if (command.startsWith("membersChannel") && !command.equals("membersChannel")) {
-				request.membersChannel(command);
+			if (command[0].equals("usersSortedByChannel") && command[1] != null) {
+				request.usersSortedByChannel(command[1]);
 			}
-			if (command.startsWith("usersSortedByChannel") && !command.equals("usersSortedByChannel")) {
-				request.usersSortedByChannel(command);
-			}
-			if (command.equals("sna4slack")) {
+			if (command[0].equals("sna4slack")) {
 				request.help();
 			}
-			if (command.equals("exit")) {
-				break;
-			}
-			if ((!command.equals("sna4slack")) && (!command.equals("exit"))
-				&& (!command.startsWith("usersList")) && (!command.startsWith("channelsList"))
-				&& (!command.startsWith("membersChannel")) && (!command.startsWith("usersSortedByChannel"))) {
-				System.out.println("Wrong command , use sna4slack command for help !");
-			}
-			if (command.equals("usersList") || command.equals("channelsList")
-			|| command.equals("membersChannel") || (command.equals("usersSortedByChannel"))) {
-				System.out.println("Command incomplete , use sna4slack command for help !");
-			}
+			if ((!command[0].equals("usersList") && (!command[0].equals("channelsList"))
+				&& (!command[0].equals("membersChannel")) && (!command[0].equals("usersSortedByChannel"))
+				&& (!command[0].equals("sna4slack"))))
+					System.out.println("Wrong command, use sna4slack command for help");
 		}
-	}
-
 }
