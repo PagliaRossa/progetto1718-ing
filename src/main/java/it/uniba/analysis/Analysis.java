@@ -9,28 +9,28 @@ import org.json.simple.parser.ParseException;
 
 public class Analysis {
 
-	private Vector<User> users;
+	private Vector<User> members;
 	private Vector<Channel> channels;
 
 	final Vector<User> getUsers() {
-		return this.users;
+		return this.members;
 		}
 
 	final Vector<Channel> getChannels() {
 		return this.channels;
 		}
 
-	public boolean usersList(final String input) {
+	public boolean membersList(final String input) {
 		Zip zip = new Zip();
 		String json = zip.setUsersFile(input);
-		users = new Vector<User>();
+		members = new Vector<User>();
 		JSONParser parser = new JSONParser();
 		try {
 			JSONArray array = (JSONArray) parser.parse(json);
 			for (int i = 0; i < array.size(); i++) {
 				JSONObject obj = (JSONObject) array.get(i);
 				User utente = new User((String) obj.get("id"), (String) obj.get("real_name"));
-				users.addElement(utente);
+				members.addElement(utente);
 			}
 			return true;
 		} catch (ParseException p) {
@@ -67,7 +67,7 @@ public class Analysis {
 	}
 
 	public void membersChannel(final String input,final String input2) {
-		if (usersList(input2)) {
+		if (membersList(input2)) {
 			channelsList(input2);
 			boolean found = false;
 			for (int i = 0; i < channels.size(); i++) {
@@ -85,7 +85,7 @@ public class Analysis {
 	}
 	
 	public void usersSortedByChannel(final String input) {
-		if (usersList(input)) {
+		if (membersList(input)) {
 			channelsList(input);
 			System.out.println(printUsersSortedByChannel());
 		}
@@ -95,8 +95,8 @@ public class Analysis {
 	public String printUsers() {
 		String str = new String();
 		str += "This is users list :\n\n";
-		for (int i = 0; i < users.size(); i++) {
-			str += users.get(i).getName() + "\n";
+		for (int i = 0; i < members.size(); i++) {
+			str += members.get(i).getName() + "\n";
 		}
 		return str;
 	}
@@ -120,9 +120,9 @@ public class Analysis {
 			}
 		}
 		for (int i = 0; i < channels.get(index).getMembers().size(); i++) {
-			for (int j = 0; j < users.size(); j++) {
-				if (users.get(j).getId().equals(channels.get(index).getMembers().get(i))) {
-					str += 	users.get(j).getName() + "\n";
+			for (int j = 0; j < members.size(); j++) {
+				if (members.get(j).getId().equals(channels.get(index).getMembers().get(i))) {
+					str += 	members.get(j).getName() + "\n";
 				}
 			}
 		}
@@ -134,9 +134,9 @@ public class Analysis {
 		for (int i = 0; i < channels.size(); i++) {
 			str += channels.get(i).getName() + " :\n";
 			for (int j = 0; j < channels.get(i).getMembers().size(); j++) {
-				for (int k = 0; k < users.size(); k++) {
-					if (users.get(k).getId().equals(channels.get(i).getMembers().get(j))) {
-						str += "- " + users.get(k).getName() + "\n";
+				for (int k = 0; k < members.size(); k++) {
+					if (members.get(k).getId().equals(channels.get(i).getMembers().get(j))) {
+						str += "- " + members.get(k).getName() + "\n";
 					}
 				}
 			}

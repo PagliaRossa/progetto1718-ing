@@ -1,7 +1,5 @@
 package it.uniba.main;
 
-import java.util.Scanner;
-
 import it.uniba.analysis.Analysis;
 
 /**
@@ -27,8 +25,8 @@ public final class AppMain {
 	 */
 	public static void main(final String[] command) {
 		Analysis request = new Analysis();
-			if (command[0].equals("usersList") && (command[1] != null)) {
-					if(request.usersList(command[1])) {
+			if (command[0].equals("membersList") && (command[1] != null)) {
+					if(request.membersList(command[1])) {
 						System.out.println(request.printUsers());
 					}
 			}
