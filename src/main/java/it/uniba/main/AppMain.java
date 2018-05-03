@@ -58,7 +58,11 @@ public final class AppMain {
 				}
 			}
 			if (command[0].equals("sna4slack")) {
-				request.help();
+				if (command.length == 1) {
+					request.help();
+				} else {
+					System.out.println("No need for more argument , just use sna4slack for help");
+				}
 			}
 			if ((!command[0].equals("membersList") && (!command[0].equals("channelsList"))
 				&& (!command[0].equals("membersChannel")) && (!command[0].equals("membersSortedByChannel"))
