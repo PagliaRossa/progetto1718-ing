@@ -79,20 +79,20 @@ public class Analysis {
 			if (!found) {
 				System.out.println("Channel not found");
 			} else {
-				System.out.println(printUserInChannel(input));
+				System.out.println(printMembersInChannel(input));
 			}
 		}
 	}
 	
-	public void usersSortedByChannel(final String input) {
+	public void membersSortedByChannel(final String input) {
 		if (membersList(input)) {
 			channelsList(input);
-			System.out.println(printUsersSortedByChannel());
+			System.out.println(printMembersSortedByChannel());
 		}
 			
 	}
 
-	public String printUsers() {
+	public String printMembers() {
 		String str = new String();
 		str += "This is users list :\n\n";
 		for (int i = 0; i < members.size(); i++) {
@@ -110,7 +110,7 @@ public class Analysis {
 		return str;
 	}
 
-	private String printUserInChannel(final String input) {
+	private String printMembersInChannel(final String input) {
 		String str = new String();
 		int index = 0;
 		for (int i = 0; i < channels.size(); i++) {
@@ -129,7 +129,7 @@ public class Analysis {
 		return str;
 	}
 	
-	private String printUsersSortedByChannel() {
+	private String printMembersSortedByChannel() {
 		String str = new String();
 		for (int i = 0; i < channels.size(); i++) {
 			str += channels.get(i).getName() + " :\n";
@@ -149,10 +149,10 @@ public class Analysis {
 		String help = new String();
 
 		help += "These are all available command for sna4slack\n\n";
-		help += "usersList zipUrl                        Show users list in selected workspace with zipUrl\n";
+		help += "membersList zipUrl                      Show members list in selected workspace with zipUrl\n";
 		help += "channelsList zipUrl                     Show channel list in selected workspace with zipUrl\n";
 		help += "membersChannel channelName zipUrl       Show member list in selected channel in selected workspace with zipUrl\n";
-		help += "usersSortedByChannel zipUrl             Show users sortedy by channel in selected workspace with zipUrl\n";
+		help += "membersSortedByChannel zipUrl           Show members sortedy by channel in selected workspace with zipUrl\n";
 		help += "sna4slack                               Show this help interface\n";
 
 		System.out.println(help);
