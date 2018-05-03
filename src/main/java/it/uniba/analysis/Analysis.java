@@ -9,28 +9,28 @@ import org.json.simple.parser.ParseException;
 
 public class Analysis {
 
-	private Vector<User> users;
+	private Vector<User> members;
 	private Vector<Channel> channels;
 
 	final Vector<User> getUsers() {
-		return this.users;
+		return this.members;
 		}
 
 	final Vector<Channel> getChannels() {
 		return this.channels;
 		}
 
-	public boolean usersList(final String input) {
+	public boolean membersList(final String input) {
 		Zip zip = new Zip();
 		String json = zip.setUsersFile(input);
-		users = new Vector<User>();
+		members = new Vector<User>();
 		JSONParser parser = new JSONParser();
 		try {
 			JSONArray array = (JSONArray) parser.parse(json);
 			for (int i = 0; i < array.size(); i++) {
 				JSONObject obj = (JSONObject) array.get(i);
 				User utente = new User((String) obj.get("id"), (String) obj.get("real_name"));
-				users.addElement(utente);
+				members.addElement(utente);
 			}
 			return true;
 		} catch (ParseException p) {
@@ -67,7 +67,7 @@ public class Analysis {
 	}
 
 	public void membersChannel(final String input,final String input2) {
-		if (usersList(input2)) {
+		if (membersList(input2)) {
 			channelsList(input2);
 			boolean found = false;
 			for (int i = 0; i < channels.size(); i++) {
@@ -79,24 +79,24 @@ public class Analysis {
 			if (!found) {
 				System.out.println("Channel not found");
 			} else {
-				System.out.println(printUserInChannel(input));
+				System.out.println(printMembersInChannel(input));
 			}
 		}
 	}
 	
-	public void usersSortedByChannel(final String input) {
-		if (usersList(input)) {
+	public void membersSortedByChannel(final String input) {
+		if (membersList(input)) {
 			channelsList(input);
-			System.out.println(printUsersSortedByChannel());
+			System.out.println(printMembersSortedByChannel());
 		}
 			
 	}
 
-	public String printUsers() {
+	public String printMembers() {
 		String str = new String();
 		str += "This is users list :\n\n";
-		for (int i = 0; i < users.size(); i++) {
-			str += users.get(i).getName() + "\n";
+		for (int i = 0; i < members.size(); i++) {
+			str += members.get(i).getName() + "\n";
 		}
 		return str;
 	}
@@ -110,7 +110,7 @@ public class Analysis {
 		return str;
 	}
 
-	private String printUserInChannel(final String input) {
+	private String printMembersInChannel(final String input) {
 		String str = new String();
 		int index = 0;
 		for (int i = 0; i < channels.size(); i++) {
@@ -120,23 +120,23 @@ public class Analysis {
 			}
 		}
 		for (int i = 0; i < channels.get(index).getMembers().size(); i++) {
-			for (int j = 0; j < users.size(); j++) {
-				if (users.get(j).getId().equals(channels.get(index).getMembers().get(i))) {
-					str += 	users.get(j).getName() + "\n";
+			for (int j = 0; j < members.size(); j++) {
+				if (members.get(j).getId().equals(channels.get(index).getMembers().get(i))) {
+					str += 	members.get(j).getName() + "\n";
 				}
 			}
 		}
 		return str;
 	}
 	
-	private String printUsersSortedByChannel() {
+	private String printMembersSortedByChannel() {
 		String str = new String();
 		for (int i = 0; i < channels.size(); i++) {
 			str += channels.get(i).getName() + " :\n";
 			for (int j = 0; j < channels.get(i).getMembers().size(); j++) {
-				for (int k = 0; k < users.size(); k++) {
-					if (users.get(k).getId().equals(channels.get(i).getMembers().get(j))) {
-						str += "- " + users.get(k).getName() + "\n";
+				for (int k = 0; k < members.size(); k++) {
+					if (members.get(k).getId().equals(channels.get(i).getMembers().get(j))) {
+						str += "- " + members.get(k).getName() + "\n";
 					}
 				}
 			}
@@ -149,11 +149,11 @@ public class Analysis {
 		String help = new String();
 
 		help += "These are all available command for sna4slack\n\n";
-		help += "usersList zipUrl                        Show users list in selected workspace with zipUrl\n";
-		help += "channelsList zipUrl                     Show channel list in selected workspace with zipUrl\n";
-		help += "membersChannel channelName zipUrl       Show member list in selected channel in selected workspace with zipUrl\n";
-		help += "usersSortedByChannel zipUrl             Show users sortedy by channel in selected workspace with zipUrl\n";
-		help += "sna4slack                               Show this help interface\n";
+		help += "membersList zipPath                      Show members list in selected workspace with zipUrl\n";
+		help += "channelsList zipPath                     Show channel list in selected workspace with zipUrl\n";
+		help += "membersChannel channelName zipPath       Show member list in selected channel in selected workspace with zipUrl\n";
+		help += "membersSortedByChannel zipPath           Show members sortedy by channel in selected workspace with zipUrl\n";
+		help += "sna4slack                                Show this help interface\n";
 
 		System.out.println(help);
 	}
