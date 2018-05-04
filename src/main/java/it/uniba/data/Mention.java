@@ -18,11 +18,11 @@ public class Mention {
 		this.to = to_;
 	}
 	
-	String getFrom() {
+	public String getFrom() {
 		return this.from;
 	}
 	
-	String getTo() {
+	public String getTo() {
 		return this.to;
 	}
 

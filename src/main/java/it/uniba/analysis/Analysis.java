@@ -109,7 +109,7 @@ public class Analysis {
 			try {
 				JSONArray array = (JSONArray) parser.parse(json);
 				for (int j = 0; j < array.size(); j++) {
-					JSONObject obj = (JSONObject) array.get(i);
+					JSONObject obj = (JSONObject) array.get(j);
 					String text = (String) obj.get("text");
 					if (!obj.containsValue("subtype")) {
 						if (text.contains("<@")) {
@@ -121,7 +121,8 @@ public class Analysis {
 								if (text.charAt(k) == '>')
 									end = k;
 							}
-							mentions.add(new Mention((String) obj.get("user"),text.substring(begin+2,end-1)));
+							Mention mention = new Mention((String) obj.get("user"),text.substring(begin+2,end-1));
+							mentions.add(mention);
 						}
 					}
 				}
@@ -206,6 +207,14 @@ public class Analysis {
 				}
 			}
 			str += "\n";
+		}
+		return str;
+	}
+	
+	public String printMentionsList() {
+		String str = new String();
+		for (int i = 0; i < mentions.size(); i++) {
+			str += "From " + mentions.get(i).getFrom() + "to " + mentions.get(i).getTo() + "\n"; 
 		}
 		return str;
 	}
