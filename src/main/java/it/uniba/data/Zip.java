@@ -80,4 +80,18 @@ public class Zip {
 		}
 		return conversations;
 	}
+	
+	@SuppressWarnings("deprecation")
+	public String getJsonFromFile(String path,String input) {
+		String json = new String();
+		try {
+			ZipFile zip = new ZipFile(path);
+			InputStream source = zip.getInputStream(zip.getEntry(input));
+			json = IOUtils.toString(source);
+			zip.close();
+		} catch (IOException e) {
+			System.out.println("File not Found");
+		}
+		return json;
+	}
 }
