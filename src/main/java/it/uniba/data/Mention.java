@@ -5,7 +5,7 @@ public class Mention {
 	private String from;
 	private String to;
 	
-	Mention(String from_,String to_) {
+	public Mention(String from_,String to_) {
 		this.from = from_;
 		this.to = to_;
 	}

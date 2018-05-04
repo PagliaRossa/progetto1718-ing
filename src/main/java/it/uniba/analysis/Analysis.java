@@ -102,8 +102,33 @@ public class Analysis {
 	public boolean mentionsList(final String input) {
 		Zip zip = new Zip();
 		List<String> conversations = zip.setConversationsFile(input);
+		mentions = new ArrayList<Mention>();
 		for (int i = 0; i < conversations.size();i++) {
-			System.out.println(conversations.get(i));
+			String json = zip.getJsonFromFile(input,conversations.get(i));
+			JSONParser parser = new JSONParser();
+			try {
+				JSONArray array = (JSONArray) parser.parse(json);
+				for (int j = 0; j < array.size(); j++) {
+					JSONObject obj = (JSONObject) array.get(i);
+					String text = (String) obj.get("text");
+					if (!obj.containsValue("subtype")) {
+						if (text.contains("<@")) {
+							int begin = 0;
+							int end = 0;
+							for (int k = 0; k < text.length(); k++) {
+								if (text.charAt(k) == '<')
+									begin = k;
+								if (text.charAt(k) == '>')
+									end = k;
+							}
+							mentions.add(new Mention((String) obj.get("user"),text.substring(begin+2,end-1)));
+						}
+					}
+				}
+			} catch (ParseException p) {
+				System.out.println("JSON not valid");
+				return false;
+			}
 		}
 		
 		return true;
