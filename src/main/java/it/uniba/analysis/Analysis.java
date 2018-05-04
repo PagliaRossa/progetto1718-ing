@@ -1,5 +1,6 @@
 package it.uniba.analysis;
 
+import java.util.List;
 import java.util.Vector;
 
 import org.json.simple.JSONArray;
@@ -91,6 +92,16 @@ public class Analysis {
 			System.out.println(printMembersSortedByChannel());
 		}
 			
+	}
+	
+	public boolean mentionsList(final String input) {
+		Zip zip = new Zip();
+		List<String> conversations = zip.setConversationsFile(input);
+		for (int i = 0; i < conversations.size();i++) {
+			System.out.println(conversations.get(i));
+		}
+		
+		return true;
 	}
 
 	public String printMembers() {
