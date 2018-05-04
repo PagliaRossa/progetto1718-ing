@@ -106,11 +106,25 @@ public class Analysis {
 	
 	public boolean mentionsListChannel(final String channel,final String path) {
 		Zip zip = new Zip();
-		List<String> conversations = zip.setConversationsFileChannel(channel,path);
-		for (int i = 0; i < conversations.size(); i++) {
-			System.out.println(conversations.get(i));
+		if (channelsList(path)) {
+			boolean found = false;
+			for (int i = 0; i < channels.size(); i++) {
+				if (channels.get(i).getName().equals(channel)) {
+					found = true;
+					break;
+				}
+			}
+			if (found) {
+				List<String> conversations = zip.setConversationsFileChannel(channel,path);
+				for (int i = 0; i < conversations.size(); i++) {
+					System.out.println(conversations.get(i));
+				}
+				return true;
+			} else {
+				System.out.println("Channel not found!");
+			}
 		}
-		return true;
+		return false;
 	}
 
 	public String printMembers() {
