@@ -1,4 +1,4 @@
-package it.uniba.analysis;
+package it.uniba.data;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,11 +6,11 @@ import java.util.zip.ZipFile;
 
 import org.apache.commons.io.IOUtils;
 
-class Zip {
+public class Zip {
 
 
 	@SuppressWarnings("deprecation")
-	String setUsersFile(final String input) {
+	public String setUsersFile(final String input) {
 		String json = new String();
 		try {
 			ZipFile zip = new ZipFile(input);
@@ -24,7 +24,7 @@ class Zip {
 	}
 
 	@SuppressWarnings("deprecation")
-	String setChannelFile(final String input) {
+	public String setChannelFile(final String input) {
 		String json = new String();
 		try {
 			ZipFile zip = new ZipFile(input);
