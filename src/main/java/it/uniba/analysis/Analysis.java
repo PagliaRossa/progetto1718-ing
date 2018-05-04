@@ -103,6 +103,11 @@ public class Analysis {
 		
 		return true;
 	}
+	
+	public boolean mentionsListChannel(final String channel,final String path) {
+		
+		return true;
+	}
 
 	public String printMembers() {
 		String str = new String();
