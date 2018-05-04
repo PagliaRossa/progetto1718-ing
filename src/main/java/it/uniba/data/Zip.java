@@ -60,4 +60,24 @@ public class Zip {
 		}
 		return conversations;
 	}
+
+	public List<String> setConversationsFileChannel(String channel, String path) {
+		List<String> conversations = new ArrayList<String>();
+		try {
+			ZipFile zip = new ZipFile(path);
+			Enumeration<? extends ZipEntry> entries = zip.entries();
+			while (entries.hasMoreElements()) {
+				ZipEntry control = entries.nextElement();
+				if (!control.isDirectory()) {
+					if (control.getName().contains(channel)) {
+						conversations.add(new String(control.getName()));
+					}
+				}
+			}
+			zip.close();
+		} catch (IOException e) {
+			System.out.println("File not found");
+		}
+		return conversations;
+	}
 }

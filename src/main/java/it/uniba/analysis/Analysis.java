@@ -105,7 +105,11 @@ public class Analysis {
 	}
 	
 	public boolean mentionsListChannel(final String channel,final String path) {
-		
+		Zip zip = new Zip();
+		List<String> conversations = zip.setConversationsFileChannel(channel,path);
+		for (int i = 0; i < conversations.size(); i++) {
+			System.out.println(conversations.get(i));
+		}
 		return true;
 	}
 

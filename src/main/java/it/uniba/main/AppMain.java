@@ -47,7 +47,7 @@ public final class AppMain {
 			}
 			
 			if (command[0].equals("membersChannel")) {
-				if (command.length != 2) {
+				if (command.length == 3) {
 					request.membersChannel(command[1],command[2]);
 				} else {
 					System.out.println("Command incomplete , use sna4slack for help");
@@ -70,7 +70,7 @@ public final class AppMain {
 				}
 			}
 			if (command[0].equals("mentionsListChannel")) {
-				if (command.length != 2) {
+				if (command.length == 3) {
 					request.mentionsListChannel(command[1],command[2]);
 				} else {
 					System.out.println("Command incomplete , use sna4slack for help");
