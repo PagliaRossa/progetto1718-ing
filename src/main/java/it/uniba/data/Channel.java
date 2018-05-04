@@ -1,12 +1,13 @@
 package it.uniba.data;
 
+import java.util.List;
 import java.util.Vector;
 
 public class Channel {
 
 	private String id;
 	private String name;
-	private Vector<String> members;
+	private List<String> members;
 
 	public Channel(final String idNew, final String nameNew, final Vector<String> membersNew) {
 		this.id = idNew;
@@ -24,7 +25,7 @@ public class Channel {
 		this.name = nameNew;
 	}
 
-	public void setMembers(final Vector<String> membersNew) {
+	public void setMembers(final List<String> membersNew) {
 		this.members = membersNew;
 	}
 
@@ -36,7 +37,7 @@ public class Channel {
 		return this.name;
 	}
 
-	public Vector<String> getMembers() {
+	public List<String> getMembers() {
 		return this.members;
 	}
 

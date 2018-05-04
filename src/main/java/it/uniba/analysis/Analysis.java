@@ -1,7 +1,7 @@
 package it.uniba.analysis;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -11,28 +11,28 @@ import it.uniba.data.*;
 
 public class Analysis {
 
-	private Vector<User> members;
-	private Vector<Channel> channels;
+	private List<User> members;
+	private List<Channel> channels;
 
-	final Vector<User> getUsers() {
+	final List<User> getUsers() {
 		return this.members;
 		}
 
-	final Vector<Channel> getChannels() {
+	final List<Channel> getChannels() {
 		return this.channels;
 		}
 
 	public boolean membersList(final String input) {
 		Zip zip = new Zip();
 		String json = zip.setUsersFile(input);
-		members = new Vector<User>();
+		members = new ArrayList<User>();
 		JSONParser parser = new JSONParser();
 		try {
 			JSONArray array = (JSONArray) parser.parse(json);
 			for (int i = 0; i < array.size(); i++) {
 				JSONObject obj = (JSONObject) array.get(i);
 				User utente = new User((String) obj.get("id"), (String) obj.get("real_name"));
-				members.addElement(utente);
+				members.add(utente);
 			}
 			return true;
 		} catch (ParseException p) {
@@ -44,7 +44,7 @@ public class Analysis {
 	public boolean channelsList(final String input) {
 		Zip zip = new Zip();
 		String json = zip.setChannelFile(input);
-		channels = new Vector<Channel>();
+		channels = new ArrayList<Channel>();
 		JSONParser parser = new JSONParser();
 		try {
 			JSONArray array = (JSONArray) parser.parse(json);
@@ -54,7 +54,7 @@ public class Analysis {
 				channel.setId((String) obj.get("id"));
 				channel.setName((String) obj.get("name"));
 				JSONArray array2 = (JSONArray) obj.get("members");
-				Vector<String> members = new Vector<String>(); 
+				List<String> members = new ArrayList<String>(); 
 				for (int j = 0; j < array2.size(); j++) {
 					members.add((String) array2.get(j));
 				}
