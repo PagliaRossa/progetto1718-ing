@@ -13,6 +13,7 @@ public class Analysis {
 
 	private List<User> members;
 	private List<Channel> channels;
+	private List<Mention> mentions;
 
 	final List<User> getUsers() {
 		return this.members;
@@ -21,6 +22,10 @@ public class Analysis {
 	final List<Channel> getChannels() {
 		return this.channels;
 		}
+	
+	final List<Mention> getMentions() {
+		return this.mentions;
+	}
 
 	public boolean membersList(final String input) {
 		Zip zip = new Zip();
