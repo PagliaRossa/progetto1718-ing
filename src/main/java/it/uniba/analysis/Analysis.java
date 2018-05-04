@@ -170,11 +170,13 @@ public class Analysis {
 		String help = new String();
 
 		help += "These are all available command for sna4slack\n\n";
-		help += "membersList zipPath                      Show members list in selected workspace with zipPath\n";
-		help += "channelsList zipPath                     Show channel list in selected workspace with zipPath\n";
-		help += "membersChannel channelName zipPath       Show member list in selected channel in selected workspace with zipPath\n";
-		help += "membersSortedByChannel zipPath           Show members sortedy by channel in selected workspace with zipPath\n";
-		help += "sna4slack                                Show this help interface\n";
+		help += "membersList zipPath                             Show members list in selected workspace with zipPath\n";
+		help += "channelsList zipPath                            Show channel list in selected workspace with zipPath\n";
+		help += "membersChannel channelName zipPath              Show member list in selected channel in selected workspace with zipPath\n";
+		help += "membersSortedByChannel zipPath                  Show members sortedy by channel in selected workspace with zipPath\n";
+		help += "mentionsList zipPath                            Show mentions list in selected workspace with zipPath\n";
+		help += "mentionsListChannel channelName zipPath         Show mentions list in selected channel in selected workspace with zipPath\n";
+		help += "sna4slack                                       Show this help interface\n";
 
 		System.out.println(help);
 	}
