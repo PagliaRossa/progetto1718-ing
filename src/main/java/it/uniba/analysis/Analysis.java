@@ -175,6 +175,10 @@ public class Analysis {
 							}
 						}
 						removeWrongMentions();
+						/**
+						for (int l = 0; l < mentions.size(); l++) {
+							System.out.println(mentions.get(l).getFrom() + " " + mentions.get(l).getTo());
+						} */
 					} catch (ParseException p) {
 						System.out.println("JSON not valid");
 						return false;
@@ -265,7 +269,19 @@ public class Analysis {
 	
 	private void removeWrongMentions() {
 		for (int i = 0; i < mentions.size(); i++) {
-			if (mentions.get(i).getFrom().equals(mentions.get(i).getTo()) || (mentions.get(i).getTo().contains("files")) || (mentions.get(i).getTo().startsWith("cha"))) {
+			if (mentions.get(i).getFrom() == null || mentions.get(i).getTo() == null){
+				mentions.remove(i);
+				i--;
+			} else if (mentions.get(i).getTo().contains("|")) {
+				mentions.remove(i);
+				i--;
+			} else if (mentions.get(i).getFrom().contains(mentions.get(i).getTo())) {
+				mentions.remove(i);
+				i--;
+			} else if (mentions.get(i).getTo().contains("files")) {
+				mentions.remove(i);
+				i--;
+			} else if (mentions.get(i).getTo().startsWith("cha")) {
 				mentions.remove(i);
 				i--;
 			}
