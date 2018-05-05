@@ -105,6 +105,7 @@ public class Analysis {
 		mentions = new ArrayList<Mention>();
 		for (int i = 0; i < conversations.size();i++) {
 			String json = zip.getJsonFromFile(input,conversations.get(i));
+			System.out.println(conversations.get(i));
 			JSONParser parser = new JSONParser();
 			try {
 				JSONArray array = (JSONArray) parser.parse(json);
@@ -121,7 +122,7 @@ public class Analysis {
 								if (text.charAt(k) == '>')
 									end = k;
 							}
-							Mention mention = new Mention((String) obj.get("user"),text.substring(begin+2,end-1));
+							Mention mention = new Mention((String) obj.get("user"),text.substring(begin,end));
 							mentions.add(mention);
 						}
 					}
@@ -147,8 +148,34 @@ public class Analysis {
 			}
 			if (found) {
 				List<String> conversations = zip.setConversationsFileChannel(channel,path);
-				for (int i = 0; i < conversations.size(); i++) {
-					System.out.println(conversations.get(i));
+				mentions = new ArrayList<Mention>();
+				for (int i = 0; i < conversations.size();i++) {
+					String json = zip.getJsonFromFile(path,conversations.get(i));
+					JSONParser parser = new JSONParser();
+					try {
+						JSONArray array = (JSONArray) parser.parse(json);
+						for (int j = 0; j < array.size(); j++) {
+							JSONObject obj = (JSONObject) array.get(j);
+							String text = (String) obj.get("text");
+							if (!obj.containsValue("subtype")) {
+								if (text.contains("<@")) {
+									int begin = 0;
+									int end = 0;
+									for (int k = 0; k < text.length(); k++) {
+										if (text.charAt(k) == '<')
+											begin = k;
+										if (text.charAt(k) == '>')
+											end = k;
+									}
+									Mention mention = new Mention((String) obj.get("user"),text.substring(begin,end));
+									mentions.add(mention);
+								}
+							}
+						}
+					} catch (ParseException p) {
+						System.out.println("JSON not valid");
+						return false;
+					}
 				}
 				return true;
 			} else {

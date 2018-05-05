@@ -49,7 +49,7 @@ public class Zip {
 			while (entries.hasMoreElements()) {
 				ZipEntry control = entries.nextElement();
 				if (!control.isDirectory()) {
-					if (!control.getName().equals("users.json") && !control.getName().equals("channels.json") && !control.getName().equals("integration_log")) {
+					if (!control.getName().equals("users.json") && !control.getName().equals("channels.json") && !control.getName().equals("integration_logs.json")) {
 						conversations.add(new String(control.getName()));
 					}
 				}
