@@ -116,16 +116,18 @@ public class Analysis {
 							int begin = 0;
 							int end = 0;
 							for (int k = 0; k < text.length(); k++) {
-								if (text.charAt(k) == '<')
+								if ((text.charAt(k) == '<'))
 									begin = k;
-								if (text.charAt(k) == '>')
+								if (text.charAt(k) == '>') {
 									end = k;
+									Mention mention = new Mention((String) obj.get("user"),text.substring(begin+2,end));
+									mentions.add(mention);
+								}
 							}
-							Mention mention = new Mention((String) obj.get("user"),text.substring(begin,end));
-							mentions.add(mention);
 						}
 					}
 				}
+				removeWrongMentions();
 			} catch (ParseException p) {
 				System.out.println("JSON not valid");
 				return false;
@@ -161,16 +163,18 @@ public class Analysis {
 									int begin = 0;
 									int end = 0;
 									for (int k = 0; k < text.length(); k++) {
-										if (text.charAt(k) == '<')
+										if ((text.charAt(k) == '<'))
 											begin = k;
-										if (text.charAt(k) == '>')
+										if (text.charAt(k) == '>') {
 											end = k;
+											Mention mention = new Mention((String) obj.get("user"),text.substring(begin+2,end));
+											mentions.add(mention);
+										}
 									}
-									Mention mention = new Mention((String) obj.get("user"),text.substring(begin,end));
-									mentions.add(mention);
 								}
 							}
 						}
+						removeWrongMentions();
 					} catch (ParseException p) {
 						System.out.println("JSON not valid");
 						return false;
@@ -240,9 +244,32 @@ public class Analysis {
 	public String printMentionsList() {
 		String str = new String();
 		for (int i = 0; i < mentions.size(); i++) {
-			str += "From " + mentions.get(i).getFrom() + " to " + mentions.get(i).getTo() + "\n"; 
+			str += "From ";
+			for (int j = 0; j < members.size(); j++) {
+				if (members.get(j).getId().equals(mentions.get(i).getFrom())) {
+					str += members.get(j).getName();
+					break;
+				}
+			}
+			str += " to ";
+			for (int j = 0; j < members.size(); j++) {
+				if (members.get(j).getId().equals(mentions.get(i).getTo())) {
+					str += members.get(j).getName();
+					break;
+				}
+			}
+			str += "\n";
 		}
 		return str;
+	}
+	
+	private void removeWrongMentions() {
+		for (int i = 0; i < mentions.size(); i++) {
+			if (mentions.get(i).getFrom().equals(mentions.get(i).getTo()) || (mentions.get(i).getTo().contains("files")) || (mentions.get(i).getTo().startsWith("cha"))) {
+				mentions.remove(i);
+				i--;
+			}
+		}
 	}
 
 	public void help() {
