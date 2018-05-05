@@ -105,7 +105,6 @@ public class Analysis {
 		mentions = new ArrayList<Mention>();
 		for (int i = 0; i < conversations.size();i++) {
 			String json = zip.getJsonFromFile(input,conversations.get(i));
-			System.out.println(conversations.get(i));
 			JSONParser parser = new JSONParser();
 			try {
 				JSONArray array = (JSONArray) parser.parse(json);
@@ -241,7 +240,7 @@ public class Analysis {
 	public String printMentionsList() {
 		String str = new String();
 		for (int i = 0; i < mentions.size(); i++) {
-			str += "From " + mentions.get(i).getFrom() + "to " + mentions.get(i).getTo() + "\n"; 
+			str += "From " + mentions.get(i).getFrom() + " to " + mentions.get(i).getTo() + "\n"; 
 		}
 		return str;
 	}

@@ -67,11 +67,13 @@ public final class AppMain {
 					System.out.println("Command incomplete , use sna4slack for help");
 				} else {
 					request.mentionsList(command[1]);
+					System.out.println(request.printMentionsList());
 				}
 			}
 			if (command[0].equals("mentionsListChannel")) {
 				if (command.length == 3) {
 					request.mentionsListChannel(command[1],command[2]);
+					System.out.println(request.printMentionsList());
 				} else {
 					System.out.println("Command incomplete , use sna4slack for help");
 				}
