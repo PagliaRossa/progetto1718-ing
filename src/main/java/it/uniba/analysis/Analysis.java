@@ -247,6 +247,7 @@ public class Analysis {
 	
 	public String printMentionsList() {
 		String str = new String();
+		str += "\nList of Mentions : \n";
 		for (int i = 0; i < mentions.size(); i++) {
 			str += "From ";
 			for (int j = 0; j < members.size(); j++) {
@@ -278,7 +279,7 @@ public class Analysis {
 			} else if (mentions.get(i).getFrom().contains(mentions.get(i).getTo())) {
 				mentions.remove(i);
 				i--;
-			} else if (mentions.get(i).getTo().contains("files")) {
+			} else if (mentions.get(i).getTo().contains("ttps")) {
 				mentions.remove(i);
 				i--;
 			} else if (mentions.get(i).getTo().startsWith("cha")) {
