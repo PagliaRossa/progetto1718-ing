@@ -30,18 +30,20 @@ public class Analysis {
 	public boolean membersList(final String input) {
 		Zip zip = new Zip();
 		String json = zip.setUsersFile(input);
-		members = new ArrayList<User>();
-		JSONParser parser = new JSONParser();
-		try {
-			JSONArray array = (JSONArray) parser.parse(json);
-			for (int i = 0; i < array.size(); i++) {
-				JSONObject obj = (JSONObject) array.get(i);
-				User utente = new User((String) obj.get("id"), (String) obj.get("real_name"));
-				members.add(utente);
+		if (!json.isEmpty()) {
+			members = new ArrayList<User>();
+			JSONParser parser = new JSONParser();
+			try {
+				JSONArray array = (JSONArray) parser.parse(json);
+				for (int i = 0; i < array.size(); i++) {
+					JSONObject obj = (JSONObject) array.get(i);
+					User utente = new User((String) obj.get("id"), (String) obj.get("real_name"));
+					members.add(utente);
+				}
+				return true;
+			} catch (ParseException p) {
+				System.out.println("JSON not valid");
 			}
-			return true;
-		} catch (ParseException p) {
-			System.out.println("JSON not valid");
 		}
 		return false;
 	}
@@ -49,28 +51,30 @@ public class Analysis {
 	public boolean channelsList(final String input) {
 		Zip zip = new Zip();
 		String json = zip.setChannelFile(input);
-		channels = new ArrayList<Channel>();
-		JSONParser parser = new JSONParser();
-		try {
-			JSONArray array = (JSONArray) parser.parse(json);
-			for (int i = 0; i < array.size(); i++) {
-				JSONObject obj = (JSONObject) array.get(i);
-				Channel channel = new Channel();
-				channel.setId((String) obj.get("id"));
-				channel.setName((String) obj.get("name"));
-				JSONArray array2 = (JSONArray) obj.get("members");
-				List<String> members = new ArrayList<String>(); 
-				for (int j = 0; j < array2.size(); j++) {
-					members.add((String) array2.get(j));
+		if (!json.isEmpty()) {
+			channels = new ArrayList<Channel>();
+			JSONParser parser = new JSONParser();
+			try {
+				JSONArray array = (JSONArray) parser.parse(json);
+				for (int i = 0; i < array.size(); i++) {
+					JSONObject obj = (JSONObject) array.get(i);
+					Channel channel = new Channel();
+					channel.setId((String) obj.get("id"));
+					channel.setName((String) obj.get("name"));
+					JSONArray array2 = (JSONArray) obj.get("members");
+					List<String> members = new ArrayList<String>(); 
+					for (int j = 0; j < array2.size(); j++) {
+						members.add((String) array2.get(j));
+					}
+					channel.setMembers(members);
+					channels.add(channel);
 				}
-				channel.setMembers(members);
-				channels.add(channel);
+				return true;
+			} catch (ParseException p) {
+				System.out.println("JSON not valid");
 			}
-			return true;
-		} catch (ParseException p) {
-			System.out.println("JSON not valid");
-			return false;
 		}
+		return false;
 	}
 
 	public void membersChannel(final String input,final String input2) {
@@ -102,39 +106,42 @@ public class Analysis {
 	public boolean mentionsList(final String input) {
 		Zip zip = new Zip();
 		List<String> conversations = zip.setConversationsFile(input);
-		mentions = new ArrayList<Mention>();
-		for (int i = 0; i < conversations.size();i++) {
-			String json = zip.getJsonFromFile(input,conversations.get(i));
-			JSONParser parser = new JSONParser();
-			try {
-				JSONArray array = (JSONArray) parser.parse(json);
-				for (int j = 0; j < array.size(); j++) {
-					JSONObject obj = (JSONObject) array.get(j);
-					String text = (String) obj.get("text");
-					if (!obj.containsValue("subtype")) {
-						if (text.contains("<@")) {
-							int begin = 0;
-							int end = 0;
-							for (int k = 0; k < text.length(); k++) {
-								if ((text.charAt(k) == '<'))
-									begin = k;
-								if (text.charAt(k) == '>') {
-									end = k;
-									Mention mention = new Mention((String) obj.get("user"),text.substring(begin+2,end));
-									mentions.add(mention);
+		if (!conversations.isEmpty()) {
+			mentions = new ArrayList<Mention>();
+			for (int i = 0; i < conversations.size();i++) {
+				String json = zip.getJsonFromFile(input,conversations.get(i));
+				JSONParser parser = new JSONParser();
+				try {
+					JSONArray array = (JSONArray) parser.parse(json);
+					for (int j = 0; j < array.size(); j++) {
+						JSONObject obj = (JSONObject) array.get(j);
+						String text = (String) obj.get("text");
+						if (!obj.containsValue("subtype")) {
+							if (text.contains("<@")) {
+								int begin = 0;
+								int end = 0;
+								for (int k = 0; k < text.length(); k++) {
+									if ((text.charAt(k) == '<'))
+										begin = k;
+									if (text.charAt(k) == '>') {
+										end = k;
+										Mention mention = new Mention((String) obj.get("user"),text.substring(begin+2,end));
+										mentions.add(mention);
+									}
 								}
 							}
 						}
 					}
+				} catch (ParseException p) {
+					System.out.println("JSON not valid");
+					return false;
 				}
-				removeWrongMentions();
-			} catch (ParseException p) {
-				System.out.println("JSON not valid");
-				return false;
 			}
+			removeWrongMentions();
+			return true;
+		} else {
+			return false;
 		}
-		
-		return true;
 	}
 	
 	public boolean mentionsListChannel(final String channel,final String path) {
@@ -149,42 +156,42 @@ public class Analysis {
 			}
 			if (found) {
 				List<String> conversations = zip.setConversationsFileChannel(channel,path);
-				mentions = new ArrayList<Mention>();
-				for (int i = 0; i < conversations.size();i++) {
-					String json = zip.getJsonFromFile(path,conversations.get(i));
-					JSONParser parser = new JSONParser();
-					try {
-						JSONArray array = (JSONArray) parser.parse(json);
-						for (int j = 0; j < array.size(); j++) {
-							JSONObject obj = (JSONObject) array.get(j);
-							String text = (String) obj.get("text");
-							if (!obj.containsValue("subtype")) {
-								if (text.contains("<@")) {
-									int begin = 0;
-									int end = 0;
-									for (int k = 0; k < text.length(); k++) {
-										if ((text.charAt(k) == '<'))
-											begin = k;
-										if (text.charAt(k) == '>') {
-											end = k;
-											Mention mention = new Mention((String) obj.get("user"),text.substring(begin+2,end));
-											mentions.add(mention);
+				if (!conversations.isEmpty()) {
+					mentions = new ArrayList<Mention>();
+					for (int i = 0; i < conversations.size();i++) {
+						String json = zip.getJsonFromFile(path,conversations.get(i));
+						JSONParser parser = new JSONParser();
+						try {
+							JSONArray array = (JSONArray) parser.parse(json);
+							for (int j = 0; j < array.size(); j++) {
+								JSONObject obj = (JSONObject) array.get(j);
+								String text = (String) obj.get("text");
+								if (!obj.containsValue("subtype")) {
+									if (text.contains("<@")) {
+										int begin = 0;
+										int end = 0;
+										for (int k = 0; k < text.length(); k++) {
+											if ((text.charAt(k) == '<'))
+												begin = k;
+											if (text.charAt(k) == '>') {
+												end = k;
+												Mention mention = new Mention((String) obj.get("user"),text.substring(begin+2,end));
+												mentions.add(mention);
+											}
 										}
 									}
 								}
 							}
+						} catch (ParseException p) {
+							System.out.println("JSON not valid");
+							return false;
 						}
-						removeWrongMentions();
-						/**
-						for (int l = 0; l < mentions.size(); l++) {
-							System.out.println(mentions.get(l).getFrom() + " " + mentions.get(l).getTo());
-						} */
-					} catch (ParseException p) {
-						System.out.println("JSON not valid");
-						return false;
 					}
+					removeWrongMentions();
+					return true;
+				} else {
+					return false;
 				}
-				return true;
 			} else {
 				System.out.println("Channel not found!");
 			}

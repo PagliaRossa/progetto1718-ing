@@ -22,7 +22,7 @@ public class Zip {
 			json = IOUtils.toString(source);
 			zip.close();
 		} catch (IOException e) {
-			System.out.println("File not found");
+			System.out.println("File not found or invalid !");
 		}
 		return json;
 	}
@@ -36,7 +36,7 @@ public class Zip {
 			json = IOUtils.toString(source);
 			zip.close();
 		} catch (IOException e) {
-			System.out.println("File not found");
+			System.out.println("File not found or invalid !");
 		}
 		return json;
 	}
@@ -56,7 +56,7 @@ public class Zip {
 			}
 			zip.close();
 		} catch (IOException e) {
-			System.out.println("File not found");
+			System.out.println("File not found or invalid !");
 		}
 		return conversations;
 	}
@@ -76,7 +76,7 @@ public class Zip {
 			}
 			zip.close();
 		} catch (IOException e) {
-			System.out.println("File not found");
+			System.out.println("File not found or invalid !");
 		}
 		return conversations;
 	}
@@ -90,7 +90,7 @@ public class Zip {
 			json = IOUtils.toString(source);
 			zip.close();
 		} catch (IOException e) {
-			System.out.println("File not Found");
+			System.out.println("File not Found or invalid !");
 		}
 		return json;
 	}
