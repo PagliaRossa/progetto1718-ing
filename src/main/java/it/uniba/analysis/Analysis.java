@@ -254,23 +254,27 @@ public class Analysis {
 	
 	public String printMentionsList() {
 		String str = new String();
-		str += "\nList of Mentions : \n";
-		for (int i = 0; i < mentions.size(); i++) {
-			str += "From ";
-			for (int j = 0; j < members.size(); j++) {
-				if (members.get(j).getId().equals(mentions.get(i).getFrom())) {
-					str += members.get(j).getName();
-					break;
+		if (!mentions.isEmpty()) { 
+			str += "\nList of Mentions : \n";
+			for (int i = 0; i < mentions.size(); i++) {
+				str += "From ";
+				for (int j = 0; j < members.size(); j++) {
+					if (members.get(j).getId().equals(mentions.get(i).getFrom())) {
+						str += members.get(j).getName();
+						break;
+					}
 				}
-			}
-			str += " to ";
-			for (int j = 0; j < members.size(); j++) {
-				if (members.get(j).getId().equals(mentions.get(i).getTo())) {
-					str += members.get(j).getName();
-					break;
+				str += " to ";
+				for (int j = 0; j < members.size(); j++) {
+					if (members.get(j).getId().equals(mentions.get(i).getTo())) {
+						str += members.get(j).getName();
+						break;
+					}
 				}
+				str += "\n";
 			}
-			str += "\n";
+		} else {
+			str += "Can't find mentions!";
 		}
 		return str;
 	}
