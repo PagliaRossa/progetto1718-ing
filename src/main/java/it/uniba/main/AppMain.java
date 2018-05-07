@@ -82,7 +82,17 @@ public final class AppMain {
 					System.out.println("Command incomplete , use sna4slack for help");
 				}
 			}
-			
+			if (command[0].equals("mentionsListFrom")) {
+				if (command.length == 3) {
+					if (request.mentionsList(command[2])) {
+						System.out.println(request.printMentionsFrom);
+					}
+				} else if (command.length == 4) {
+					if (request.mentionsListChannel(command[2],command[3])) {
+						System.out.println(request.printMentionsFrom);
+					}
+				}
+			}
 			if (command[0].equals("sna4slack")) {
 				if (command.length == 1) {
 					request.help();
@@ -93,7 +103,8 @@ public final class AppMain {
 			
 			if (!command[0].equals("membersList") && (!command[0].equals("channelsList"))
 				&& (!command[0].equals("membersChannel")) && (!command[0].equals("membersSortedByChannel"))
-				&& (!command[0].equals("sna4slack")) && (!command[0].equals("mentionsList")) && (!command[0].equals("mentionsListChannel"))) {
+				&& (!command[0].equals("sna4slack")) && (!command[0].equals("mentionsList")) && (!command[0].equals("mentionsListChannel")
+				&& (!command[0].equals("mentionsListFrom")))) {
 					System.out.println("Wrong command, use sna4slack command for help");
 			}
 		} else {
