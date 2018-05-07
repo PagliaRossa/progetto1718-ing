@@ -278,6 +278,51 @@ public class Analysis {
 		}
 		return str;
 	}
+	public String printMentionsFrom(final String user) {
+		String input = new String();
+		boolean found = false;
+		String id = new String();
+		String name = new String();
+		for(int i = 0; i < members.size(); i++){
+			if(members.get(i).getName().equals(user)) {
+				found = true;
+				id = members.get(i).getId();
+				name = members.get(i).getName();
+				break;
+			}
+		}
+		if (found) {
+			if(!mentions.isEmpty()) {
+				boolean menFound = false;
+				for(int i = 0; i < mentions.size(); i++) {
+					if(mentions.get(i).getFrom().equals(id)) {
+						menFound = true;
+						break;
+					}
+				}
+				if(menFound) {
+					input += "\nList of mentions:\n\n";
+					for(int i = 0; i < mentions.size(); i++) {
+						if(mentions.get(i).getFrom().equals(id)) {
+							input += "From " + name;
+							for (int j = 0; j < members.size(); j++) {
+								if (members.get(j).getId().equals(mentions.get(i).getTo())) {
+									input += " to " + members.get(j).getName() + "\n";
+								}
+							}
+						}
+					}
+				} else {
+					input += "Can't find mentions for this Member!";
+				}
+			} else {
+				input += "Can't find mentions!";
+			}
+		} else {
+			input += "Member not found";
+		}
+		return input;
+	}
 	
 	private void removeWrongMentions() {
 		for (int i = 0; i < mentions.size(); i++) {
