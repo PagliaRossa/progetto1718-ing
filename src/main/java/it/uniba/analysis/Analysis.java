@@ -313,13 +313,13 @@ public class Analysis {
 						}
 					}
 				} else {
-					input += "Can't find mentions for this Member!";
+					input += "\nCan't find mentions for this Member!";
 				}
 			} else {
-				input += "Can't find mentions!";
+				input += "\nCan't find mentions!";
 			}
 		} else {
-			input += "Member not found";
+			input += "\nMember not found";
 		}
 		return input;
 	}
@@ -352,20 +352,20 @@ public class Analysis {
 						if(mentions.get(i).getTo().equals(id)) {
 							for (int j = 0; j < members.size(); j++) {
 								if (members.get(j).getId().equals(mentions.get(i).getFrom())) {
-									input += "From " + members.get(j).getName() + "\n";
-									input += " to " + name;
+									input += "From " + members.get(j).getName();
+									input += " to " + name + "\n";
 								}
 							}
 						}
 					}
 				} else {
-					input += "Can't find mentions for this Member!";
+					input += "\nCan't find mentions for this Member!";
 				}
 			} else {
-				input += "Can't find mentions!";
+				input += "\nCan't find mentions!";
 			}
 		} else {
-			input += "Member not found";
+			input += "\nMember not found";
 		}
 		return input;
 	}
@@ -401,6 +401,10 @@ public class Analysis {
 		help += "membersSortedByChannel zipPath                  Show members sortedy by channel in selected workspace with zipPath\n";
 		help += "mentionsList zipPath                            Show mentions list in selected workspace with zipPath\n";
 		help += "mentionsListChannel channelName zipPath         Show mentions list in selected channel in selected workspace with zipPath\n";
+		help += "mentionsListFrom member zipPath                 Show mentions list from selected member in selected workspace with zipPath\n";
+		help += "mentionsListFrom member channel zipPath         Show mentions list from selected member in selected channel in selected workspace with zipPath\n";
+		help += "mentionsListTo member zipPath                   Show mentions list to selected member in selected channel in selected workspace with zipPath\n";
+		help += "mentionsListTo member channel zipPath           Show mentions list to selected member in selected channel in selected workspace with zipPath\n";
 		help += "sna4slack                                       Show this help interface\n";
 
 		System.out.println(help);
