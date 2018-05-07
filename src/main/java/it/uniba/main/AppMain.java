@@ -85,12 +85,16 @@ public final class AppMain {
 			if (command[0].equals("mentionsListFrom")) {
 				if (command.length == 3) {
 					if (request.mentionsList(command[2])) {
-						System.out.println(request.printMentionsFrom);
+						request.membersList(command[2]);
+						System.out.println(request.printMentionsFrom(command[1]));
 					}
 				} else if (command.length == 4) {
 					if (request.mentionsListChannel(command[2],command[3])) {
-						System.out.println(request.printMentionsFrom);
+						request.membersList(command[3]);
+						System.out.println(request.printMentionsFrom(command[1]));
 					}
+				} else {
+					System.out.println("Command incomplete , use sna4slack for help");
 				}
 			}
 			if (command[0].equals("sna4slack")) {
