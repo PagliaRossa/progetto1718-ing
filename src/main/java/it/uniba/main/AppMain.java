@@ -25,6 +25,7 @@ public final class AppMain {
 	 */
 	public static void main(final String[] command) {
 		Analysis request = new Analysis();
+		if (!(command.length == 0)) {
 			if (command[0].equals("membersList")) {
 				if (command.length != 1) {
 					if (request.membersList(command[1])) {
@@ -34,6 +35,7 @@ public final class AppMain {
 					System.out.println("Command incomplete , use sna4slack for help");
 				}
 			}
+			
 			if (command[0].equals("channelsList")) {
 				if (command.length != 1) {
 					if (request.channelsList(command[1])) {
@@ -43,13 +45,15 @@ public final class AppMain {
 					System.out.println("Command incomplete , use sna4slack for help");
 				}
 			}
+			
 			if (command[0].equals("membersChannel")) {
-				if (command.length != 2) {
+				if (command.length == 3) {
 					request.membersChannel(command[1],command[2]);
 				} else {
 					System.out.println("Command incomplete , use sna4slack for help");
 				}
 			}
+			
 			if (command[0].equals("membersSortedByChannel")) {
 				if (command.length != 1) {
 					request.membersSortedByChannel(command[1]);
@@ -57,6 +61,28 @@ public final class AppMain {
 					System.out.println("Command incomplete , use sna4slack for help");
 				}
 			}
+			
+			if (command[0].equals("mentionsList")) {
+				if (command.length == 1) {
+					System.out.println("Command incomplete , use sna4slack for help");
+				} else {
+					if (request.mentionsList(command[1])) {
+						request.membersList(command[1]);
+						System.out.println(request.printMentionsList());
+					}
+				}
+			}
+			if (command[0].equals("mentionsListChannel")) {
+				if (command.length == 3) {
+					if (request.mentionsListChannel(command[1],command[2])) {
+						request.membersList(command[2]);
+						System.out.println(request.printMentionsList());
+					}
+				} else {
+					System.out.println("Command incomplete , use sna4slack for help");
+				}
+			}
+			
 			if (command[0].equals("sna4slack")) {
 				if (command.length == 1) {
 					request.help();
@@ -64,9 +90,14 @@ public final class AppMain {
 					System.out.println("No need for more argument , just use sna4slack for help");
 				}
 			}
-			if ((!command[0].equals("membersList") && (!command[0].equals("channelsList"))
+			
+			if (!command[0].equals("membersList") && (!command[0].equals("channelsList"))
 				&& (!command[0].equals("membersChannel")) && (!command[0].equals("membersSortedByChannel"))
-				&& (!command[0].equals("sna4slack"))))
+				&& (!command[0].equals("sna4slack")) && (!command[0].equals("mentionsList")) && (!command[0].equals("mentionsListChannel"))) {
 					System.out.println("Wrong command, use sna4slack command for help");
+			}
+		} else {
+			System.out.println("Needs arguments , use sna4slack for help");
 		}
+	}
 }
