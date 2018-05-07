@@ -97,7 +97,7 @@ public final class AppMain {
 					System.out.println("Command incomplete , use sna4slack for help");
 				}
 			}
-			if (command[0].equals("mentionsListFrom")) {
+			if (command[0].equals("mentionsListTo")) {
 				if (command.length == 3) {
 					if (request.mentionsList(command[2])) {
 						request.membersList(command[2]);
