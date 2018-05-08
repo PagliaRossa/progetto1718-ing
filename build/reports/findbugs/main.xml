@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="3.0.1" sequence="0" timestamp="1525780251841" analysisTimestamp="1525780251897" release="">
+  <Project projectName="">
+    <Jar>C:\Users\Donato\Git\progetto1718-bernerslee\build\classes\java\main</Jar>
+    <AuxClasspathEntry>C:\Users\Donato\Git\progetto1718-bernerslee\lib\commons-io-2.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Donato\Git\progetto1718-bernerslee\lib\json-simple-1.1.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\Donato\.gradle\caches\modules-2\files-2.1\com.google.guava\guava\21.0\3a3d111be1be1b745edfa7d91678a12d7ed38709\guava-21.0.jar</AuxClasspathEntry>
+    <SrcDir>C:\Users\Donato\Git\progetto1718-bernerslee\src\main\java\it\uniba\analysis\Analysis.java</SrcDir>
+    <SrcDir>C:\Users\Donato\Git\progetto1718-bernerslee\src\main\java\it\uniba\data\Channel.java</SrcDir>
+    <SrcDir>C:\Users\Donato\Git\progetto1718-bernerslee\src\main\java\it\uniba\data\Mention.java</SrcDir>
+    <SrcDir>C:\Users\Donato\Git\progetto1718-bernerslee\src\main\java\it\uniba\data\User.java</SrcDir>
+    <SrcDir>C:\Users\Donato\Git\progetto1718-bernerslee\src\main\java\it\uniba\data\Zip.java</SrcDir>
+    <SrcDir>C:\Users\Donato\Git\progetto1718-bernerslee\src\main\java\it\uniba\example\db\DatabaseConnection.java</SrcDir>
+    <SrcDir>C:\Users\Donato\Git\progetto1718-bernerslee\src\main\java\it\uniba\example\db\package-info.java</SrcDir>
+    <SrcDir>C:\Users\Donato\Git\progetto1718-bernerslee\src\main\java\it\uniba\example\utils\math\MathUtils.java</SrcDir>
+    <SrcDir>C:\Users\Donato\Git\progetto1718-bernerslee\src\main\java\it\uniba\example\utils\package-info.java</SrcDir>
+    <SrcDir>C:\Users\Donato\Git\progetto1718-bernerslee\src\main\java\it\uniba\example\utils\strings\StringUtils.java</SrcDir>
+    <SrcDir>C:\Users\Donato\Git\progetto1718-bernerslee\src\main\java\it\uniba\main\AppMain.java</SrcDir>
+  </Project>
+  <BugInstance type="DM_STRING_VOID_CTOR" priority="2" rank="18" abbrev="Dm" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="help" signature="()V" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="395" end="411" startBytecode="0" endBytecode="363" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="395" end="395" startBytecode="4" endBytecode="4" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+  </BugInstance>
+  <BugInstance type="DM_STRING_VOID_CTOR" priority="2" rank="18" abbrev="Dm" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="printChannels" signature="()Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="212" end="217" startBytecode="0" endBytecode="189" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="212" end="212" startBytecode="4" endBytecode="4" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+  </BugInstance>
+  <BugInstance type="DM_STRING_VOID_CTOR" priority="2" rank="18" abbrev="Dm" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="printMembers" signature="()Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="203" end="208" startBytecode="0" endBytecode="189" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="203" end="203" startBytecode="4" endBytecode="4" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+  </BugInstance>
+  <BugInstance type="DM_STRING_VOID_CTOR" priority="2" rank="18" abbrev="Dm" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="printMembersInChannel" signature="(Ljava/lang/String;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="221" end="236" startBytecode="0" endBytecode="427" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="221" end="221" startBytecode="4" endBytecode="4" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+  </BugInstance>
+  <BugInstance type="DM_STRING_VOID_CTOR" priority="2" rank="18" abbrev="Dm" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="printMembersSortedByChannel" signature="()Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="240" end="252" startBytecode="0" endBytecode="396" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="240" end="240" startBytecode="4" endBytecode="4" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+  </BugInstance>
+  <BugInstance type="DM_STRING_VOID_CTOR" priority="2" rank="18" abbrev="Dm" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="printMentionsFrom" signature="(Ljava/lang/String;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="282" end="324" startBytecode="0" endBytecode="812" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="282" end="282" startBytecode="4" endBytecode="4" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="284" end="284" startBytecode="14" endBytecode="14" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java" role="SOURCE_LINE_ANOTHER_INSTANCE"/>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="285" end="285" startBytecode="23" endBytecode="23" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java" role="SOURCE_LINE_ANOTHER_INSTANCE"/>
+  </BugInstance>
+  <BugInstance type="DM_STRING_VOID_CTOR" priority="2" rank="18" abbrev="Dm" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="printMentionsList" signature="()Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="256" end="279" startBytecode="0" endBytecode="535" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="256" end="256" startBytecode="4" endBytecode="4" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+  </BugInstance>
+  <BugInstance type="DM_STRING_VOID_CTOR" priority="2" rank="18" abbrev="Dm" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="printMentionsTo" signature="(Ljava/lang/String;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="328" end="370" startBytecode="0" endBytecode="812" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="328" end="328" startBytecode="4" endBytecode="4" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="330" end="330" startBytecode="14" endBytecode="14" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java" role="SOURCE_LINE_ANOTHER_INSTANCE"/>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="331" end="331" startBytecode="23" endBytecode="23" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java" role="SOURCE_LINE_ANOTHER_INSTANCE"/>
+  </BugInstance>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" rank="18" abbrev="SBSC" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="printChannels" signature="()Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="212" end="217" startBytecode="0" endBytecode="189" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="215" end="215" startBytecode="43" endBytecode="43" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+  </BugInstance>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" rank="18" abbrev="SBSC" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="printMembers" signature="()Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="203" end="208" startBytecode="0" endBytecode="189" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="206" end="206" startBytecode="43" endBytecode="43" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+  </BugInstance>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" rank="18" abbrev="SBSC" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="printMembersInChannel" signature="(Ljava/lang/String;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="221" end="236" startBytecode="0" endBytecode="427" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="226" end="226" startBytecode="54" endBytecode="54" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+  </BugInstance>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" rank="18" abbrev="SBSC" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="printMembersSortedByChannel" signature="()Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="240" end="252" startBytecode="0" endBytecode="396" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="246" end="246" startBytecode="151" endBytecode="151" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+  </BugInstance>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" rank="18" abbrev="SBSC" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="printMentionsFrom" signature="(Ljava/lang/String;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="282" end="324" startBytecode="0" endBytecode="812" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="310" end="310" startBytecode="340" endBytecode="340" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+  </BugInstance>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" rank="18" abbrev="SBSC" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="printMentionsList" signature="()Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="256" end="279" startBytecode="0" endBytecode="535" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="263" end="263" startBytecode="128" endBytecode="128" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+  </BugInstance>
+  <BugInstance type="SBSC_USE_STRINGBUFFER_CONCATENATION" priority="2" rank="18" abbrev="SBSC" category="PERFORMANCE">
+    <Class classname="it.uniba.analysis.Analysis">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="12" end="411" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Class>
+    <Method classname="it.uniba.analysis.Analysis" name="printMentionsTo" signature="(Ljava/lang/String;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.analysis.Analysis" start="328" end="370" startBytecode="0" endBytecode="812" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.analysis.Analysis" start="356" end="356" startBytecode="355" endBytecode="355" sourcefile="Analysis.java" sourcepath="it/uniba/analysis/Analysis.java"/>
+  </BugInstance>
+  <BugInstance type="DM_STRING_CTOR" priority="2" rank="18" abbrev="Dm" category="PERFORMANCE">
+    <Class classname="it.uniba.data.Zip">
+      <SourceLine classname="it.uniba.data.Zip" start="13" end="95" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+    </Class>
+    <Method classname="it.uniba.data.Zip" name="setConversationsFile" signature="(Ljava/lang/String;)Ljava/util/List;" isStatic="false">
+      <SourceLine classname="it.uniba.data.Zip" start="45" end="61" startBytecode="0" endBytecode="365" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.data.Zip" start="53" end="53" startBytecode="102" endBytecode="102" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+  </BugInstance>
+  <BugInstance type="DM_STRING_CTOR" priority="2" rank="18" abbrev="Dm" category="PERFORMANCE">
+    <Class classname="it.uniba.data.Zip">
+      <SourceLine classname="it.uniba.data.Zip" start="13" end="95" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+    </Class>
+    <Method classname="it.uniba.data.Zip" name="setConversationsFileChannel" signature="(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;" isStatic="false">
+      <SourceLine classname="it.uniba.data.Zip" start="65" end="81" startBytecode="0" endBytecode="353" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.data.Zip" start="73" end="73" startBytecode="77" endBytecode="77" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+  </BugInstance>
+  <BugInstance type="DM_STRING_VOID_CTOR" priority="2" rank="18" abbrev="Dm" category="PERFORMANCE">
+    <Class classname="it.uniba.data.Zip">
+      <SourceLine classname="it.uniba.data.Zip" start="13" end="95" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+    </Class>
+    <Method classname="it.uniba.data.Zip" name="getJsonFromFile" signature="(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.data.Zip" start="86" end="95" startBytecode="0" endBytecode="229" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.data.Zip" start="86" end="86" startBytecode="4" endBytecode="4" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+  </BugInstance>
+  <BugInstance type="DM_STRING_VOID_CTOR" priority="2" rank="18" abbrev="Dm" category="PERFORMANCE">
+    <Class classname="it.uniba.data.Zip">
+      <SourceLine classname="it.uniba.data.Zip" start="13" end="95" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+    </Class>
+    <Method classname="it.uniba.data.Zip" name="setChannelFile" signature="(Ljava/lang/String;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.data.Zip" start="32" end="41" startBytecode="0" endBytecode="212" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.data.Zip" start="32" end="32" startBytecode="4" endBytecode="4" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+  </BugInstance>
+  <BugInstance type="DM_STRING_VOID_CTOR" priority="2" rank="18" abbrev="Dm" category="PERFORMANCE">
+    <Class classname="it.uniba.data.Zip">
+      <SourceLine classname="it.uniba.data.Zip" start="13" end="95" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+    </Class>
+    <Method classname="it.uniba.data.Zip" name="setUsersFile" signature="(Ljava/lang/String;)Ljava/lang/String;" isStatic="false">
+      <SourceLine classname="it.uniba.data.Zip" start="18" end="27" startBytecode="0" endBytecode="212" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.data.Zip" start="18" end="18" startBytecode="4" endBytecode="4" sourcefile="Zip.java" sourcepath="it/uniba/data/Zip.java"/>
+  </BugInstance>
+  <BugInstance type="BX_BOXING_IMMEDIATELY_UNBOXED" priority="2" rank="18" abbrev="Bx" category="PERFORMANCE">
+    <Class classname="it.uniba.example.utils.math.MathUtils">
+      <SourceLine classname="it.uniba.example.utils.math.MathUtils" start="6" end="32" sourcefile="MathUtils.java" sourcepath="it/uniba/example/utils/math/MathUtils.java"/>
+    </Class>
+    <Method classname="it.uniba.example.utils.math.MathUtils" name="divide" signature="(II)F" isStatic="false">
+      <SourceLine classname="it.uniba.example.utils.math.MathUtils" start="32" end="32" startBytecode="0" endBytecode="76" sourcefile="MathUtils.java" sourcepath="it/uniba/example/utils/math/MathUtils.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.example.utils.math.MathUtils" start="32" end="32" startBytecode="11" endBytecode="11" sourcefile="MathUtils.java" sourcepath="it/uniba/example/utils/math/MathUtils.java"/>
+  </BugInstance>
+  <BugInstance type="ICAST_IDIV_CAST_TO_DOUBLE" priority="2" rank="17" abbrev="ICAST" category="STYLE">
+    <Class classname="it.uniba.example.utils.math.MathUtils">
+      <SourceLine classname="it.uniba.example.utils.math.MathUtils" start="6" end="32" sourcefile="MathUtils.java" sourcepath="it/uniba/example/utils/math/MathUtils.java"/>
+    </Class>
+    <Method classname="it.uniba.example.utils.math.MathUtils" name="divide" signature="(II)F" isStatic="false">
+      <SourceLine classname="it.uniba.example.utils.math.MathUtils" start="32" end="32" startBytecode="0" endBytecode="76" sourcefile="MathUtils.java" sourcepath="it/uniba/example/utils/math/MathUtils.java"/>
+    </Method>
+    <SourceLine classname="it.uniba.example.utils.math.MathUtils" start="32" end="32" startBytecode="7" endBytecode="7" sourcefile="MathUtils.java" sourcepath="it/uniba/example/utils/math/MathUtils.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Tue, 8 May 2018 13:50:51 +0200" total_classes="9" referenced_classes="36" total_bugs="22" total_size="526" num_packages="6" java_version="1.8.0_171" vm_version="25.171-b11" cpu_seconds="13.64" clock_seconds="3.26" peak_mbytes="187.14" alloc_mbytes="3616.00" gc_seconds="0.16" priority_2="22">
+    <PackageStats package="it.uniba.analysis" total_bugs="15" total_types="1" total_size="283" priority_2="15">
+      <ClassStats class="it.uniba.analysis.Analysis" sourceFile="Analysis.java" interface="false" size="283" bugs="15" priority_2="15"/>
+    </PackageStats>
+    <PackageStats package="it.uniba.data" total_bugs="5" total_types="4" total_size="120" priority_2="5">
+      <ClassStats class="it.uniba.data.Channel" sourceFile="Channel.java" interface="false" size="21" bugs="0"/>
+      <ClassStats class="it.uniba.data.Mention" sourceFile="Mention.java" interface="false" size="18" bugs="0"/>
+      <ClassStats class="it.uniba.data.User" sourceFile="User.java" interface="false" size="18" bugs="0"/>
+      <ClassStats class="it.uniba.data.Zip" sourceFile="Zip.java" interface="false" size="63" bugs="5" priority_2="5"/>
+    </PackageStats>
+    <PackageStats package="it.uniba.example.db" total_bugs="0" total_types="1" total_size="28">
+      <ClassStats class="it.uniba.example.db.DatabaseConnection" sourceFile="DatabaseConnection.java" interface="false" size="28" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="it.uniba.example.utils.math" total_bugs="2" total_types="1" total_size="7" priority_2="2">
+      <ClassStats class="it.uniba.example.utils.math.MathUtils" sourceFile="MathUtils.java" interface="false" size="7" bugs="2" priority_2="2"/>
+    </PackageStats>
+    <PackageStats package="it.uniba.example.utils.strings" total_bugs="0" total_types="1" total_size="20">
+      <ClassStats class="it.uniba.example.utils.strings.StringUtils" sourceFile="StringUtils.java" interface="false" size="20" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="it.uniba.main" total_bugs="0" total_types="1" total_size="68">
+      <ClassStats class="it.uniba.main.AppMain" sourceFile="AppMain.java" interface="false" size="68" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="338" invocations="430" avgMicrosecondsPerInvocation="786" maxMicrosecondsPerInvocation="19467" standardDeviationMircosecondsPerInvocation="1392"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="284" invocations="429" avgMicrosecondsPerInvocation="664" maxMicrosecondsPerInvocation="32346" standardDeviationMircosecondsPerInvocation="2123"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="154" invocations="59" avgMicrosecondsPerInvocation="2616" maxMicrosecondsPerInvocation="135721" standardDeviationMircosecondsPerInvocation="17483"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="151" invocations="59" avgMicrosecondsPerInvocation="2564" maxMicrosecondsPerInvocation="30846" standardDeviationMircosecondsPerInvocation="5198"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="112" invocations="68" avgMicrosecondsPerInvocation="1657" maxMicrosecondsPerInvocation="10064" standardDeviationMircosecondsPerInvocation="2332"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="109" invocations="36" avgMicrosecondsPerInvocation="3042" maxMicrosecondsPerInvocation="17577" standardDeviationMircosecondsPerInvocation="4383"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="106" invocations="68" avgMicrosecondsPerInvocation="1561" maxMicrosecondsPerInvocation="13071" standardDeviationMircosecondsPerInvocation="2245"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="92" invocations="59" avgMicrosecondsPerInvocation="1573" maxMicrosecondsPerInvocation="9649" standardDeviationMircosecondsPerInvocation="2488"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="87" invocations="177" avgMicrosecondsPerInvocation="495" maxMicrosecondsPerInvocation="6290" standardDeviationMircosecondsPerInvocation="683"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="82" invocations="59" avgMicrosecondsPerInvocation="1396" maxMicrosecondsPerInvocation="11054" standardDeviationMircosecondsPerInvocation="2296"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="67" invocations="36" avgMicrosecondsPerInvocation="1863" maxMicrosecondsPerInvocation="6842" standardDeviationMircosecondsPerInvocation="2343"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="65" invocations="59" avgMicrosecondsPerInvocation="1111" maxMicrosecondsPerInvocation="20659" standardDeviationMircosecondsPerInvocation="2728"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="63" invocations="36" avgMicrosecondsPerInvocation="1764" maxMicrosecondsPerInvocation="21676" standardDeviationMircosecondsPerInvocation="4945"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="62" invocations="395" avgMicrosecondsPerInvocation="157" maxMicrosecondsPerInvocation="11088" standardDeviationMircosecondsPerInvocation="675"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="60" invocations="59" avgMicrosecondsPerInvocation="1033" maxMicrosecondsPerInvocation="45572" standardDeviationMircosecondsPerInvocation="5876"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="42" invocations="62" avgMicrosecondsPerInvocation="686" maxMicrosecondsPerInvocation="14116" standardDeviationMircosecondsPerInvocation="2340"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.StreamResourceTracker" totalMilliseconds="39" invocations="38" avgMicrosecondsPerInvocation="1047" maxMicrosecondsPerInvocation="8076" standardDeviationMircosecondsPerInvocation="1378"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="38" invocations="35" avgMicrosecondsPerInvocation="1090" maxMicrosecondsPerInvocation="5032" standardDeviationMircosecondsPerInvocation="1199"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="35" invocations="36" avgMicrosecondsPerInvocation="993" maxMicrosecondsPerInvocation="9683" standardDeviationMircosecondsPerInvocation="1931"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindOpenStream" totalMilliseconds="33" invocations="9" avgMicrosecondsPerInvocation="3754" maxMicrosecondsPerInvocation="14935" standardDeviationMircosecondsPerInvocation="5268"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="32" invocations="36" avgMicrosecondsPerInvocation="916" maxMicrosecondsPerInvocation="20058" standardDeviationMircosecondsPerInvocation="3265"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>
