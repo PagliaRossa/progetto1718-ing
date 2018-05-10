@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Zip.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SNA4Slack</a> &gt; <a href="index.source.html" class="el_package">it.uniba.data</a> &gt; <span class="el_source">Zip.java</span></div><h1>Zip.java</h1><pre class="source lang-java linenums">package it.uniba.data;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+
+import org.apache.commons.io.IOUtils;
+
+<span class="nc" id="L13">public class Zip {</span>
+
+
+	@SuppressWarnings(&quot;deprecation&quot;)
+	public String setUsersFile(final String input) {
+<span class="nc" id="L18">		String json = new String();</span>
+		try {
+<span class="nc" id="L20">			ZipFile zip = new ZipFile(input);</span>
+<span class="nc" id="L21">			InputStream source = zip.getInputStream(zip.getEntry(&quot;users.json&quot;));</span>
+<span class="nc" id="L22">			json = IOUtils.toString(source);</span>
+<span class="nc" id="L23">			zip.close();</span>
+<span class="nc" id="L24">		} catch (IOException e) {</span>
+<span class="nc" id="L25">			System.out.println(&quot;File not found or invalid !&quot;);</span>
+<span class="nc" id="L26">		}</span>
+<span class="nc" id="L27">		return json;</span>
+	}
+
+	@SuppressWarnings(&quot;deprecation&quot;)
+	public String setChannelFile(final String input) {
+<span class="nc" id="L32">		String json = new String();</span>
+		try {
+<span class="nc" id="L34">			ZipFile zip = new ZipFile(input);</span>
+<span class="nc" id="L35">			InputStream source = zip.getInputStream(zip.getEntry(&quot;channels.json&quot;));</span>
+<span class="nc" id="L36">			json = IOUtils.toString(source);</span>
+<span class="nc" id="L37">			zip.close();</span>
+<span class="nc" id="L38">		} catch (IOException e) {</span>
+<span class="nc" id="L39">			System.out.println(&quot;File not found or invalid !&quot;);</span>
+<span class="nc" id="L40">		}</span>
+<span class="nc" id="L41">		return json;</span>
+	}
+	
+	public List&lt;String&gt; setConversationsFile(final String input) {
+<span class="nc" id="L45">		List&lt;String&gt; conversations = new ArrayList&lt;String&gt;();</span>
+		try {
+<span class="nc" id="L47">			ZipFile zip = new ZipFile(input);</span>
+<span class="nc" id="L48">			Enumeration&lt;? extends ZipEntry&gt; entries = zip.entries();</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">			while (entries.hasMoreElements()) {</span>
+<span class="nc" id="L50">				ZipEntry control = entries.nextElement();</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">				if (!control.isDirectory()) {</span>
+<span class="nc bnc" id="L52" title="All 6 branches missed.">					if (!control.getName().equals(&quot;users.json&quot;) &amp;&amp; !control.getName().equals(&quot;channels.json&quot;) &amp;&amp; !control.getName().equals(&quot;integration_logs.json&quot;)) {</span>
+<span class="nc" id="L53">						conversations.add(new String(control.getName()));</span>
+					}
+				}
+<span class="nc" id="L56">			}</span>
+<span class="nc" id="L57">			zip.close();</span>
+<span class="nc" id="L58">		} catch (IOException e) {</span>
+<span class="nc" id="L59">			System.out.println(&quot;File not found or invalid !&quot;);</span>
+<span class="nc" id="L60">		}</span>
+<span class="nc" id="L61">		return conversations;</span>
+	}
+
+	public List&lt;String&gt; setConversationsFileChannel(String channel, String path) {
+<span class="nc" id="L65">		List&lt;String&gt; conversations = new ArrayList&lt;String&gt;();</span>
+		try {
+<span class="nc" id="L67">			ZipFile zip = new ZipFile(path);</span>
+<span class="nc" id="L68">			Enumeration&lt;? extends ZipEntry&gt; entries = zip.entries();</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">			while (entries.hasMoreElements()) {</span>
+<span class="nc" id="L70">				ZipEntry control = entries.nextElement();</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">				if (!control.isDirectory()) {</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">					if (control.getName().contains(channel)) {</span>
+<span class="nc" id="L73">						conversations.add(new String(control.getName()));</span>
+					}
+				}
+<span class="nc" id="L76">			}</span>
+<span class="nc" id="L77">			zip.close();</span>
+<span class="nc" id="L78">		} catch (IOException e) {</span>
+<span class="nc" id="L79">			System.out.println(&quot;File not found or invalid !&quot;);</span>
+<span class="nc" id="L80">		}</span>
+<span class="nc" id="L81">		return conversations;</span>
+	}
+	
+	@SuppressWarnings(&quot;deprecation&quot;)
+	public String getJsonFromFile(String path,String input) {
+<span class="nc" id="L86">		String json = new String();</span>
+		try {
+<span class="nc" id="L88">			ZipFile zip = new ZipFile(path);</span>
+<span class="nc" id="L89">			InputStream source = zip.getInputStream(zip.getEntry(input));</span>
+<span class="nc" id="L90">			json = IOUtils.toString(source);</span>
+<span class="nc" id="L91">			zip.close();</span>
+<span class="nc" id="L92">		} catch (IOException e) {</span>
+<span class="nc" id="L93">			System.out.println(&quot;File not Found or invalid !&quot;);</span>
+<span class="nc" id="L94">		}</span>
+<span class="nc" id="L95">		return json;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
