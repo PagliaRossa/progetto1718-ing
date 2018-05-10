@@ -37,7 +37,24 @@ public class Analysis {
 				JSONArray array = (JSONArray) parser.parse(json);
 				for (int i = 0; i < array.size(); i++) {
 					JSONObject obj = (JSONObject) array.get(i);
-					User utente = new User((String) obj.get("id"), (String) obj.get("real_name"));
+					JSONObject profile = (JSONObject) obj.get("profile");
+					String displayName = null;
+					boolean displayNameExist = false;
+					if (profile.containsKey("display_name")) {
+						displayName = (String) profile.get("display_name");
+						displayNameExist = true;
+					}
+					String name;
+					if (displayNameExist && !displayName.equals("")) {
+						name = displayName;
+					} else if (!obj.containsKey("real_name")) {
+						name = (String) obj.get("name");
+					} else if (obj.get("real_name").equals("")) {
+						name = (String) obj.get("name");
+					} else {
+						name = (String) obj.get("real_name");
+					}
+					User utente = new User((String) obj.get("id"),name);
 					members.add(utente);
 				}
 				return true;
