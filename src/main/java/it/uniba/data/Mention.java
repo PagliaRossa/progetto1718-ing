@@ -25,5 +25,11 @@ public class Mention {
 	public String getTo() {
 		return this.to;
 	}
-
+	
+	public boolean compareMention(Mention a) {
+		if(a.getFrom().equals(this.from) && a.getTo().equals(this.to))
+			return true;
+		else
+			return false;
+	}
 }
