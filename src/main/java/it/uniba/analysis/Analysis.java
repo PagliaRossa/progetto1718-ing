@@ -253,6 +253,7 @@ public class Analysis {
 	}
 	
 	public String printMentionsList() {
+		removeOccurence();
 		String str = new String();
 		if (!mentions.isEmpty()) { 
 			str += "\nList of Mentions : \n";
@@ -279,6 +280,7 @@ public class Analysis {
 		return str;
 	}
 	public String printMentionsFrom(final String user) {
+		removeOccurence();
 		String input = new String();
 		boolean found = false;
 		String id = new String();
@@ -304,6 +306,7 @@ public class Analysis {
 					input += "\nList of mentions:\n\n";
 					for(int i = 0; i < mentions.size(); i++) {
 						if(mentions.get(i).getFrom().equals(id)) {
+
 							input += "From " + name;
 							for (int j = 0; j < members.size(); j++) {
 								if (members.get(j).getId().equals(mentions.get(i).getTo())) {
@@ -325,6 +328,7 @@ public class Analysis {
 	}
 	
 	public String printMentionsTo(final String user) {
+		removeOccurence();
 		String input = new String();
 		boolean found = false;
 		String id = new String();
@@ -391,9 +395,19 @@ public class Analysis {
 		}
 	}
 
+	private void removeOccurence() {
+		for(int i = 0; i < mentions.size(); i++) {
+			for(int j = i+1; j < mentions.size(); j++) {
+				if(mentions.get(i).compareMention(mentions.get(j))){
+					mentions.remove(i);
+					i--;	
+				}
+			}
+		}
+	}
 	public void help() {
 		String help = new String();
-
+		
 		help += "These are all available command for sna4slack\n\n";
 		help += "membersList zipPath                             Show members list in selected workspace with zipPath\n";
 		help += "channelsList zipPath                            Show channel list in selected workspace with zipPath\n";
