@@ -402,7 +402,7 @@ public class Analysis {
 			} else if (mentions.get(i).getFrom().contains(mentions.get(i).getTo())) {
 				mentions.remove(i);
 				i--;
-			} else if (mentions.get(i).getTo().contains("ttps")) {
+			} else if (mentions.get(i).getTo().contains("://")) {
 				mentions.remove(i);
 				i--;
 			} else if (mentions.get(i).getTo().startsWith("cha")) {
