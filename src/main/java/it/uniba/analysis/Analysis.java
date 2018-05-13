@@ -402,10 +402,13 @@ public class Analysis {
 			} else if (mentions.get(i).getFrom().contains(mentions.get(i).getTo())) {
 				mentions.remove(i);
 				i--;
-			} else if (mentions.get(i).getTo().contains("ttps")) {
+			} else if (mentions.get(i).getTo().contains("://")) {
 				mentions.remove(i);
 				i--;
 			} else if (mentions.get(i).getTo().startsWith("cha")) {
+				mentions.remove(i);
+				i--;
+			} else if (mentions.get(i).getTo().equals("everyone")) {
 				mentions.remove(i);
 				i--;
 			}
@@ -416,8 +419,11 @@ public class Analysis {
 		for(int i = 0; i < mentions.size(); i++) {
 			for(int j = i+1; j < mentions.size(); j++) {
 				if(mentions.get(i).compareMention(mentions.get(j))){
-					mentions.remove(i);
-					i--;	
+					mentions.remove(j);
+					i--;
+					if (i < 0) {
+						i = 0;
+					}
 				}
 			}
 		}
