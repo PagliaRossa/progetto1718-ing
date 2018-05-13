@@ -32,9 +32,14 @@ public class Zip {
 		String json = new String();
 		try {
 			ZipFile zip = new ZipFile(input);
-			InputStream source = zip.getInputStream(zip.getEntry("channels.json"));
-			json = IOUtils.toString(source);
-			zip.close();
+			if (!(zip.getEntry("channels.json") == null)) {
+				InputStream source = zip.getInputStream(zip.getEntry("channels.json"));
+				json = IOUtils.toString(source);
+				zip.close();
+			} else {
+				zip.close();
+				throw new IOException();
+			}
 		} catch (IOException e) {
 			System.out.println("File not found or invalid !");
 		}
