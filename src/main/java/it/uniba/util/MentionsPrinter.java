@@ -7,47 +7,61 @@ public class MentionsPrinter implements Printer {
 	
 	@Override
 	public String print(final List<?> list) {
-		String str = "";
+		StringBuffer buf = new StringBuffer();
 		Mention mention;
-		str += "List of mentions :\n\n";
+		buf.append("List of mentions :\n\n");
 		for (int i = 0; i < list.size(); i++) {
 			mention = (Mention) list.get(i);
-			str += "From " + mention.getFrom() + " to " + mention.getTo() + "\n";
+			buf.append("From ");
+			buf.append(mention.getFrom());
+			buf.append(" to ");
+			buf.append(mention.getTo());
+			buf.append("\n");
 		}
-		return str;
+		return buf.toString();
 	}
 	
 	public String printFrom(List<?> list,final String member) {
-		String str = "";
+		StringBuffer buf = new StringBuffer();
 		Mention mention;
-		str += "List of mentions :\n\n";
+		String str = "List of mentions :\n\n";
+		buf.append(str);
 		for (int i = 0; i < list.size(); i++) {
 			mention = (Mention) list.get(i);
 			if (mention.getFrom().equals(member)) {
-				str += "From " + mention.getFrom() + " to " + mention.getTo() + "\n";
+				buf.append("From ");
+				buf.append(mention.getFrom());
+				buf.append(" to ");
+				buf.append(mention.getTo());
+				buf.append("\n");
 			}
 		}
-		if (str.equals("")) {
-			return str;
+		if (!(buf.length() == str.length())) {
+			return buf.toString() ;
 		} else {
-			return str = "Can't find mentions from this member";
+			return "Can't find mentions from this member";
 		}
 	}
 	
 	public String printTo(List<?> list,final String member) {
-		String str = "";
+		StringBuffer buf = new StringBuffer();
 		Mention mention;
-		str += "List of mentions :\n\n";
+		String str = "List of mentions :\n\n";
+		buf.append(str);
 		for (int i = 0; i < list.size(); i++) {
 			mention = (Mention) list.get(i);
 			if (mention.getTo().equals(member)) {
-				str += "From " + mention.getFrom() + " to " + mention.getTo() + "\n";
+				buf.append("From ");
+				buf.append(mention.getFrom());
+				buf.append(" to ");
+				buf.append(mention.getTo());
+				buf.append("\n");
 			}
 		}
-		if (str.equals("")) {
-			return str;
+		if (!(buf.length() == str.length())) {
+			return buf.toString() ;
 		} else {
-			return str = "Can't find mentions to this member";
+			return "Can't find mentions from this member";
 		}
 	}
 
