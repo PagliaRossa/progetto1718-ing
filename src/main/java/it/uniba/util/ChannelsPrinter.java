@@ -9,34 +9,42 @@ public class ChannelsPrinter implements Printer {
 
 	@Override
 	public String print(final List<?> channels) {
-		String str = "";
-		str += "This is channels list :\n\n";
+		StringBuffer buf = new StringBuffer();
+		buf.append("This is channels list :\n\n");
 		for (int i = 0; i < channels.size(); i++) {
-			str += ((Channel) channels.get(i)).getName() + "\n";
+			buf.append(((Channel) channels.get(i)).getName());
+			buf.append("\n");
 		}
-		return str;
+		return buf.toString();
 	}
 	
 	public String memberInChannelPrint(Channel channel,ChannelsAnalysis analysis,String name) {
-		String str = "Members of " + name + " :\n\n";
+		StringBuffer buf = new StringBuffer();
+		buf.append("Members of ");
+		buf.append(name);
+		buf.append(" :\n\n");
 		for (int i = 0; i < channel.membersSize(); i++) {
-			str += analysis.getMemberName(channel.getMember(i)) + "\n";
+			buf.append(analysis.getMemberName(channel.getMember(i)));
+			buf.append("\n");
 		}
-		return str;
+		return buf.toString();
 	}
 	
 	public String membersSortedByChannelPrint(ChannelsAnalysis analysis) {
-		String str = "";
+		StringBuffer buf = new StringBuffer();
 		List<Channel> channels = analysis.getChannels();
 		for (int i = 0; i < channels.size(); i++) {
-			str += channels.get(i).getName() + " :\n\n";
+			buf.append(channels.get(i).getName());
+			buf.append(" :\n\n");
 			List<String> members = channels.get(i).getMembers();
 			for (int j = 0; j < members.size(); j++) {
-				str += "- " + analysis.getMemberName(members.get(j)) + "\n";
+				buf.append("- ");
+				buf.append(analysis.getMemberName(members.get(j)));
+				buf.append("\n");
 			}
-			str += "\n";
+			buf.append("\n");
 		}
-		return str;
+		return buf.toString();
 	}
 
 }
