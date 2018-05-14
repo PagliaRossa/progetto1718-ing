@@ -1,26 +1,29 @@
 package it.uniba.data;
 
-public class User {
-
+public class Member {
+	
 	private String id;
 	private String name;
-
-	public User(final String idNew, final String nameNew) {
-		this.id = idNew;
-		this.name = nameNew;
-	}
+	
 	public void setId(final String idNew) {
-		this.id = idNew;
+		id = idNew;
 	}
-
+	
 	public void setName(final String nameNew) {
-		this.name = nameNew;
+		name = nameNew;
+	}
+	
+	public String getId() {
+		return id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void clear() {
+		id = null;
+		name = null;
 	}
 
-	public String getId() {
-		return this.id;
-	}
-	public String getName() {
-		return this.name;
-	}
 }
