@@ -5,31 +5,33 @@ public class Mention {
 	private String from;
 	private String to;
 	
-	public Mention(String from_,String to_) {
-		this.from = from_;
-		this.to = to_;
-	}
-	
-	void setFrom(String from_) {
-		this.from = from_;
-	}
-	
-	void setTo(String to_) {
-		this.to = to_;
+	public Mention(String memberFrom,String memberTo) {
+		from = memberFrom;
+		to = memberTo;
 	}
 	
 	public String getFrom() {
-		return this.from;
+		return from;
 	}
 	
 	public String getTo() {
-		return this.to;
+		return to;
 	}
 	
-	public boolean compareMention(Mention a) {
-		if(a.getFrom().equals(this.from) && a.getTo().equals(this.to))
-			return true;
-		else
-			return false;
+	public void setFrom(String newFrom) {
+		from = newFrom;
 	}
+	
+	public void setTo(String newTo) {
+		to = newTo;
+	}
+	
+	public boolean compareMention(final Mention a) {
+		if (a.getFrom().equals(from) && a.getTo().equals(to)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }

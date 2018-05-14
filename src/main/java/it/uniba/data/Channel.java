@@ -1,35 +1,52 @@
 package it.uniba.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Channel {
-
+	
 	private String id;
 	private String name;
-	private List<String> members;
-
+	private List<String> members = new ArrayList<>();
+	
 	public void setId(final String idNew) {
-		this.id = idNew;
+		id = idNew;
 	}
-
+	
 	public void setName(final String nameNew) {
-		this.name = nameNew;
+		name = nameNew;
 	}
-
+	
 	public void setMembers(final List<String> membersNew) {
-		this.members = membersNew;
+		members = membersNew;
 	}
-
+	
 	public String getId() {
-		return this.id;
+		return id;
 	}
-
+	
 	public String getName() {
-		return this.name;
+		return name;
 	}
-
+	
+	public String getMember(final int i) {
+		return members.get(i);
+	}
+	
 	public List<String> getMembers() {
-		return this.members;
+		return members;
+	}
+	
+	public int membersSize() {
+		return members.size();
+	}
+	
+	public boolean isEmpty() {
+		return members.isEmpty();
+	}
+	
+	public boolean isInChannel(final String id) {
+		return members.contains(id);
 	}
 
 }
