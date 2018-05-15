@@ -5,25 +5,33 @@ public class Mention {
 	private String from;
 	private String to;
 	
-<span class="nc" id="L8">	public Mention(String from_,String to_) {</span>
-<span class="nc" id="L9">		this.from = from_;</span>
-<span class="nc" id="L10">		this.to = to_;</span>
+<span class="nc" id="L8">	public Mention(String memberFrom,String memberTo) {</span>
+<span class="nc" id="L9">		from = memberFrom;</span>
+<span class="nc" id="L10">		to = memberTo;</span>
 <span class="nc" id="L11">	}</span>
 	
-	void setFrom(String from_) {
-<span class="nc" id="L14">		this.from = from_;</span>
-<span class="nc" id="L15">	}</span>
-	
-	void setTo(String to_) {
-<span class="nc" id="L18">		this.to = to_;</span>
-<span class="nc" id="L19">	}</span>
-	
 	public String getFrom() {
-<span class="nc" id="L22">		return this.from;</span>
+<span class="nc" id="L14">		return from;</span>
 	}
 	
 	public String getTo() {
-<span class="nc" id="L26">		return this.to;</span>
+<span class="nc" id="L18">		return to;</span>
+	}
+	
+	public void setFrom(String newFrom) {
+<span class="nc" id="L22">		from = newFrom;</span>
+<span class="nc" id="L23">	}</span>
+	
+	public void setTo(String newTo) {
+<span class="nc" id="L26">		to = newTo;</span>
+<span class="nc" id="L27">	}</span>
+	
+	public boolean compareMention(final Mention a) {
+<span class="nc bnc" id="L30" title="All 4 branches missed.">		if (a.getFrom().equals(from) &amp;&amp; a.getTo().equals(to)) {</span>
+<span class="nc" id="L31">			return true;</span>
+		} else {
+<span class="nc" id="L33">			return false;</span>
+		}
 	}
 
 }
