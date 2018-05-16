@@ -64,7 +64,7 @@ public final class AppMain {
 					if (((ChannelsAnalysis) request).membersChannel(command[1],command[2])) {
 						ChannelsPrinter printer = new ChannelsPrinter();
 						Channel channel = ((ChannelsAnalysis)request).getChannel(command[1]);
-						System.out.println(printer.memberInChannelPrint(channel,(ChannelsAnalysis)request,command[1]));
+						System.out.println(printer.memberInChannelPrint(channel,(ChannelsAnalysis)request));
 					}
 				} else {
 					System.out.println("Command incomplete , use sna4slack for help");

@@ -18,10 +18,10 @@ public class ChannelsPrinter implements Printer {
 		return buf.toString();
 	}
 	
-	public String memberInChannelPrint(Channel channel,ChannelsAnalysis analysis,String name) {
+	public String memberInChannelPrint(Channel channel,ChannelsAnalysis analysis){
 		StringBuffer buf = new StringBuffer();
 		buf.append("Members of ");
-		buf.append(name);
+		buf.append(channel.getName());
 		buf.append(" :\n\n");
 		for (int i = 0; i < channel.membersSize(); i++) {
 			buf.append(analysis.getMemberName(channel.getMember(i)));
