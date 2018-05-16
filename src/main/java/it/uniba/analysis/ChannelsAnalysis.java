@@ -18,6 +18,10 @@ public class ChannelsAnalysis extends Analysis {
 		return channels;
 	}
 	
+	public void setChannels(List<Channel> channelsNew) {
+		channels = channelsNew;
+	}
+	
 	public boolean channelExist(final String channel) {
 		boolean found = false;
 		for (int i = 0; i < channels.size(); i++) {
