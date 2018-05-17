@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="5.8.1" timestamp="2018-05-17T13:22:45.001">
+<file name="C:\Users\Donato\Git\progetto1718-bernerslee\src\test\java\it\uniba\util\test\PrinterMembersTest.java">
+<violation beginline="22" endline="22" begincolumn="30" endcolumn="36" rule="ImmutableField" ruleset="Design" package="it.uniba.util.test" class="PrinterMembersTest" variable="members" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/design.html#ImmutableField" priority="3">
+Private field 'members' could be made final; it is only initialized in the declaration or constructor.
+</violation>
+<violation beginline="23" endline="23" begincolumn="31" endcolumn="38" rule="ImmutableField" ruleset="Design" package="it.uniba.util.test" class="PrinterMembersTest" variable="channels" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/design.html#ImmutableField" priority="3">
+Private field 'channels' could be made final; it is only initialized in the declaration or constructor.
+</violation>
+<violation beginline="24" endline="24" begincolumn="31" endcolumn="38" rule="ImmutableField" ruleset="Design" package="it.uniba.util.test" class="PrinterMembersTest" variable="mentions" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/design.html#ImmutableField" priority="3">
+Private field 'mentions' could be made final; it is only initialized in the declaration or constructor.
+</violation>
+<violation beginline="28" endline="28" begincolumn="14" endcolumn="26" rule="JUnitTestContainsTooManyAsserts" ruleset="JUnit" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintMember" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/junit.html#JUnitTestContainsTooManyAsserts" priority="3">
+JUnit tests should not contain more than 1 assert(s).
+</violation>
+<violation beginline="28" endline="28" begincolumn="14" endcolumn="26" rule="MethodNamingConventions" ruleset="Naming" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintMember" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/naming.html#MethodNamingConventions" priority="1">
+Method names should not start with capital letters
+</violation>
+<violation beginline="29" endline="29" begincolumn="17" endcolumn="44" rule="LocalVariableCouldBeFinal" ruleset="Optimization" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintMember" variable="member" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'member' could be declared final
+</violation>
+<violation beginline="33" endline="33" begincolumn="17" endcolumn="61" rule="LocalVariableCouldBeFinal" ruleset="Optimization" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintMember" variable="printer" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'printer' could be declared final
+</violation>
+<violation beginline="34" endline="34" begincolumn="17" endcolumn="64" rule="LocalVariableCouldBeFinal" ruleset="Optimization" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintMember" variable="test" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'test' could be declared final
+</violation>
+<violation beginline="41" endline="41" begincolumn="14" endcolumn="28" rule="JUnitTestContainsTooManyAsserts" ruleset="JUnit" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintChannels" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/junit.html#JUnitTestContainsTooManyAsserts" priority="3">
+JUnit tests should not contain more than 1 assert(s).
+</violation>
+<violation beginline="41" endline="41" begincolumn="14" endcolumn="28" rule="MethodNamingConventions" ruleset="Naming" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintChannels" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/naming.html#MethodNamingConventions" priority="1">
+Method names should not start with capital letters
+</violation>
+<violation beginline="42" endline="42" begincolumn="17" endcolumn="47" rule="LocalVariableCouldBeFinal" ruleset="Optimization" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintChannels" variable="channel" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'channel' could be declared final
+</violation>
+<violation beginline="46" endline="46" begincolumn="17" endcolumn="63" rule="LocalVariableCouldBeFinal" ruleset="Optimization" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintChannels" variable="printer" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'printer' could be declared final
+</violation>
+<violation beginline="47" endline="47" begincolumn="17" endcolumn="65" rule="LocalVariableCouldBeFinal" ruleset="Optimization" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintChannels" variable="test" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'test' could be declared final
+</violation>
+<violation beginline="50" endline="50" begincolumn="17" endcolumn="65" rule="LocalVariableCouldBeFinal" ruleset="Optimization" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintChannels" variable="testing" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'testing' could be declared final
+</violation>
+<violation beginline="57" endline="57" begincolumn="14" endcolumn="28" rule="JUnitTestContainsTooManyAsserts" ruleset="JUnit" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintMentions" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/junit.html#JUnitTestContainsTooManyAsserts" priority="3">
+JUnit tests should not contain more than 1 assert(s).
+</violation>
+<violation beginline="57" endline="57" begincolumn="14" endcolumn="28" rule="MethodNamingConventions" ruleset="Naming" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintMentions" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/naming.html#MethodNamingConventions" priority="1">
+Method names should not start with capital letters
+</violation>
+<violation beginline="58" endline="58" begincolumn="17" endcolumn="58" rule="LocalVariableCouldBeFinal" ruleset="Optimization" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintMentions" variable="mention" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'mention' could be declared final
+</violation>
+<violation beginline="60" endline="60" begincolumn="17" endcolumn="63" rule="LocalVariableCouldBeFinal" ruleset="Optimization" package="it.uniba.util.test" class="PrinterMembersTest" method="PrintMentions" variable="printer" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/optimizations.html#LocalVariableCouldBeFinal" priority="3">
+Local variable 'printer' could be declared final
+</violation>
+<violation beginline="68" endline="68" begincolumn="14" endcolumn="19" rule="MethodNamingConventions" ruleset="Naming" package="it.uniba.util.test" class="PrinterMembersTest" method="Help" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/naming.html#MethodNamingConventions" priority="1">
+Method names should not start with capital letters
+</violation>
+</file>
+</pmd>

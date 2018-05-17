@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HelpPrinter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SNA4Slack</a> &gt; <a href="index.source.html" class="el_package">it.uniba.util</a> &gt; <span class="el_source">HelpPrinter.java</span></div><h1>HelpPrinter.java</h1><pre class="source lang-java linenums">package it.uniba.util;
+
+public class HelpPrinter {
+	
+	private final String help;
+	
+<span class="fc" id="L7">	public HelpPrinter() {</span>
+<span class="fc" id="L8">		final StringBuffer buff = new StringBuffer(1342);</span>
+<span class="fc" id="L9">		buff.append(&quot;These are all available command for sna4slack\n\n&quot;</span>
+				+ &quot;membersList zipPath                             Show members list in selected workspace with zipPath\n&quot;
+				+ &quot;channelsList zipPath                            Show channel list in selected workspace with zipPath\n&quot;
+				+ &quot;membersChannel channelName zipPath              Show member list in selected channel in selected workspace with zipPath\n&quot;
+				+ &quot;membersSortedByChannel zipPath                  Show members sortedy by channel in selected workspace with zipPath\n&quot;
+				+ &quot;mentionsList zipPath                            Show mentions list in selected workspace with zipPath\n&quot;
+				+ &quot;mentionsListChannel channelName zipPath         Show mentions list in selected channel in selected workspace with zipPath\n&quot;
+				+ &quot;mentionsListFrom member zipPath                 Show mentions list from selected member in selected workspace with zipPath\n&quot;
+				+ &quot;mentionsListFrom member channel zipPath         Show mentions list from selected member in selected channel in selected workspace with zipPath\n&quot;
+				+ &quot;mentionsListTo member zipPath                   Show mentions list to selected member in selected channel in selected workspace with zipPath\n&quot;
+				+ &quot;mentionsListTo member channel zipPath           Show mentions list to selected member in selected channel in selected workspace with zipPath\n&quot;
+				+ &quot;sna4slack                                       Show this help interface\n&quot;);
+<span class="fc" id="L21">		help = buff.toString();</span>
+<span class="fc" id="L22">	}</span>
+	
+	public String toString() {
+<span class="fc" id="L25">		return help;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
