@@ -66,9 +66,24 @@ public class JSON {
 		return obj.containsValue(attribute);
 	}
 	
+	private Member newMember(final String identificator,final String name) {
+		return new Member(identificator,name);
+	}
+	
+	private Mention newMention(final String fromMember,final String toMember) {
+		return new Mention(fromMember,toMember);
+	}
+	
+	private Channel newChannel(final String identificator,final String name,final List<String> members) {
+		return new Channel(identificator,name,members);
+	}
+	
+	private List<String> newMembers() {
+		return new ArrayList<String>();
+	}
+	
 	public List<Member> setMembers(final String json) throws ParseException {
 		final List<Member> members = new ArrayList<>();
-		Member member;
 		final JSONParser parser = new JSONParser();
 		final JSONArray array = (JSONArray) parser.parse(json);
 		for (int i = 0; i < getArraySize(array); i++) {
@@ -88,8 +103,7 @@ public class JSON {
 			} else {
 				name = getAttribute(obj,"real_name");
 			}
-			member = new Member(getAttribute(obj,"id"),name);
-			members.add(member);
+			members.add(newMember(getAttribute(obj,"id"),name));
 			
 		}
 		return members;
@@ -98,21 +112,17 @@ public class JSON {
 	public List<Channel> setChannels(final String json) throws ParseException {
 		final List<Channel> channels = new ArrayList<Channel>();
 		List<String> members;
-		Channel channel;
+		members = new ArrayList<>();
 		final JSONParser parser = new JSONParser();
 		final JSONArray array = (JSONArray) parser.parse(json);
 		for (int i = 0; i < getArraySize(array); i++) {
-			channel = new Channel();
-			members = new ArrayList<>();
 			final JSONObject obj = getJSONObject(array,i);
-			channel.setId(getAttribute(obj,"id"));
-			channel.setName(getAttribute(obj,"name"));
 			final JSONArray array2 = getJSONArray(obj,"members"); 
 			for (int j = 0; j < getArraySize(array2); j++) {
 				members.add((String) getJSONObjectString(array2,j));
 			}
-			channel.setMembers(members);
-			channels.add(channel);
+			channels.add(newChannel(getAttribute(obj,"id"),getAttribute(obj,"name"),members));
+			members = newMembers();
 		}
 		return channels;
 	}
@@ -120,7 +130,6 @@ public class JSON {
 	public List<Mention> setMentions(final String json) throws ParseException {
 		final List<Mention> mentions = new ArrayList<>();
 		final JSONParser parser = new JSONParser();
-		Mention mention;
 		final JSONArray array = (JSONArray) parser.parse(json);
 		for (int j = 0; j < getArraySize(array); j++) {
 			final JSONObject obj = getJSONObject(array,j);
@@ -134,8 +143,7 @@ public class JSON {
 						}
 						if (charAt(text,k) == '>') {
 							end = k;
-							mention = new Mention(getAttribute(obj,"user"),sub(text,begin+2,end));
-							mentions.add(mention);
+							mentions.add(newMention(getAttribute(obj,"user"),sub(text,begin+2,end)));
 						}
 					}
 				}

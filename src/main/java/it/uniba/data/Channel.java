@@ -9,6 +9,16 @@ public class Channel {
 	private String name;
 	private List<String> members = new ArrayList<>();
 	
+	public Channel(String identificator2, String name2, List<String> members2) {
+		identificator = identificator2;
+		name = name2;
+		members = members2;
+	}
+	
+	public Channel() {
+		
+	}
+
 	public void setId(final String idNew) {
 		identificator = idNew;
 	}
