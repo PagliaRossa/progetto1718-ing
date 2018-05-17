@@ -5,7 +5,7 @@ import java.util.List;
 
 import it.uniba.data.Member;
 
-public abstract class Analysis {
+public class Analysis {
 
 	protected List<Member> members = new ArrayList<>();
 	
@@ -13,11 +13,19 @@ public abstract class Analysis {
 		return members;
 	}
 	
-	public String getMemberName(final String id) {
+	public String getMemberId(final Member member) {
+		return member.getId();
+	}
+	
+	public String getMemberName(final Member member) {
+		return member.getName();
+	}
+	
+	public String getMemberName(final String identificator) {
 		String str = "";
 		for (int i = 0; i < members.size(); i++) {
-			if (members.get(i).getId().equals(id)) {
-				str = members.get(i).getName();
+			if (getMemberId(members.get(i)) == identificator) {
+				str = getMemberName(members.get(i));
 				break;
 			}
 		}
@@ -27,7 +35,7 @@ public abstract class Analysis {
 	public boolean isInList(final String name) {
 		boolean found = false;
 		for (int i = 0; i < members.size(); i++) {
-			if (members.get(i).getName().equals(name)) {
+			if (getMemberId(members.get(i)) == name) {
 				found = true;
 				break;
 			}
@@ -35,7 +43,7 @@ public abstract class Analysis {
 		return found;
 	}
 	
-	public void setMembers(List<Member> members) {
+	public void setMembers(final List<Member> members) {
 		this.members = members;
 	}
 }
