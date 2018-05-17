@@ -14,53 +14,98 @@ import it.uniba.data.Mention;
 
 public class JSON {
 	
+	private int getArraySize(final JSONArray array) {
+		return array.size();
+	}
+	
+	private JSONObject getJSONObject(final JSONArray array,final int index) {
+		return (JSONObject) array.get(index);
+	}
+	
+	private JSONObject getJSONObject(final JSONObject obj,final String resource) {
+		return (JSONObject) obj.get(resource);
+	}
+	
+	private String getJSONObjectString(final JSONArray array,final int index) {
+		return (String) array.get(index);
+	}
+	
+	private boolean containsKey(final JSONObject obj,final String keyMatch) {
+		return obj.containsKey(keyMatch);
+	}
+	
+	private String getAttribute(final JSONObject obj,final String attribute) {
+		return (String) obj.get(attribute);
+	}
+	
+	private boolean attributeNull(final String attribute) {
+		return "".equals(attribute);
+	}
+	
+	private JSONArray getJSONArray(final JSONObject obj,final String resource) {
+		return (JSONArray) obj.get(resource);
+	}
+	
+	private int getTextSize(final String text) {
+		return text.length();
+	}
+	
+	private boolean containsChars(final String text,final String contains) {
+		return text.contains(contains);
+	}
+	
+	private char charAt(final String text,final int index) {
+		return text.charAt(index);
+	}
+	
+	private String sub(final String text,final int start,final int end) {
+		return text.substring(start, end);
+	}
+	
 	public List<Member> setMembers(final String json) throws ParseException {
 		final List<Member> members = new ArrayList<>();
 		Member member;
 		final JSONParser parser = new JSONParser();
 		final JSONArray array = (JSONArray) parser.parse(json);
-		for (int i = 0; i < array.size(); i++) {
-			JSONObject obj = (JSONObject) array.get(i);
-			JSONObject profile = (JSONObject) obj.get("profile");
+		for (int i = 0; i < getArraySize(array); i++) {
+			final JSONObject obj = getJSONObject(array,i);
+			final JSONObject profile = getJSONObject(obj,"profile");
 			String displayName = null;
 			boolean displayNameExist = false;
-			if (profile.containsKey("display_name")) {
-				displayName = (String) profile.get("display_name");
+			if (containsKey(profile,"display_name")) {
+				displayName = getAttribute(profile,"display_name");
 				displayNameExist = true;
 			}
 			String name;
-			if (displayNameExist && !displayName.equals("")) {
+			if (displayNameExist && !(attributeNull(displayName))) {
 				name = displayName;
-			} else if (!obj.containsKey("real_name")) {
-				name = (String) obj.get("name");
-			} else if (obj.get("real_name").equals("")) {
-				name = (String) obj.get("name");
+			} else if (attributeNull("real_name")) {
+				name = getAttribute(obj,"name");
 			} else {
-				name = (String) obj.get("real_name");
+				name = getAttribute(obj,"real_name");
 			}
-			member = new Member();
-			member.setId((String) obj.get("id"));
-			member.setName(name);
+			member = new Member(getAttribute(obj,"id"),name);
 			members.add(member);
+			
 		}
 		return members;
 	}
 	
 	public List<Channel> setChannels(final String json) throws ParseException {
-		List<Channel> channels = new ArrayList<Channel>();
+		final List<Channel> channels = new ArrayList<Channel>();
 		List<String> members;
 		Channel channel;
-		JSONParser parser = new JSONParser();
-		JSONArray array = (JSONArray) parser.parse(json);
-		for (int i = 0; i < array.size(); i++) {
+		final JSONParser parser = new JSONParser();
+		final JSONArray array = (JSONArray) parser.parse(json);
+		for (int i = 0; i < getArraySize(array); i++) {
 			channel = new Channel();
 			members = new ArrayList<>();
-			JSONObject obj = (JSONObject) array.get(i);
-			channel.setId((String) obj.get("id"));
-			channel.setName((String) obj.get("name"));
-			JSONArray array2 = (JSONArray) obj.get("members"); 
-			for (int j = 0; j < array2.size(); j++) {
-				members.add((String) array2.get(j));
+			final JSONObject obj = getJSONObject(array,i);
+			channel.setId(getAttribute(obj,"id"));
+			channel.setName(getAttribute(obj,"name"));
+			final JSONArray array2 = getJSONArray(obj,"members"); 
+			for (int j = 0; j < getArraySize(array2); j++) {
+				members.add((String) getJSONObjectString(array2,j));
 			}
 			channel.setMembers(members);
 			channels.add(channel);
@@ -69,25 +114,24 @@ public class JSON {
 	}
 	
 	public List<Mention> setMentions(final String json) throws ParseException {
-		List<Mention> mentions = new ArrayList<>();
-		JSONParser parser = new JSONParser();
+		final List<Mention> mentions = new ArrayList<>();
+		final JSONParser parser = new JSONParser();
 		Mention mention;
-		JSONArray array = (JSONArray) parser.parse(json);
-		for (int j = 0; j < array.size(); j++) {
-			JSONObject obj = (JSONObject) array.get(j);
-			String text = (String) obj.get("text");
-			if (!obj.containsValue("subtype")) {
-				if (text.contains("<@")) {
-					int begin = 0;
-					int end = 0;
-					for (int k = 0; k < text.length(); k++) {
-						if ((text.charAt(k) == '<'))
-							begin = k;
-						if (text.charAt(k) == '>') {
-							end = k;
-							mention = new Mention((String) obj.get("user"),text.substring(begin+2,end));
-							mentions.add(mention);
-						}
+		final JSONArray array = (JSONArray) parser.parse(json);
+		for (int j = 0; j < getArraySize(array); j++) {
+			final JSONObject obj = getJSONObject(array,j);
+			final String text = getAttribute(obj,"text");
+			if (!containsKey(obj,"subtype") && containsChars(text,"<@")) {
+				int begin = 0;
+				int end = 0;
+				for (int k = 0; k < getTextSize(text); k++) {
+					if (charAt(text,k) == '<') {
+						begin = k;
+					}
+					if (charAt(text,k) == '>') {
+						end = k;
+						mention = new Mention(getAttribute(obj,"user"),sub(text,begin+2,end));
+						mentions.add(mention);
 					}
 				}
 			}

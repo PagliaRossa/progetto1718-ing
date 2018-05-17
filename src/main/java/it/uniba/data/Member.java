@@ -5,6 +5,15 @@ public class Member {
 	private String identificator;
 	private String name;
 	
+	public Member(final String identificatorNew,final String nameNew) {
+		identificator = identificatorNew;
+		name = nameNew;
+	}
+	
+	public Member() {
+		
+	}
+	
 	public void setId(final String idNew) {
 		identificator = idNew;
 	}
