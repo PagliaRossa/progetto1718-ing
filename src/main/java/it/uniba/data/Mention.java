@@ -26,12 +26,8 @@ public class Mention {
 		to = newTo;
 	}
 	
-	public boolean compareMention(final Mention a) {
-		if (a.getFrom().equals(from) && a.getTo().equals(to)) {
-			return true;
-		} else {
-			return false;
-		}
+	public boolean equals(Mention mention) {
+		return (from.equals(mention.from) && to.equals(mention.to));
 	}
 
 }

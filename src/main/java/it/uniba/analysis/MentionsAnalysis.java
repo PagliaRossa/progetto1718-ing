@@ -12,30 +12,66 @@ import it.uniba.util.Zip;
 
 public class MentionsAnalysis extends Analysis {
 	
-	private List<Mention> mentions = new ArrayList<>();
+	private final List<Mention> mentions = new ArrayList<>();
 	
 	public List<Mention> getMentions() {
 		return mentions;
 	}
 	
+	private String getMentionFrom(final Mention mention) {
+		return mention.getFrom();
+	}
+	
+	private void setMentionFrom(final Mention mention,final String FromMember) {
+		mention.setFrom(FromMember);
+	}
+	
+	private void setMentionTo(final Mention mention,final String ToMember) {
+		mention.setTo(ToMember);
+	}
+	
+	private String getMentionTo(final Mention mention) {
+		return mention.getTo();
+	}
+	
+	private boolean mentionContain(final String mention,final String contain) {
+		return mention.contains(contain);
+	}
+	
+	private boolean mentionStartWith(final String mention,final String start) {
+		return mention.startsWith(start);
+	}
+	
+	private boolean compareMention(final Mention mention1,final Mention mention2) {
+		return mention1.equals(mention2);
+	}
+	
+	private int conversationsSize(final List<String> conversations) {
+		return conversations.size();
+	}
+	
+	private String getConversationsJSON(final List<String> conversations,final int index) {
+		return conversations.get(index);
+	}
+	
 	private void removeWrongMentions() {
 		for (int i = 0; i < mentions.size(); i++) {
-			if (mentions.get(i).getFrom() == null || mentions.get(i).getTo() == null){
+			if (getMentionFrom(mentions.get(i)) == null || getMentionTo(mentions.get(i)) == null){
 				mentions.remove(i);
 				i--;
-			} else if (mentions.get(i).getTo().contains("|")) {
+			} else if (mentionContain(getMentionTo(mentions.get(i)),"|")) {
 				mentions.remove(i);
 				i--;
-			} else if (mentions.get(i).getFrom().contains(mentions.get(i).getTo())) {
+			} else if (mentionContain(getMentionFrom(mentions.get(i)),getMentionTo(mentions.get(i)))) {
 				mentions.remove(i);
 				i--;
-			} else if (mentions.get(i).getTo().contains("://")) {
+			} else if (mentionContain(getMentionTo(mentions.get(i)),"://")) {
 				mentions.remove(i);
 				i--;
-			} else if (mentions.get(i).getTo().startsWith("cha")) {
+			} else if (mentionStartWith(getMentionTo(mentions.get(i)),"cha")) {
 				mentions.remove(i);
 				i--;
-			} else if (mentions.get(i).getTo().contains("everyone")) {
+			} else if (mentionContain(getMentionTo(mentions.get(i)),"everyone")) {
 				mentions.remove(i);
 				i--;
 			}
@@ -45,7 +81,7 @@ public class MentionsAnalysis extends Analysis {
 	private void removeOccurence() {
 		for(int i = 0; i < mentions.size(); i++) {
 			for(int j = i+1; j < mentions.size(); j++) {
-				if(mentions.get(i).compareMention(mentions.get(j))){
+				if(compareMention(mentions.get(i),mentions.get(j))){
 					mentions.remove(j);
 					i--;
 					if (i < 0) {
@@ -65,8 +101,8 @@ public class MentionsAnalysis extends Analysis {
 		Mention mention;
 		for (int i = 0 ; i < mentions.size(); i++) {
 			mention = mentions.get(i);
-			mention.setFrom(getMemberName(mention.getFrom()));
-			mention.setTo(getMemberName(mention.getTo()));
+			setMentionFrom(mention,getMemberName(getMentionFrom(mention)));
+			setMentionTo(mention,getMemberName(getMentionTo(mention)));
 			mentions.set(i,mention);
 		}
 	}
@@ -74,11 +110,11 @@ public class MentionsAnalysis extends Analysis {
 	
 	public boolean mentionsList(final String input) {
 		try {
-			Zip zip = new Zip();
-			List<String> conversations = zip.setConversationFile(input);
-			for (int i = 0; i < conversations.size(); i++) {
-				String json = zip.getJSONFromFile(input,conversations.get(i));
-				JSON setter = new JSON();
+			final Zip zip = new Zip();
+			final JSON setter = new JSON();
+			final List<String> conversations = zip.setConversationFile(input);
+			for (int i = 0; i < conversationsSize(conversations); i++) {
+				final String json = zip.getJSONFromFile(input,getConversationsJSON(conversations,i));
 				mentions.addAll(setter.setMentions(json));
 			}
 			removeWrongMentions();
@@ -92,15 +128,15 @@ public class MentionsAnalysis extends Analysis {
 	}
 	
 	public boolean mentionsListChannel(final String channel,final String path) {
-		ChannelsAnalysis analysis = new ChannelsAnalysis();
+		final ChannelsAnalysis analysis = new ChannelsAnalysis();
 		if (analysis.channelsList(path)) {
 			if (analysis.channelExist(channel)) {
 				try {
-					Zip zip = new Zip();
-					List<String> conversations = zip.setConversationFile(channel,path);
-					for (int i = 0; i < conversations.size(); i++) {
-						String json = zip.getJSONFromFile(path,conversations.get(i));
-						JSON setter = new JSON();
+					final Zip zip = new Zip();
+					final JSON setter = new JSON();
+					final List<String> conversations = zip.setConversationFile(channel,path);
+					for (int i = 0; i < conversationsSize(conversations); i++) {
+						final String json = zip.getJSONFromFile(path,getConversationsJSON(conversations,i));
 						mentions.addAll(setter.setMentions(json));
 					}
 					removeWrongMentions();
