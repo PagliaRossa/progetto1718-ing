@@ -14,18 +14,22 @@ public class ChannelsAnalysis extends Analysis {
 	
 	private List<Channel> channels = new ArrayList<>();
 	
+	private String getChannelName(final Channel channel) {
+		return channel.getName();
+	}
+	
 	public List<Channel> getChannels() {
 		return channels;
 	}
 	
-	public void setChannels(List<Channel> channelsNew) {
+	public void setChannels(final List<Channel> channelsNew) {
 		channels = channelsNew;
 	}
 	
 	public boolean channelExist(final String channel) {
 		boolean found = false;
 		for (int i = 0; i < channels.size(); i++) {
-			if (channels.get(i).getName().equals(channel)) {
+			if (compareName(getChannelName(channels.get(i)),channel)) {
 				found = true;
 				break;
 			}
@@ -33,14 +37,14 @@ public class ChannelsAnalysis extends Analysis {
 		return found;
 	}
 	
-	public Channel getChannel(int i) {
-		return channels.get(i);
+	public Channel getChannel(final int index) {
+		return channels.get(index);
 	}
 	
-	public Channel getChannel(String name) {
+	public Channel getChannel(final String name) {
 		Channel channel = null;
 		for (int i = 0; i < channels.size() ; i++) {
-			if (channels.get(i).getName().equals(name)) {
+			if (compareName(getChannelName(channels.get(i)),name)) {
 				channel = channels.get(i);
 				break;
 			}
@@ -50,9 +54,9 @@ public class ChannelsAnalysis extends Analysis {
 	
 	public boolean channelsList(final String input) {
 		try {
-			Zip zip = new Zip();
-			String json = zip.setChannelsFile(input);
-			JSON setter = new JSON();
+			final Zip zip = new Zip();
+			final String json = zip.setChannelsFile(input);
+			final JSON setter = new JSON();
 			channels = setter.setChannels(json);
 			return true;
 		} catch (ParseException p) {
@@ -64,7 +68,7 @@ public class ChannelsAnalysis extends Analysis {
 	}
 	
 	public boolean membersChannel(final String channel,final String path) {
-		MembersAnalysis members = new MembersAnalysis();
+		final MembersAnalysis members = new MembersAnalysis();
 		if (members.membersList(path)) {
 			this.members = members.getMembers();
 			if (channelsList(path)) {
@@ -79,7 +83,7 @@ public class ChannelsAnalysis extends Analysis {
 	}
 	
 	public boolean membersSortedByChannel(final String input) {
-		MembersAnalysis members = new MembersAnalysis();
+		final MembersAnalysis members = new MembersAnalysis();
 		if (members.membersList(input)) {
 			this.members = members.getMembers();
 			if (channelsList(input)) {

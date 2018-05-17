@@ -10,9 +10,9 @@ public class MembersAnalysis extends Analysis {
 	
 	public boolean membersList(final String input) {
 		try {
-			Zip zip = new Zip();
-			String json = zip.setUsersFile(input);
-			JSON setter = new JSON();
+			final Zip zip = new Zip();
+			final String json = zip.setUsersFile(input);
+			final JSON setter = new JSON();
 			members = setter.setMembers(json);
 			return true;
 		} catch (ParseException p) {

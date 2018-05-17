@@ -13,18 +13,26 @@ public class Analysis {
 		return members;
 	}
 	
-	public String getMemberId(final Member member) {
+	protected String getMemberId(final Member member) {
 		return member.getId();
 	}
 	
-	public String getMemberName(final Member member) {
+	protected String getMemberName(final Member member) {
 		return member.getName();
+	}
+	
+	protected boolean compareId(final String identificator1,final String identificator2) {
+		return identificator1.equals(identificator2);
+	}
+	
+	protected boolean compareName(final String name1,final String name2) {
+		return name1.equals(name2);
 	}
 	
 	public String getMemberName(final String identificator) {
 		String str = "";
 		for (int i = 0; i < members.size(); i++) {
-			if (getMemberId(members.get(i)) == identificator) {
+			if (compareId(getMemberId(members.get(i)),identificator)) {
 				str = getMemberName(members.get(i));
 				break;
 			}
@@ -35,7 +43,7 @@ public class Analysis {
 	public boolean isInList(final String name) {
 		boolean found = false;
 		for (int i = 0; i < members.size(); i++) {
-			if (getMemberId(members.get(i)) == name) {
+			if (compareName(getMemberName(members.get(i)),name)) {
 				found = true;
 				break;
 			}
