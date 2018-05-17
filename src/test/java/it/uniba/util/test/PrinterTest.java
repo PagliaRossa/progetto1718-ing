@@ -2,10 +2,7 @@ package it.uniba.util.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +16,6 @@ import it.uniba.data.Mention;
 import it.uniba.util.ChannelsPrinter;
 import it.uniba.util.MembersPrinter;
 import it.uniba.util.MentionsPrinter;
-import it.uniba.util.Zip;
 
 public class PrinterTest {
 	
@@ -69,6 +65,8 @@ public class PrinterTest {
 		MentionsPrinter printer = new MentionsPrinter();
 		assertEquals("List of mentions :\n\nFrom From to To\n",printer.print(mentions));
 		assertEquals("List of mentions :\n\nFrom From to To\n",printer.printFrom(mentions, "From"));
+		assertEquals("Can't find mentions for this member",printer.printFrom(mentions,"luigi"));
+		assertEquals("Can't find mentions for this member",printer.printTo(mentions, "gianni"));
 		assertEquals("List of mentions :\n\nFrom From to To\n",printer.printTo(mentions, "To"));
 	}
 	
@@ -76,25 +74,5 @@ public class PrinterTest {
 	@DisplayName("Test help")
 	void Help() {
 		assertNotEquals("",new it.uniba.util.HelpPrinter().toString());
-	}
-	
-	@Test
-	@DisplayName("Test zip")
-	void Zip() {
-		Zip zip = new Zip();
-		try {
-			assertNotNull(zip.setUsersFile("res/file/test.zip"));
-			assertNotNull(zip.setChannelsFile("res/file/test.zip"));
-			assertNotNull(zip.setConversationFile("res/test/test.zip"));
-			assertNotNull(zip.setConversationFile("bernerslee","res/file/test.zip"));
-			assertNotNull(zip.getJSONFromFile("res/file/test.zip","bernerslee/2018-03-13.json"));
-		} catch (IOException i) {
-			System.out.println("fail");
-		}
-		assertThrows(IOException.class,() -> {zip.setUsersFile("ciao.zip");});
-		assertThrows(IOException.class,() -> {zip.setChannelsFile("ciao.zip");});
-		assertThrows(IOException.class,() -> {zip.setConversationFile("ciao.zip");});
-		assertThrows(IOException.class,() -> {zip.getJSONFromFile("ciao.zip","ciao");});
-		assertThrows(IOException.class,() -> {zip.setConversationFile("prova","ciao.zip");});
 	}
 }

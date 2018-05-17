@@ -13,39 +13,39 @@ import org.apache.commons.io.IOUtils;
 <span class="fc" id="L13">public class Zip {</span>
 	
 	private Enumeration&lt;? extends ZipEntry&gt; getEntries(final ZipFile zip) {
-<span class="nc" id="L16">		return zip.entries();</span>
+<span class="fc" id="L16">		return zip.entries();</span>
 	}
 	
 	private boolean hasMoreElements(final Enumeration&lt;? extends ZipEntry&gt; entries) {
-<span class="nc" id="L20">		return entries.hasMoreElements();</span>
+<span class="fc" id="L20">		return entries.hasMoreElements();</span>
 	}
 	
 	private ZipEntry nextElement(final Enumeration&lt;? extends ZipEntry&gt; entries) {
-<span class="nc" id="L24">		return entries.nextElement();</span>
+<span class="fc" id="L24">		return entries.nextElement();</span>
 	}
 	
 	private boolean isDirectory(final ZipEntry entry) {
-<span class="nc" id="L28">		return entry.isDirectory();</span>
+<span class="fc" id="L28">		return entry.isDirectory();</span>
 	}
 	
 	private String getName(final ZipEntry entry) {
-<span class="nc" id="L32">		return entry.getName();</span>
+<span class="fc" id="L32">		return entry.getName();</span>
 	}
 	
 	private boolean compareNames(final String name,final String toCompare) {
-<span class="nc" id="L36">		return toCompare.equals(name);</span>
+<span class="fc" id="L36">		return toCompare.equals(name);</span>
 	}
 	
 	private boolean containName(final String name,final String containName) {
-<span class="nc" id="L40">		return name.contains(containName);</span>
+<span class="fc" id="L40">		return name.contains(containName);</span>
 	}
 	
 	public String setUsersFile(final String input) throws IOException {
 <span class="fc" id="L44">		String json = &quot;&quot;;</span>
 <span class="fc" id="L45">		final ZipFile zip = new ZipFile(input);</span>
-<span class="pc bpc" id="L46" title="1 of 2 branches missed.">		if (zip.getEntry(&quot;users.json&quot;) == null) {</span>
-<span class="nc" id="L47">			zip.close();</span>
-<span class="nc" id="L48">			throw new IOException();</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">		if (zip.getEntry(&quot;users.json&quot;) == null) {</span>
+<span class="fc" id="L47">			zip.close();</span>
+<span class="fc" id="L48">			throw new IOException();</span>
 		} else {
 <span class="fc" id="L50">			final InputStream source = zip.getInputStream(zip.getEntry(&quot;users.json&quot;));</span>
 <span class="fc" id="L51">			json = IOUtils.toString(source,&quot;UTF-8&quot;);</span>
@@ -57,9 +57,9 @@ import org.apache.commons.io.IOUtils;
 	public String setChannelsFile(final String input) throws IOException {
 <span class="fc" id="L58">		String json = &quot;&quot;;</span>
 <span class="fc" id="L59">		final ZipFile zip = new ZipFile(input);</span>
-<span class="pc bpc" id="L60" title="1 of 2 branches missed.">		if (zip.getEntry(&quot;channels.json&quot;) == null) {</span>
-<span class="nc" id="L61">			zip.close();</span>
-<span class="nc" id="L62">			throw new IOException();</span>
+<span class="fc bfc" id="L60" title="All 2 branches covered.">		if (zip.getEntry(&quot;channels.json&quot;) == null) {</span>
+<span class="fc" id="L61">			zip.close();</span>
+<span class="fc" id="L62">			throw new IOException();</span>
 		} else {
 <span class="fc" id="L64">			final InputStream source = zip.getInputStream(zip.getEntry(&quot;channels.json&quot;));</span>
 <span class="fc" id="L65">			json = IOUtils.toString(source,&quot;UTF-8&quot;);</span>
@@ -70,40 +70,40 @@ import org.apache.commons.io.IOUtils;
 	
 	public List&lt;String&gt; setConversationFile(final String input) throws IOException {
 <span class="fc" id="L72">		final List&lt;String&gt; conversations = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L73">		final ZipFile zip = new ZipFile(input);</span>
-<span class="nc" id="L74">		final Enumeration&lt;? extends ZipEntry&gt; entries = getEntries(zip);</span>
-<span class="nc bnc" id="L75" title="All 2 branches missed.">		while (hasMoreElements(entries)) {</span>
-<span class="nc" id="L76">			final ZipEntry control = nextElement(entries);</span>
-<span class="nc bnc" id="L77" title="All 6 branches missed.">			if (!isDirectory(control) &amp;&amp; !compareNames(getName(control),&quot;users.json&quot;) &amp;&amp; !compareNames(getName(control),&quot;channels.json&quot;) </span>
-<span class="nc bnc" id="L78" title="All 2 branches missed.">					&amp;&amp; !compareNames(getName(control),&quot;integration_logs.json&quot;)) {</span>
-<span class="nc" id="L79">				conversations.add(getName(control));</span>
+<span class="fc" id="L73">		final ZipFile zip = new ZipFile(input);</span>
+<span class="fc" id="L74">		final Enumeration&lt;? extends ZipEntry&gt; entries = getEntries(zip);</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">		while (hasMoreElements(entries)) {</span>
+<span class="fc" id="L76">			final ZipEntry control = nextElement(entries);</span>
+<span class="fc bfc" id="L77" title="All 6 branches covered.">			if (!isDirectory(control) &amp;&amp; !compareNames(getName(control),&quot;users.json&quot;) &amp;&amp; !compareNames(getName(control),&quot;channels.json&quot;) </span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">					&amp;&amp; !compareNames(getName(control),&quot;integration_logs.json&quot;)) {</span>
+<span class="fc" id="L79">				conversations.add(getName(control));</span>
 			}
-<span class="nc" id="L81">		}</span>
-<span class="nc" id="L82">		zip.close();</span>
-<span class="nc" id="L83">		return conversations;</span>
+<span class="fc" id="L81">		}</span>
+<span class="fc" id="L82">		zip.close();</span>
+<span class="fc" id="L83">		return conversations;</span>
 	}
 	
 	public List&lt;String&gt; setConversationFile(final String channel,final String path) throws IOException {
 <span class="fc" id="L87">		final List&lt;String&gt; conversations = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L88">		final ZipFile zip = new ZipFile(path);</span>
-<span class="nc" id="L89">		final Enumeration&lt;? extends ZipEntry&gt; entries = getEntries(zip);</span>
-<span class="nc bnc" id="L90" title="All 2 branches missed.">		while (hasMoreElements(entries)) {</span>
-<span class="nc" id="L91">			final ZipEntry control = nextElement(entries);</span>
-<span class="nc bnc" id="L92" title="All 4 branches missed.">			if (!isDirectory(control) &amp;&amp; containName(getName(control),channel)) {</span>
-<span class="nc" id="L93">					conversations.add(getName(control));</span>
+<span class="fc" id="L88">		final ZipFile zip = new ZipFile(path);</span>
+<span class="fc" id="L89">		final Enumeration&lt;? extends ZipEntry&gt; entries = getEntries(zip);</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">		while (hasMoreElements(entries)) {</span>
+<span class="fc" id="L91">			final ZipEntry control = nextElement(entries);</span>
+<span class="fc bfc" id="L92" title="All 4 branches covered.">			if (!isDirectory(control) &amp;&amp; containName(getName(control),channel)) {</span>
+<span class="fc" id="L93">					conversations.add(getName(control));</span>
 			}
-<span class="nc" id="L95">		}</span>
-<span class="nc" id="L96">		zip.close();</span>
-<span class="nc" id="L97">		return conversations;</span>
+<span class="fc" id="L95">		}</span>
+<span class="fc" id="L96">		zip.close();</span>
+<span class="fc" id="L97">		return conversations;</span>
 	}
 	
 	public String getJSONFromFile(final String path,final String input) throws IOException {
 <span class="fc" id="L101">		String json = &quot;&quot;;</span>
-<span class="nc" id="L102">		final ZipFile zip = new ZipFile(path);</span>
-<span class="nc" id="L103">		final InputStream source = zip.getInputStream(zip.getEntry(input));</span>
-<span class="nc" id="L104">		json = IOUtils.toString(source,&quot;UTF-8&quot;);</span>
-<span class="nc" id="L105">		zip.close();</span>
-<span class="nc" id="L106">		return json;</span>
+<span class="fc" id="L102">		final ZipFile zip = new ZipFile(path);</span>
+<span class="fc" id="L103">		final InputStream source = zip.getInputStream(zip.getEntry(input));</span>
+<span class="fc" id="L104">		json = IOUtils.toString(source,&quot;UTF-8&quot;);</span>
+<span class="fc" id="L105">		zip.close();</span>
+<span class="fc" id="L106">		return json;</span>
 	}
 
 }

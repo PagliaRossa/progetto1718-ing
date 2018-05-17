@@ -41,7 +41,7 @@ public class MentionsPrinter implements Printer {
 			}
 		}
 		if (buf.toString().equals(str)) {
-			return "Can't find mentions from this member";
+			return "Can't find mentions for this member";
 		} else {
 			return buf.toString();
 		}
@@ -64,7 +64,7 @@ public class MentionsPrinter implements Printer {
 			}
 		}
 		if (buf.toString().equals(str)) {
-			return "Can't find mentions from this member";
+			return "Can't find mentions for this member";
 		} else {
 			return buf.toString();
 		}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="5.8.1" timestamp="2018-05-17T15:49:12.704">
+<pmd version="5.8.1" timestamp="2018-05-17T18:33:27.480">
 <file name="C:\Users\Donato\Git\progetto1718-bernerslee\src\main\java\it\uniba\main\AppMain.java">
 <violation beginline="19" endline="230" begincolumn="14" endcolumn="1" rule="CyclomaticComplexity" ruleset="Code Size" package="it.uniba.main" class="AppMain" externalInfoUrl="https://pmd.github.io/pmd-5.8.1/pmd-java/rules/java/codesize.html#CyclomaticComplexity" priority="3">
 The class 'AppMain' has a Cyclomatic Complexity of 26 (Highest = 51).
