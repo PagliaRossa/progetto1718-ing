@@ -33,7 +33,7 @@ public final class AppMain {
 	 */
 	public static void main(final String[] command) {
 		Analysis request;
-		if (!(command.length == 0)) {
+		if (command.length > 0) {
 			if (command[0].equals("membersList")) {
 				if (command.length != 1) {
 					request = new MembersAnalysis();

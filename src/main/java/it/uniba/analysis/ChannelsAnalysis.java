@@ -14,12 +14,24 @@ public class ChannelsAnalysis extends Analysis {
 	
 	private List<Channel> channels = new ArrayList<>();
 	
-	private String getChannelName(final Channel channel) {
+	public String getChannelName(final Channel channel) {
 		return channel.getName();
 	}
 	
 	public List<Channel> getChannels() {
 		return channels;
+	}
+	
+	public List<String> getChannelMembers(final Channel channel) {
+		return channel.getMembers();
+	}
+	
+	public int getChannelMembersSize(final Channel channel) {
+		return channel.membersSize();
+	}
+	
+	public String getMemberInChannel(final Channel channel,final int index) {
+		return channel.getMember(index);
 	}
 	
 	public void setChannels(final List<Channel> channelsNew) {
@@ -50,6 +62,10 @@ public class ChannelsAnalysis extends Analysis {
 			}
 		}
 		return channel;
+	}
+	
+	public int channelsSize() {
+		return channels.size();
 	}
 	
 	public boolean channelsList(final String input) {
