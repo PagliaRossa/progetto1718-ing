@@ -18,7 +18,7 @@ public class MentionsAnalysis extends Analysis {
 		return mentions;
 	}
 	
-	private String getMentionFrom(final Mention mention) {
+	public String getMentionFrom(final Mention mention) {
 		return mention.getFrom();
 	}
 	
@@ -30,7 +30,7 @@ public class MentionsAnalysis extends Analysis {
 		mention.setTo(ToMember);
 	}
 	
-	private String getMentionTo(final Mention mention) {
+	public String getMentionTo(final Mention mention) {
 		return mention.getTo();
 	}
 	
@@ -42,11 +42,11 @@ public class MentionsAnalysis extends Analysis {
 		return mention.startsWith(start);
 	}
 	
-	private boolean compareFrom(final String From1,final String From2) {
+	public boolean compareFrom(final String From1,final String From2) {
 		return From1.equals(From2);
 	}
 	
-	private boolean compareTo(final String ToMember1,final String toMember2) {
+	public boolean compareTo(final String ToMember1,final String toMember2) {
 		return ToMember1.equals(toMember2);
 	}
 	

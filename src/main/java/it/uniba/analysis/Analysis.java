@@ -17,7 +17,7 @@ public class Analysis {
 		return member.getId();
 	}
 	
-	protected String getMemberName(final Member member) {
+	public String getMemberName(final Member member) {
 		return member.getName();
 	}
 	
