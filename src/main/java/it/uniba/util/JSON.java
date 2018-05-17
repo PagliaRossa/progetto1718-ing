@@ -62,6 +62,10 @@ public class JSON {
 		return text.substring(start, end);
 	}
 	
+	private boolean containsValue(final JSONObject obj,final String attribute) {
+		return obj.containsValue(attribute);
+	}
+	
 	public List<Member> setMembers(final String json) throws ParseException {
 		final List<Member> members = new ArrayList<>();
 		Member member;
@@ -121,22 +125,21 @@ public class JSON {
 		for (int j = 0; j < getArraySize(array); j++) {
 			final JSONObject obj = getJSONObject(array,j);
 			final String text = getAttribute(obj,"text");
-			if (!containsKey(obj,"subtype") && containsChars(text,"<@")) {
-				int begin = 0;
-				int end = 0;
-				for (int k = 0; k < getTextSize(text); k++) {
-					if (charAt(text,k) == '<') {
-						begin = k;
-					}
-					if (charAt(text,k) == '>') {
-						end = k;
-						mention = new Mention(getAttribute(obj,"user"),sub(text,begin+2,end));
-						mentions.add(mention);
+			if (!containsValue(obj,"subtype") && containsChars(text,"<@")) {
+					int begin = 0;
+					int end = 0;
+					for (int k = 0; k < getTextSize(text); k++) {
+						if (charAt(text,k) == '<') {
+							begin = k;
+						}
+						if (charAt(text,k) == '>') {
+							end = k;
+							mention = new Mention(getAttribute(obj,"user"),sub(text,begin+2,end));
+							mentions.add(mention);
+						}
 					}
 				}
 			}
-		}
 		return mentions;
 	}
-
 }
