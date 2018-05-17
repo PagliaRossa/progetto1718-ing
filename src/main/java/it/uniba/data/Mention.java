@@ -2,36 +2,28 @@ package it.uniba.data;
 
 public class Mention {
 	
-	private String from;
-	private String to;
+	private String fromMember;
+	private String toMember;
 	
-	public Mention(String memberFrom,String memberTo) {
-		from = memberFrom;
-		to = memberTo;
+	public Mention(final String memberFrom,final String memberTo) {
+		fromMember = memberFrom;
+		toMember = memberTo;
 	}
 	
 	public String getFrom() {
-		return from;
+		return fromMember;
 	}
 	
 	public String getTo() {
-		return to;
+		return toMember;
 	}
 	
-	public void setFrom(String newFrom) {
-		from = newFrom;
+	public void setFrom(final String newFrom) {
+		fromMember = newFrom;
 	}
 	
-	public void setTo(String newTo) {
-		to = newTo;
+	public void setTo(final String newTo) {
+		toMember = newTo;
 	}
 	
-	public boolean compareMention(final Mention a) {
-		if (a.getFrom().equals(from) && a.getTo().equals(to)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 }

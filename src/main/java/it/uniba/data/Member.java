@@ -2,11 +2,20 @@ package it.uniba.data;
 
 public class Member {
 	
-	private String id;
+	private String identificator;
 	private String name;
 	
+	public Member(final String identificatorNew,final String nameNew) {
+		identificator = identificatorNew;
+		name = nameNew;
+	}
+	
+	public Member() {
+		
+	}
+	
 	public void setId(final String idNew) {
-		id = idNew;
+		identificator = idNew;
 	}
 	
 	public void setName(final String nameNew) {
@@ -14,16 +23,10 @@ public class Member {
 	}
 	
 	public String getId() {
-		return id;
+		return identificator;
 	}
 	
 	public String getName() {
 		return name;
 	}
-	
-	public void clear() {
-		id = null;
-		name = null;
-	}
-
 }

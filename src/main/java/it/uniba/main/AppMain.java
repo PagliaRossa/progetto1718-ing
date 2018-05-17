@@ -6,7 +6,7 @@ import it.uniba.analysis.MembersAnalysis;
 import it.uniba.analysis.MentionsAnalysis;
 import it.uniba.data.Channel;
 import it.uniba.util.ChannelsPrinter;
-import it.uniba.util.Help;
+import it.uniba.util.HelpPrinter;
 import it.uniba.util.MembersPrinter;
 import it.uniba.util.MentionsPrinter;
 
@@ -33,7 +33,7 @@ public final class AppMain {
 	 */
 	public static void main(final String[] command) {
 		Analysis request;
-		if (!(command.length == 0)) {
+		if (command.length > 0) {
 			if (command[0].equals("membersList")) {
 				if (command.length != 1) {
 					request = new MembersAnalysis();
@@ -209,7 +209,7 @@ public final class AppMain {
 			
 			if (command[0].equals("sna4slack")) {
 				if (command.length == 1) {
-					Help help = new Help();
+					HelpPrinter help = new HelpPrinter();
 					System.out.println(help);
 				} else {
 					System.out.println("No need for more argument , just use sna4slack for help");

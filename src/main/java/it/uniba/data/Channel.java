@@ -5,12 +5,22 @@ import java.util.List;
 
 public class Channel {
 	
-	private String id;
+	private String identificator;
 	private String name;
 	private List<String> members = new ArrayList<>();
 	
+	public Channel(String identificator2, String name2, List<String> members2) {
+		identificator = identificator2;
+		name = name2;
+		members = members2;
+	}
+	
+	public Channel() {
+		
+	}
+
 	public void setId(final String idNew) {
-		id = idNew;
+		identificator = idNew;
 	}
 	
 	public void setName(final String nameNew) {
@@ -22,15 +32,15 @@ public class Channel {
 	}
 	
 	public String getId() {
-		return id;
+		return identificator;
 	}
 	
 	public String getName() {
 		return name;
 	}
 	
-	public String getMember(final int i) {
-		return members.get(i);
+	public String getMember(final int index) {
+		return members.get(index);
 	}
 	
 	public List<String> getMembers() {
@@ -45,8 +55,8 @@ public class Channel {
 		return members.isEmpty();
 	}
 	
-	public boolean isInChannel(final String id) {
-		return members.contains(id);
+	public boolean isInChannel(final String identificator) {
+		return members.contains(identificator);
 	}
 
 }
