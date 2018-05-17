@@ -41,14 +41,14 @@ import it.uniba.data.Member;
 	}
 	
 	public boolean isInList(final String name) {
-<span class="nc" id="L44">		boolean found = false;</span>
-<span class="nc bnc" id="L45" title="All 2 branches missed.">		for (int i = 0; i &lt; members.size(); i++) {</span>
-<span class="nc bnc" id="L46" title="All 2 branches missed.">			if (compareName(getMemberName(members.get(i)),name)) {</span>
-<span class="nc" id="L47">				found = true;</span>
-<span class="nc" id="L48">				break;</span>
+<span class="fc" id="L44">		boolean found = false;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">		for (int i = 0; i &lt; members.size(); i++) {</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">			if (compareName(getMemberName(members.get(i)),name)) {</span>
+<span class="fc" id="L47">				found = true;</span>
+<span class="fc" id="L48">				break;</span>
 			}
 		}
-<span class="nc" id="L51">		return found;</span>
+<span class="fc" id="L51">		return found;</span>
 	}
 	
 	public void setMembers(final List&lt;Member&gt; members) {

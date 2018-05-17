@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import it.uniba.analysis.ChannelsAnalysis;
 import it.uniba.analysis.MembersAnalysis;
 import it.uniba.analysis.MentionsAnalysis;
 import it.uniba.data.Channel;
+import it.uniba.data.Member;
 import it.uniba.data.Mention;
 
 public class AnalysisTest {
@@ -23,6 +25,12 @@ public class AnalysisTest {
 	void Analysis() {
 		Analysis analysis = new Analysis();
 		assertEquals(new ArrayList<>(),analysis.getMembers());
+		assertFalse(analysis.isInList("beppe"));
+		List<Member> members_ = new ArrayList<>();
+		members_.add(new Member("1","Gino"));
+		members_.add(new Member("2","beppe"));
+		analysis.setMembers(members_);
+		assertTrue(analysis.isInList("beppe"));
 		MembersAnalysis members = new MembersAnalysis();
 		assertTrue(members.membersList("res/file/test.zip")); //Test true with a normal workspace
 		assertFalse(members.membersList("ciao.zip")); //Test false with a bad workspace
