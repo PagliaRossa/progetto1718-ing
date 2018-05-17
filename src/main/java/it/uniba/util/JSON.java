@@ -15,10 +15,10 @@ import it.uniba.data.Mention;
 public class JSON {
 	
 	public List<Member> setMembers(final String json) throws ParseException {
-		List<Member> members = new ArrayList<>();
+		final List<Member> members = new ArrayList<>();
 		Member member;
-		JSONParser parser = new JSONParser();
-		JSONArray array = (JSONArray) parser.parse(json);
+		final JSONParser parser = new JSONParser();
+		final JSONArray array = (JSONArray) parser.parse(json);
 		for (int i = 0; i < array.size(); i++) {
 			JSONObject obj = (JSONObject) array.get(i);
 			JSONObject profile = (JSONObject) obj.get("profile");

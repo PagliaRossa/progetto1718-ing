@@ -66,6 +66,6 @@ public class PrinterMembersTest {
 	@Test
 	@DisplayName("Test help")
 	void Help() {
-		assertNotEquals("",new it.uniba.util.Help().toString());
+		assertNotEquals("",new it.uniba.util.HelpPrinter().toString());
 	}
 }
