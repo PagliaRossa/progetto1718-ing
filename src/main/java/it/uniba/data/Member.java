@@ -9,11 +9,7 @@ public class Member {
 		identificator = identificatorNew;
 		name = nameNew;
 	}
-	
-	public Member() {
-		
-	}
-	
+
 	public void setId(final String idNew) {
 		identificator = idNew;
 	}

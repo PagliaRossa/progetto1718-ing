@@ -7,56 +7,52 @@ public class Channel {
 	
 	private String identificator;
 	private String name;
-<span class="pc" id="L10">	private List&lt;String&gt; members = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L10">	private List&lt;String&gt; members = new ArrayList&lt;&gt;();</span>
 	
-<span class="nc" id="L12">	public Channel(String identificator2, String name2, List&lt;String&gt; members2) {</span>
-<span class="nc" id="L13">		identificator = identificator2;</span>
-<span class="nc" id="L14">		name = name2;</span>
-<span class="nc" id="L15">		members = members2;</span>
-<span class="nc" id="L16">	}</span>
-	
-<span class="fc" id="L18">	public Channel() {</span>
-		
-<span class="fc" id="L20">	}</span>
+<span class="fc" id="L12">	public Channel(final String identificator2,final String name2,final List&lt;String&gt; members2) {</span>
+<span class="fc" id="L13">		identificator = identificator2;</span>
+<span class="fc" id="L14">		name = name2;</span>
+<span class="fc" id="L15">		members = members2;</span>
+<span class="fc" id="L16">	}</span>
 
 	public void setId(final String idNew) {
-<span class="fc" id="L23">		identificator = idNew;</span>
-<span class="fc" id="L24">	}</span>
+<span class="nc" id="L19">		identificator = idNew;</span>
+<span class="nc" id="L20">	}</span>
 	
 	public void setName(final String nameNew) {
-<span class="fc" id="L27">		name = nameNew;</span>
-<span class="fc" id="L28">	}</span>
+<span class="nc" id="L23">		name = nameNew;</span>
+<span class="nc" id="L24">	}</span>
 	
 	public void setMembers(final List&lt;String&gt; membersNew) {
-<span class="nc" id="L31">		members = membersNew;</span>
-<span class="nc" id="L32">	}</span>
+<span class="nc" id="L27">		members = membersNew;</span>
+<span class="nc" id="L28">	}</span>
 	
 	public String getId() {
-<span class="nc" id="L35">		return identificator;</span>
+<span class="nc" id="L31">		return identificator;</span>
 	}
 	
 	public String getName() {
-<span class="fc" id="L39">		return name;</span>
+<span class="fc" id="L35">		return name;</span>
 	}
 	
 	public String getMember(final int index) {
-<span class="nc" id="L43">		return members.get(index);</span>
+<span class="fc" id="L39">		return members.get(index);</span>
 	}
 	
 	public List&lt;String&gt; getMembers() {
-<span class="nc" id="L47">		return members;</span>
+<span class="nc" id="L43">		return members;</span>
 	}
 	
 	public int membersSize() {
-<span class="fc" id="L51">		return members.size();</span>
+<span class="fc" id="L47">		return members.size();</span>
 	}
 	
 	public boolean isEmpty() {
-<span class="nc" id="L55">		return members.isEmpty();</span>
+<span class="nc" id="L51">		return members.isEmpty();</span>
 	}
 	
 	public boolean isInChannel(final String identificator) {
-<span class="nc" id="L59">		return members.contains(identificator);</span>
+<span class="nc" id="L55">		return members.contains(identificator);</span>
 	}
 
 }
