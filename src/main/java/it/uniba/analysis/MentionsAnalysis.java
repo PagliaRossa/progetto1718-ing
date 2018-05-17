@@ -42,8 +42,12 @@ public class MentionsAnalysis extends Analysis {
 		return mention.startsWith(start);
 	}
 	
-	private boolean compareMention(final Mention mention1,final Mention mention2) {
-		return mention1.equals(mention2);
+	private boolean compareFrom(final String From1,final String From2) {
+		return From1.equals(From2);
+	}
+	
+	private boolean compareTo(final String ToMember1,final String toMember2) {
+		return ToMember1.equals(toMember2);
 	}
 	
 	private int conversationsSize(final List<String> conversations) {
@@ -81,7 +85,7 @@ public class MentionsAnalysis extends Analysis {
 	private void removeOccurence() {
 		for(int i = 0; i < mentions.size(); i++) {
 			for(int j = i+1; j < mentions.size(); j++) {
-				if(compareMention(mentions.get(i),mentions.get(j))){
+				if(compareFrom(getMentionFrom(mentions.get(i)),getMentionFrom(mentions.get(j))) && compareTo(getMentionTo(mentions.get(i)),getMentionTo(mentions.get(j)))) {
 					mentions.remove(j);
 					i--;
 					if (i < 0) {
