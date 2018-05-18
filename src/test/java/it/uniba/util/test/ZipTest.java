@@ -10,14 +10,14 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import it.uniba.util.Zip;
+import it.uniba.util.ZipReader;
 
 public class ZipTest {
 	
 	@Test
 	@DisplayName("Test zip")
 	void Zip() {
-		Zip zip = new Zip();
+		ZipReader zip = new ZipReader();
 		List<String> conversations = new ArrayList<>();
 		conversations.add("micali/2018-03-12.json");
 		try {

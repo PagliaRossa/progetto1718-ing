@@ -8,9 +8,9 @@ import org.json.simple.parser.ParseException;
 
 import it.uniba.data.Counter;
 import it.uniba.data.Mention;
-import it.uniba.util.JSON;
+import it.uniba.util.JSONReader;
 import it.uniba.util.MentionUtil;
-import it.uniba.util.Zip;
+import it.uniba.util.ZipReader;
 
 public class MentionsAnalysis extends Analysis {
 	
@@ -78,8 +78,8 @@ public class MentionsAnalysis extends Analysis {
 	public boolean mentionsList(final String input) {
 		final MentionUtil util = new MentionUtil();
 		try {
-			final Zip zip = new Zip();
-			final JSON setter = new JSON();
+			final ZipReader zip = new ZipReader();
+			final JSONReader setter = new JSONReader();
 			final List<String> conversations = zip.setConversationFile(input);
 			for (int i = 0; i < util.conversationsSize(conversations); i++) {
 				final String json = zip.getJSONFromFile(input,util.getConversationsJSON(conversations,i));
@@ -101,8 +101,8 @@ public class MentionsAnalysis extends Analysis {
 		if (analysis.channelsList(path)) {
 			if (analysis.channelExist(channel)) {
 				try {
-					final Zip zip = new Zip();
-					final JSON setter = new JSON();
+					final ZipReader zip = new ZipReader();
+					final JSONReader setter = new JSONReader();
 					final List<String> conversations = zip.setConversationFile(channel,path);
 					for (int i = 0; i < util.conversationsSize(conversations); i++) {
 						final String json = zip.getJSONFromFile(path,util.getConversationsJSON(conversations,i));
