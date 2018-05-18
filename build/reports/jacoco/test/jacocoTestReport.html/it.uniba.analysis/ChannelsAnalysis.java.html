@@ -19,19 +19,19 @@ import it.uniba.util.Zip;
 	}
 	
 	public List&lt;Channel&gt; getChannels() {
-<span class="nc" id="L22">		return channels;</span>
+<span class="fc" id="L22">		return channels;</span>
 	}
 	
 	public List&lt;String&gt; getChannelMembers(final Channel channel) {
-<span class="nc" id="L26">		return channel.getMembers();</span>
+<span class="fc" id="L26">		return channel.getMembers();</span>
 	}
 	
 	public int getChannelMembersSize(final Channel channel) {
-<span class="nc" id="L30">		return channel.membersSize();</span>
+<span class="fc" id="L30">		return channel.membersSize();</span>
 	}
 	
 	public String getMemberInChannel(final Channel channel,final int index) {
-<span class="nc" id="L34">		return channel.getMember(index);</span>
+<span class="fc" id="L34">		return channel.getMember(index);</span>
 	}
 	
 	public void setChannels(final List&lt;Channel&gt; channelsNew) {
@@ -39,29 +39,29 @@ import it.uniba.util.Zip;
 <span class="fc" id="L39">	}</span>
 	
 	public boolean channelExist(final String channel) {
-<span class="nc" id="L42">		boolean found = false;</span>
-<span class="nc bnc" id="L43" title="All 2 branches missed.">		for (int i = 0; i &lt; channels.size(); i++) {</span>
-<span class="nc bnc" id="L44" title="All 2 branches missed.">			if (compareName(getChannelName(channels.get(i)),channel)) {</span>
-<span class="nc" id="L45">				found = true;</span>
-<span class="nc" id="L46">				break;</span>
+<span class="fc" id="L42">		boolean found = false;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">		for (int i = 0; i &lt; channels.size(); i++) {</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">			if (compareName(getChannelName(channels.get(i)),channel)) {</span>
+<span class="fc" id="L45">				found = true;</span>
+<span class="fc" id="L46">				break;</span>
 			}
 		}
-<span class="nc" id="L49">		return found;</span>
+<span class="fc" id="L49">		return found;</span>
 	}
 	
 	public Channel getChannel(final int index) {
-<span class="nc" id="L53">		return channels.get(index);</span>
+<span class="fc" id="L53">		return channels.get(index);</span>
 	}
 	
 	public Channel getChannel(final String name) {
-<span class="nc" id="L57">		Channel channel = null;</span>
-<span class="nc bnc" id="L58" title="All 2 branches missed.">		for (int i = 0; i &lt; channels.size() ; i++) {</span>
-<span class="nc bnc" id="L59" title="All 2 branches missed.">			if (compareName(getChannelName(channels.get(i)),name)) {</span>
-<span class="nc" id="L60">				channel = channels.get(i);</span>
-<span class="nc" id="L61">				break;</span>
+<span class="fc" id="L57">		Channel channel = null;</span>
+<span class="pc bpc" id="L58" title="1 of 2 branches missed.">		for (int i = 0; i &lt; channels.size() ; i++) {</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">			if (compareName(getChannelName(channels.get(i)),name)) {</span>
+<span class="fc" id="L60">				channel = channels.get(i);</span>
+<span class="fc" id="L61">				break;</span>
 			}
 		}
-<span class="nc" id="L64">		return channel;</span>
+<span class="fc" id="L64">		return channel;</span>
 	}
 	
 	public int channelsSize() {
@@ -70,43 +70,43 @@ import it.uniba.util.Zip;
 	
 	public boolean channelsList(final String input) {
 		try {
-<span class="nc" id="L73">			final Zip zip = new Zip();</span>
-<span class="nc" id="L74">			final String json = zip.setChannelsFile(input);</span>
-<span class="nc" id="L75">			final JSON setter = new JSON();</span>
-<span class="nc" id="L76">			channels = setter.setChannels(json);</span>
-<span class="nc" id="L77">			return true;</span>
-<span class="nc" id="L78">		} catch (ParseException p) {</span>
-<span class="nc" id="L79">			System.out.println(&quot;JSON not valid!&quot;);</span>
-<span class="nc" id="L80">		} catch (IOException i) {</span>
-<span class="nc" id="L81">			System.out.println(&quot;File not found or invalid&quot;);</span>
-<span class="nc" id="L82">		}</span>
-<span class="nc" id="L83">		return false;</span>
+<span class="fc" id="L73">			final Zip zip = new Zip();</span>
+<span class="fc" id="L74">			final String json = zip.setChannelsFile(input);</span>
+<span class="fc" id="L75">			final JSON setter = new JSON();</span>
+<span class="fc" id="L76">			channels = setter.setChannels(json);</span>
+<span class="fc" id="L77">			return true;</span>
+<span class="fc" id="L78">		} catch (ParseException p) {</span>
+<span class="fc" id="L79">			System.out.println(&quot;JSON not valid!&quot;);</span>
+<span class="fc" id="L80">		} catch (IOException i) {</span>
+<span class="fc" id="L81">			System.out.println(&quot;File not found or invalid&quot;);</span>
+<span class="fc" id="L82">		}</span>
+<span class="fc" id="L83">		return false;</span>
 	}
 	
 	public boolean membersChannel(final String channel,final String path) {
-<span class="nc" id="L87">		final MembersAnalysis members = new MembersAnalysis();</span>
-<span class="nc bnc" id="L88" title="All 2 branches missed.">		if (members.membersList(path)) {</span>
-<span class="nc" id="L89">			this.members = members.getMembers();</span>
-<span class="nc bnc" id="L90" title="All 2 branches missed.">			if (channelsList(path)) {</span>
-<span class="nc bnc" id="L91" title="All 2 branches missed.">				if (channelExist(channel)) {</span>
-<span class="nc" id="L92">					return true;</span>
+<span class="fc" id="L87">		final MembersAnalysis members = new MembersAnalysis();</span>
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">		if (members.membersList(path)) {</span>
+<span class="fc" id="L89">			this.members = members.getMembers();</span>
+<span class="pc bpc" id="L90" title="1 of 2 branches missed.">			if (channelsList(path)) {</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">				if (channelExist(channel)) {</span>
+<span class="fc" id="L92">					return true;</span>
 				} else {
-<span class="nc" id="L94">					System.out.println(&quot;Channel not found&quot;);</span>
+<span class="fc" id="L94">					System.out.println(&quot;Channel not found&quot;);</span>
 				}
 			}
 		}
-<span class="nc" id="L98">		return false;</span>
+<span class="fc" id="L98">		return false;</span>
 	}
 	
 	public boolean membersSortedByChannel(final String input) {
-<span class="nc" id="L102">		final MembersAnalysis members = new MembersAnalysis();</span>
-<span class="nc bnc" id="L103" title="All 2 branches missed.">		if (members.membersList(input)) {</span>
-<span class="nc" id="L104">			this.members = members.getMembers();</span>
-<span class="nc bnc" id="L105" title="All 2 branches missed.">			if (channelsList(input)) {</span>
-<span class="nc" id="L106">				return true;</span>
+<span class="fc" id="L102">		final MembersAnalysis members = new MembersAnalysis();</span>
+<span class="fc bfc" id="L103" title="All 2 branches covered.">		if (members.membersList(input)) {</span>
+<span class="fc" id="L104">			this.members = members.getMembers();</span>
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">			if (channelsList(input)) {</span>
+<span class="fc" id="L106">				return true;</span>
 			}
 		}
-<span class="nc" id="L109">		return false;</span>
+<span class="fc" id="L109">		return false;</span>
 	}
 
 }

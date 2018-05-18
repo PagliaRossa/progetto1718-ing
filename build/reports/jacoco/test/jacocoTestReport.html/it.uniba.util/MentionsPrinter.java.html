@@ -32,7 +32,7 @@ import it.uniba.data.Mention;
 <span class="fc" id="L32">		buf.append(str);</span>
 <span class="fc bfc" id="L33" title="All 2 branches covered.">		for (int i = 0; i &lt; list.size(); i++) {</span>
 <span class="fc" id="L34">			mention = (Mention) list.get(i);</span>
-<span class="pc bpc" id="L35" title="1 of 2 branches missed.">			if (mentions.compareFrom(mentions.getMentionFrom(mention),member)) {</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">			if (mentions.compareFrom(mentions.getMentionFrom(mention),member)) {</span>
 <span class="fc" id="L36">				buf.append(&quot;From &quot;);</span>
 <span class="fc" id="L37">				buf.append(mentions.getMentionFrom(mention));</span>
 <span class="fc" id="L38">				buf.append(&quot; to &quot;);</span>
@@ -40,8 +40,8 @@ import it.uniba.data.Mention;
 <span class="fc" id="L40">				buf.append('\n');</span>
 			}
 		}
-<span class="pc bpc" id="L43" title="1 of 2 branches missed.">		if (buf.toString().equals(str)) {</span>
-<span class="nc" id="L44">			return &quot;Can't find mentions from this member&quot;;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">		if (buf.toString().equals(str)) {</span>
+<span class="fc" id="L44">			return &quot;Can't find mentions for this member&quot;;</span>
 		} else {
 <span class="fc" id="L46">			return buf.toString();</span>
 		}
@@ -55,7 +55,7 @@ import it.uniba.data.Mention;
 <span class="fc" id="L55">		buf.append(str);</span>
 <span class="fc bfc" id="L56" title="All 2 branches covered.">		for (int i = 0; i &lt; list.size(); i++) {</span>
 <span class="fc" id="L57">			mention = (Mention) list.get(i);</span>
-<span class="pc bpc" id="L58" title="1 of 2 branches missed.">			if (mentions.compareTo(mentions.getMentionTo(mention),member)) {</span>
+<span class="fc bfc" id="L58" title="All 2 branches covered.">			if (mentions.compareTo(mentions.getMentionTo(mention),member)) {</span>
 <span class="fc" id="L59">				buf.append(&quot;From &quot;);</span>
 <span class="fc" id="L60">				buf.append(mentions.getMentionFrom(mention));</span>
 <span class="fc" id="L61">				buf.append(&quot; to &quot;);</span>
@@ -63,8 +63,8 @@ import it.uniba.data.Mention;
 <span class="fc" id="L63">				buf.append('\n');</span>
 			}
 		}
-<span class="pc bpc" id="L66" title="1 of 2 branches missed.">		if (buf.toString().equals(str)) {</span>
-<span class="nc" id="L67">			return &quot;Can't find mentions from this member&quot;;</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">		if (buf.toString().equals(str)) {</span>
+<span class="fc" id="L67">			return &quot;Can't find mentions for this member&quot;;</span>
 		} else {
 <span class="fc" id="L69">			return buf.toString();</span>
 		}

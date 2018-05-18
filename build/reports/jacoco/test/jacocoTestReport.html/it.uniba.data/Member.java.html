@@ -5,29 +5,25 @@ public class Member {
 	private String identificator;
 	private String name;
 	
-<span class="nc" id="L8">	public Member(final String identificatorNew,final String nameNew) {</span>
-<span class="nc" id="L9">		identificator = identificatorNew;</span>
-<span class="nc" id="L10">		name = nameNew;</span>
-<span class="nc" id="L11">	}</span>
-	
-<span class="fc" id="L13">	public Member() {</span>
-		
+<span class="fc" id="L8">	public Member(final String identificatorNew,final String nameNew) {</span>
+<span class="fc" id="L9">		identificator = identificatorNew;</span>
+<span class="fc" id="L10">		name = nameNew;</span>
+<span class="fc" id="L11">	}</span>
+
+	public void setId(final String idNew) {
+<span class="fc" id="L14">		identificator = idNew;</span>
 <span class="fc" id="L15">	}</span>
 	
-	public void setId(final String idNew) {
-<span class="fc" id="L18">		identificator = idNew;</span>
+	public void setName(final String nameNew) {
+<span class="fc" id="L18">		name = nameNew;</span>
 <span class="fc" id="L19">	}</span>
 	
-	public void setName(final String nameNew) {
-<span class="fc" id="L22">		name = nameNew;</span>
-<span class="fc" id="L23">	}</span>
-	
 	public String getId() {
-<span class="nc" id="L26">		return identificator;</span>
+<span class="fc" id="L22">		return identificator;</span>
 	}
 	
 	public String getName() {
-<span class="fc" id="L30">		return name;</span>
+<span class="fc" id="L26">		return name;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
