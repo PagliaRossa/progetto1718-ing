@@ -3,6 +3,8 @@ package it.uniba.analysis.test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -21,7 +23,7 @@ import it.uniba.data.Mention;
 public class AnalysisTest {
 	
 	@Test
-	@DisplayName("Analysis test")
+	@DisplayName("Test Analysis")
 	void Analysis() {
 		Analysis analysis = new Analysis();
 		assertEquals(new ArrayList<>(),analysis.getMembers());
@@ -31,15 +33,26 @@ public class AnalysisTest {
 		members_.add(new Member("2","beppe"));
 		analysis.setMembers(members_);
 		assertTrue(analysis.isInList("beppe"));
+	}
+	
+	@Test
+	@DisplayName("Test MembersAnalysis")
+	void MembersAnalysis() {
 		MembersAnalysis members = new MembersAnalysis();
 		assertTrue(members.membersList("res/file/test.zip")); //Test true with a normal workspace
 		assertFalse(members.membersList("ciao.zip")); //Test false with a bad workspace
-		assertFalse(members.membersList("res/file/test3.zip")); //Test false with a normal workspace , bad json
+		assertFalse(members.membersList("res/file/test3.zip")); //Test false with a normal workspace , bad json)
+	}
+	
+	@Test
+	@DisplayName("Test ChannelsAnalysis")
+	void ChannelsAnalysis() {
 		ChannelsAnalysis channels = new ChannelsAnalysis();
 		Channel channel = new Channel("0","bernerslee",new ArrayList<String>());
 		assertEquals(new ArrayList<Channel>(),channels.getChannels());
 		assertEquals(new ArrayList<String>(),channels.getChannelMembers(channel));
 		assertTrue(channels.channelsList("res/file/test.zip")); //Test true with a normal workspace
+		assertNull(channels.getChannel("bang"));
 		assertNotEquals(channel,channels.getChannel("bernerslee"));
 		assertFalse(channels.channelsList("ciao.zip")); //Test false with a bad workspace
 		assertFalse(channels.channelsList("res/file/test3.zip")); //Test false with a normal workspace , bad json
@@ -47,9 +60,18 @@ public class AnalysisTest {
 		assertFalse(channels.membersChannel("ciao","res/file/test.zip"));
 		assertTrue(channels.membersSortedByChannel("res/file/test.zip"));
 		assertFalse(channels.membersSortedByChannel("ciao.zip"));
+		assertFalse(channels.membersSortedByChannel("res/file/test-wrongChannels.zip"));
+		assertFalse(channels.membersChannel("bello", "res/file/test-wrongChannels.zip"));
+		assertFalse(channels.membersChannel("bello", "res/file/test-wrongUsers.zip"));
+	}
+	
+	@Test
+	@DisplayName("Test MentionsAnalysis")
+	void MentionsAnalysis() {
 		MentionsAnalysis mentions = new MentionsAnalysis();
 		assertEquals(new ArrayList<Mention>(),mentions.getMentions());
 		assertTrue(mentions.mentionsList("res/file/test.zip"));
+		assertNotNull(mentions.setNameFromTo());
 		assertFalse(mentions.mentionsList("res/file/tes3t.zip"));
 		assertFalse(mentions.mentionsList("res/file/test3.zip"));
 		assertTrue(mentions.mentionsListChannel("bernerslee","res/file/test.zip"));

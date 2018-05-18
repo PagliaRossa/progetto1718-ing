@@ -106,10 +106,6 @@ public class MentionsAnalysis extends Analysis {
 		return counter;
 	}
 	
-	public boolean isEmpty() {
-		return mentions.isEmpty();
-	}
-	
 	public List<Counter> setNameFromTo() {
 		List<Counter> counter = removeOccurence();
 		Mention mention;
