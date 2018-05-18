@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.json.simple.parser.ParseException;
 
+import it.uniba.data.Counter;
 import it.uniba.data.Mention;
 import it.uniba.util.JSON;
 import it.uniba.util.Zip;
@@ -58,6 +59,14 @@ public class MentionsAnalysis extends Analysis {
 		return conversations.get(index);
 	}
 	
+	private Counter newCounter(final int index,final int occurenceNumber) {
+		return new Counter(index,occurenceNumber);
+	}
+	
+	private void countIncreaser(final Counter counter) {
+		counter.setOccurenceNumber(counter.getOccurenceNumber()+1);
+	}
+	
 	private void removeWrongMentions() {
 		for (int i = 0; i < mentions.size(); i++) {
 			if (getMentionFrom(mentions.get(i)) == null || getMentionTo(mentions.get(i)) == null){
@@ -82,26 +91,27 @@ public class MentionsAnalysis extends Analysis {
 		}
 	}
 	
-	private void removeOccurence() {
+	private List<Counter> removeOccurence() {
+		List<Counter> counter = new ArrayList<>();
 		for(int i = 0; i < mentions.size(); i++) {
+			counter.add(newCounter(i,1));
 			for(int j = i+1; j < mentions.size(); j++) {
 				if(compareFrom(getMentionFrom(mentions.get(i)),getMentionFrom(mentions.get(j))) && compareTo(getMentionTo(mentions.get(i)),getMentionTo(mentions.get(j)))) {
 					mentions.remove(j);
-					i--;
-					if (i < 0) {
-						i = 0;
-					}
+					j--;
+					countIncreaser(counter.get(i));
 				}
 			}
 		}
+		return counter;
 	}
 	
 	public boolean isEmpty() {
 		return mentions.isEmpty();
 	}
 	
-	public void setNameFromTo() {
-		removeOccurence();
+	public List<Counter> setNameFromTo() {
+		List<Counter> counter = removeOccurence();
 		Mention mention;
 		for (int i = 0 ; i < mentions.size(); i++) {
 			mention = mentions.get(i);
@@ -109,6 +119,7 @@ public class MentionsAnalysis extends Analysis {
 			setMentionTo(mention,getMemberName(getMentionTo(mention)));
 			mentions.set(i,mention);
 		}
+		return counter;
 	}
 	
 	
