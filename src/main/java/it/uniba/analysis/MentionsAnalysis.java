@@ -9,6 +9,7 @@ import org.json.simple.parser.ParseException;
 import it.uniba.data.Counter;
 import it.uniba.data.Mention;
 import it.uniba.util.JSON;
+import it.uniba.util.MentionUtil;
 import it.uniba.util.Zip;
 
 public class MentionsAnalysis extends Analysis {
@@ -19,72 +20,25 @@ public class MentionsAnalysis extends Analysis {
 		return mentions;
 	}
 	
-	public String getMentionFrom(final Mention mention) {
-		return mention.getFrom();
-	}
-	
-	private void setMentionFrom(final Mention mention,final String FromMember) {
-		mention.setFrom(FromMember);
-	}
-	
-	private void setMentionTo(final Mention mention,final String ToMember) {
-		mention.setTo(ToMember);
-	}
-	
-	public String getMentionTo(final Mention mention) {
-		return mention.getTo();
-	}
-	
-	private boolean mentionContain(final String mention,final String contain) {
-		return mention.contains(contain);
-	}
-	
-	private boolean mentionStartWith(final String mention,final String start) {
-		return mention.startsWith(start);
-	}
-	
-	public boolean compareFrom(final String From1,final String From2) {
-		return From1.equals(From2);
-	}
-	
-	public boolean compareTo(final String ToMember1,final String toMember2) {
-		return ToMember1.equals(toMember2);
-	}
-	
-	private int conversationsSize(final List<String> conversations) {
-		return conversations.size();
-	}
-	
-	private String getConversationsJSON(final List<String> conversations,final int index) {
-		return conversations.get(index);
-	}
-	
-	private Counter newCounter(final int index,final int occurenceNumber) {
-		return new Counter(index,occurenceNumber);
-	}
-	
-	private void countIncreaser(final Counter counter) {
-		counter.setOccurenceNumber(counter.getOccurenceNumber()+1);
-	}
-	
 	private void removeWrongMentions() {
+		final MentionUtil util = new MentionUtil();
 		for (int i = 0; i < mentions.size(); i++) {
-			if (getMentionFrom(mentions.get(i)) == null || getMentionTo(mentions.get(i)) == null){
+			if (util.getMentionFrom(mentions.get(i)) == null || util.getMentionTo(mentions.get(i)) == null){
 				mentions.remove(i);
 				i--;
-			} else if (mentionContain(getMentionTo(mentions.get(i)),"|")) {
+			} else if (util.mentionContain(util.getMentionTo(mentions.get(i)),"|")) {
 				mentions.remove(i);
 				i--;
-			} else if (mentionContain(getMentionFrom(mentions.get(i)),getMentionTo(mentions.get(i)))) {
+			} else if (util.mentionContain(util.getMentionFrom(mentions.get(i)),util.getMentionTo(mentions.get(i)))) {
 				mentions.remove(i);
 				i--;
-			} else if (mentionContain(getMentionTo(mentions.get(i)),"://")) {
+			} else if (util.mentionContain(util.getMentionTo(mentions.get(i)),"://")) {
 				mentions.remove(i);
 				i--;
-			} else if (mentionStartWith(getMentionTo(mentions.get(i)),"cha")) {
+			} else if (util.mentionStartWith(util.getMentionTo(mentions.get(i)),"cha")) {
 				mentions.remove(i);
 				i--;
-			} else if (mentionContain(getMentionTo(mentions.get(i)),"everyone")) {
+			} else if (util.mentionContain(util.getMentionTo(mentions.get(i)),"everyone")) {
 				mentions.remove(i);
 				i--;
 			}
@@ -92,14 +46,15 @@ public class MentionsAnalysis extends Analysis {
 	}
 	
 	private List<Counter> removeOccurence() {
-		List<Counter> counter = new ArrayList<>();
+		final MentionUtil util = new MentionUtil();
+		final List<Counter> counter = new ArrayList<>();
 		for(int i = 0; i < mentions.size(); i++) {
-			counter.add(newCounter(i,1));
+			counter.add(util.newCounter(i,1));
 			for(int j = i+1; j < mentions.size(); j++) {
-				if(compareFrom(getMentionFrom(mentions.get(i)),getMentionFrom(mentions.get(j))) && compareTo(getMentionTo(mentions.get(i)),getMentionTo(mentions.get(j)))) {
+				if(util.compareFrom(util.getMentionFrom(mentions.get(i)),util.getMentionFrom(mentions.get(j))) && util.compareTo(util.getMentionTo(mentions.get(i)),util.getMentionTo(mentions.get(j)))) {
 					mentions.remove(j);
 					j--;
-					countIncreaser(counter.get(i));
+					util.countIncreaser(counter.get(i));
 				}
 			}
 		}
@@ -107,12 +62,13 @@ public class MentionsAnalysis extends Analysis {
 	}
 	
 	public List<Counter> setNameFromTo() {
-		List<Counter> counter = removeOccurence();
+		final MentionUtil util = new MentionUtil();
+		final List<Counter> counter = removeOccurence();
 		Mention mention;
 		for (int i = 0 ; i < mentions.size(); i++) {
 			mention = mentions.get(i);
-			setMentionFrom(mention,getMemberName(getMentionFrom(mention)));
-			setMentionTo(mention,getMemberName(getMentionTo(mention)));
+			util.setMentionFrom(mention,getMemberName(util.getMentionFrom(mention)));
+			util.setMentionTo(mention,getMemberName(util.getMentionTo(mention)));
 			mentions.set(i,mention);
 		}
 		return counter;
@@ -120,12 +76,13 @@ public class MentionsAnalysis extends Analysis {
 	
 	
 	public boolean mentionsList(final String input) {
+		final MentionUtil util = new MentionUtil();
 		try {
 			final Zip zip = new Zip();
 			final JSON setter = new JSON();
 			final List<String> conversations = zip.setConversationFile(input);
-			for (int i = 0; i < conversationsSize(conversations); i++) {
-				final String json = zip.getJSONFromFile(input,getConversationsJSON(conversations,i));
+			for (int i = 0; i < util.conversationsSize(conversations); i++) {
+				final String json = zip.getJSONFromFile(input,util.getConversationsJSON(conversations,i));
 				mentions.addAll(setter.setMentions(json));
 			}
 			removeWrongMentions();
@@ -139,6 +96,7 @@ public class MentionsAnalysis extends Analysis {
 	}
 	
 	public boolean mentionsListChannel(final String channel,final String path) {
+		final MentionUtil util = new MentionUtil();
 		final ChannelsAnalysis analysis = new ChannelsAnalysis();
 		if (analysis.channelsList(path)) {
 			if (analysis.channelExist(channel)) {
@@ -146,8 +104,8 @@ public class MentionsAnalysis extends Analysis {
 					final Zip zip = new Zip();
 					final JSON setter = new JSON();
 					final List<String> conversations = zip.setConversationFile(channel,path);
-					for (int i = 0; i < conversationsSize(conversations); i++) {
-						final String json = zip.getJSONFromFile(path,getConversationsJSON(conversations,i));
+					for (int i = 0; i < util.conversationsSize(conversations); i++) {
+						final String json = zip.getJSONFromFile(path,util.getConversationsJSON(conversations,i));
 						mentions.addAll(setter.setMentions(json));
 					}
 					removeWrongMentions();
