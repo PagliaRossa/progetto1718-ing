@@ -5,8 +5,9 @@ public class Counter {
 	private int index;
 	private int occurenceNumber;
 	
-	Counter() {
-		occurenceNumber = 1;
+	public Counter(final int indexNew,final int occurenceNumberNew) {
+		index = indexNew;
+		occurenceNumber = occurenceNumberNew;
 	}
 	
 	public int getIndex() {
