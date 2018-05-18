@@ -110,8 +110,8 @@ public class MentionsAnalysis extends Analysis {
 		return mentions.isEmpty();
 	}
 	
-	public void setNameFromTo() {
-		removeOccurence();
+	public List<Counter> setNameFromTo() {
+		List<Counter> counter = removeOccurence();
 		Mention mention;
 		for (int i = 0 ; i < mentions.size(); i++) {
 			mention = mentions.get(i);
@@ -119,6 +119,7 @@ public class MentionsAnalysis extends Analysis {
 			setMentionTo(mention,getMemberName(getMentionTo(mention)));
 			mentions.set(i,mention);
 		}
+		return counter;
 	}
 	
 	
