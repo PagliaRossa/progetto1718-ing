@@ -8,7 +8,7 @@ public class MentionsPrinter implements Printer {
 	
 	@Override
 	public String print(final List<?> list) {
-		MentionUtil util = new MentionUtil();
+		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer(33);
 		Mention mention;
 		buf.append("List of mentions :\n\n");
@@ -24,7 +24,7 @@ public class MentionsPrinter implements Printer {
 	}
 	
 	public String printFrom(final List<?> list,final String member) {
-		MentionUtil util = new MentionUtil();
+		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer(33);
 		Mention mention;
 		final String str = "List of mentions :\n\n";

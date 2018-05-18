@@ -27,7 +27,7 @@ public final class AppMain {
 	 */
 	public static void main(final String[] command) {
 		if (command.length > 0) {
-			Controller controller = new Controller(Arrays.copyOf(command,command.length));
+			final Controller controller = new Controller(Arrays.copyOf(command,command.length));
 			controller.showRequest();
 		} else {
 			System.out.println("Needs arguments , use sna4slack for help");
