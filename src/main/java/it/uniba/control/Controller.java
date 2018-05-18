@@ -67,7 +67,7 @@ public class Controller {
 				return true;
 			}
 		} else {
-			System.out.println("Command incomplete , use sna4slack for help");
+			System.out.println(this.needArguments);
 		}
 		return false;
 	}
@@ -96,14 +96,14 @@ public class Controller {
 				return true;
 			}
 		} else {
-			System.out.println("Command incomplete , use sna4slack for help");
+			System.out.println(this.needArguments);
 		}
 		return false;
 	}
 	
 	private boolean showMentionsList() {
 		if (command.length == 1) {
-			System.out.println("Command incomplete , use sna4slack for help");
+			System.out.println(this.needArguments);
 		} else {
 			MentionsAnalysis request = new MentionsAnalysis();
 			if (request.mentionsList(command[1])) {
@@ -132,7 +132,7 @@ public class Controller {
 				return true;
 			}
 		} else {
-			System.out.println("Command incomplete , use sna4slack for help");
+			System.out.println(this.needArguments);
 		}
 		return false;
 	}
@@ -168,7 +168,7 @@ public class Controller {
 					System.out.println("Member not found");
 				}
 			} else {
-				System.out.println("Command incomplete , use sna4slack for help");
+				System.out.println(this.needArguments);
 			}
 		}
 		return false;
@@ -206,7 +206,7 @@ public class Controller {
 				}
 			}
 		} else {
-			System.out.println("Command incomplete , use sna4slack for help");
+			System.out.println(this.needArguments);
 		}
 		return false;
 	}
