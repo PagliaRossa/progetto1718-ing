@@ -98,9 +98,9 @@ public class MentionsAnalysis extends Analysis {
 	public boolean mentionsListChannel(final String channel,final String path) {
 		final MentionUtil util = new MentionUtil();
 		final ChannelsAnalysis analysis = new ChannelsAnalysis();
-		if (analysis.channelsList(path)) {
-			if (analysis.channelExist(channel)) {
-				try {
+		try {
+			if (analysis.channelsList(path)) {
+				if (analysis.channelExist(channel)) {
 					final ZipReader zip = new ZipReader();
 					final JSONReader setter = new JSONReader();
 					final List<String> conversations = zip.setConversationFile(channel,path);
@@ -110,15 +110,15 @@ public class MentionsAnalysis extends Analysis {
 					}
 					removeWrongMentions();
 					return true;
-				} catch (ParseException p) {
-					System.out.println("JSON not valid!");
-				} catch (IOException i) {
-					System.out.println("File not found or invalid");
+				} else {
+					System.out.println("Channel not found");
+					return false;
 				}
-			} else {
-				System.out.println("Channel not found");
-				return false;
 			}
+		} catch (ParseException p) {
+			System.out.println("JSON not valid!");
+		} catch (IOException i) {
+			System.out.println("File not found or invalid!");
 		}
 		return false;
 	}
