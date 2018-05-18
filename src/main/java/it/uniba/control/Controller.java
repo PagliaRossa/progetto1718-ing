@@ -11,11 +11,11 @@ import it.uniba.util.MentionsPrinter;
 
 public class Controller {
 	
-	private String command[];
+	private final String command[];
 	private String needArguments = "Command incomplete , use sna4slack for help";
 	
-	public Controller(String[] commands) {
-		command = commands;
+	public Controller(final String[] commands) {
+		command = commands.clone();
 	}
 	
 	public boolean showRequest() {

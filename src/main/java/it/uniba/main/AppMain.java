@@ -1,5 +1,7 @@
 package it.uniba.main;
 
+import java.util.Arrays;
+
 import it.uniba.control.Controller;
 
 /**
@@ -25,7 +27,7 @@ public final class AppMain {
 	 */
 	public static void main(final String[] command) {
 		if (command.length > 0) {
-			Controller controller = new Controller(command);
+			Controller controller = new Controller(Arrays.copyOf(command,command.length));
 			controller.showRequest();
 		} else {
 			System.out.println("Needs arguments , use sna4slack for help");
