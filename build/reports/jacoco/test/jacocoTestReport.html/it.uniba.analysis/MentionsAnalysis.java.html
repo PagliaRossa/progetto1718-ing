@@ -114,13 +114,15 @@ import it.uniba.util.ZipReader;
 <span class="fc" id="L114">					System.out.println(&quot;Channel not found&quot;);</span>
 <span class="fc" id="L115">					return false;</span>
 				}
+			} else {
+<span class="fc" id="L118">				throw new IOException();</span>
 			}
-<span class="nc" id="L118">		} catch (ParseException p) {</span>
-<span class="nc" id="L119">			System.out.println(&quot;JSON not valid!&quot;);</span>
-<span class="nc" id="L120">		} catch (IOException i) {</span>
-<span class="nc" id="L121">			System.out.println(&quot;File not found or invalid!&quot;);</span>
-<span class="pc" id="L122">		}</span>
-<span class="fc" id="L123">		return false;</span>
+<span class="fc" id="L120">		} catch (ParseException p) {</span>
+<span class="fc" id="L121">			System.out.println(&quot;JSON not valid!&quot;);</span>
+<span class="fc" id="L122">		} catch (IOException i) {</span>
+<span class="fc" id="L123">			System.out.println(&quot;&quot;);</span>
+<span class="fc" id="L124">		}</span>
+<span class="fc" id="L125">		return false;</span>
 	}
 
 }

@@ -77,4 +77,11 @@ public class MentionsAnalysisTest {
 		final MentionsAnalysis mentions = new MentionsAnalysis();
 		assertFalse(mentions.mentionsListChannel(goodChannel,notFoundWorkspace));
 	}
+	
+	@Test
+	@DisplayName("Test parse json error MentionsAnalysis")
+	void parseJSONErrorChannel() {
+		final MentionsAnalysis mentions = new MentionsAnalysis();
+		assertFalse(mentions.mentionsListChannel("backus","res/file/test-wrongJSON.zip"));
+	}
 }
