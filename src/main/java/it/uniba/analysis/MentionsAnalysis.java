@@ -114,11 +114,13 @@ public class MentionsAnalysis extends Analysis {
 					System.out.println("Channel not found");
 					return false;
 				}
+			} else {
+				throw new IOException();
 			}
 		} catch (ParseException p) {
 			System.out.println("JSON not valid!");
 		} catch (IOException i) {
-			System.out.println("File not found or invalid!");
+			System.out.println("");
 		}
 		return false;
 	}
