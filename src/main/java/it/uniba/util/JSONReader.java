@@ -12,7 +12,7 @@ import it.uniba.data.Channel;
 import it.uniba.data.Member;
 import it.uniba.data.Mention;
 
-public class JSON {
+public class JSONReader {
 	
 	private int getArraySize(final JSONArray array) {
 		return array.size();

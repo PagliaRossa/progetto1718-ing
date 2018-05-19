@@ -7,8 +7,8 @@ import java.util.List;
 import org.json.simple.parser.ParseException;
 
 import it.uniba.data.Channel;
-import it.uniba.util.JSON;
-import it.uniba.util.Zip;
+import it.uniba.util.JSONReader;
+import it.uniba.util.ZipReader;
 
 public class ChannelsAnalysis extends Analysis {
 	
@@ -70,9 +70,9 @@ public class ChannelsAnalysis extends Analysis {
 	
 	public boolean channelsList(final String input) {
 		try {
-			final Zip zip = new Zip();
+			final ZipReader zip = new ZipReader();
 			final String json = zip.setChannelsFile(input);
-			final JSON setter = new JSON();
+			final JSONReader setter = new JSONReader();
 			channels = setter.setChannels(json);
 			return true;
 		} catch (ParseException p) {

@@ -10,7 +10,7 @@ import java.util.zip.ZipFile;
 
 import org.apache.commons.io.IOUtils;
 
-public class Zip {
+public class ZipReader {
 	
 	private Enumeration<? extends ZipEntry> getEntries(final ZipFile zip) {
 		return zip.entries();

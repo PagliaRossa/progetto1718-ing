@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MentionUtil.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SNA4Slack</a> &gt; <a href="index.source.html" class="el_package">it.uniba.util</a> &gt; <span class="el_source">MentionUtil.java</span></div><h1>MentionUtil.java</h1><pre class="source lang-java linenums">package it.uniba.util;
+
+import java.util.List;
+
+import it.uniba.data.Counter;
+import it.uniba.data.Mention;
+
+<span class="fc" id="L8">public class MentionUtil {</span>
+	
+	public String getMentionFrom(final Mention mention) {
+<span class="fc" id="L11">		return mention.getFrom();</span>
+	}
+	
+	public void setMentionFrom(final Mention mention,final String FromMember) {
+<span class="fc" id="L15">		mention.setFrom(FromMember);</span>
+<span class="fc" id="L16">	}</span>
+	
+	public void setMentionTo(final Mention mention,final String ToMember) {
+<span class="fc" id="L19">		mention.setTo(ToMember);</span>
+<span class="fc" id="L20">	}</span>
+	
+	public String getMentionTo(final Mention mention) {
+<span class="fc" id="L23">		return mention.getTo();</span>
+	}
+	
+	public boolean mentionContain(final String mention,final String contain) {
+<span class="fc" id="L27">		return mention.contains(contain);</span>
+	}
+	
+	public boolean mentionStartWith(final String mention,final String start) {
+<span class="fc" id="L31">		return mention.startsWith(start);</span>
+	}
+	
+	public boolean compareFrom(final String From1,final String From2) {
+<span class="fc" id="L35">		return From1.equals(From2);</span>
+	}
+	
+	public boolean compareTo(final String ToMember1,final String toMember2) {
+<span class="fc" id="L39">		return ToMember1.equals(toMember2);</span>
+	}
+	
+	public int conversationsSize(final List&lt;String&gt; conversations) {
+<span class="fc" id="L43">		return conversations.size();</span>
+	}
+	
+	public String getConversationsJSON(final List&lt;String&gt; conversations,final int index) {
+<span class="fc" id="L47">		return conversations.get(index);</span>
+	}
+	
+	public Counter newCounter(final int index,final int occurenceNumber) {
+<span class="fc" id="L51">		return new Counter(index,occurenceNumber);</span>
+	}
+	
+	public void countIncreaser(final Counter counter) {
+<span class="fc" id="L55">		counter.setOccurenceNumber(counter.getOccurenceNumber()+1);</span>
+<span class="fc" id="L56">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
