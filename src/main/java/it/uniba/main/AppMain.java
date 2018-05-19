@@ -12,6 +12,7 @@ import it.uniba.control.Controller;
  */
 public final class AppMain {
 
+	static public boolean check;
 	/**
 	 * Private constructor. Change if needed.
 	 */
@@ -26,11 +27,16 @@ public final class AppMain {
 	 *            The command-line arguments.
 	 */
 	public static void main(final String[] command) {
+		check = checkBoolean(command);
+	}
+	
+	public static boolean checkBoolean(final String... command) {
 		if (command.length > 0) {
 			final Controller controller = new Controller(Arrays.copyOf(command,command.length));
-			controller.showRequest();
+			return controller.showRequest();
 		} else {
 			System.out.println("Needs arguments , use sna4slack for help");
+			return false;
 		}
 	}
 }

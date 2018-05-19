@@ -12,6 +12,7 @@ import it.uniba.control.Controller;
  */
 public final class AppMain {
 
+	static public boolean check;
 	/**
 	 * Private constructor. Change if needed.
 	 */
@@ -26,12 +27,17 @@ public final class AppMain {
 	 *            The command-line arguments.
 	 */
 	public static void main(final String[] command) {
-<span class="nc bnc" id="L29" title="All 2 branches missed.">		if (command.length &gt; 0) {</span>
-<span class="nc" id="L30">			final Controller controller = new Controller(Arrays.copyOf(command,command.length));</span>
-<span class="nc" id="L31">			controller.showRequest();</span>
-<span class="nc" id="L32">		} else {</span>
-<span class="nc" id="L33">			System.out.println(&quot;Needs arguments , use sna4slack for help&quot;);</span>
+<span class="fc" id="L30">		check = checkBoolean(command);</span>
+<span class="fc" id="L31">	}</span>
+	
+	public static boolean checkBoolean(final String... command) {
+<span class="fc bfc" id="L34" title="All 2 branches covered.">		if (command.length &gt; 0) {</span>
+<span class="fc" id="L35">			final Controller controller = new Controller(Arrays.copyOf(command,command.length));</span>
+<span class="fc" id="L36">			return controller.showRequest();</span>
+		} else {
+<span class="fc" id="L38">			System.out.println(&quot;Needs arguments , use sna4slack for help&quot;);</span>
+<span class="fc" id="L39">			return false;</span>
 		}
-<span class="nc" id="L35">	}</span>
+	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
