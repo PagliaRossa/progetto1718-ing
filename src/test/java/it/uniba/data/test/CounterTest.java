@@ -39,7 +39,7 @@ public class CounterTest {
 	}
 	
 	@Test
-	@DisplayName("Test Counter")
+	@DisplayName("Test setIndex Counter")
 	void setIndex() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		final Counter counter = new Counter(10,10);
 		counter.setIndex(11);
@@ -49,7 +49,7 @@ public class CounterTest {
 	}
 	
 	@Test
-	@DisplayName("Test Counter")
+	@DisplayName("Test setOccurence Counter")
 	void setOccurence() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		final Counter counter = new Counter(10,10);
 		counter.setOccurenceNumber(11);

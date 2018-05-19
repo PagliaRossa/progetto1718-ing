@@ -64,7 +64,7 @@ public class ChannelTest {
 	}
 	
 	@Test
-	@DisplayName("Test channel")
+	@DisplayName("Test setId channel")
 	void setId() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		final Channel channel = new Channel("9",user,new ArrayList<>());
 		channel.setId("0");
@@ -74,7 +74,7 @@ public class ChannelTest {
 	}
 	
 	@Test
-	@DisplayName("Test channel")
+	@DisplayName("Test setName channel")
 	void setName() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		final Channel channel = new Channel("9",user,new ArrayList<>());
 		channel.setName("mimmo");
@@ -84,7 +84,7 @@ public class ChannelTest {
 	}
 	
 	@Test
-	@DisplayName("Test channel")
+	@DisplayName("Test setMembers channel")
 	void setMembers() throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
 		final Channel channel = new Channel("9",user,new ArrayList<>());
 		final List<String> members = new ArrayList<>();
