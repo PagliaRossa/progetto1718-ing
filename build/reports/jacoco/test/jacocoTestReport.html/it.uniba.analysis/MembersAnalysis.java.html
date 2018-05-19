@@ -3,16 +3,16 @@
 import java.io.IOException;
 
 import org.json.simple.parser.ParseException;
-import it.uniba.util.JSON;
-import it.uniba.util.Zip;
+import it.uniba.util.JSONReader;
+import it.uniba.util.ZipReader;
 
 <span class="fc" id="L9">public class MembersAnalysis extends Analysis {</span>
 	
 	public boolean membersList(final String input) {
 		try {
-<span class="fc" id="L13">			final Zip zip = new Zip();</span>
+<span class="fc" id="L13">			final ZipReader zip = new ZipReader();</span>
 <span class="fc" id="L14">			final String json = zip.setUsersFile(input);</span>
-<span class="fc" id="L15">			final JSON setter = new JSON();</span>
+<span class="fc" id="L15">			final JSONReader setter = new JSONReader();</span>
 <span class="fc" id="L16">			members = setter.setMembers(json);</span>
 <span class="fc" id="L17">			return true;</span>
 <span class="fc" id="L18">		} catch (ParseException p) {</span>
