@@ -50,7 +50,7 @@ class MentionsWeighedRequest {
 		return false;
 	}
 
-	boolean showMentionsListFromWeighed(String[] command) {
+	boolean showMentionsListFromWeighed(final String... command) {
 		final ControllerUtil util = new ControllerUtil();
 		if (command.length == 3) {
 			final MentionsAnalysis request = new MentionsAnalysis();
@@ -59,7 +59,7 @@ class MentionsWeighedRequest {
 				members.membersList(util.getCommand(2,command));
 				if (members.isInList(util.getCommand(1,command))) {
 					request.setMembers(members.getMembers());
-					List<Counter> occurence = request.setNameFromTo();
+					final List<Counter> occurence = request.setNameFromTo();
 					final MentionsPrinter printer = new MentionsPrinter();
 					System.out.println(printer.printFromWeighed(request.getMentions(),util.getCommand(1,command),occurence));
 					return true;
@@ -74,7 +74,7 @@ class MentionsWeighedRequest {
 				members.membersList(util.getCommand(3,command));
 				if (members.isInList(util.getCommand(1,command))){
 					request.setMembers(members.getMembers());
-					List<Counter> occurence = request.setNameFromTo();
+					final List<Counter> occurence = request.setNameFromTo();
 					final MentionsPrinter printer = new MentionsPrinter();
 					System.out.println(printer.printFromWeighed(request.getMentions(),util.getCommand(1,command), occurence));
 					return true;

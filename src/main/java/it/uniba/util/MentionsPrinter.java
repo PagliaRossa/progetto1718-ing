@@ -101,7 +101,7 @@ public class MentionsPrinter implements Printer {
 		}
 	}
 
-	public String printFromWeighed( final List<Mention> list, String member, final List<Counter> occurence) {
+	public String printFromWeighed( final List<Mention> list, final String member, final List<Counter> occurence) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer(33);
 		Mention mention;
