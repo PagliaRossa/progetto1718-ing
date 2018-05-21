@@ -91,7 +91,7 @@ class MentionsWeighedRequest {
 	boolean showMentionsListToWeighed(final String... command) {
 		final ControllerUtil util = new ControllerUtil();
 		if (command.length == 4) {
-			int over = Integer.parseUnsignedInt(util.getCommand(2, command));
+			int over = Integer.parseInt(util.getCommand(2, command));
 			try {
 				if (over >= 0) {
 					final MentionsAnalysis request = new MentionsAnalysis();
@@ -108,12 +108,14 @@ class MentionsWeighedRequest {
 							System.out.println(memberNotFound);
 						}
 					}
+				} else {
+					throw new NumberFormatException();
 				}
 			} catch (NumberFormatException e) {
 				System.out.println("Number not valid!");
 			}
 		} else if (command.length == 5) {
-			int over = Integer.parseUnsignedInt(util.getCommand(3, command));
+			int over = Integer.parseInt(util.getCommand(3, command));
 			try {
 				if (over >= 0) {
 					final MentionsAnalysis request = new MentionsAnalysis();
@@ -130,6 +132,8 @@ class MentionsWeighedRequest {
 							System.out.println(memberNotFound);
 						}
 					}
+				} else {
+					throw  new NumberFormatException();
 				}
 			} catch (NumberFormatException e) {
 				System.out.println("Number not valid");
