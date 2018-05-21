@@ -69,6 +69,9 @@ public class Controller {
 		if (util.compareCommand(util.getCommand(0, command), "mentionsListWeighed")) {
 			final MentionsWeighedRequest request = new MentionsWeighedRequest();
 			return request.showMentionsListWeighed(command);
+		} else if (util.compareCommand(util.getCommand(0, command), "mentionsListChannelWeighed")) {
+			final MentionsWeighedRequest request = new MentionsWeighedRequest();
+			return request.showMentionsListChannelWeighed(command);
 		} else {
 			return help();
 		}
