@@ -5,7 +5,7 @@ import it.uniba.analysis.MentionsAnalysis;
 import it.uniba.util.ControllerUtil;
 import it.uniba.util.MentionsPrinter;
 
-public class MentionsToRequest {
+class MentionsToRequest {
 	
 	static private String needArguments = "Command incomplete , use sna4slack for help";
 	static private String memberNotFound = "Member not Found";
