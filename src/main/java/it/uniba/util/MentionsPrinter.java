@@ -101,4 +101,29 @@ public class MentionsPrinter implements Printer {
 		}
 	}
 
+	public String printFromWeighed( final List<Mention> list, String member, final List<Counter> occurence) {
+		final MentionUtil util = new MentionUtil();
+		final StringBuffer buf = new StringBuffer(33);
+		Mention mention;
+		final String str = listMentions;
+		buf.append(str);
+		for (int i = 0; i < list.size(); i++) {
+			mention = (Mention) list.get(i);
+			if (util.compareFrom(util.getMentionFrom(mention),member)) {
+				buf.append(fromMember);
+				buf.append(util.getMentionFrom(mention));
+				buf.append(toMember);
+				buf.append(util.getMentionTo(mention));
+				buf.append(' ');
+				buf.append(util.getWeight(occurence.get(i)));
+				buf.append('\n');
+			}
+		}
+		if (buf.toString().equals(str)) {
+			return "Can't find mentions for this member";
+		} else {
+			return buf.toString();
+		}
+	}
+
 }
