@@ -88,5 +88,55 @@ class MentionsWeighedRequest {
 		return false;
 	}
 
-
+	boolean showMentionsListToWeighed(final String... command) {
+		final ControllerUtil util = new ControllerUtil();
+		if (command.length == 4) {
+			int over = Integer.parseUnsignedInt(util.getCommand(2, command));
+			try {
+				if (over > 0) {
+					final MentionsAnalysis request = new MentionsAnalysis();
+					if (request.mentionsList(util.getCommand(2,command))) {
+						final MembersAnalysis members = new MembersAnalysis();
+						members.membersList(util.getCommand(2,command));
+						if (members.isInList(util.getCommand(1,command))) {
+							request.setMembers(members.getMembers());
+							List<Counter> occurence = request.setNameFromTo();
+							final MentionsPrinter printer = new MentionsPrinter();
+							System.out.println(printer.printToWeighed(request.getMentions(),util.getCommand(1,command),occurence,over));
+							return true;
+						} else {
+							System.out.println(memberNotFound);
+						}
+					}
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("Number not valid!");
+			}
+		} else if (command.length == 5) {
+			int over = Integer.parseUnsignedInt(util.getCommand(2, command));
+			try {
+				if (over > 0) {
+					final MentionsAnalysis request = new MentionsAnalysis();
+					if (request.mentionsListChannel(util.getCommand(2,command),util.getCommand(3,command))) {
+						final MembersAnalysis members = new MembersAnalysis();
+						members.membersList(util.getCommand(3,command));
+						if (members.isInList(util.getCommand(1,command))) {
+							request.setMembers(members.getMembers());
+							List<Counter> occurence = request.setNameFromTo();
+							final MentionsPrinter printer = new MentionsPrinter();
+							System.out.println(printer.printToWeighed(request.getMentions(),util.getCommand(1,command),occurence,over));
+							return true;
+						} else {
+							System.out.println(memberNotFound);
+						}
+					}
+				}
+			} catch (NumberFormatException e) {
+				System.out.println("Number not valid");
+			}
+		} else {
+			System.out.println(needArguments);
+		}
+		return false;
+	}
 }
