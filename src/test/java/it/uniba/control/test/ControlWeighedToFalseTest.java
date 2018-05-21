@@ -27,7 +27,7 @@ public class ControlWeighedToFalseTest {
 	@Test
 	@DisplayName("Test bad user good channel mentionsListToWeighed")
 	void badUserChannel() {
-		final Controller request = new Controller(new String[] {"mentionsListToWeighed","us","bernerslee","3","res/file/testName.zip"});
+		final Controller request = new Controller(new String[] {"mentionsListToWeighed","us","bernerslee","3","res/file/test.zip"});
 		assertFalse(request.showRequest());
 	}
 	
