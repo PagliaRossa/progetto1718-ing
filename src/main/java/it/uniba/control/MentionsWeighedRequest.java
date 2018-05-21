@@ -93,11 +93,11 @@ class MentionsWeighedRequest {
 		if (command.length == 4) {
 			int over = Integer.parseUnsignedInt(util.getCommand(2, command));
 			try {
-				if (over > 0) {
+				if (over >= 0) {
 					final MentionsAnalysis request = new MentionsAnalysis();
-					if (request.mentionsList(util.getCommand(2,command))) {
+					if (request.mentionsList(util.getCommand(3,command))) {
 						final MembersAnalysis members = new MembersAnalysis();
-						members.membersList(util.getCommand(2,command));
+						members.membersList(util.getCommand(3,command));
 						if (members.isInList(util.getCommand(1,command))) {
 							request.setMembers(members.getMembers());
 							List<Counter> occurence = request.setNameFromTo();
@@ -113,13 +113,13 @@ class MentionsWeighedRequest {
 				System.out.println("Number not valid!");
 			}
 		} else if (command.length == 5) {
-			int over = Integer.parseUnsignedInt(util.getCommand(2, command));
+			int over = Integer.parseUnsignedInt(util.getCommand(3, command));
 			try {
-				if (over > 0) {
+				if (over >= 0) {
 					final MentionsAnalysis request = new MentionsAnalysis();
-					if (request.mentionsListChannel(util.getCommand(2,command),util.getCommand(3,command))) {
+					if (request.mentionsListChannel(util.getCommand(2,command),util.getCommand(4,command))) {
 						final MembersAnalysis members = new MembersAnalysis();
-						members.membersList(util.getCommand(3,command));
+						members.membersList(util.getCommand(4,command));
 						if (members.isInList(util.getCommand(1,command))) {
 							request.setMembers(members.getMembers());
 							List<Counter> occurence = request.setNameFromTo();
