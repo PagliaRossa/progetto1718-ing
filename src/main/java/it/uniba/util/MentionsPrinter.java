@@ -7,17 +7,20 @@ import it.uniba.data.Mention;
 
 public class MentionsPrinter implements Printer {
 	
+	static String listMentions = "List of mentions :\n\n";
+	static String fromMember = "From ";
+	static String toMember = " to ";
 	@Override
 	public String print(final List<?> list) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer(33);
 		Mention mention;
-		buf.append("List of mentions :\n\n");
+		buf.append(listMentions);
 		for (int i = 0; i < list.size(); i++) {
 			mention = (Mention) list.get(i);
-			buf.append("From ");
+			buf.append(fromMember);
 			buf.append(util.getMentionFrom(mention));
-			buf.append(" to ");
+			buf.append(toMember);
 			buf.append(util.getMentionTo(mention));
 			buf.append('\n');
 		}
@@ -28,14 +31,14 @@ public class MentionsPrinter implements Printer {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer(33);
 		Mention mention;
-		final String str = "List of mentions :\n\n";
+		final String str = listMentions;
 		buf.append(str);
 		for (int i = 0; i < list.size(); i++) {
 			mention = (Mention) list.get(i);
 			if (util.compareFrom(util.getMentionFrom(mention),member)) {
-				buf.append("From ");
+				buf.append(fromMember);
 				buf.append(util.getMentionFrom(mention));
-				buf.append(" to ");
+				buf.append(toMember);
 				buf.append(util.getMentionTo(mention));
 				buf.append('\n');
 			}
@@ -51,14 +54,14 @@ public class MentionsPrinter implements Printer {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer();
 		Mention mention;
-		final String str = "List of mentions :\n\n";
+		final String str = listMentions;
 		buf.append(str);
 		for (int i = 0; i < list.size(); i++) {
 			mention = (Mention) list.get(i);
 			if (util.compareTo(util.getMentionTo(mention),member)) {
-				buf.append("From ");
+				buf.append(fromMember);
 				buf.append(util.getMentionFrom(mention));
-				buf.append(" to ");
+				buf.append(toMember);
 				buf.append(util.getMentionTo(mention));
 				buf.append('\n');
 			}
@@ -70,16 +73,16 @@ public class MentionsPrinter implements Printer {
 		}
 	}
 	
-	public String printWeighed(final List<?> list,List<Counter> occurence) {
+	public String printWeighed(final List<?> list, final List<Counter> occurence) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer(33);
 		Mention mention;
-		buf.append("List of mentions :\n\n");
+		buf.append(listMentions);
 		for (int i = 0; i < list.size(); i++) {
 			mention = (Mention) list.get(i);
-			buf.append("From ");
+			buf.append(fromMember);
 			buf.append(util.getMentionFrom(mention));
-			buf.append(" to ");
+			buf.append(toMember);
 			buf.append(util.getMentionTo(mention));
 			buf.append(' ');
 			buf.append(util.getWeight(occurence.get(i)));
