@@ -10,6 +10,7 @@ public class MentionsPrinter implements Printer {
 	static String listMentions = "List of mentions :\n\n";
 	static String fromMember = "From ";
 	static String toMember = " to ";
+	
 	@Override
 	public String print(final List<?> list) {
 		final MentionUtil util = new MentionUtil();
@@ -24,7 +25,12 @@ public class MentionsPrinter implements Printer {
 			buf.append(util.getMentionTo(mention));
 			buf.append('\n');
 		}
-		return buf.toString();
+		
+		if (buf.toString().equals(listMentions)) {
+			return "Can't find mentions !";
+		} else {
+			return buf.toString();
+		}
 	}
 	
 	public String printFrom(final List<?> list,final String member) {
@@ -88,7 +94,11 @@ public class MentionsPrinter implements Printer {
 			buf.append(util.getWeight(occurence.get(i)));
 			buf.append('\n');
 		}
-		return buf.toString();
+		if (buf.toString().equals(listMentions)) {
+			return "Can't find mentions !";
+		} else {
+			return buf.toString();
+		}
 	}
 
 }
