@@ -8,11 +8,11 @@ import it.uniba.data.Counter;
 import it.uniba.util.ControllerUtil;
 import it.uniba.util.MentionsPrinter;
 
-class MentionsWeighed {
+class MentionsWeighedRequest {
 	
 static private String needArguments = "Command incomplete , use sna4slack for help";
 	
-	boolean showMentionsListWeighted(final String... command) {
+	boolean showMentionsListWeighed(final String... command) {
 		final ControllerUtil util = new ControllerUtil();
 		if (command.length == 1) {
 			System.out.println(needArguments);
