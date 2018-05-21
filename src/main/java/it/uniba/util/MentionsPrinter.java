@@ -2,6 +2,7 @@ package it.uniba.util;
 
 import java.util.List;
 
+import it.uniba.data.Counter;
 import it.uniba.data.Mention;
 
 public class MentionsPrinter implements Printer {
@@ -67,6 +68,24 @@ public class MentionsPrinter implements Printer {
 		} else {
 			return buf.toString();
 		}
+	}
+	
+	public String printWeighed(final List<?> list,List<Counter> occurence) {
+		final MentionUtil util = new MentionUtil();
+		final StringBuffer buf = new StringBuffer(33);
+		Mention mention;
+		buf.append("List of mentions :\n\n");
+		for (int i = 0; i < list.size(); i++) {
+			mention = (Mention) list.get(i);
+			buf.append("From ");
+			buf.append(util.getMentionFrom(mention));
+			buf.append(" to ");
+			buf.append(util.getMentionTo(mention));
+			buf.append(' ');
+			buf.append(util.getWeight(occurence.get(i)));
+			buf.append('\n');
+		}
+		return buf.toString();
 	}
 
 }

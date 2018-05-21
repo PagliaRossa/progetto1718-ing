@@ -24,8 +24,9 @@ static private String needArguments = "Command incomplete , use sna4slack for he
 				request.setMembers(members.getMembers());
 				List<Counter> occurence = request.setNameFromTo();
 				final MentionsPrinter printer = new MentionsPrinter();
-				System.out.println(printer.printWeighedList(request.getMentions(),occurence));
+				System.out.println(printer.printWeighed(request.getMentions(),occurence));
 				return true;
+			}
 		}
 		return false;
 	}

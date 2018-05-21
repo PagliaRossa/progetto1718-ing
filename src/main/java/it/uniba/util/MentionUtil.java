@@ -54,5 +54,9 @@ public class MentionUtil {
 	public void countIncreaser(final Counter counter) {
 		counter.setOccurenceNumber(counter.getOccurenceNumber()+1);
 	}
+	
+	public int getWeight(final Counter counter) {
+		return counter.getOccurenceNumber();
+	}
 
 }
