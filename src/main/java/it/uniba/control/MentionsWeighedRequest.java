@@ -72,19 +72,19 @@ class MentionsWeighedRequest {
 			if (request.mentionsListChannel(util.getCommand(2,command),util.getCommand(3,command))) {
 				final MembersAnalysis members = new MembersAnalysis();
 				members.membersList(util.getCommand(3,command));
-				if (members.isInList(util.getCommand(1,command))){
+				if (members.isInList(util.getCommand(1,command))) {
 					request.setMembers(members.getMembers());
 					final List<Counter> occurence = request.setNameFromTo();
 					final MentionsPrinter printer = new MentionsPrinter();
 					System.out.println(printer.printFromWeighed(request.getMentions(),util.getCommand(1,command), occurence));
 					return true;
-					}
 				} else {
 					System.out.println(memberNotFound);
 				}
-			} else {
-				System.out.println(needArguments);
 			}
+		} else {
+			System.out.println(needArguments);
+		}
 		return false;
 	}
 
