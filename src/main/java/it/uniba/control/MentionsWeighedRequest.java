@@ -22,7 +22,7 @@ static private String needArguments = "Command incomplete , use sna4slack for he
 				final MembersAnalysis members = new MembersAnalysis();
 				members.membersList(util.getCommand(1,command));
 				request.setMembers(members.getMembers());
-				List<Counter> occurence = request.setNameFromTo();
+				final List<Counter> occurence = request.setNameFromTo();
 				final MentionsPrinter printer = new MentionsPrinter();
 				System.out.println(printer.printWeighed(request.getMentions(),occurence));
 				return true;
@@ -31,7 +31,7 @@ static private String needArguments = "Command incomplete , use sna4slack for he
 		return false;
 	}
 	
-	boolean showMentionsListChannel(final String... command) {
+	boolean showMentionsListChannelWeighed(final String... command) {
 		final ControllerUtil util = new ControllerUtil();
 		if (command.length == 3) {
 			final MentionsAnalysis request = new MentionsAnalysis();
@@ -39,9 +39,9 @@ static private String needArguments = "Command incomplete , use sna4slack for he
 				final MembersAnalysis members = new MembersAnalysis();
 				members.membersList(util.getCommand(2,command));
 				request.setMembers(members.getMembers());
-				request.setNameFromTo();
+				final List<Counter> occurence = request.setNameFromTo();
 				final MentionsPrinter printer = new MentionsPrinter();
-				System.out.println(printer.print(request.getMentions()));
+				System.out.println(printer.printWeighed(request.getMentions(),occurence));
 				return true;
 			}
 		} else {
