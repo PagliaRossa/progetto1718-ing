@@ -58,8 +58,24 @@ public class Controller {
 			final MentionsToRequest request = new MentionsToRequest();
 			return request.showMentionsListTo(command);
 		} else {
+			return weight();
+		}
+	}
+	
+	private boolean weight() {
+		
+		final ControllerUtil util = new ControllerUtil();
+		
+		if (util.compareCommand(util.getCommand(0, command), "mentionsListWeighed")) {
+			final MentionsWeighedRequest request = new MentionsWeighedRequest();
+			return request.showMentionsListWeighed(command);
+		} else if (util.compareCommand(util.getCommand(0, command), "mentionsListChannelWeighed")) {
+			final MentionsWeighedRequest request = new MentionsWeighedRequest();
+			return request.showMentionsListChannelWeighed(command);
+		} else {
 			return help();
 		}
+		
 	}
 	
 	private boolean help() {

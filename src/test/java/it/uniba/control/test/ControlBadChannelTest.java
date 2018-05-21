@@ -39,4 +39,11 @@ public class ControlBadChannelTest {
 		final Controller control = new Controller(new String[] {"mentionsListTo","wrongme","wrongchannel",workspace});
 		assertFalse(control.showRequest());
 	}
+	
+	@Test
+	@DisplayName("Test bad channel mentionsListWeighed Control")
+	void badMentionsChannelWeighed() {
+		final Controller control = new Controller(new String[] {"mentionsListChannelWeighed","wrn",workspace});
+		assertFalse(control.showRequest());
+	}
 }
