@@ -126,7 +126,7 @@ public class MentionsPrinter implements Printer {
 		}
 	}
 	
-	public String printToWeighed(final List<?> list,final String member,List<Counter> occurence,int over) {
+	public String printToWeighed(final List<?> list,final String member,final List<Counter> occurence,final int over) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer();
 		Mention mention;
@@ -134,16 +134,14 @@ public class MentionsPrinter implements Printer {
 		buf.append(str);
 		for (int i = 0; i < list.size(); i++) {
 			mention = (Mention) list.get(i);
-			if (util.compareTo(util.getMentionTo(mention),member)) {
-				if (util.getWeight(occurence.get(i)) > over) {
-					buf.append(fromMember);
-					buf.append(util.getMentionFrom(mention));
-					buf.append(toMember);
-					buf.append(util.getMentionTo(mention));
-					buf.append(' ');
-					buf.append(util.getWeight(occurence.get(i)));
-					buf.append('\n');
-				}
+			if (util.compareTo(util.getMentionTo(mention),member) && util.getWeight(occurence.get(i)) > over) {
+				buf.append(fromMember);
+				buf.append(util.getMentionFrom(mention));
+				buf.append(toMember);
+				buf.append(util.getMentionTo(mention));
+				buf.append(' ');
+				buf.append(util.getWeight(occurence.get(i)));
+				buf.append('\n');
 			}
 		}
 		if (buf.toString().equals(str)) {

@@ -1,17 +1,19 @@
 package it.uniba.control;
 
+import java.util.List;
 
 import it.uniba.analysis.MembersAnalysis;
 import it.uniba.analysis.MentionsAnalysis;
+import it.uniba.data.Counter;
 import it.uniba.util.ControllerUtil;
 import it.uniba.util.MentionsPrinter;
 
-class MentionsToRequest {
+public class MentionsFromWeighedRequest {
 	
 	static private String needArguments = "Command incomplete , use sna4slack for help";
 	static private String memberNotFound = "Member not Found";
 	
-	boolean showMentionsListTo(final String... command) {
+	boolean showMentionsListFromWeighed(final String... command) {
 		final ControllerUtil util = new ControllerUtil();
 		if (command.length == 3) {
 			final MentionsAnalysis request = new MentionsAnalysis();
@@ -20,9 +22,9 @@ class MentionsToRequest {
 				members.membersList(util.getCommand(2,command));
 				if (members.isInList(util.getCommand(1,command))) {
 					request.setMembers(members.getMembers());
-					request.setNameFromTo();
+					final List<Counter> occurence = request.setNameFromTo();
 					final MentionsPrinter printer = new MentionsPrinter();
-					System.out.println(printer.printTo(request.getMentions(),util.getCommand(1,command)));
+					System.out.println(printer.printFromWeighed(request.getMentions(),util.getCommand(1,command),occurence));
 					return true;
 				} else {
 					System.out.println(memberNotFound);
@@ -35,9 +37,9 @@ class MentionsToRequest {
 				members.membersList(util.getCommand(3,command));
 				if (members.isInList(util.getCommand(1,command))) {
 					request.setMembers(members.getMembers());
-					request.setNameFromTo();
+					final List<Counter> occurence = request.setNameFromTo();
 					final MentionsPrinter printer = new MentionsPrinter();
-					System.out.println(printer.printTo(request.getMentions(),util.getCommand(1,command)));
+					System.out.println(printer.printFromWeighed(request.getMentions(),util.getCommand(1,command), occurence));
 					return true;
 				} else {
 					System.out.println(memberNotFound);
