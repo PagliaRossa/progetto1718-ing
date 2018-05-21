@@ -1,4 +1,4 @@
-# sna4slack [![Build Status](https://travis-ci.com/softeng-inf-uniba/progetto1718-bernerslee.svg?token=2ZNNvq3zzQ54oLQe1Y2s&branch=master)](https://travis-ci.com/softeng-inf-uniba/progetto1718-bernerslee) [![Coverage Status](https://coveralls.io/repos/github/softeng-inf-uniba/progetto1718-bernerslee/badge.svg?t=oQfnAD&service=github)](https://coveralls.io/github/softeng-inf-uniba/progetto1718-bernerslee)
+# sna4slack [![Build Status](https://travis-ci.com/softeng-inf-uniba/progetto1718-bernerslee.svg?token=2ZNNvq3zzQ54oLQe1Y2s&branch=master)](https://travis-ci.com/softeng-inf-uniba/progetto1718-bernerslee) [![Coverage Status](https://coveralls.io/repos/github/softeng-inf-uniba/progetto1718-bernerslee/badge.svg?branch=master&t=oQfnAD)](https://coveralls.io/github/softeng-inf-uniba/progetto1718-bernerslee?branch=master)
 La struttura della repository si presenta nel seguente modo:
 ```
 |-- build
