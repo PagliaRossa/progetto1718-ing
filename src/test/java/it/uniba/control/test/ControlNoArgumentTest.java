@@ -72,5 +72,4 @@ public class ControlNoArgumentTest {
 		final Controller control = new Controller(new String[] {"mentionsListTo"});
 		assertFalse(control.showRequest());
 	}
-
 }
