@@ -11,11 +11,19 @@ import it.uniba.data.Mention;
 import it.uniba.util.JSONReader;
 import it.uniba.util.MentionUtil;
 import it.uniba.util.ZipReader;
-
-public final class MentionsAnalysis extends Analysis {
+/**
+ * Subclass of Analysis.
+ * Analyzes Mentions of zipFile.
+ *
+ */
+public class MentionsAnalysis extends Analysis {
 
 	private final List<Mention> mentions = new ArrayList<>();
 
+	/**
+	 * Get List of Mentions.
+	 * @return List of Mentions
+	 */
 	public List<Mention> getMentions() {
 		return mentions;
 	}
@@ -63,6 +71,10 @@ public final class MentionsAnalysis extends Analysis {
 		return counter;
 	}
 
+	/**
+	 * Set Name of 'From' and 'To' Mentions.
+	 * @return List of Duplicated Counter Mentions
+	 */
 	public List<Counter> setNameFromTo() {
 		final MentionUtil util = new MentionUtil();
 		final List<Counter> counter = removeOccurence();
@@ -76,6 +88,11 @@ public final class MentionsAnalysis extends Analysis {
 		return counter;
 	}
 
+	/**
+	 * List of all Mentions in zipFile.
+	 * @param input Path of zipFile
+	 * @return Boolean of Accomplished (or not) Operation
+	 */
 	public boolean mentionsList(final String input) {
 		final MentionUtil util = new MentionUtil();
 		try {
@@ -96,6 +113,12 @@ public final class MentionsAnalysis extends Analysis {
 		return false;
 	}
 
+	/**
+	 * List of all Mentions in Specific Channels in zipFile.
+	 * @param channel Name of Specific Channel
+	 * @param path Path of zipFile
+	 * @return Boolean of Accomplished (or not) Operation
+	 */
 	public boolean mentionsListChannel(final String channel, final String path) {
 		final MentionUtil util = new MentionUtil();
 		final ChannelsAnalysis analysis = new ChannelsAnalysis();
@@ -125,5 +148,4 @@ public final class MentionsAnalysis extends Analysis {
 		}
 		return false;
 	}
-
 }

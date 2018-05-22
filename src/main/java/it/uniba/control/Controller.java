@@ -3,14 +3,27 @@ package it.uniba.control;
 import it.uniba.util.ControllerUtil;
 import it.uniba.util.HelpPrinter;
 
+/**
+ * 
+ * Control and Delivers to Specific Control Class (in Control Package).
+ *
+ */
 public final class Controller {
 
 	private final String[] command;
 
+	/**
+	 * Constructor of Controller class.
+	 * @param commands String of Specific User Command
+	 */
 	public Controller(final String... commands) {
 		command = commands.clone();
 	}
 
+	/**
+	 * Control Specific User Request.
+	 * @return Boolean of Accomplished (or not) Operation
+	 */
 	public boolean showRequest() {
 		final ControllerUtil util = new ControllerUtil();
 		if (util.compareCommand(util.getCommand(0, command), "membersList")) {

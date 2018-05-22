@@ -60,7 +60,7 @@ public final class JSONReader {
 	 * Check if object contain a specific key.
 	 * @param obj Specific Object
 	 * @param keyMatch Specific key
-	 * @return boolean - True or False if obj contains or not contains key 
+	 * @return boolean - True or False if obj contains or not contains key
 	 */
 	private boolean containsKey(final JSONObject obj, final String keyMatch) {
 		return obj.containsKey(keyMatch);
