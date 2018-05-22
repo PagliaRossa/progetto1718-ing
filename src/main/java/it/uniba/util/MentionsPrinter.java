@@ -5,12 +5,12 @@ import java.util.List;
 import it.uniba.data.Counter;
 import it.uniba.data.Mention;
 
-public class MentionsPrinter implements Printer {
-	
-	static String listMentions = "List of mentions :\n\n";
-	static String fromMember = "From ";
-	static String toMember = " to ";
-	
+public final class MentionsPrinter implements Printer {
+
+	private static String listMentions = "List of mentions :\n\n";
+	private static String fromMember = "From ";
+	private static String toMember = " to ";
+
 	@Override
 	public String print(final List<?> list) {
 		final MentionUtil util = new MentionUtil();
@@ -25,15 +25,14 @@ public class MentionsPrinter implements Printer {
 			buf.append(util.getMentionTo(mention));
 			buf.append('\n');
 		}
-		
 		if (buf.toString().equals(listMentions)) {
 			return "Can't find mentions !";
 		} else {
 			return buf.toString();
 		}
 	}
-	
-	public String printFrom(final List<?> list,final String member) {
+
+	public String printFrom(final List<?> list, final String member) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer(33);
 		Mention mention;
@@ -41,7 +40,7 @@ public class MentionsPrinter implements Printer {
 		buf.append(str);
 		for (int i = 0; i < list.size(); i++) {
 			mention = (Mention) list.get(i);
-			if (util.compareFrom(util.getMentionFrom(mention),member)) {
+			if (util.compareFrom(util.getMentionFrom(mention), member)) {
 				buf.append(fromMember);
 				buf.append(util.getMentionFrom(mention));
 				buf.append(toMember);
@@ -55,8 +54,8 @@ public class MentionsPrinter implements Printer {
 			return buf.toString();
 		}
 	}
-	
-	public String printTo(final List<?> list,final String member) {
+
+	public String printTo(final List<?> list, final String member) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer();
 		Mention mention;
@@ -64,7 +63,7 @@ public class MentionsPrinter implements Printer {
 		buf.append(str);
 		for (int i = 0; i < list.size(); i++) {
 			mention = (Mention) list.get(i);
-			if (util.compareTo(util.getMentionTo(mention),member)) {
+			if (util.compareTo(util.getMentionTo(mention), member)) {
 				buf.append(fromMember);
 				buf.append(util.getMentionFrom(mention));
 				buf.append(toMember);
@@ -78,7 +77,7 @@ public class MentionsPrinter implements Printer {
 			return buf.toString();
 		}
 	}
-	
+
 	public String printWeighed(final List<?> list, final List<Counter> occurence) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer(33);
@@ -101,7 +100,7 @@ public class MentionsPrinter implements Printer {
 		}
 	}
 
-	public String printFromWeighed( final List<Mention> list, final String member, final List<Counter> occurence) {
+	public String printFromWeighed(final List<Mention> list, final String member, final List<Counter> occurence) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer(33);
 		Mention mention;
@@ -109,7 +108,7 @@ public class MentionsPrinter implements Printer {
 		buf.append(str);
 		for (int i = 0; i < list.size(); i++) {
 			mention = (Mention) list.get(i);
-			if (util.compareFrom(util.getMentionFrom(mention),member)) {
+			if (util.compareFrom(util.getMentionFrom(mention), member)) {
 				buf.append(fromMember);
 				buf.append(util.getMentionFrom(mention));
 				buf.append(toMember);
@@ -125,8 +124,8 @@ public class MentionsPrinter implements Printer {
 			return buf.toString();
 		}
 	}
-	
-	public String printToWeighed(final List<?> list,final String member,final List<Counter> occurence,final int over) {
+
+	public String printToWeighed(final List<?> list, final String member, final List<Counter> occur, final int over) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer();
 		Mention mention;
@@ -134,13 +133,13 @@ public class MentionsPrinter implements Printer {
 		buf.append(str);
 		for (int i = 0; i < list.size(); i++) {
 			mention = (Mention) list.get(i);
-			if (util.compareTo(util.getMentionTo(mention),member) && util.getWeight(occurence.get(i)) > over) {
+			if (util.compareTo(util.getMentionTo(mention), member) && util.getWeight(occur.get(i)) > over) {
 				buf.append(fromMember);
 				buf.append(util.getMentionFrom(mention));
 				buf.append(toMember);
 				buf.append(util.getMentionTo(mention));
 				buf.append(' ');
-				buf.append(util.getWeight(occurence.get(i)));
+				buf.append(util.getWeight(occur.get(i)));
 				buf.append('\n');
 			}
 		}
@@ -150,5 +149,4 @@ public class MentionsPrinter implements Printer {
 			return buf.toString();
 		}
 	}
-
 }
