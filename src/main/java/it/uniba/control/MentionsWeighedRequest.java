@@ -8,39 +8,43 @@ import it.uniba.data.Counter;
 import it.uniba.util.ControllerUtil;
 import it.uniba.util.MentionsPrinter;
 
-class MentionsWeighedRequest {
-	static private String needArguments = "Command incomplete , use sna4slack for help";
-	
+final class MentionsWeighedRequest {
+	private static String needArguments = "Command incomplete , use sna4slack for help";
+	private static final int SECONDARGUMENT = 1;
+	private static final int THIRDARGUMENT = 2;
+	private static final int FOURTHARGUMENT = 3;
+
 	boolean showMentionsListWeighed(final String... command) {
 		final ControllerUtil util = new ControllerUtil();
-		if (command.length == 1) {
+		if (command.length == SECONDARGUMENT) {
 			System.out.println(needArguments);
 		} else {
 			final MentionsAnalysis request = new MentionsAnalysis();
-			if (request.mentionsList(util.getCommand(1,command))) {
+			if (request.mentionsList(util.getCommand(SECONDARGUMENT, command))) {
 				final MembersAnalysis members = new MembersAnalysis();
-				members.membersList(util.getCommand(1,command));
+				members.membersList(util.getCommand(SECONDARGUMENT, command));
 				request.setMembers(members.getMembers());
 				final List<Counter> occurence = request.setNameFromTo();
 				final MentionsPrinter printer = new MentionsPrinter();
-				System.out.println(printer.printWeighed(request.getMentions(),occurence));
+				System.out.println(printer.printWeighed(request.getMentions(), occurence));
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	boolean showMentionsListChannelWeighed(final String... command) {
 		final ControllerUtil util = new ControllerUtil();
-		if (command.length == 3) {
+		if (command.length == FOURTHARGUMENT) {
 			final MentionsAnalysis request = new MentionsAnalysis();
-			if (request.mentionsListChannel(util.getCommand(1,command),util.getCommand(2,command))) {
+			if (request.mentionsListChannel(util.getCommand(SECONDARGUMENT, command),
+					util.getCommand(THIRDARGUMENT, command))) {
 				final MembersAnalysis members = new MembersAnalysis();
-				members.membersList(util.getCommand(2,command));
+				members.membersList(util.getCommand(THIRDARGUMENT, command));
 				request.setMembers(members.getMembers());
 				final List<Counter> occurence = request.setNameFromTo();
 				final MentionsPrinter printer = new MentionsPrinter();
-				System.out.println(printer.printWeighed(request.getMentions(),occurence));
+				System.out.println(printer.printWeighed(request.getMentions(), occurence));
 				return true;
 			}
 		} else {
