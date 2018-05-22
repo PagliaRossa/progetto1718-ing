@@ -72,33 +72,39 @@ public class Controller {
 <span class="fc bfc" id="L72" title="All 2 branches covered.">		} else if (util.compareCommand(util.getCommand(0, command), &quot;mentionsListChannelWeighed&quot;)) {</span>
 <span class="fc" id="L73">			final MentionsWeighedRequest request = new MentionsWeighedRequest();</span>
 <span class="fc" id="L74">			return request.showMentionsListChannelWeighed(command);</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">		} else if(util.compareCommand(util.getCommand(0, command), &quot;mentionsListFromWeighed&quot;)) {</span>
+<span class="fc" id="L76">			final MentionsFromWeighedRequest request = new MentionsFromWeighedRequest();</span>
+<span class="fc" id="L77">			return request.showMentionsListFromWeighed(command);</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">		} else if (util.compareCommand(util.getCommand(0, command), &quot;mentionsListToWeighed&quot;)) {</span>
+<span class="fc" id="L79">			final MentionsToWeighedRequest request = new MentionsToWeighedRequest();</span>
+<span class="fc" id="L80">			return request.showMentionsListToWeighed(command);</span>
 		} else {
-<span class="fc" id="L76">			return help();</span>
+<span class="fc" id="L82">			return help();</span>
 		}
 		
 	}
 	
 	private boolean help() {
 		
-<span class="fc" id="L83">		final ControllerUtil util = new ControllerUtil();</span>
+<span class="fc" id="L89">		final ControllerUtil util = new ControllerUtil();</span>
 		
-<span class="fc bfc" id="L85" title="All 2 branches covered.">		if (util.compareCommand(util.getCommand(0,command),&quot;sna4slack&quot;)) {</span>
-<span class="fc" id="L86">			return showHelp();</span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">		if (util.compareCommand(util.getCommand(0,command),&quot;sna4slack&quot;)) {</span>
+<span class="fc" id="L92">			return showHelp();</span>
 		} else {
-<span class="fc" id="L88">			System.out.println(&quot;Wrong command, use sna4slack command for help&quot;);</span>
+<span class="fc" id="L94">			System.out.println(&quot;Wrong command, use sna4slack command for help&quot;);</span>
 		}
-<span class="fc" id="L90">		return false;</span>
+<span class="fc" id="L96">		return false;</span>
 	}
 	
 	private boolean showHelp() {
-<span class="fc bfc" id="L94" title="All 2 branches covered.">		if (command.length == 1) {</span>
-<span class="fc" id="L95">			final HelpPrinter help = new HelpPrinter();</span>
-<span class="fc" id="L96">			System.out.println(help);</span>
-<span class="fc" id="L97">			return true;</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">		if (command.length == 1) {</span>
+<span class="fc" id="L101">			final HelpPrinter help = new HelpPrinter();</span>
+<span class="fc" id="L102">			System.out.println(help);</span>
+<span class="fc" id="L103">			return true;</span>
 		} else {
-<span class="fc" id="L99">			System.out.println(&quot;No need for more argument , just use sna4slack for help&quot;);</span>
+<span class="fc" id="L105">			System.out.println(&quot;No need for more argument , just use sna4slack for help&quot;);</span>
 		}
-<span class="fc" id="L101">		return false;</span>
+<span class="fc" id="L107">		return false;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
