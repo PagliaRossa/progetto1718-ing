@@ -29,7 +29,7 @@ public class PrinterMentionsTest {
 	
 	@Test
 	@DisplayName("Test mentionsListfrom print")
-	void printfrom() {
+	void printFrom() {
 		final List<Mention> mentions = new ArrayList<>();
 		final Mention mention = new Mention(from,toMember);
 		mentions.add(mention);
@@ -49,7 +49,7 @@ public class PrinterMentionsTest {
 	
 	@Test
 	@DisplayName("Test mentionsListto no mentions print")
-	void noMentionsto() {
+	void noMentionsTo() {
 		final List<Mention> mentions = new ArrayList<>();
 		final Mention mention = new Mention(from,toMember);
 		mentions.add(mention);
@@ -59,12 +59,20 @@ public class PrinterMentionsTest {
 	
 	@Test
 	@DisplayName("Test mentions print")
-	void printto() {
+	void printTo() {
 		final List<Mention> mentions = new ArrayList<>();
 		final Mention mention = new Mention(from,toMember);
 		mentions.add(mention);
 		final MentionsPrinter printer = new MentionsPrinter();
 		assertEquals("List of mentions :\n\nFrom From to To\n",printer.printTo(mentions, toMember));
+	}
+	
+	@Test
+	@DisplayName("Test no mentions print")
+	void noMention() {
+		final List<Mention> mentions = new ArrayList<>();
+		final MentionsPrinter printer = new MentionsPrinter();
+		assertEquals("Can't find mentions !",printer.print(mentions));
 	}
 
 }

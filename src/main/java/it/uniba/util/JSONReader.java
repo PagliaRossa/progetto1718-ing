@@ -89,21 +89,25 @@ public class JSONReader {
 		for (int i = 0; i < getArraySize(array); i++) {
 			final JSONObject obj = getJSONObject(array,i);
 			final JSONObject profile = getJSONObject(obj,"profile");
-			String displayName = null;
 			boolean displayNameExist = false;
 			if (containsKey(profile,"display_name")) {
-				displayName = getAttribute(profile,"display_name");
 				displayNameExist = true;
 			}
-			String name;
-			if (displayNameExist && !(attributeNull(displayName))) {
-				name = displayName;
-			} else if (attributeNull("real_name")) {
-				name = getAttribute(obj,"name");
-			} else {
-				name = getAttribute(obj,"real_name");
+			String choosen = "";
+			String displayName = "";
+			final String name = getAttribute(obj,"name");
+			if (displayNameExist) {
+				displayName = getAttribute(profile,"display_name");
 			}
-			members.add(newMember(getAttribute(obj,"id"),name));
+			final String realName = getAttribute(obj,"real_name");
+			if (displayNameExist && !attributeNull(displayName)) {
+				choosen = displayName; 
+			} else if (attributeNull(realName)) {
+				choosen = name;
+			} else {
+				choosen = realName;
+			}
+			members.add(newMember(getAttribute(obj,"id"),choosen));
 			
 		}
 		return members;

@@ -56,5 +56,19 @@ public class JSONTest {
 			System.out.println(fail);
 		}
 	}
+	
+	@Test
+	@DisplayName("Test no Display_name , no Real_Name")
+	void nameGetterOnly() {
+		final JSONReader json = new JSONReader();
+		final ZipReader zip = new ZipReader();
+		try {
+			assertNotNull(json.setMembers(zip.setUsersFile("res/file/testslackdatset.zip")));
+		} catch (ParseException p) {
+			System.out.println(fail);
+		} catch (IOException i) {
+			System.out.println(fail);
+		}
+	}
 
 }

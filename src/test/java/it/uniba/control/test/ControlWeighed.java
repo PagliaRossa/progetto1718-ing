@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import it.uniba.control.Controller;
 
+@SuppressWarnings("PMD.TooManyStaticImports")
 public class ControlWeighed {
 	
 	@Test
