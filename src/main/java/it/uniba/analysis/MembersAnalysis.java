@@ -6,8 +6,8 @@ import org.json.simple.parser.ParseException;
 import it.uniba.util.JSONReader;
 import it.uniba.util.ZipReader;
 
-public class MembersAnalysis extends Analysis {
-	
+public final class MembersAnalysis extends Analysis {
+
 	public boolean membersList(final String input) {
 		try {
 			final ZipReader zip = new ZipReader();
@@ -22,5 +22,5 @@ public class MembersAnalysis extends Analysis {
 		}
 		return false;
 	}
-	
+
 }

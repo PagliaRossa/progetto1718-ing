@@ -12,12 +12,16 @@ import it.uniba.control.Controller;
  */
 public final class AppMain {
 
-	static public boolean check;
+	private static boolean check;
 	/**
 	 * Private constructor. Change if needed.
 	 */
 	private AppMain() {
 
+	}
+	
+	public static boolean getCheck() {
+		return check;
 	}
 
 	/**
@@ -39,4 +43,5 @@ public final class AppMain {
 			return false;
 		}
 	}
+
 }
