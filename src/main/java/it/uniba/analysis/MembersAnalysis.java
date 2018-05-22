@@ -13,7 +13,7 @@ public final class MembersAnalysis extends Analysis {
 			final ZipReader zip = new ZipReader();
 			final String json = zip.setUsersFile(input);
 			final JSONReader setter = new JSONReader();
-			members = setter.setMembers(json);
+			setMembers(setter.setMembers(json));
 			return true;
 		} catch (ParseException p) {
 			System.out.println("JSON not valid!");
