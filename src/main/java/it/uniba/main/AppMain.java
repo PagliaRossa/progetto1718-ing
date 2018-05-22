@@ -20,7 +20,7 @@ public final class AppMain {
 
 	}
 	
-	public static boolean getCheck() {
+	public static boolean isCheck() {
 		return check;
 	}
 
