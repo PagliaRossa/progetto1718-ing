@@ -5,10 +5,22 @@ import java.util.List;
 import it.uniba.data.Counter;
 import it.uniba.data.Mention;
 
+/**
+ * Printer of Mentions which implements Printer interface.
+ */
 public final class MentionsPrinter implements Printer {
 
+	/**
+	 * Static string list mentions.
+	 */
 	private static String listMentions = "List of mentions :\n\n";
+	/**
+	 * Static string from.
+	 */
 	private static String fromMember = "From ";
+	/**
+	 * Static string to.
+	 */
 	private static String toMember = " to ";
 
 	@Override
@@ -32,6 +44,12 @@ public final class MentionsPrinter implements Printer {
 		}
 	}
 
+	/**
+	 * Print mentions from a Member.
+	 * @param list List of mentions
+	 * @param member Specified member
+	 * @return String - List of mentions from specified member
+	 */
 	public String printFrom(final List<?> list, final String member) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer(33);
@@ -55,6 +73,12 @@ public final class MentionsPrinter implements Printer {
 		}
 	}
 
+	/**
+	 * Print mentions to a Member.
+	 * @param list List of Mentions
+	 * @param member Specified Member
+	 * @return String - List of mentions to specified member as string
+	 */
 	public String printTo(final List<?> list, final String member) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer();
@@ -78,6 +102,12 @@ public final class MentionsPrinter implements Printer {
 		}
 	}
 
+	/**
+	 * Print Weighed mentions.
+	 * @param list List of Mentions
+	 * @param occurence List of occurence
+	 * @return String - List of mentions weighed as string
+	 */
 	public String printWeighed(final List<?> list, final List<Counter> occurence) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer(33);
@@ -100,6 +130,13 @@ public final class MentionsPrinter implements Printer {
 		}
 	}
 
+	/**
+	 * Print mentions weighed from a member.
+	 * @param list List of Mentions
+	 * @param member Specified Member
+	 * @param occurence List of occurence
+	 * @return String - List of mentions weighed from a specified member as string
+	 */
 	public String printFromWeighed(final List<Mention> list, final String member, final List<Counter> occurence) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer(33);
@@ -125,6 +162,14 @@ public final class MentionsPrinter implements Printer {
 		}
 	}
 
+	/**
+	 * Print mentions weighed to member over a specified integer.
+	 * @param list List of Mentions
+	 * @param member Specified Member
+	 * @param occur List of occurence
+	 * @param over Integer which define weight
+	 * @return String - List of mentions weighed to specified member over over
+	 */
 	public String printToWeighed(final List<?> list, final String member, final List<Counter> occur, final int over) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer();

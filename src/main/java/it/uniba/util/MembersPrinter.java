@@ -5,8 +5,16 @@ import java.util.List;
 import it.uniba.analysis.MembersAnalysis;
 import it.uniba.data.Member;
 
+/**
+ * Printer of Members.
+ */
 public final class MembersPrinter {
 
+	/**
+	 * Override print method from interface Printer.
+	 * @param members List of members
+	 * @return String - List of members as string
+	 */
 	public String print(final List<?> members) {
 		final MembersAnalysis analysis = new MembersAnalysis();
 		final StringBuffer buf = new StringBuffer(26);

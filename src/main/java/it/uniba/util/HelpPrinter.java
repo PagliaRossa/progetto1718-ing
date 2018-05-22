@@ -1,9 +1,18 @@
 package it.uniba.util;
 
+/**
+ * Print help menu.
+ */
 public final class HelpPrinter {
 
+	/**
+	 * String that display help.
+	 */
 	private final String help;
 
+	/**
+	 * Costructor of HelpPrinter which creates menu.
+	 */
 	public HelpPrinter() {
 		final StringBuffer buff = new StringBuffer(1342);
 		buff.append("These are all available command for sna4slack\n\n"
@@ -32,6 +41,10 @@ public final class HelpPrinter {
 		help = buff.toString();
 	}
 
+	/**
+	 * Override toString from object.
+	 * @return help - Help attribute of class
+	 */
 	public String toString() {
 		return help;
 	}
