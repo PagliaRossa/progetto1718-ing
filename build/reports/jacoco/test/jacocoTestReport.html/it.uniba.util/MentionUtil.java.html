@@ -5,59 +5,131 @@ import java.util.List;
 import it.uniba.data.Counter;
 import it.uniba.data.Mention;
 
-<span class="fc" id="L8">public class MentionUtil {</span>
-	
+/**
+ * Utils for Mention analysis.
+ */
+<span class="fc" id="L11">public final class MentionUtil {</span>
+
+	/**
+	 * Get fromMember from required Mention.
+	 * @param mention Selected mention
+	 * @return fromMember - fromMember of selected Mention
+	 */
 	public String getMentionFrom(final Mention mention) {
-<span class="fc" id="L11">		return mention.getFrom();</span>
-	}
-	
-	public void setMentionFrom(final Mention mention,final String FromMember) {
-<span class="fc" id="L15">		mention.setFrom(FromMember);</span>
-<span class="fc" id="L16">	}</span>
-	
-	public void setMentionTo(final Mention mention,final String ToMember) {
-<span class="fc" id="L19">		mention.setTo(ToMember);</span>
-<span class="fc" id="L20">	}</span>
-	
-	public String getMentionTo(final Mention mention) {
-<span class="fc" id="L23">		return mention.getTo();</span>
-	}
-	
-	public boolean mentionContain(final String mention,final String contain) {
-<span class="fc" id="L27">		return mention.contains(contain);</span>
-	}
-	
-	public boolean mentionStartWith(final String mention,final String start) {
-<span class="fc" id="L31">		return mention.startsWith(start);</span>
-	}
-	
-	public boolean compareFrom(final String From1,final String From2) {
-<span class="fc" id="L35">		return From1.equals(From2);</span>
-	}
-	
-	public boolean compareTo(final String ToMember1,final String toMember2) {
-<span class="fc" id="L39">		return ToMember1.equals(toMember2);</span>
-	}
-	
-	public int conversationsSize(final List&lt;String&gt; conversations) {
-<span class="fc" id="L43">		return conversations.size();</span>
-	}
-	
-	public String getConversationsJSON(final List&lt;String&gt; conversations,final int index) {
-<span class="fc" id="L47">		return conversations.get(index);</span>
-	}
-	
-	public Counter newCounter(final int index,final int occurenceNumber) {
-<span class="fc" id="L51">		return new Counter(index,occurenceNumber);</span>
-	}
-	
-	public void countIncreaser(final Counter counter) {
-<span class="fc" id="L55">		counter.setOccurenceNumber(counter.getOccurenceNumber()+1);</span>
-<span class="fc" id="L56">	}</span>
-	
-	public int getWeight(final Counter counter) {
-<span class="fc" id="L59">		return counter.getOccurenceNumber();</span>
+<span class="fc" id="L19">		return mention.getFrom();</span>
 	}
 
+	/**
+	 * Set fromMember to required Mention.
+	 * @param mention Selected mention
+	 * @param fromMember String to be setted
+	 */
+	public void setMentionFrom(final Mention mention, final String fromMember) {
+<span class="fc" id="L28">		mention.setFrom(fromMember);</span>
+<span class="fc" id="L29">	}</span>
+
+	/**
+	 * Set toMember from required Mention.
+	 * @param mention Selected mention
+	 * @param toMember String to be setted
+	 */
+	public void setMentionTo(final Mention mention, final String toMember) {
+<span class="fc" id="L37">		mention.setTo(toMember);</span>
+<span class="fc" id="L38">	}</span>
+
+	/**
+	 * Get toMember from required Mention.
+	 * @param mention Selected mention
+	 * @return toMember - toMember of selected Mention
+	 */
+	public String getMentionTo(final Mention mention) {
+<span class="fc" id="L46">		return mention.getTo();</span>
+	}
+
+	/**
+	 * Control if mention contain selected string.
+	 * @param mention Selected mention
+	 * @param contain Selected String
+	 * @return boolean - True or false if mention contain string
+	 */
+	public boolean mentionContain(final String mention, final String contain) {
+<span class="fc" id="L56">		return mention.contains(contain);</span>
+	}
+
+	/**
+	 * Control if mention start with selected string.
+	 * @param mention Selected mention
+	 * @param start Selected String
+	 * @return boolean - True or false if mention star with String
+	 */
+	public boolean mentionStartWith(final String mention, final String start) {
+<span class="fc" id="L66">		return mention.startsWith(start);</span>
+	}
+
+	/**
+	 * Compare two fromMember.
+	 * @param from1 First fromMember
+	 * @param from2 Second fromMember
+	 * @return boolean - True or false if same string
+	 */
+	public boolean compareFrom(final String from1, final String from2) {
+<span class="fc" id="L76">		return from1.equals(from2);</span>
+	}
+
+	/**
+	 * Compare two fromMember.
+	 * @param toMember1 First toMember
+	 * @param toMember2 Second toMember
+	 * @return boolean - True or false if same string
+	 */
+	public boolean compareTo(final String toMember1, final String toMember2) {
+<span class="fc" id="L86">		return toMember1.equals(toMember2);</span>
+	}
+
+	/**
+	 * Get conversation size.
+	 * @param conversations List of conversations
+	 * @return size - Integer size of conversations
+	 */
+	public int conversationsSize(final List&lt;String&gt; conversations) {
+<span class="fc" id="L95">		return conversations.size();</span>
+	}
+
+	/**
+	 * Get specified json String from conversations.
+	 * @param conversations List of Strings
+	 * @param index Index selected
+	 * @return String - Requested String
+	 */
+	public String getConversationsJSON(final List&lt;String&gt; conversations, final int index) {
+<span class="fc" id="L105">		return conversations.get(index);</span>
+	}
+
+	/**
+	 * Create a new Counter object.
+	 * @param index Set index
+	 * @param occurenceNumber Set occurenceNumber
+	 * @return Counter - New Counter object
+	 */
+	public Counter newCounter(final int index, final int occurenceNumber) {
+<span class="fc" id="L115">		return new Counter(index, occurenceNumber);</span>
+	}
+
+	/**
+	 * Increase occurence count.
+	 * @param counter Specified counter
+	 */
+	public void countIncreaser(final Counter counter) {
+<span class="fc" id="L123">		counter.setOccurenceNumber(counter.getOccurenceNumber() + 1);</span>
+<span class="fc" id="L124">	}</span>
+
+	/**
+	 * Get occurenceNumber of specified Counter.
+	 * @param counter Specified Counter
+	 * @return Integer - Count of occurence
+	 */
+	public int getWeight(final Counter counter) {
+<span class="fc" id="L132">		return counter.getOccurenceNumber();</span>
+	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

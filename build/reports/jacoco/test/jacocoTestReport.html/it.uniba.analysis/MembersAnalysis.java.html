@@ -5,23 +5,33 @@ import java.io.IOException;
 import org.json.simple.parser.ParseException;
 import it.uniba.util.JSONReader;
 import it.uniba.util.ZipReader;
+/**
+ * 
+ * Subclass of Analysis.
+ * Analyzes Members of zipFile.
+ *
+ */
+<span class="fc" id="L14">public class MembersAnalysis extends Analysis {</span>
 
-<span class="fc" id="L9">public class MembersAnalysis extends Analysis {</span>
-	
+	/**
+	 * List of Members in zipPath.
+	 * @param input Path of zipFile
+	 * @return Boolean of Accomplished (or not) Operation
+	 */
 	public boolean membersList(final String input) {
 		try {
-<span class="fc" id="L13">			final ZipReader zip = new ZipReader();</span>
-<span class="fc" id="L14">			final String json = zip.setUsersFile(input);</span>
-<span class="fc" id="L15">			final JSONReader setter = new JSONReader();</span>
-<span class="fc" id="L16">			members = setter.setMembers(json);</span>
-<span class="fc" id="L17">			return true;</span>
-<span class="fc" id="L18">		} catch (ParseException p) {</span>
-<span class="fc" id="L19">			System.out.println(&quot;JSON not valid!&quot;);</span>
-<span class="fc" id="L20">		} catch (IOException i) {</span>
-<span class="fc" id="L21">			System.out.println(&quot;File not found or invalid&quot;);</span>
-<span class="fc" id="L22">		}</span>
-<span class="fc" id="L23">		return false;</span>
+<span class="fc" id="L23">			final ZipReader zip = new ZipReader();</span>
+<span class="fc" id="L24">			final String json = zip.setUsersFile(input);</span>
+<span class="fc" id="L25">			final JSONReader setter = new JSONReader();</span>
+<span class="fc" id="L26">			setMembers(setter.setMembers(json));</span>
+<span class="fc" id="L27">			return true;</span>
+<span class="fc" id="L28">		} catch (ParseException p) {</span>
+<span class="fc" id="L29">			System.out.println(&quot;JSON not valid!&quot;);</span>
+<span class="fc" id="L30">		} catch (IOException i) {</span>
+<span class="fc" id="L31">			System.out.println(&quot;File not found or invalid&quot;);</span>
+<span class="fc" id="L32">		}</span>
+<span class="fc" id="L33">		return false;</span>
 	}
-	
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

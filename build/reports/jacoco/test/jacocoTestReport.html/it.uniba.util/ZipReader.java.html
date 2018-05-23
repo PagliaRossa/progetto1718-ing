@@ -10,101 +10,173 @@ import java.util.zip.ZipFile;
 
 import org.apache.commons.io.IOUtils;
 
-<span class="fc" id="L13">public class ZipReader {</span>
-	
+/**
+ * Retrive specified file from Zip.
+ */
+<span class="fc" id="L16">public final class ZipReader {</span>
+
+	/**
+	 * Get Entries from zip.
+	 * @param zip Specified zip
+	 * @return enumerations - Enumerations of zip entries
+	 */
 	private Enumeration&lt;? extends ZipEntry&gt; getEntries(final ZipFile zip) {
-<span class="fc" id="L16">		return zip.entries();</span>
-	}
-	
-	private boolean hasMoreElements(final Enumeration&lt;? extends ZipEntry&gt; entries) {
-<span class="fc" id="L20">		return entries.hasMoreElements();</span>
-	}
-	
-	private ZipEntry nextElement(final Enumeration&lt;? extends ZipEntry&gt; entries) {
-<span class="fc" id="L24">		return entries.nextElement();</span>
-	}
-	
-	private boolean isDirectory(final ZipEntry entry) {
-<span class="fc" id="L28">		return entry.isDirectory();</span>
-	}
-	
-	private String getName(final ZipEntry entry) {
-<span class="fc" id="L32">		return entry.getName();</span>
-	}
-	
-	private boolean compareNames(final String name,final String toCompare) {
-<span class="fc" id="L36">		return toCompare.equals(name);</span>
-	}
-	
-	private boolean containName(final String name,final String containName) {
-<span class="fc" id="L40">		return name.contains(containName);</span>
-	}
-	
-	public String setUsersFile(final String input) throws IOException {
-<span class="fc" id="L44">		String json = &quot;&quot;;</span>
-<span class="fc" id="L45">		final ZipFile zip = new ZipFile(input);</span>
-<span class="fc bfc" id="L46" title="All 2 branches covered.">		if (zip.getEntry(&quot;users.json&quot;) == null) {</span>
-<span class="fc" id="L47">			zip.close();</span>
-<span class="fc" id="L48">			throw new IOException();</span>
-		} else {
-<span class="fc" id="L50">			final InputStream source = zip.getInputStream(zip.getEntry(&quot;users.json&quot;));</span>
-<span class="fc" id="L51">			json = IOUtils.toString(source,&quot;UTF-8&quot;);</span>
-<span class="fc" id="L52">			zip.close();</span>
-		}
-<span class="fc" id="L54">		return json;</span>
-	}
-	
-	public String setChannelsFile(final String input) throws IOException {
-<span class="fc" id="L58">		String json = &quot;&quot;;</span>
-<span class="fc" id="L59">		final ZipFile zip = new ZipFile(input);</span>
-<span class="fc bfc" id="L60" title="All 2 branches covered.">		if (zip.getEntry(&quot;channels.json&quot;) == null) {</span>
-<span class="fc" id="L61">			zip.close();</span>
-<span class="fc" id="L62">			throw new IOException();</span>
-		} else {
-<span class="fc" id="L64">			final InputStream source = zip.getInputStream(zip.getEntry(&quot;channels.json&quot;));</span>
-<span class="fc" id="L65">			json = IOUtils.toString(source,&quot;UTF-8&quot;);</span>
-<span class="fc" id="L66">			zip.close();</span>
-		}
-<span class="fc" id="L68">		return json;</span>
-	}
-	
-	public List&lt;String&gt; setConversationFile(final String input) throws IOException {
-<span class="fc" id="L72">		final List&lt;String&gt; conversations = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L73">		final ZipFile zip = new ZipFile(input);</span>
-<span class="fc" id="L74">		final Enumeration&lt;? extends ZipEntry&gt; entries = getEntries(zip);</span>
-<span class="fc bfc" id="L75" title="All 2 branches covered.">		while (hasMoreElements(entries)) {</span>
-<span class="fc" id="L76">			final ZipEntry control = nextElement(entries);</span>
-<span class="fc bfc" id="L77" title="All 6 branches covered.">			if (!isDirectory(control) &amp;&amp; !compareNames(getName(control),&quot;users.json&quot;) &amp;&amp; !compareNames(getName(control),&quot;channels.json&quot;) </span>
-<span class="fc bfc" id="L78" title="All 2 branches covered.">					&amp;&amp; !compareNames(getName(control),&quot;integration_logs.json&quot;)) {</span>
-<span class="fc" id="L79">				conversations.add(getName(control));</span>
-			}
-<span class="fc" id="L81">		}</span>
-<span class="fc" id="L82">		zip.close();</span>
-<span class="fc" id="L83">		return conversations;</span>
-	}
-	
-	public List&lt;String&gt; setConversationFile(final String channel,final String path) throws IOException {
-<span class="fc" id="L87">		final List&lt;String&gt; conversations = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L88">		final ZipFile zip = new ZipFile(path);</span>
-<span class="fc" id="L89">		final Enumeration&lt;? extends ZipEntry&gt; entries = getEntries(zip);</span>
-<span class="fc bfc" id="L90" title="All 2 branches covered.">		while (hasMoreElements(entries)) {</span>
-<span class="fc" id="L91">			final ZipEntry control = nextElement(entries);</span>
-<span class="fc bfc" id="L92" title="All 4 branches covered.">			if (!isDirectory(control) &amp;&amp; containName(getName(control),channel)) {</span>
-<span class="fc" id="L93">					conversations.add(getName(control));</span>
-			}
-<span class="fc" id="L95">		}</span>
-<span class="fc" id="L96">		zip.close();</span>
-<span class="fc" id="L97">		return conversations;</span>
-	}
-	
-	public String getJSONFromFile(final String path,final String input) throws IOException {
-<span class="fc" id="L101">		String json = &quot;&quot;;</span>
-<span class="fc" id="L102">		final ZipFile zip = new ZipFile(path);</span>
-<span class="fc" id="L103">		final InputStream source = zip.getInputStream(zip.getEntry(input));</span>
-<span class="fc" id="L104">		json = IOUtils.toString(source,&quot;UTF-8&quot;);</span>
-<span class="fc" id="L105">		zip.close();</span>
-<span class="fc" id="L106">		return json;</span>
+<span class="fc" id="L24">		return zip.entries();</span>
 	}
 
+	/**
+	 * Check if there are more elements.
+	 * @param entries Enumations of entries
+	 * @return boolean - True or false if there are more elements
+	 */
+	private boolean hasMoreElements(final Enumeration&lt;? extends ZipEntry&gt; entries) {
+<span class="fc" id="L33">		return entries.hasMoreElements();</span>
+	}
+
+	/**
+	 * Get next entry.
+	 * @param entries Enumations of entries
+	 * @return entry - Get next entry in enumerations
+	 */
+	private ZipEntry nextElement(final Enumeration&lt;? extends ZipEntry&gt; entries) {
+<span class="fc" id="L42">		return entries.nextElement();</span>
+	}
+
+	/**
+	 * Check if entry is a directory.
+	 * @param entry Specified entry
+	 * @return boolean - True or false if entry is or isn't a directory
+	 */
+	private boolean isDirectory(final ZipEntry entry) {
+<span class="fc" id="L51">		return entry.isDirectory();</span>
+	}
+
+	/**
+	 * Get name of entry.
+	 * @param entry Specified entry
+	 * @return String - Name of entry
+	 */
+	private String getName(final ZipEntry entry) {
+<span class="fc" id="L60">		return entry.getName();</span>
+	}
+
+	/**
+	 * Compare two name.
+	 * @param name First String name
+	 * @param toCompare Second String name
+	 * @return boolean - True or false if are or aren't same
+	 */
+	private boolean compareNames(final String name, final String toCompare) {
+<span class="fc" id="L70">		return toCompare.equals(name);</span>
+	}
+
+	/**
+	 * Check if name contain a specified string.
+	 * @param name Checked String
+	 * @param containName String to be checked
+	 * @return boolean - True or false if name contain or not containName
+	 */
+	private boolean containName(final String name, final String containName) {
+<span class="fc" id="L80">		return name.contains(containName);</span>
+	}
+
+	/**
+	 * Set users file as json.
+	 * @param input Path of zip
+	 * @return String - users.json as String
+	 * @throws IOException If file not found , throw IOException
+	 */
+	public String setUsersFile(final String input) throws IOException {
+<span class="fc" id="L90">		String json = &quot;&quot;;</span>
+<span class="fc" id="L91">		final ZipFile zip = new ZipFile(input);</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">		if (zip.getEntry(&quot;users.json&quot;) == null) {</span>
+<span class="fc" id="L93">			zip.close();</span>
+<span class="fc" id="L94">			throw new IOException();</span>
+		} else {
+<span class="fc" id="L96">			final InputStream source = zip.getInputStream(zip.getEntry(&quot;users.json&quot;));</span>
+<span class="fc" id="L97">			json = IOUtils.toString(source, &quot;UTF-8&quot;);</span>
+<span class="fc" id="L98">			zip.close();</span>
+		}
+<span class="fc" id="L100">		return json;</span>
+	}
+
+	/**
+	 * Set channels file as json.
+	 * @param input Path of zip
+	 * @return String - channels.json as String
+	 * @throws IOException If a file not found , throw IOExpcetion
+	 */
+	public String setChannelsFile(final String input) throws IOException {
+<span class="fc" id="L110">		String json = &quot;&quot;;</span>
+<span class="fc" id="L111">		final ZipFile zip = new ZipFile(input);</span>
+<span class="fc bfc" id="L112" title="All 2 branches covered.">		if (zip.getEntry(&quot;channels.json&quot;) == null) {</span>
+<span class="fc" id="L113">			zip.close();</span>
+<span class="fc" id="L114">			throw new IOException();</span>
+		} else {
+<span class="fc" id="L116">			final InputStream source = zip.getInputStream(zip.getEntry(&quot;channels.json&quot;));</span>
+<span class="fc" id="L117">			json = IOUtils.toString(source, &quot;UTF-8&quot;);</span>
+<span class="fc" id="L118">			zip.close();</span>
+		}
+<span class="fc" id="L120">		return json;</span>
+	}
+
+	/**
+	 * Set conversations file as List of String.
+	 * @param input Path of zip
+	 * @return list - List of Strings
+	 * @throws IOException If a file not found , throw IOException
+	 */
+	public List&lt;String&gt; setConversationFile(final String input) throws IOException {
+<span class="fc" id="L130">		final List&lt;String&gt; conversations = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L131">		final ZipFile zip = new ZipFile(input);</span>
+<span class="fc" id="L132">		final Enumeration&lt;? extends ZipEntry&gt; entries = getEntries(zip);</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">		while (hasMoreElements(entries)) {</span>
+<span class="fc" id="L134">			final ZipEntry control = nextElement(entries);</span>
+<span class="fc bfc" id="L135" title="All 4 branches covered.">			if (!isDirectory(control) &amp;&amp; !compareNames(getName(control), &quot;users.json&quot;)</span>
+<span class="fc bfc" id="L136" title="All 2 branches covered.">					&amp;&amp; !compareNames(getName(control), &quot;channels.json&quot;)</span>
+<span class="fc bfc" id="L137" title="All 2 branches covered.">					&amp;&amp; !compareNames(getName(control), &quot;integration_logs.json&quot;)) {</span>
+<span class="fc" id="L138">				conversations.add(getName(control));</span>
+			}
+<span class="fc" id="L140">		}</span>
+<span class="fc" id="L141">		zip.close();</span>
+<span class="fc" id="L142">		return conversations;</span>
+	}
+
+	/**
+	 * Set conversations of specified channel as List of Strings.
+	 * @param channel Specified channel
+	 * @param path Path of zip
+	 * @return List - List of String of channel
+	 * @throws IOException If a file not found , throw IOException
+	 */
+	public List&lt;String&gt; setConversationFile(final String channel, final String path) throws IOException {
+<span class="fc" id="L153">		final List&lt;String&gt; conversations = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L154">		final ZipFile zip = new ZipFile(path);</span>
+<span class="fc" id="L155">		final Enumeration&lt;? extends ZipEntry&gt; entries = getEntries(zip);</span>
+<span class="fc bfc" id="L156" title="All 2 branches covered.">		while (hasMoreElements(entries)) {</span>
+<span class="fc" id="L157">			final ZipEntry control = nextElement(entries);</span>
+<span class="fc bfc" id="L158" title="All 4 branches covered.">			if (!isDirectory(control) &amp;&amp; containName(getName(control), channel)) {</span>
+<span class="fc" id="L159">					conversations.add(getName(control));</span>
+			}
+<span class="fc" id="L161">		}</span>
+<span class="fc" id="L162">		zip.close();</span>
+<span class="fc" id="L163">		return conversations;</span>
+	}
+
+	/**
+	 * Set a json conversation as String.
+	 * @param path Path of Zip
+	 * @param input Specified file in zip
+	 * @return String - Specified json file as String
+	 * @throws IOException If a file not found , throw IOException
+	 */
+	public String getJSONFromFile(final String path, final String input) throws IOException {
+<span class="fc" id="L174">		String json = &quot;&quot;;</span>
+<span class="fc" id="L175">		final ZipFile zip = new ZipFile(path);</span>
+<span class="fc" id="L176">		final InputStream source = zip.getInputStream(zip.getEntry(input));</span>
+<span class="fc" id="L177">		json = IOUtils.toString(source, &quot;UTF-8&quot;);</span>
+<span class="fc" id="L178">		zip.close();</span>
+<span class="fc" id="L179">		return json;</span>
+	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

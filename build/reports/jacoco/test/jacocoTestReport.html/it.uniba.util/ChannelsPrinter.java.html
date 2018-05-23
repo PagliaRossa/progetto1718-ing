@@ -5,45 +5,59 @@ import java.util.List;
 import it.uniba.analysis.ChannelsAnalysis;
 import it.uniba.data.Channel;
 
-<span class="fc" id="L8">public class ChannelsPrinter implements Printer {</span>
+/**
+ * Printer of channels informations.
+ */
+<span class="fc" id="L11">public final class ChannelsPrinter implements Printer {</span>
 
 	@SuppressWarnings(&quot;unchecked&quot;)
 	@Override
 	public String print(final List&lt;?&gt; channels) {
-<span class="fc" id="L13">		final ChannelsAnalysis analysis = new ChannelsAnalysis();</span>
-<span class="fc" id="L14">		analysis.setChannels((List&lt;Channel&gt;)channels);</span>
-<span class="fc" id="L15">		final StringBuffer buf = new StringBuffer(60);</span>
-<span class="fc" id="L16">		buf.append(&quot;This is channels list :\n\n&quot;);</span>
-<span class="fc bfc" id="L17" title="All 2 branches covered.">		for (int i = 0; i &lt; channels.size(); i++) {</span>
-<span class="fc" id="L18">			buf.append(analysis.getChannelName((Channel)channels.get(i)));</span>
-<span class="fc" id="L19">			buf.append('\n');</span>
+<span class="fc" id="L16">		final ChannelsAnalysis analysis = new ChannelsAnalysis();</span>
+<span class="fc" id="L17">		analysis.setChannels((List&lt;Channel&gt;) channels);</span>
+<span class="fc" id="L18">		final StringBuffer buf = new StringBuffer(60);</span>
+<span class="fc" id="L19">		buf.append(&quot;This is channels list :\n\n&quot;);</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">		for (int i = 0; i &lt; channels.size(); i++) {</span>
+<span class="fc" id="L21">			buf.append(analysis.getChannelName((Channel) channels.get(i)));</span>
+<span class="fc" id="L22">			buf.append('\n');</span>
 		}
-<span class="fc" id="L21">		return buf.toString();</span>
+<span class="fc" id="L24">		return buf.toString();</span>
 	}
-	
-	public String memberInChannelPrint(final Channel channel,final ChannelsAnalysis analysis){
-<span class="fc" id="L25">		final StringBuffer buf = new StringBuffer(60);</span>
-<span class="fc" id="L26">		buf.append(&quot;Members of &quot;).append(channel.getName()).append(&quot; :\n\n&quot;);</span>
-<span class="fc bfc" id="L27" title="All 2 branches covered.">		for (int i = 0; i &lt; channel.membersSize(); i++) {</span>
-<span class="fc" id="L28">			buf.append(analysis.getMemberName(channel.getMember(i)));</span>
-<span class="fc" id="L29">			buf.append('\n');</span>
+
+	/**
+	 * Print members in defined channel.
+	 * @param channel Defined channel
+	 * @param analysis ChannelsAnalysis which analyze user request
+	 * @return String - String of members in defined channel
+	 */
+	public String memberInChannelPrint(final Channel channel, final ChannelsAnalysis analysis) {
+<span class="fc" id="L34">		final StringBuffer buf = new StringBuffer(60);</span>
+<span class="fc" id="L35">		buf.append(&quot;Members of &quot;).append(channel.getName()).append(&quot; :\n\n&quot;);</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">		for (int i = 0; i &lt; channel.membersSize(); i++) {</span>
+<span class="fc" id="L37">			buf.append(analysis.getMemberName(channel.getMember(i)));</span>
+<span class="fc" id="L38">			buf.append('\n');</span>
 		}
-<span class="fc" id="L31">		return buf.toString();</span>
+<span class="fc" id="L40">		return buf.toString();</span>
 	}
-	
+
+	/**
+	 * Print all members sorted by channel.
+	 * @param analysis ChannelsAnalysis which analyze user request
+	 * @return String - String of members sorted by channel
+	 */
 	public String membersSortedByChannelPrint(final ChannelsAnalysis analysis) {
-<span class="fc" id="L35">		final StringBuffer buf = new StringBuffer();</span>
-<span class="fc bfc" id="L36" title="All 2 branches covered.">		for (int i = 0; i &lt; analysis.channelsSize(); i++) {</span>
-<span class="fc" id="L37">			buf.append(analysis.getChannelName(analysis.getChannel(i)));</span>
-<span class="fc" id="L38">			buf.append(&quot; :\n\n&quot;);</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">			for (int j = 0; j &lt; analysis.getChannelMembersSize(analysis.getChannel(i)); j++) {</span>
-<span class="fc" id="L40">				buf.append(&quot;- &quot;);</span>
-<span class="fc" id="L41">				buf.append(analysis.getMemberName(analysis.getMemberInChannel(analysis.getChannel(i),j)));</span>
-<span class="fc" id="L42">				buf.append('\n');</span>
+<span class="fc" id="L49">		final StringBuffer buf = new StringBuffer();</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">		for (int i = 0; i &lt; analysis.channelsSize(); i++) {</span>
+<span class="fc" id="L51">			buf.append(analysis.getChannelName(analysis.getChannel(i)));</span>
+<span class="fc" id="L52">			buf.append(&quot; :\n\n&quot;);</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">			for (int j = 0; j &lt; analysis.getChannelMembersSize(analysis.getChannel(i)); j++) {</span>
+<span class="fc" id="L54">				buf.append(&quot;- &quot;);</span>
+<span class="fc" id="L55">				buf.append(analysis.getMemberName(analysis.getMemberInChannel(analysis.getChannel(i), j)));</span>
+<span class="fc" id="L56">				buf.append('\n');</span>
 			}
-<span class="fc" id="L44">			buf.append('\n');</span>
+<span class="fc" id="L58">			buf.append('\n');</span>
 		}
-<span class="fc" id="L46">		return buf.toString();</span>
+<span class="fc" id="L60">		return buf.toString();</span>
 	}
 
 }

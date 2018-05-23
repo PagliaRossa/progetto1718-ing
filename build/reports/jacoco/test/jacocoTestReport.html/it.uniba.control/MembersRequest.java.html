@@ -4,15 +4,15 @@ import it.uniba.analysis.MembersAnalysis;
 import it.uniba.util.ControllerUtil;
 import it.uniba.util.MembersPrinter;
 
-<span class="fc" id="L7">class MembersRequest {</span>
-	
-<span class="fc" id="L9">	static private String needArguments = &quot;Command incomplete , use sna4slack for help&quot;;</span>
-	
+<span class="fc" id="L7">final class MembersRequest {</span>
+
+<span class="fc" id="L9">	private static String needArguments = &quot;Command incomplete , use sna4slack for help&quot;;</span>
+
 	boolean showMembersList(final String... command) {
 <span class="fc" id="L12">		final ControllerUtil util = new ControllerUtil();</span>
 <span class="fc bfc" id="L13" title="All 2 branches covered.">		if (command.length == 2) {</span>
 <span class="fc" id="L14">			final MembersAnalysis request = new MembersAnalysis();</span>
-<span class="fc bfc" id="L15" title="All 2 branches covered.">			if (request.membersList(util.getCommand(1,command))) {</span>
+<span class="fc bfc" id="L15" title="All 2 branches covered.">			if (request.membersList(util.getCommand(1, command))) {</span>
 <span class="fc" id="L16">				final MembersPrinter printer = new MembersPrinter();</span>
 <span class="fc" id="L17">				System.out.println(printer.print(request.getMembers()));</span>
 <span class="fc" id="L18">				return true;</span>
@@ -22,6 +22,5 @@ import it.uniba.util.MembersPrinter;
 		}
 <span class="fc" id="L23">		return false;</span>
 	}
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

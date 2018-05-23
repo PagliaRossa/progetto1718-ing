@@ -1,30 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Mention.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SNA4Slack</a> &gt; <a href="index.source.html" class="el_package">it.uniba.data</a> &gt; <span class="el_source">Mention.java</span></div><h1>Mention.java</h1><pre class="source lang-java linenums">package it.uniba.data;
 
-public class Mention {
-	
+/**
+ * Define a pojo class Mention.
+ */
+public final class Mention {
+
+	/**
+	 * Member that mention a member.
+	 */
 	private String fromMember;
+	/**
+	 * Member that receive a mention from a member.
+	 */
 	private String toMember;
-	
-<span class="fc" id="L8">	public Mention(final String memberFrom,final String memberTo) {</span>
-<span class="fc" id="L9">		fromMember = memberFrom;</span>
-<span class="fc" id="L10">		toMember = memberTo;</span>
-<span class="fc" id="L11">	}</span>
-	
+
+	/**
+	 * Costructor that create a new Mention object with memberFrom and memberTo as fromMember and toMember.
+	 * @param memberFrom Set fromMember as memberFrom
+	 * @param memberTo Set toMember as memberTo
+	 */
+<span class="fc" id="L22">	public Mention(final String memberFrom, final String memberTo) {</span>
+<span class="fc" id="L23">		fromMember = memberFrom;</span>
+<span class="fc" id="L24">		toMember = memberTo;</span>
+<span class="fc" id="L25">	}</span>
+
+	/**
+	 * Get fromMember of Mention.
+	 * @return fromMember - Return fromMember
+	 */
 	public String getFrom() {
-<span class="fc" id="L14">		return fromMember;</span>
+<span class="fc" id="L32">		return fromMember;</span>
 	}
-	
+
+	/**
+	 * Get toMember of Mention.
+	 * @return toMember - Return toMember
+	 */
 	public String getTo() {
-<span class="fc" id="L18">		return toMember;</span>
+<span class="fc" id="L40">		return toMember;</span>
 	}
-	
+
+	/**
+	 * Set fromMember of Mention.
+	 * @param newFrom Set fromMember as newFrom
+	 */
 	public void setFrom(final String newFrom) {
-<span class="fc" id="L22">		fromMember = newFrom;</span>
-<span class="fc" id="L23">	}</span>
-	
+<span class="fc" id="L48">		fromMember = newFrom;</span>
+<span class="fc" id="L49">	}</span>
+
+	/**
+	 * Set toMember of Mention.
+	 * @param newTo Set toMember as newTo
+	 */
 	public void setTo(final String newTo) {
-<span class="fc" id="L26">		toMember = newTo;</span>
-<span class="fc" id="L27">	}</span>
-	
+<span class="fc" id="L56">		toMember = newTo;</span>
+<span class="fc" id="L57">	}</span>
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

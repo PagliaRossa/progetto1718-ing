@@ -4,55 +4,100 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.uniba.data.Member;
-
-<span class="fc" id="L8">public class Analysis {</span>
-
-<span class="fc" id="L10">	protected List&lt;Member&gt; members = new ArrayList&lt;&gt;();</span>
-	
+/**
+ * 
+ * Analyze all Input Typed by User.
+ *
+ */
+<span class="fc" id="L12">public class Analysis {</span>
+	/**
+	 * Constructor List of Member.
+	 */
+<span class="fc" id="L16">	private List&lt;Member&gt; members = new ArrayList&lt;&gt;();</span>
+	/**
+	 * Get Member from zipFile.
+	 * @return members - Member in zipFile
+	 */
 	public List&lt;Member&gt; getMembers() {
-<span class="fc" id="L13">		return members;</span>
+<span class="fc" id="L22">		return members;</span>
 	}
-	
+	/**
+	 * Get Member ID from zipFile.
+	 * @param member Member in zipFile
+	 * @return ID of Member
+	 */
 	protected String getMemberId(final Member member) {
-<span class="fc" id="L17">		return member.getId();</span>
+<span class="fc" id="L30">		return member.getId();</span>
 	}
-	
+
+	/**
+	 * Get Member from zipFile.
+	 * @param member Member in zipFile
+	 * @return Name of Member
+	 */
 	public String getMemberName(final Member member) {
-<span class="fc" id="L21">		return member.getName();</span>
+<span class="fc" id="L39">		return member.getName();</span>
 	}
-	
-	protected boolean compareId(final String identificator1,final String identificator2) {
-<span class="fc" id="L25">		return identificator1.equals(identificator2);</span>
+
+	/**
+	 * Compare two identificator.
+	 * @param identificator1 First String
+	 * @param identificator2 Second String
+	 * @return boolean
+	 */
+	protected boolean compareId(final String identificator1, final String identificator2) {
+<span class="fc" id="L49">		return identificator1.equals(identificator2);</span>
 	}
-	
-	protected boolean compareName(final String name1,final String name2) {
-<span class="fc" id="L29">		return name1.equals(name2);</span>
+
+	/**
+	 * Compare two names.
+	 * @param name1 First String
+	 * @param name2 Second String
+	 * @return boolean
+	 */
+	protected boolean compareName(final String name1, final String name2) {
+<span class="fc" id="L59">		return name1.equals(name2);</span>
 	}
-	
+
+	/**
+	 * Search Specific Member from zipFile, using ID.
+	 * @param identificator String' s ID of Member
+	 * @return String of specific Member
+	 */
 	public String getMemberName(final String identificator) {
-<span class="fc" id="L33">		String str = &quot;&quot;;</span>
-<span class="fc bfc" id="L34" title="All 2 branches covered.">		for (int i = 0; i &lt; members.size(); i++) {</span>
-<span class="fc bfc" id="L35" title="All 2 branches covered.">			if (compareId(getMemberId(members.get(i)),identificator)) {</span>
-<span class="fc" id="L36">				str = getMemberName(members.get(i));</span>
-<span class="fc" id="L37">				break;</span>
+<span class="fc" id="L68">		String str = &quot;&quot;;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">		for (int i = 0; i &lt; members.size(); i++) {</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">			if (compareId(getMemberId(members.get(i)), identificator)) {</span>
+<span class="fc" id="L71">				str = getMemberName(members.get(i));</span>
+<span class="fc" id="L72">				break;</span>
 			}
 		}
-<span class="fc" id="L40">		return str;</span>
+<span class="fc" id="L75">		return str;</span>
 	}
-	
+
+	/**
+	 * Control if Member is in List.
+	 * @param name Name of Specific Member
+	 * @return found - Boolean of accomplished (or not) Control
+	 */
 	public boolean isInList(final String name) {
-<span class="fc" id="L44">		boolean found = false;</span>
-<span class="fc bfc" id="L45" title="All 2 branches covered.">		for (int i = 0; i &lt; members.size(); i++) {</span>
-<span class="fc bfc" id="L46" title="All 2 branches covered.">			if (compareName(getMemberName(members.get(i)),name)) {</span>
-<span class="fc" id="L47">				found = true;</span>
-<span class="fc" id="L48">				break;</span>
+<span class="fc" id="L84">		boolean found = false;</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">		for (int i = 0; i &lt; members.size(); i++) {</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">			if (compareName(getMemberName(members.get(i)), name)) {</span>
+<span class="fc" id="L87">				found = true;</span>
+<span class="fc" id="L88">				break;</span>
 			}
 		}
-<span class="fc" id="L51">		return found;</span>
+<span class="fc" id="L91">		return found;</span>
 	}
-	
-	public void setMembers(final List&lt;Member&gt; members) {
-<span class="fc" id="L55">		this.members = members;</span>
-<span class="fc" id="L56">	}</span>
+
+	/**
+	 * Set Member from zipFile.
+	 * @param membersNew Member in zipFile
+	 * 
+	 */
+	public void setMembers(final List&lt;Member&gt; membersNew) {
+<span class="fc" id="L100">		this.members = membersNew;</span>
+<span class="fc" id="L101">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

@@ -5,18 +5,26 @@ import java.util.List;
 import it.uniba.analysis.MembersAnalysis;
 import it.uniba.data.Member;
 
-<span class="fc" id="L8">public class MembersPrinter {</span>
+/**
+ * Printer of Members.
+ */
+<span class="fc" id="L11">public final class MembersPrinter {</span>
 
+	/**
+	 * Override print method from interface Printer.
+	 * @param members List of members
+	 * @return String - List of members as string
+	 */
 	public String print(final List&lt;?&gt; members) {
-<span class="fc" id="L11">		final MembersAnalysis analysis = new MembersAnalysis();</span>
-<span class="fc" id="L12">		final StringBuffer buf = new StringBuffer(26);</span>
-<span class="fc" id="L13">		buf.append(&quot;This is users list :\n\n&quot;);</span>
-<span class="fc bfc" id="L14" title="All 2 branches covered.">		for (int i = 0; i &lt; members.size(); i++) {</span>
-<span class="fc" id="L15">			buf.append(analysis.getMemberName((Member)members.get(i)));</span>
-<span class="fc" id="L16">			buf.append('\n');</span>
+<span class="fc" id="L19">		final MembersAnalysis analysis = new MembersAnalysis();</span>
+<span class="fc" id="L20">		final StringBuffer buf = new StringBuffer(26);</span>
+<span class="fc" id="L21">		buf.append(&quot;This is users list :\n\n&quot;);</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">		for (int i = 0; i &lt; members.size(); i++) {</span>
+<span class="fc" id="L23">			buf.append(analysis.getMemberName((Member) members.get(i)));</span>
+<span class="fc" id="L24">			buf.append('\n');</span>
 		}
-<span class="fc" id="L18">		return buf.toString();</span>
+<span class="fc" id="L26">		return buf.toString();</span>
 	}
-	
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
