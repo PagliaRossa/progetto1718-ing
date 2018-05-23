@@ -90,7 +90,8 @@ final class MentionsToWeighedRequest {
 	private int checkNumber(final String...command) {
 		final ControllerUtil util = new ControllerUtil();
 		try {
-			return Integer.parseInt(util.getCommand(THIRDARGUMENT, command));
+			final int test = Integer.parseInt(util.getCommand(THIRDARGUMENT, command));
+			return test;
 		} catch (NumberFormatException e) {
 			return -1;
 		}
@@ -99,7 +100,8 @@ final class MentionsToWeighedRequest {
 	private int checkNumberChannel(final String...command) {
 		final ControllerUtil util = new ControllerUtil();
 		try {
-			return Integer.parseInt(util.getCommand(FOURTHARGUMENT, command));
+			final int test = Integer.parseInt(util.getCommand(FOURTHARGUMENT, command));
+			return test;
 		} catch (NumberFormatException e) {
 			return -1;
 		}
