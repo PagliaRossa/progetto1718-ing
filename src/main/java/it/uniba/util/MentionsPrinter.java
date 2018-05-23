@@ -167,8 +167,7 @@ public final class MentionsPrinter implements Printer {
 	 * @param list List of Mentions
 	 * @param member Specified Member
 	 * @param occur List of occurence
-	 * @param over Integer which define weight
-	 * @return String - List of mentions weighed to specified member over over
+	 * @return String - List of mentions weighed to specified member
 	 */
 	public String printToWeighed(final List<?> list, final String member, final List<Counter> occur) {
 		final MentionUtil util = new MentionUtil();

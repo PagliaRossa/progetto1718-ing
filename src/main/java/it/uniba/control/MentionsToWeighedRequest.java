@@ -52,7 +52,7 @@ final class MentionsToWeighedRequest {
 		List<Counter> occurence = null;
 		final MembersAnalysis members = new MembersAnalysis();
 		final ControllerUtil util = new ControllerUtil();
-		members.membersList(util.getCommand(FOURTHARGUMENT, command));
+		members.membersList(util.getCommand(THIRDARGUMENT, command));
 		if (members.isInList(util.getCommand(SECONDARGUMENT, command))) {
 			request.setMembers(members.getMembers());
 			occurence = request.setNameFromTo();
@@ -66,7 +66,7 @@ final class MentionsToWeighedRequest {
 		List<Counter> occurence = null;
 		final MembersAnalysis members = new MembersAnalysis();
 		final ControllerUtil util = new ControllerUtil();
-		members.membersList(util.getCommand(FIFTHARGUMENT, command));
+		members.membersList(util.getCommand(FOURTHARGUMENT, command));
 		if (members.isInList(util.getCommand(SECONDARGUMENT, command))) {
 			request.setMembers(members.getMembers());
 			occurence = request.setNameFromTo();
