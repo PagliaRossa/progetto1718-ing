@@ -44,11 +44,10 @@ public final class HelpPrinter {
 			+ "Show mentions list weighed from selected member in selected workspace with zipPath\n"
 			+ "mentionsListFromWeighed member channel zipPath             "
 			+ "Show mentions list weighed from selected member in selected channel in selected workspace with zipPath\n"
-			+ "mentionsListToWeighed member minimumNumber zipPath         "
-			+ "Show mentions list weighed to selected member over minimumNumber in selected workspace with zipPath\n"
-			+ "mentionsListToWeighed member channel minimumNumber zipPath "
-			+ "Show mentions list weighed to selected member "
-			+ "over minimumNumber in selected channel in selected workspace with zipPath\n"
+			+ "mentionsListToWeighed member zipPath                       "
+			+ "Show mentions list weighed to selected member in selected workspace with zipPath\n"
+			+ "mentionsListToWeighed member channel zipPath               "
+			+ "Show mentions list weighed to selected member in selected channel in selected workspace with zipPath\n"
 			+ "sna4slack                                                  "
 			+ "Show this help interface\n");
 		help = buff.toString();
