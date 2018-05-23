@@ -16,42 +16,31 @@ final class MentionsToWeighedRequest {
 	private static final int THIRDARGUMENT = 2;
 	private static final int FOURTHARGUMENT = 3;
 	private static final int FIFTHARGUMENT = 4;
-	private static final int SIXTHARGUMENT = 5;
 
 	boolean showMentionsListToWeighed(final String... command) {
 		final ControllerUtil util = new ControllerUtil();
-		if (command.length == FIFTHARGUMENT) {
-			final int over = checkNumber(command);
-			if (over >= 0) {
-				final MentionsAnalysis request = new MentionsAnalysis();
-				if (request.mentionsList(util.getCommand(FOURTHARGUMENT, command))) {
-					final List<Counter> occurence = checkMember(request, command);
-					if (occurence != null) {
-						final MentionsPrinter printer = new MentionsPrinter();
-						System.out.println(printer.printToWeighed(request.getMentions(),
-								util.getCommand(SECONDARGUMENT, command), occurence, over));
-						return true;
-					}
+		if (command.length == FOURTHARGUMENT) {
+			final MentionsAnalysis request = new MentionsAnalysis();
+			if (request.mentionsList(util.getCommand(THIRDARGUMENT, command))) {
+				final List<Counter> occurence = checkMember(request, command);
+				if (occurence != null) {
+					final MentionsPrinter printer = new MentionsPrinter();
+					System.out.println(printer.printToWeighed(request.getMentions(),
+							util.getCommand(SECONDARGUMENT, command), occurence));
+					return true;
 				}
-			} else {
-				System.out.println("Number not valid!");
 			}
-		} else if (command.length == SIXTHARGUMENT) {
-			final int over = checkNumberChannel(command);
-			if (over >= 0) {
-				final MentionsAnalysis request = new MentionsAnalysis();
-				if (request.mentionsListChannel(util.getCommand(THIRDARGUMENT, command),
-						util.getCommand(FIFTHARGUMENT, command))) {
-					final List<Counter> occurence = checkMemberChannel(request, command);
-					if (occurence != null) {
-						final MentionsPrinter printer = new MentionsPrinter();
-						System.out.println(printer.printToWeighed(request.getMentions(),
-								util.getCommand(SECONDARGUMENT, command), occurence, over));
-						return true;
-					}
+		} else if (command.length == FIFTHARGUMENT) {
+			final MentionsAnalysis request = new MentionsAnalysis();
+			if (request.mentionsListChannel(util.getCommand(THIRDARGUMENT, command),
+					util.getCommand(FOURTHARGUMENT, command))) {
+				final List<Counter> occurence = checkMemberChannel(request, command);
+				if (occurence != null) {
+					final MentionsPrinter printer = new MentionsPrinter();
+					System.out.println(printer.printToWeighed(request.getMentions(),
+							util.getCommand(SECONDARGUMENT, command), occurence));
+					return true;
 				}
-			} else {
-				System.out.println("Number not valid!");
 			}
 		} else {
 			System.out.println(needArguments);
@@ -86,25 +75,4 @@ final class MentionsToWeighedRequest {
 		}
 		return occurence;
 	}
-
-	private int checkNumber(final String...command) {
-		final ControllerUtil util = new ControllerUtil();
-		try {
-			Integer.parseInt(util.getCommand(THIRDARGUMENT, command));
-			return Integer.parseInt(util.getCommand(THIRDARGUMENT, command));
-		} catch (NumberFormatException e) {
-			return -1;
-		}
-	}
-
-	private int checkNumberChannel(final String...command) {
-		final ControllerUtil util = new ControllerUtil();
-		try {
-			Integer.parseInt(util.getCommand(FOURTHARGUMENT, command));
-			return Integer.parseInt(util.getCommand(FOURTHARGUMENT, command));
-		} catch (NumberFormatException e) {
-			return -1;
-		}
-	}
-
 }
