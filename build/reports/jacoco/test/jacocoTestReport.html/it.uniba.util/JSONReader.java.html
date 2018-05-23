@@ -12,147 +12,266 @@ import it.uniba.data.Channel;
 import it.uniba.data.Member;
 import it.uniba.data.Mention;
 
-<span class="fc" id="L15">public class JSONReader {</span>
-	
+/**
+ * Get specific field from a json.
+ */
+<span class="fc" id="L18">public final class JSONReader {</span>
+
+	/**
+	 * Get an array size.
+	 * @param array Specific array
+	 * @return Integer - Size of array
+	 */
 	private int getArraySize(final JSONArray array) {
-<span class="fc" id="L18">		return array.size();</span>
+<span class="fc" id="L26">		return array.size();</span>
 	}
-	
-	private JSONObject getJSONObject(final JSONArray array,final int index) {
-<span class="fc" id="L22">		return (JSONObject) array.get(index);</span>
+
+	/**
+	 * Get a json object from a json array.
+	 * @param array Specific Array
+	 * @param index Index of object
+	 * @return object - Specific object at index in array
+	 */
+	private JSONObject getJSONObject(final JSONArray array, final int index) {
+<span class="fc" id="L36">		return (JSONObject) array.get(index);</span>
 	}
-	
-	private JSONObject getJSONObject(final JSONObject obj,final String resource) {
-<span class="fc" id="L26">		return (JSONObject) obj.get(resource);</span>
+
+	/**
+	 * Get json object that equals resource.
+	 * @param obj Specific input object
+	 * @param resource Specific name of resource
+	 * @return obj - Object with specific resource name
+	 */
+	private JSONObject getJSONObject(final JSONObject obj, final String resource) {
+<span class="fc" id="L46">		return (JSONObject) obj.get(resource);</span>
 	}
-	
-	private String getJSONObjectString(final JSONArray array,final int index) {
-<span class="fc" id="L30">		return (String) array.get(index);</span>
+
+	/**
+	 * Get json object as String.
+	 * @param array Specific json array
+	 * @param index Specific index
+	 * @return String - specific object in array at index as String
+	 */
+	private String getJSONObjectString(final JSONArray array, final int index) {
+<span class="fc" id="L56">		return (String) array.get(index);</span>
 	}
-	
-	private boolean containsKey(final JSONObject obj,final String keyMatch) {
-<span class="fc" id="L34">		return obj.containsKey(keyMatch);</span>
+
+	/**
+	 * Check if object contain a specific key.
+	 * @param obj Specific Object
+	 * @param keyMatch Specific key
+	 * @return boolean - True or False if obj contains or not contains key
+	 */
+	private boolean containsKey(final JSONObject obj, final String keyMatch) {
+<span class="fc" id="L66">		return obj.containsKey(keyMatch);</span>
 	}
-	
-	private String getAttribute(final JSONObject obj,final String attribute) {
-<span class="fc" id="L38">		return (String) obj.get(attribute);</span>
+
+	/**
+	 * Get specific attribute.
+	 * @param obj Specific object
+	 * @param attribute Attribute name
+	 * @return String - Attribute as String in object
+	 */
+	private String getAttribute(final JSONObject obj, final String attribute) {
+<span class="fc" id="L76">		return (String) obj.get(attribute);</span>
 	}
-	
+
+	/**
+	 * Check if attribute is null.
+	 * @param attribute String of specific attribute
+	 * @return boolean - True or false if attribute is or isn't null
+	 */
 	private boolean attributeNull(final String attribute) {
-<span class="fc" id="L42">		return &quot;&quot;.equals(attribute);</span>
+<span class="fc" id="L85">		return &quot;&quot;.equals(attribute);</span>
 	}
-	
-	private JSONArray getJSONArray(final JSONObject obj,final String resource) {
-<span class="fc" id="L46">		return (JSONArray) obj.get(resource);</span>
+
+	/**
+	 * Get jsonArray in json object.
+	 * @param obj Specific Object
+	 * @param resource Name of Array
+	 * @return Array - Return array with same name in object
+	 */
+	private JSONArray getJSONArray(final JSONObject obj, final String resource) {
+<span class="fc" id="L95">		return (JSONArray) obj.get(resource);</span>
 	}
-	
+
+	/**
+	 * Get Size of string.
+	 * @param text String
+	 * @return Integer - Size of String
+	 */
 	private int getTextSize(final String text) {
-<span class="fc" id="L50">		return text.length();</span>
+<span class="fc" id="L104">		return text.length();</span>
 	}
-	
-	private boolean containsChars(final String text,final String contains) {
-<span class="fc" id="L54">		return text.contains(contains);</span>
+
+	/**
+	 * Check if String contain chars.
+	 * @param text String
+	 * @param contains String of chars
+	 * @return boolean - True or false if contains or not contains chars
+	 */
+	private boolean containsChars(final String text, final String contains) {
+<span class="fc" id="L114">		return text.contains(contains);</span>
 	}
-	
-	private char charAt(final String text,final int index) {
-<span class="fc" id="L58">		return text.charAt(index);</span>
+
+	/**
+	 * Get char at index in String.
+	 * @param text String
+	 * @param index Index of char
+	 * @return char - Char at index
+	 */
+	private char charAt(final String text, final int index) {
+<span class="fc" id="L124">		return text.charAt(index);</span>
 	}
-	
-	private String sub(final String text,final int start,final int end) {
-<span class="fc" id="L62">		return text.substring(start, end);</span>
+
+	/**
+	 * Get sub String of String.
+	 * @param text String
+	 * @param start Start index
+	 * @param end End index
+	 * @return String - Return sub string from start to end
+	 */
+	private String sub(final String text, final int start, final int end) {
+<span class="fc" id="L135">		return text.substring(start, end);</span>
 	}
-	
-	private boolean containsValue(final JSONObject obj,final String attribute) {
-<span class="fc" id="L66">		return obj.containsValue(attribute);</span>
+
+	/**
+	 * Check if Object contain value.
+	 * @param obj Specific Object
+	 * @param attribute Name of Attribute
+	 * @return boolean - True or false if object contains or not contains attribute
+	 */
+	private boolean containsValue(final JSONObject obj, final String attribute) {
+<span class="fc" id="L145">		return obj.containsValue(attribute);</span>
 	}
-	
-	private Member newMember(final String identificator,final String name) {
-<span class="fc" id="L70">		return new Member(identificator,name);</span>
+
+	/**
+	 * Create a new Member Object.
+	 * @param identificator Identificator of Member
+	 * @param name Name of Member
+	 * @return Member - New Member object
+	 */
+	private Member newMember(final String identificator, final String name) {
+<span class="fc" id="L155">		return new Member(identificator, name);</span>
 	}
-	
-	private Mention newMention(final String fromMember,final String toMember) {
-<span class="fc" id="L74">		return new Mention(fromMember,toMember);</span>
+
+	/**
+	 * Create a new Mention Object.
+	 * @param fromMember fromMember of Mention
+	 * @param toMember toMember of Mentions
+	 * @return Mention - New Mention Object
+	 */
+	private Mention newMention(final String fromMember, final String toMember) {
+<span class="fc" id="L165">		return new Mention(fromMember, toMember);</span>
 	}
-	
-	private Channel newChannel(final String identificator,final String name,final List&lt;String&gt; members) {
-<span class="fc" id="L78">		return new Channel(identificator,name,members);</span>
+
+	/**
+	 * Create a new Channel object.
+	 * @param identificator Identificator of Channel
+	 * @param name Name of channel
+	 * @param members Members of Channels
+	 * @return Channel - New Channel Object
+	 */
+	private Channel newChannel(final String identificator, final String name, final List&lt;String&gt; members) {
+<span class="fc" id="L176">		return new Channel(identificator, name, members);</span>
 	}
-	
+
+	/**
+	 * Create a new list of Members.
+	 * @return List - New list of Members
+	 */
 	private List&lt;String&gt; newMembers() {
-<span class="fc" id="L82">		return new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L184">		return new ArrayList&lt;String&gt;();</span>
 	}
-	
+
+	/**
+	 * Set members list from a json.
+	 * @param json Specific json
+	 * @return List - List of members
+	 * @throws ParseException If json is invalid , throw ParseException
+	 */
 	public List&lt;Member&gt; setMembers(final String json) throws ParseException {
-<span class="fc" id="L86">		final List&lt;Member&gt; members = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L87">		final JSONParser parser = new JSONParser();</span>
-<span class="fc" id="L88">		final JSONArray array = (JSONArray) parser.parse(json);</span>
-<span class="fc bfc" id="L89" title="All 2 branches covered.">		for (int i = 0; i &lt; getArraySize(array); i++) {</span>
-<span class="fc" id="L90">			final JSONObject obj = getJSONObject(array,i);</span>
-<span class="fc" id="L91">			final JSONObject profile = getJSONObject(obj,&quot;profile&quot;);</span>
-<span class="fc" id="L92">			boolean displayNameExist = false;</span>
-<span class="fc bfc" id="L93" title="All 2 branches covered.">			if (containsKey(profile,&quot;display_name&quot;)) {</span>
-<span class="fc" id="L94">				displayNameExist = true;</span>
+<span class="fc" id="L194">		final List&lt;Member&gt; members = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L195">		final JSONParser parser = new JSONParser();</span>
+<span class="fc" id="L196">		final JSONArray array = (JSONArray) parser.parse(json);</span>
+<span class="fc bfc" id="L197" title="All 2 branches covered.">		for (int i = 0; i &lt; getArraySize(array); i++) {</span>
+<span class="fc" id="L198">			final JSONObject obj = getJSONObject(array, i);</span>
+<span class="fc" id="L199">			final JSONObject profile = getJSONObject(obj, &quot;profile&quot;);</span>
+<span class="fc" id="L200">			boolean displayNameExist = false;</span>
+<span class="fc bfc" id="L201" title="All 2 branches covered.">			if (containsKey(profile, &quot;display_name&quot;)) {</span>
+<span class="fc" id="L202">				displayNameExist = true;</span>
 			}
-<span class="fc" id="L96">			String choosen = &quot;&quot;;</span>
-<span class="fc" id="L97">			String displayName = &quot;&quot;;</span>
-<span class="fc" id="L98">			final String name = getAttribute(obj,&quot;name&quot;);</span>
-<span class="fc bfc" id="L99" title="All 2 branches covered.">			if (displayNameExist) {</span>
-<span class="fc" id="L100">				displayName = getAttribute(profile,&quot;display_name&quot;);</span>
+<span class="fc" id="L204">			String choosen = &quot;&quot;;</span>
+<span class="fc" id="L205">			String displayName = &quot;&quot;;</span>
+<span class="fc" id="L206">			final String name = getAttribute(obj, &quot;name&quot;);</span>
+<span class="fc bfc" id="L207" title="All 2 branches covered.">			if (displayNameExist) {</span>
+<span class="fc" id="L208">				displayName = getAttribute(profile, &quot;display_name&quot;);</span>
 			}
-<span class="fc" id="L102">			final String realName = getAttribute(obj,&quot;real_name&quot;);</span>
-<span class="fc bfc" id="L103" title="All 4 branches covered.">			if (displayNameExist &amp;&amp; !attributeNull(displayName)) {</span>
-<span class="fc" id="L104">				choosen = displayName; </span>
-<span class="fc bfc" id="L105" title="All 2 branches covered.">			} else if (attributeNull(realName)) {</span>
-<span class="fc" id="L106">				choosen = name;</span>
+<span class="fc" id="L210">			final String realName = getAttribute(obj, &quot;real_name&quot;);</span>
+<span class="fc bfc" id="L211" title="All 4 branches covered.">			if (displayNameExist &amp;&amp; !attributeNull(displayName)) {</span>
+<span class="fc" id="L212">				choosen = displayName;</span>
+<span class="fc bfc" id="L213" title="All 2 branches covered.">			} else if (attributeNull(realName)) {</span>
+<span class="fc" id="L214">				choosen = name;</span>
 			} else {
-<span class="fc" id="L108">				choosen = realName;</span>
+<span class="fc" id="L216">				choosen = realName;</span>
 			}
-<span class="fc" id="L110">			members.add(newMember(getAttribute(obj,&quot;id&quot;),choosen));</span>
-			
+<span class="fc" id="L218">			members.add(newMember(getAttribute(obj, &quot;id&quot;), choosen));</span>
 		}
-<span class="fc" id="L113">		return members;</span>
+<span class="fc" id="L220">		return members;</span>
 	}
-	
+
+	/**
+	 * Set channels List from json.
+	 * @param json Specific Json
+	 * @return List - List of channels
+	 * @throws ParseException If json is invalid , throw ParseException
+	 */
 	public List&lt;Channel&gt; setChannels(final String json) throws ParseException {
-<span class="fc" id="L117">		final List&lt;Channel&gt; channels = new ArrayList&lt;Channel&gt;();</span>
+<span class="fc" id="L230">		final List&lt;Channel&gt; channels = new ArrayList&lt;Channel&gt;();</span>
 		List&lt;String&gt; members;
-<span class="fc" id="L119">		members = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L120">		final JSONParser parser = new JSONParser();</span>
-<span class="fc" id="L121">		final JSONArray array = (JSONArray) parser.parse(json);</span>
-<span class="fc bfc" id="L122" title="All 2 branches covered.">		for (int i = 0; i &lt; getArraySize(array); i++) {</span>
-<span class="fc" id="L123">			final JSONObject obj = getJSONObject(array,i);</span>
-<span class="fc" id="L124">			final JSONArray array2 = getJSONArray(obj,&quot;members&quot;); </span>
-<span class="fc bfc" id="L125" title="All 2 branches covered.">			for (int j = 0; j &lt; getArraySize(array2); j++) {</span>
-<span class="fc" id="L126">				members.add((String) getJSONObjectString(array2,j));</span>
+<span class="fc" id="L232">		members = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L233">		final JSONParser parser = new JSONParser();</span>
+<span class="fc" id="L234">		final JSONArray array = (JSONArray) parser.parse(json);</span>
+<span class="fc bfc" id="L235" title="All 2 branches covered.">		for (int i = 0; i &lt; getArraySize(array); i++) {</span>
+<span class="fc" id="L236">			final JSONObject obj = getJSONObject(array, i);</span>
+<span class="fc" id="L237">			final JSONArray array2 = getJSONArray(obj, &quot;members&quot;);</span>
+<span class="fc bfc" id="L238" title="All 2 branches covered.">			for (int j = 0; j &lt; getArraySize(array2); j++) {</span>
+<span class="fc" id="L239">				members.add((String) getJSONObjectString(array2, j));</span>
 			}
-<span class="fc" id="L128">			channels.add(newChannel(getAttribute(obj,&quot;id&quot;),getAttribute(obj,&quot;name&quot;),members));</span>
-<span class="fc" id="L129">			members = newMembers();</span>
+<span class="fc" id="L241">			channels.add(newChannel(getAttribute(obj, &quot;id&quot;), getAttribute(obj, &quot;name&quot;), members));</span>
+<span class="fc" id="L242">			members = newMembers();</span>
 		}
-<span class="fc" id="L131">		return channels;</span>
+<span class="fc" id="L244">		return channels;</span>
 	}
-	
+
+	/**
+	 * Set mentions list from json.
+	 * @param json Specific json
+	 * @return List - List of mentions
+	 * @throws ParseException If json not valid , throw ParseException
+	 */
 	public List&lt;Mention&gt; setMentions(final String json) throws ParseException {
-<span class="fc" id="L135">		final List&lt;Mention&gt; mentions = new ArrayList&lt;&gt;();</span>
-<span class="fc" id="L136">		final JSONParser parser = new JSONParser();</span>
-<span class="fc" id="L137">		final JSONArray array = (JSONArray) parser.parse(json);</span>
-<span class="fc bfc" id="L138" title="All 2 branches covered.">		for (int j = 0; j &lt; getArraySize(array); j++) {</span>
-<span class="fc" id="L139">			final JSONObject obj = getJSONObject(array,j);</span>
-<span class="fc" id="L140">			final String text = getAttribute(obj,&quot;text&quot;);</span>
-<span class="pc bpc" id="L141" title="1 of 4 branches missed.">			if (!containsValue(obj,&quot;subtype&quot;) &amp;&amp; containsChars(text,&quot;&lt;@&quot;)) {</span>
-<span class="fc" id="L142">					int begin = 0;</span>
-<span class="fc" id="L143">					int end = 0;</span>
-<span class="fc bfc" id="L144" title="All 2 branches covered.">					for (int k = 0; k &lt; getTextSize(text); k++) {</span>
-<span class="fc bfc" id="L145" title="All 2 branches covered.">						if (charAt(text,k) == '&lt;') {</span>
-<span class="fc" id="L146">							begin = k;</span>
+<span class="fc" id="L254">		final List&lt;Mention&gt; mentions = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L255">		final JSONParser parser = new JSONParser();</span>
+<span class="fc" id="L256">		final JSONArray array = (JSONArray) parser.parse(json);</span>
+<span class="fc bfc" id="L257" title="All 2 branches covered.">		for (int j = 0; j &lt; getArraySize(array); j++) {</span>
+<span class="fc" id="L258">			final JSONObject obj = getJSONObject(array, j);</span>
+<span class="fc" id="L259">			final String text = getAttribute(obj, &quot;text&quot;);</span>
+<span class="pc bpc" id="L260" title="1 of 4 branches missed.">			if (!containsValue(obj, &quot;subtype&quot;) &amp;&amp; containsChars(text, &quot;&lt;@&quot;)) {</span>
+<span class="fc" id="L261">					int begin = 0;</span>
+<span class="fc" id="L262">					int end = 0;</span>
+<span class="fc bfc" id="L263" title="All 2 branches covered.">					for (int k = 0; k &lt; getTextSize(text); k++) {</span>
+<span class="fc bfc" id="L264" title="All 2 branches covered.">						if (charAt(text, k) == '&lt;') {</span>
+<span class="fc" id="L265">							begin = k;</span>
 						}
-<span class="fc bfc" id="L148" title="All 2 branches covered.">						if (charAt(text,k) == '&gt;') {</span>
-<span class="fc" id="L149">							end = k;</span>
-<span class="fc" id="L150">							mentions.add(newMention(getAttribute(obj,&quot;user&quot;),sub(text,begin+2,end)));</span>
+<span class="fc bfc" id="L267" title="All 2 branches covered.">						if (charAt(text, k) == '&gt;') {</span>
+<span class="fc" id="L268">							end = k;</span>
+<span class="fc" id="L269">							mentions.add(newMention(getAttribute(obj, &quot;user&quot;), sub(text, begin + 2, end)));</span>
 						}
 					}
 				}
 			}
-<span class="fc" id="L155">		return mentions;</span>
+<span class="fc" id="L274">		return mentions;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

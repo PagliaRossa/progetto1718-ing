@@ -1,29 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Counter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SNA4Slack</a> &gt; <a href="index.source.html" class="el_package">it.uniba.data</a> &gt; <span class="el_source">Counter.java</span></div><h1>Counter.java</h1><pre class="source lang-java linenums">package it.uniba.data;
 
-public class Counter {
-	
+/**
+ * Define a pojo class Counter.
+ */
+public final class Counter {
+
+	/**
+	 * Index of mention in list.
+	 */
 	private int index;
+	/**
+	 * Occurence of specified mention.
+	 */
 	private int occurenceNumber;
-	
-<span class="fc" id="L8">	public Counter(final int indexNew,final int occurence) {</span>
-<span class="fc" id="L9">		index = indexNew;</span>
-<span class="fc" id="L10">		occurenceNumber = occurence;</span>
-<span class="fc" id="L11">	}</span>
-	
+
+	/**
+	 * Costructor that creates a new Counter object with index and occurence.
+	 * @param indexNew Set index as IndexNew
+	 * @param occurence Set occurenceNumber as occurence
+	 */
+<span class="fc" id="L22">	public Counter(final int indexNew, final int occurence) {</span>
+<span class="fc" id="L23">		index = indexNew;</span>
+<span class="fc" id="L24">		occurenceNumber = occurence;</span>
+<span class="fc" id="L25">	}</span>
+
+	/**
+	 * Get index of Counter.
+	 * @return index - Return index of Counter
+	 */
 	public int getIndex() {
-<span class="fc" id="L14">		return index;</span>
+<span class="fc" id="L32">		return index;</span>
 	}
-	
+
+	/**
+	 * Get occurenceNumber of Counter.
+	 * @return occurenceNumber - Return occurenceNumber of Counter
+	 */
 	public int getOccurenceNumber() {
-<span class="fc" id="L18">		return this.occurenceNumber;</span>
+<span class="fc" id="L40">		return this.occurenceNumber;</span>
 	}
-	
+
+	/**
+	 * Set index of Counter.
+	 * @param indexNew New index of Counter
+	 */
 	public void setIndex(final int indexNew) {
-<span class="fc" id="L22">		index = indexNew;</span>
-<span class="fc" id="L23">	}</span>
-	
+<span class="fc" id="L48">		index = indexNew;</span>
+<span class="fc" id="L49">	}</span>
+
+	/**
+	 * Set occurenceNumber of Counter.
+	 * @param occurence New occurence of occurenceNumber
+	 */
 	public void setOccurenceNumber(final int occurence) {
-<span class="fc" id="L26">		occurenceNumber = occurence;</span>
-<span class="fc" id="L27">	}</span>
+<span class="fc" id="L56">		occurenceNumber = occurence;</span>
+<span class="fc" id="L57">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

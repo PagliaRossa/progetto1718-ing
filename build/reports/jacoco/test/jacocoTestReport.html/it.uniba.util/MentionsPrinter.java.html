@@ -5,151 +5,194 @@ import java.util.List;
 import it.uniba.data.Counter;
 import it.uniba.data.Mention;
 
-<span class="fc" id="L8">public class MentionsPrinter implements Printer {</span>
-	
-<span class="fc" id="L10">	static String listMentions = &quot;List of mentions :\n\n&quot;;</span>
-<span class="fc" id="L11">	static String fromMember = &quot;From &quot;;</span>
-<span class="fc" id="L12">	static String toMember = &quot; to &quot;;</span>
-	
+/**
+ * Printer of Mentions which implements Printer interface.
+ */
+<span class="fc" id="L11">public final class MentionsPrinter implements Printer {</span>
+
+	/**
+	 * Static string list mentions.
+	 */
+<span class="fc" id="L16">	private static String listMentions = &quot;List of mentions :\n\n&quot;;</span>
+	/**
+	 * Static string from.
+	 */
+<span class="fc" id="L20">	private static String fromMember = &quot;From &quot;;</span>
+	/**
+	 * Static string to.
+	 */
+<span class="fc" id="L24">	private static String toMember = &quot; to &quot;;</span>
+
 	@Override
 	public String print(final List&lt;?&gt; list) {
-<span class="fc" id="L16">		final MentionUtil util = new MentionUtil();</span>
-<span class="fc" id="L17">		final StringBuffer buf = new StringBuffer(33);</span>
+<span class="fc" id="L28">		final MentionUtil util = new MentionUtil();</span>
+<span class="fc" id="L29">		final StringBuffer buf = new StringBuffer(33);</span>
 		Mention mention;
-<span class="fc" id="L19">		buf.append(listMentions);</span>
-<span class="fc bfc" id="L20" title="All 2 branches covered.">		for (int i = 0; i &lt; list.size(); i++) {</span>
-<span class="fc" id="L21">			mention = (Mention) list.get(i);</span>
-<span class="fc" id="L22">			buf.append(fromMember);</span>
-<span class="fc" id="L23">			buf.append(util.getMentionFrom(mention));</span>
-<span class="fc" id="L24">			buf.append(toMember);</span>
-<span class="fc" id="L25">			buf.append(util.getMentionTo(mention));</span>
-<span class="fc" id="L26">			buf.append('\n');</span>
+<span class="fc" id="L31">		buf.append(listMentions);</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">		for (int i = 0; i &lt; list.size(); i++) {</span>
+<span class="fc" id="L33">			mention = (Mention) list.get(i);</span>
+<span class="fc" id="L34">			buf.append(fromMember);</span>
+<span class="fc" id="L35">			buf.append(util.getMentionFrom(mention));</span>
+<span class="fc" id="L36">			buf.append(toMember);</span>
+<span class="fc" id="L37">			buf.append(util.getMentionTo(mention));</span>
+<span class="fc" id="L38">			buf.append('\n');</span>
 		}
-		
-<span class="fc bfc" id="L29" title="All 2 branches covered.">		if (buf.toString().equals(listMentions)) {</span>
-<span class="fc" id="L30">			return &quot;Can't find mentions !&quot;;</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">		if (buf.toString().equals(listMentions)) {</span>
+<span class="fc" id="L41">			return &quot;Can't find mentions !&quot;;</span>
 		} else {
-<span class="fc" id="L32">			return buf.toString();</span>
+<span class="fc" id="L43">			return buf.toString();</span>
 		}
 	}
-	
-	public String printFrom(final List&lt;?&gt; list,final String member) {
-<span class="fc" id="L37">		final MentionUtil util = new MentionUtil();</span>
-<span class="fc" id="L38">		final StringBuffer buf = new StringBuffer(33);</span>
+
+	/**
+	 * Print mentions from a Member.
+	 * @param list List of mentions
+	 * @param member Specified member
+	 * @return String - List of mentions from specified member
+	 */
+	public String printFrom(final List&lt;?&gt; list, final String member) {
+<span class="fc" id="L54">		final MentionUtil util = new MentionUtil();</span>
+<span class="fc" id="L55">		final StringBuffer buf = new StringBuffer(33);</span>
 		Mention mention;
-<span class="fc" id="L40">		final String str = listMentions;</span>
-<span class="fc" id="L41">		buf.append(str);</span>
-<span class="fc bfc" id="L42" title="All 2 branches covered.">		for (int i = 0; i &lt; list.size(); i++) {</span>
-<span class="fc" id="L43">			mention = (Mention) list.get(i);</span>
-<span class="fc bfc" id="L44" title="All 2 branches covered.">			if (util.compareFrom(util.getMentionFrom(mention),member)) {</span>
-<span class="fc" id="L45">				buf.append(fromMember);</span>
-<span class="fc" id="L46">				buf.append(util.getMentionFrom(mention));</span>
-<span class="fc" id="L47">				buf.append(toMember);</span>
-<span class="fc" id="L48">				buf.append(util.getMentionTo(mention));</span>
-<span class="fc" id="L49">				buf.append('\n');</span>
+<span class="fc" id="L57">		final String str = listMentions;</span>
+<span class="fc" id="L58">		buf.append(str);</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">		for (int i = 0; i &lt; list.size(); i++) {</span>
+<span class="fc" id="L60">			mention = (Mention) list.get(i);</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">			if (util.compareFrom(util.getMentionFrom(mention), member)) {</span>
+<span class="fc" id="L62">				buf.append(fromMember);</span>
+<span class="fc" id="L63">				buf.append(util.getMentionFrom(mention));</span>
+<span class="fc" id="L64">				buf.append(toMember);</span>
+<span class="fc" id="L65">				buf.append(util.getMentionTo(mention));</span>
+<span class="fc" id="L66">				buf.append('\n');</span>
 			}
 		}
-<span class="fc bfc" id="L52" title="All 2 branches covered.">		if (buf.toString().equals(str)) {</span>
-<span class="fc" id="L53">			return &quot;Can't find mentions for this member&quot;;</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">		if (buf.toString().equals(str)) {</span>
+<span class="fc" id="L70">			return &quot;Can't find mentions for this member&quot;;</span>
 		} else {
-<span class="fc" id="L55">			return buf.toString();</span>
+<span class="fc" id="L72">			return buf.toString();</span>
 		}
 	}
-	
-	public String printTo(final List&lt;?&gt; list,final String member) {
-<span class="fc" id="L60">		final MentionUtil util = new MentionUtil();</span>
-<span class="fc" id="L61">		final StringBuffer buf = new StringBuffer();</span>
-		Mention mention;
-<span class="fc" id="L63">		final String str = listMentions;</span>
-<span class="fc" id="L64">		buf.append(str);</span>
-<span class="fc bfc" id="L65" title="All 2 branches covered.">		for (int i = 0; i &lt; list.size(); i++) {</span>
-<span class="fc" id="L66">			mention = (Mention) list.get(i);</span>
-<span class="fc bfc" id="L67" title="All 2 branches covered.">			if (util.compareTo(util.getMentionTo(mention),member)) {</span>
-<span class="fc" id="L68">				buf.append(fromMember);</span>
-<span class="fc" id="L69">				buf.append(util.getMentionFrom(mention));</span>
-<span class="fc" id="L70">				buf.append(toMember);</span>
-<span class="fc" id="L71">				buf.append(util.getMentionTo(mention));</span>
-<span class="fc" id="L72">				buf.append('\n');</span>
-			}
-		}
-<span class="fc bfc" id="L75" title="All 2 branches covered.">		if (buf.toString().equals(str)) {</span>
-<span class="fc" id="L76">			return &quot;Can't find mentions for this member&quot;;</span>
-		} else {
-<span class="fc" id="L78">			return buf.toString();</span>
-		}
-	}
-	
-	public String printWeighed(final List&lt;?&gt; list, final List&lt;Counter&gt; occurence) {
+
+	/**
+	 * Print mentions to a Member.
+	 * @param list List of Mentions
+	 * @param member Specified Member
+	 * @return String - List of mentions to specified member as string
+	 */
+	public String printTo(final List&lt;?&gt; list, final String member) {
 <span class="fc" id="L83">		final MentionUtil util = new MentionUtil();</span>
-<span class="fc" id="L84">		final StringBuffer buf = new StringBuffer(33);</span>
+<span class="fc" id="L84">		final StringBuffer buf = new StringBuffer();</span>
 		Mention mention;
-<span class="fc" id="L86">		buf.append(listMentions);</span>
-<span class="fc bfc" id="L87" title="All 2 branches covered.">		for (int i = 0; i &lt; list.size(); i++) {</span>
-<span class="fc" id="L88">			mention = (Mention) list.get(i);</span>
-<span class="fc" id="L89">			buf.append(fromMember);</span>
-<span class="fc" id="L90">			buf.append(util.getMentionFrom(mention));</span>
-<span class="fc" id="L91">			buf.append(toMember);</span>
-<span class="fc" id="L92">			buf.append(util.getMentionTo(mention));</span>
-<span class="fc" id="L93">			buf.append(' ');</span>
-<span class="fc" id="L94">			buf.append(util.getWeight(occurence.get(i)));</span>
-<span class="fc" id="L95">			buf.append('\n');</span>
+<span class="fc" id="L86">		final String str = listMentions;</span>
+<span class="fc" id="L87">		buf.append(str);</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">		for (int i = 0; i &lt; list.size(); i++) {</span>
+<span class="fc" id="L89">			mention = (Mention) list.get(i);</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">			if (util.compareTo(util.getMentionTo(mention), member)) {</span>
+<span class="fc" id="L91">				buf.append(fromMember);</span>
+<span class="fc" id="L92">				buf.append(util.getMentionFrom(mention));</span>
+<span class="fc" id="L93">				buf.append(toMember);</span>
+<span class="fc" id="L94">				buf.append(util.getMentionTo(mention));</span>
+<span class="fc" id="L95">				buf.append('\n');</span>
+			}
 		}
-<span class="fc bfc" id="L97" title="All 2 branches covered.">		if (buf.toString().equals(listMentions)) {</span>
-<span class="fc" id="L98">			return &quot;Can't find mentions !&quot;;</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">		if (buf.toString().equals(str)) {</span>
+<span class="fc" id="L99">			return &quot;Can't find mentions for this member&quot;;</span>
 		} else {
-<span class="fc" id="L100">			return buf.toString();</span>
+<span class="fc" id="L101">			return buf.toString();</span>
 		}
 	}
 
-	public String printFromWeighed( final List&lt;Mention&gt; list, final String member, final List&lt;Counter&gt; occurence) {
-<span class="fc" id="L105">		final MentionUtil util = new MentionUtil();</span>
-<span class="fc" id="L106">		final StringBuffer buf = new StringBuffer(33);</span>
+	/**
+	 * Print Weighed mentions.
+	 * @param list List of Mentions
+	 * @param occurence List of occurence
+	 * @return String - List of mentions weighed as string
+	 */
+	public String printWeighed(final List&lt;?&gt; list, final List&lt;Counter&gt; occurence) {
+<span class="fc" id="L112">		final MentionUtil util = new MentionUtil();</span>
+<span class="fc" id="L113">		final StringBuffer buf = new StringBuffer(33);</span>
 		Mention mention;
-<span class="fc" id="L108">		final String str = listMentions;</span>
-<span class="fc" id="L109">		buf.append(str);</span>
-<span class="fc bfc" id="L110" title="All 2 branches covered.">		for (int i = 0; i &lt; list.size(); i++) {</span>
-<span class="fc" id="L111">			mention = (Mention) list.get(i);</span>
-<span class="fc bfc" id="L112" title="All 2 branches covered.">			if (util.compareFrom(util.getMentionFrom(mention),member)) {</span>
-<span class="fc" id="L113">				buf.append(fromMember);</span>
-<span class="fc" id="L114">				buf.append(util.getMentionFrom(mention));</span>
-<span class="fc" id="L115">				buf.append(toMember);</span>
-<span class="fc" id="L116">				buf.append(util.getMentionTo(mention));</span>
-<span class="fc" id="L117">				buf.append(' ');</span>
-<span class="fc" id="L118">				buf.append(util.getWeight(occurence.get(i)));</span>
-<span class="fc" id="L119">				buf.append('\n');</span>
-			}
+<span class="fc" id="L115">		buf.append(listMentions);</span>
+<span class="fc bfc" id="L116" title="All 2 branches covered.">		for (int i = 0; i &lt; list.size(); i++) {</span>
+<span class="fc" id="L117">			mention = (Mention) list.get(i);</span>
+<span class="fc" id="L118">			buf.append(fromMember);</span>
+<span class="fc" id="L119">			buf.append(util.getMentionFrom(mention));</span>
+<span class="fc" id="L120">			buf.append(toMember);</span>
+<span class="fc" id="L121">			buf.append(util.getMentionTo(mention));</span>
+<span class="fc" id="L122">			buf.append(' ');</span>
+<span class="fc" id="L123">			buf.append(util.getWeight(occurence.get(i)));</span>
+<span class="fc" id="L124">			buf.append('\n');</span>
 		}
-<span class="fc bfc" id="L122" title="All 2 branches covered.">		if (buf.toString().equals(str)) {</span>
-<span class="fc" id="L123">			return &quot;Can't find mentions for this member&quot;;</span>
+<span class="fc bfc" id="L126" title="All 2 branches covered.">		if (buf.toString().equals(listMentions)) {</span>
+<span class="fc" id="L127">			return &quot;Can't find mentions !&quot;;</span>
 		} else {
-<span class="fc" id="L125">			return buf.toString();</span>
-		}
-	}
-	
-	public String printToWeighed(final List&lt;?&gt; list,final String member,final List&lt;Counter&gt; occurence,final int over) {
-<span class="fc" id="L130">		final MentionUtil util = new MentionUtil();</span>
-<span class="fc" id="L131">		final StringBuffer buf = new StringBuffer();</span>
-		Mention mention;
-<span class="fc" id="L133">		final String str = listMentions;</span>
-<span class="fc" id="L134">		buf.append(str);</span>
-<span class="fc bfc" id="L135" title="All 2 branches covered.">		for (int i = 0; i &lt; list.size(); i++) {</span>
-<span class="fc" id="L136">			mention = (Mention) list.get(i);</span>
-<span class="fc bfc" id="L137" title="All 4 branches covered.">			if (util.compareTo(util.getMentionTo(mention),member) &amp;&amp; util.getWeight(occurence.get(i)) &gt; over) {</span>
-<span class="fc" id="L138">				buf.append(fromMember);</span>
-<span class="fc" id="L139">				buf.append(util.getMentionFrom(mention));</span>
-<span class="fc" id="L140">				buf.append(toMember);</span>
-<span class="fc" id="L141">				buf.append(util.getMentionTo(mention));</span>
-<span class="fc" id="L142">				buf.append(' ');</span>
-<span class="fc" id="L143">				buf.append(util.getWeight(occurence.get(i)));</span>
-<span class="fc" id="L144">				buf.append('\n');</span>
-			}
-		}
-<span class="fc bfc" id="L147" title="All 2 branches covered.">		if (buf.toString().equals(str)) {</span>
-<span class="fc" id="L148">			return &quot;Can't find mentions for this member over specified number !&quot;;</span>
-		} else {
-<span class="fc" id="L150">			return buf.toString();</span>
+<span class="fc" id="L129">			return buf.toString();</span>
 		}
 	}
 
+	/**
+	 * Print mentions weighed from a member.
+	 * @param list List of Mentions
+	 * @param member Specified Member
+	 * @param occurence List of occurence
+	 * @return String - List of mentions weighed from a specified member as string
+	 */
+	public String printFromWeighed(final List&lt;Mention&gt; list, final String member, final List&lt;Counter&gt; occurence) {
+<span class="fc" id="L141">		final MentionUtil util = new MentionUtil();</span>
+<span class="fc" id="L142">		final StringBuffer buf = new StringBuffer(33);</span>
+		Mention mention;
+<span class="fc" id="L144">		final String str = listMentions;</span>
+<span class="fc" id="L145">		buf.append(str);</span>
+<span class="fc bfc" id="L146" title="All 2 branches covered.">		for (int i = 0; i &lt; list.size(); i++) {</span>
+<span class="fc" id="L147">			mention = (Mention) list.get(i);</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">			if (util.compareFrom(util.getMentionFrom(mention), member)) {</span>
+<span class="fc" id="L149">				buf.append(fromMember);</span>
+<span class="fc" id="L150">				buf.append(util.getMentionFrom(mention));</span>
+<span class="fc" id="L151">				buf.append(toMember);</span>
+<span class="fc" id="L152">				buf.append(util.getMentionTo(mention));</span>
+<span class="fc" id="L153">				buf.append(' ');</span>
+<span class="fc" id="L154">				buf.append(util.getWeight(occurence.get(i)));</span>
+<span class="fc" id="L155">				buf.append('\n');</span>
+			}
+		}
+<span class="fc bfc" id="L158" title="All 2 branches covered.">		if (buf.toString().equals(str)) {</span>
+<span class="fc" id="L159">			return &quot;Can't find mentions for this member&quot;;</span>
+		} else {
+<span class="fc" id="L161">			return buf.toString();</span>
+		}
+	}
+
+	/**
+	 * Print mentions weighed to member over a specified integer.
+	 * @param list List of Mentions
+	 * @param member Specified Member
+	 * @param occur List of occurence
+	 * @param over Integer which define weight
+	 * @return String - List of mentions weighed to specified member over over
+	 */
+	public String printToWeighed(final List&lt;?&gt; list, final String member, final List&lt;Counter&gt; occur, final int over) {
+<span class="fc" id="L174">		final MentionUtil util = new MentionUtil();</span>
+<span class="fc" id="L175">		final StringBuffer buf = new StringBuffer();</span>
+		Mention mention;
+<span class="fc" id="L177">		final String str = listMentions;</span>
+<span class="fc" id="L178">		buf.append(str);</span>
+<span class="fc bfc" id="L179" title="All 2 branches covered.">		for (int i = 0; i &lt; list.size(); i++) {</span>
+<span class="fc" id="L180">			mention = (Mention) list.get(i);</span>
+<span class="fc bfc" id="L181" title="All 4 branches covered.">			if (util.compareTo(util.getMentionTo(mention), member) &amp;&amp; util.getWeight(occur.get(i)) &gt; over) {</span>
+<span class="fc" id="L182">				buf.append(fromMember);</span>
+<span class="fc" id="L183">				buf.append(util.getMentionFrom(mention));</span>
+<span class="fc" id="L184">				buf.append(toMember);</span>
+<span class="fc" id="L185">				buf.append(util.getMentionTo(mention));</span>
+<span class="fc" id="L186">				buf.append(' ');</span>
+<span class="fc" id="L187">				buf.append(util.getWeight(occur.get(i)));</span>
+<span class="fc" id="L188">				buf.append('\n');</span>
+			}
+		}
+<span class="fc bfc" id="L191" title="All 2 branches covered.">		if (buf.toString().equals(str)) {</span>
+<span class="fc" id="L192">			return &quot;Can't find mentions for this member over specified number !&quot;;</span>
+		} else {
+<span class="fc" id="L194">			return buf.toString();</span>
+		}
+	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

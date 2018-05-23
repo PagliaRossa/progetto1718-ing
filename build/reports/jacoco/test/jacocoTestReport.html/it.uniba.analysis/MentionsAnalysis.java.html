@@ -11,119 +11,142 @@ import it.uniba.data.Mention;
 import it.uniba.util.JSONReader;
 import it.uniba.util.MentionUtil;
 import it.uniba.util.ZipReader;
+/**
+ * Subclass of Analysis.
+ * Analyzes Mentions of zipFile.
+ *
+ */
+<span class="fc" id="L19">public class MentionsAnalysis extends Analysis {</span>
 
-<span class="fc" id="L15">public class MentionsAnalysis extends Analysis {</span>
-	
-<span class="fc" id="L17">	private final List&lt;Mention&gt; mentions = new ArrayList&lt;&gt;();</span>
-	
+<span class="fc" id="L21">	private final List&lt;Mention&gt; mentions = new ArrayList&lt;&gt;();</span>
+
+	/**
+	 * Get List of Mentions.
+	 * @return List of Mentions
+	 */
 	public List&lt;Mention&gt; getMentions() {
-<span class="fc" id="L20">		return mentions;</span>
+<span class="fc" id="L28">		return mentions;</span>
 	}
-	
+
 	private void removeWrongMentions() {
-<span class="fc" id="L24">		final MentionUtil util = new MentionUtil();</span>
-<span class="fc bfc" id="L25" title="All 2 branches covered.">		for (int i = 0; i &lt; mentions.size(); i++) {</span>
-<span class="pc bpc" id="L26" title="1 of 4 branches missed.">			if (util.getMentionFrom(mentions.get(i)) == null || util.getMentionTo(mentions.get(i)) == null){</span>
-<span class="fc" id="L27">				mentions.remove(i);</span>
-<span class="fc" id="L28">				i--;</span>
-<span class="fc bfc" id="L29" title="All 2 branches covered.">			} else if (util.mentionContain(util.getMentionTo(mentions.get(i)),&quot;|&quot;)) {</span>
-<span class="fc" id="L30">				mentions.remove(i);</span>
-<span class="fc" id="L31">				i--;</span>
-<span class="fc bfc" id="L32" title="All 2 branches covered.">			} else if (util.mentionContain(util.getMentionFrom(mentions.get(i)),util.getMentionTo(mentions.get(i)))) {</span>
-<span class="fc" id="L33">				mentions.remove(i);</span>
-<span class="fc" id="L34">				i--;</span>
-<span class="fc bfc" id="L35" title="All 2 branches covered.">			} else if (util.mentionContain(util.getMentionTo(mentions.get(i)),&quot;://&quot;)) {</span>
-<span class="fc" id="L36">				mentions.remove(i);</span>
-<span class="fc" id="L37">				i--;</span>
-<span class="fc bfc" id="L38" title="All 2 branches covered.">			} else if (util.mentionStartWith(util.getMentionTo(mentions.get(i)),&quot;cha&quot;)) {</span>
-<span class="fc" id="L39">				mentions.remove(i);</span>
-<span class="fc" id="L40">				i--;</span>
-<span class="fc bfc" id="L41" title="All 2 branches covered.">			} else if (util.mentionContain(util.getMentionTo(mentions.get(i)),&quot;everyone&quot;)) {</span>
-<span class="fc" id="L42">				mentions.remove(i);</span>
-<span class="fc" id="L43">				i--;</span>
+<span class="fc" id="L32">		final MentionUtil util = new MentionUtil();</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">		for (int i = 0; i &lt; mentions.size(); i++) {</span>
+<span class="pc bpc" id="L34" title="1 of 4 branches missed.">			if (util.getMentionFrom(mentions.get(i)) == null || util.getMentionTo(mentions.get(i)) == null) {</span>
+<span class="fc" id="L35">				mentions.remove(i);</span>
+<span class="fc" id="L36">				i--;</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">			} else if (util.mentionContain(util.getMentionTo(mentions.get(i)), &quot;|&quot;)) {</span>
+<span class="fc" id="L38">				mentions.remove(i);</span>
+<span class="fc" id="L39">				i--;</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">			} else if (util.mentionContain(util.getMentionFrom(mentions.get(i)), util.getMentionTo(mentions.get(i)))) {</span>
+<span class="fc" id="L41">				mentions.remove(i);</span>
+<span class="fc" id="L42">				i--;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">			} else if (util.mentionContain(util.getMentionTo(mentions.get(i)), &quot;://&quot;)) {</span>
+<span class="fc" id="L44">				mentions.remove(i);</span>
+<span class="fc" id="L45">				i--;</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">			} else if (util.mentionStartWith(util.getMentionTo(mentions.get(i)), &quot;cha&quot;)) {</span>
+<span class="fc" id="L47">				mentions.remove(i);</span>
+<span class="fc" id="L48">				i--;</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">			} else if (util.mentionContain(util.getMentionTo(mentions.get(i)), &quot;everyone&quot;)) {</span>
+<span class="fc" id="L50">				mentions.remove(i);</span>
+<span class="fc" id="L51">				i--;</span>
 			}
 		}
-<span class="fc" id="L46">	}</span>
-	
+<span class="fc" id="L54">	}</span>
+
 	private List&lt;Counter&gt; removeOccurence() {
-<span class="fc" id="L49">		final MentionUtil util = new MentionUtil();</span>
-<span class="fc" id="L50">		final List&lt;Counter&gt; counter = new ArrayList&lt;&gt;();</span>
-<span class="fc bfc" id="L51" title="All 2 branches covered.">		for(int i = 0; i &lt; mentions.size(); i++) {</span>
-<span class="fc" id="L52">			counter.add(util.newCounter(i,1));</span>
-<span class="fc bfc" id="L53" title="All 2 branches covered.">			for(int j = i+1; j &lt; mentions.size(); j++) {</span>
-<span class="fc bfc" id="L54" title="All 4 branches covered.">				if(util.compareFrom(util.getMentionFrom(mentions.get(i)),util.getMentionFrom(mentions.get(j))) &amp;&amp; util.compareTo(util.getMentionTo(mentions.get(i)),util.getMentionTo(mentions.get(j)))) {</span>
-<span class="fc" id="L55">					mentions.remove(j);</span>
-<span class="fc" id="L56">					j--;</span>
-<span class="fc" id="L57">					util.countIncreaser(counter.get(i));</span>
+<span class="fc" id="L57">		final MentionUtil util = new MentionUtil();</span>
+<span class="fc" id="L58">		final List&lt;Counter&gt; counter = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">		for (int i = 0; i &lt; mentions.size(); i++) {</span>
+<span class="fc" id="L60">			counter.add(util.newCounter(i, 1));</span>
+<span class="fc bfc" id="L61" title="All 2 branches covered.">			for (int j = i + 1; j &lt; mentions.size(); j++) {</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">				if (util.compareFrom(util.getMentionFrom(mentions.get(i)),</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">						util.getMentionFrom(mentions.get(j))) &amp;&amp; util.compareTo(util.getMentionTo(mentions.get(i)),</span>
+<span class="fc" id="L64">								util.getMentionTo(mentions.get(j)))) {</span>
+<span class="fc" id="L65">					mentions.remove(j);</span>
+<span class="fc" id="L66">					j--;</span>
+<span class="fc" id="L67">					util.countIncreaser(counter.get(i));</span>
 				}
 			}
 		}
-<span class="fc" id="L61">		return counter;</span>
+<span class="fc" id="L71">		return counter;</span>
 	}
-	
+
+	/**
+	 * Set Name of 'From' and 'To' Mentions.
+	 * @return List of Duplicated Counter Mentions
+	 */
 	public List&lt;Counter&gt; setNameFromTo() {
-<span class="fc" id="L65">		final MentionUtil util = new MentionUtil();</span>
-<span class="fc" id="L66">		final List&lt;Counter&gt; counter = removeOccurence();</span>
-		Mention mention;
-<span class="fc bfc" id="L68" title="All 2 branches covered.">		for (int i = 0 ; i &lt; mentions.size(); i++) {</span>
-<span class="fc" id="L69">			mention = mentions.get(i);</span>
-<span class="fc" id="L70">			util.setMentionFrom(mention,getMemberName(util.getMentionFrom(mention)));</span>
-<span class="fc" id="L71">			util.setMentionTo(mention,getMemberName(util.getMentionTo(mention)));</span>
-<span class="fc" id="L72">			mentions.set(i,mention);</span>
-		}
-<span class="fc" id="L74">		return counter;</span>
-	}
-	
-	
-	public boolean mentionsList(final String input) {
 <span class="fc" id="L79">		final MentionUtil util = new MentionUtil();</span>
-		try {
-<span class="fc" id="L81">			final ZipReader zip = new ZipReader();</span>
-<span class="fc" id="L82">			final JSONReader setter = new JSONReader();</span>
-<span class="fc" id="L83">			final List&lt;String&gt; conversations = zip.setConversationFile(input);</span>
-<span class="fc bfc" id="L84" title="All 2 branches covered.">			for (int i = 0; i &lt; util.conversationsSize(conversations); i++) {</span>
-<span class="fc" id="L85">				final String json = zip.getJSONFromFile(input,util.getConversationsJSON(conversations,i));</span>
-<span class="fc" id="L86">				mentions.addAll(setter.setMentions(json));</span>
-			}
-<span class="fc" id="L88">			removeWrongMentions();</span>
-<span class="fc" id="L89">			return true;</span>
-<span class="fc" id="L90">		} catch (ParseException p) {</span>
-<span class="fc" id="L91">			System.out.println(&quot;JSON not valid!&quot;);</span>
-<span class="fc" id="L92">		} catch (IOException i) {</span>
-<span class="fc" id="L93">			System.out.println(&quot;File not found or invalid&quot;);</span>
-<span class="fc" id="L94">		}</span>
-<span class="fc" id="L95">		return false;</span>
+<span class="fc" id="L80">		final List&lt;Counter&gt; counter = removeOccurence();</span>
+		Mention mention;
+<span class="fc bfc" id="L82" title="All 2 branches covered.">		for (int i = 0; i &lt; mentions.size(); i++) {</span>
+<span class="fc" id="L83">			mention = mentions.get(i);</span>
+<span class="fc" id="L84">			util.setMentionFrom(mention, getMemberName(util.getMentionFrom(mention)));</span>
+<span class="fc" id="L85">			util.setMentionTo(mention, getMemberName(util.getMentionTo(mention)));</span>
+<span class="fc" id="L86">			mentions.set(i, mention);</span>
+		}
+<span class="fc" id="L88">		return counter;</span>
 	}
-	
-	public boolean mentionsListChannel(final String channel,final String path) {
-<span class="fc" id="L99">		final MentionUtil util = new MentionUtil();</span>
-<span class="fc" id="L100">		final ChannelsAnalysis analysis = new ChannelsAnalysis();</span>
+
+	/**
+	 * List of all Mentions in zipFile.
+	 * @param input Path of zipFile
+	 * @return Boolean of Accomplished (or not) Operation
+	 */
+	public boolean mentionsList(final String input) {
+<span class="fc" id="L97">		final MentionUtil util = new MentionUtil();</span>
 		try {
-<span class="fc bfc" id="L102" title="All 2 branches covered.">			if (analysis.channelsList(path)) {</span>
-<span class="fc bfc" id="L103" title="All 2 branches covered.">				if (analysis.channelExist(channel)) {</span>
-<span class="fc" id="L104">					final ZipReader zip = new ZipReader();</span>
-<span class="fc" id="L105">					final JSONReader setter = new JSONReader();</span>
-<span class="fc" id="L106">					final List&lt;String&gt; conversations = zip.setConversationFile(channel,path);</span>
-<span class="fc bfc" id="L107" title="All 2 branches covered.">					for (int i = 0; i &lt; util.conversationsSize(conversations); i++) {</span>
-<span class="fc" id="L108">						final String json = zip.getJSONFromFile(path,util.getConversationsJSON(conversations,i));</span>
-<span class="fc" id="L109">						mentions.addAll(setter.setMentions(json));</span>
+<span class="fc" id="L99">			final ZipReader zip = new ZipReader();</span>
+<span class="fc" id="L100">			final JSONReader setter = new JSONReader();</span>
+<span class="fc" id="L101">			final List&lt;String&gt; conversations = zip.setConversationFile(input);</span>
+<span class="fc bfc" id="L102" title="All 2 branches covered.">			for (int i = 0; i &lt; util.conversationsSize(conversations); i++) {</span>
+<span class="fc" id="L103">				final String json = zip.getJSONFromFile(input, util.getConversationsJSON(conversations, i));</span>
+<span class="fc" id="L104">				mentions.addAll(setter.setMentions(json));</span>
+			}
+<span class="fc" id="L106">			removeWrongMentions();</span>
+<span class="fc" id="L107">			return true;</span>
+<span class="fc" id="L108">		} catch (ParseException p) {</span>
+<span class="fc" id="L109">			System.out.println(&quot;JSON not valid!&quot;);</span>
+<span class="fc" id="L110">		} catch (IOException i) {</span>
+<span class="fc" id="L111">			System.out.println(&quot;File not found or invalid&quot;);</span>
+<span class="fc" id="L112">		}</span>
+<span class="fc" id="L113">		return false;</span>
+	}
+
+	/**
+	 * List of all Mentions in Specific Channels in zipFile.
+	 * @param channel Name of Specific Channel
+	 * @param path Path of zipFile
+	 * @return Boolean of Accomplished (or not) Operation
+	 */
+	public boolean mentionsListChannel(final String channel, final String path) {
+<span class="fc" id="L123">		final MentionUtil util = new MentionUtil();</span>
+<span class="fc" id="L124">		final ChannelsAnalysis analysis = new ChannelsAnalysis();</span>
+		try {
+<span class="fc bfc" id="L126" title="All 2 branches covered.">			if (analysis.channelsList(path)) {</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">				if (analysis.channelExist(channel)) {</span>
+<span class="fc" id="L128">					final ZipReader zip = new ZipReader();</span>
+<span class="fc" id="L129">					final JSONReader setter = new JSONReader();</span>
+<span class="fc" id="L130">					final List&lt;String&gt; conversations = zip.setConversationFile(channel, path);</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">					for (int i = 0; i &lt; util.conversationsSize(conversations); i++) {</span>
+<span class="fc" id="L132">						final String json = zip.getJSONFromFile(path, util.getConversationsJSON(conversations, i));</span>
+<span class="fc" id="L133">						mentions.addAll(setter.setMentions(json));</span>
 					}
-<span class="fc" id="L111">					removeWrongMentions();</span>
-<span class="fc" id="L112">					return true;</span>
+<span class="fc" id="L135">					removeWrongMentions();</span>
+<span class="fc" id="L136">					return true;</span>
 				} else {
-<span class="fc" id="L114">					System.out.println(&quot;Channel not found&quot;);</span>
-<span class="fc" id="L115">					return false;</span>
+<span class="fc" id="L138">					System.out.println(&quot;Channel not found&quot;);</span>
+<span class="fc" id="L139">					return false;</span>
 				}
 			} else {
-<span class="fc" id="L118">				throw new IOException();</span>
+<span class="fc" id="L142">				throw new IOException();</span>
 			}
-<span class="fc" id="L120">		} catch (ParseException p) {</span>
-<span class="fc" id="L121">			System.out.println(&quot;JSON not valid!&quot;);</span>
-<span class="fc" id="L122">		} catch (IOException i) {</span>
-<span class="fc" id="L123">			System.out.println(&quot;&quot;);</span>
-<span class="fc" id="L124">		}</span>
-<span class="fc" id="L125">		return false;</span>
+<span class="fc" id="L144">		} catch (ParseException p) {</span>
+<span class="fc" id="L145">			System.out.println(&quot;JSON not valid!&quot;);</span>
+<span class="fc" id="L146">		} catch (IOException i) {</span>
+<span class="fc" id="L147">			System.out.println(&quot;&quot;);</span>
+<span class="fc" id="L148">		}</span>
+<span class="fc" id="L149">		return false;</span>
 	}
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>

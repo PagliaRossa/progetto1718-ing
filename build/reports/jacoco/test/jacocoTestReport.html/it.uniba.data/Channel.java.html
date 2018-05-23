@@ -3,56 +3,116 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Channel {
-	
-	private String identificator;
-	private String name;
-<span class="fc" id="L10">	private List&lt;String&gt; members = new ArrayList&lt;&gt;();</span>
-	
-<span class="fc" id="L12">	public Channel(final String identificator2,final String name2,final List&lt;String&gt; members2) {</span>
-<span class="fc" id="L13">		identificator = identificator2;</span>
-<span class="fc" id="L14">		name = name2;</span>
-<span class="fc" id="L15">		members = members2;</span>
-<span class="fc" id="L16">	}</span>
+/**
+ * Define a pojo class Channel.
+ */
+public final class Channel {
 
+	/**
+	 * Identificator of Channel.
+	 */
+	private String identificator;
+	/**
+	 * Name of Channel.
+	 */
+	private String name;
+	/**
+	 * List of members in Channel.
+	 */
+<span class="fc" id="L22">	private List&lt;String&gt; members = new ArrayList&lt;&gt;();</span>
+
+	/**
+	 * Constructor of Channel with String identificator , String name , List of Strings members.
+	 * @param identificator2 Set identificator2 as identificator of Channel
+	 * @param name2 Set name2 as name of Channel
+	 * @param members2 Set members2 as members of Channel
+	 */
+<span class="fc" id="L30">	public Channel(final String identificator2, final String name2, final List&lt;String&gt; members2) {</span>
+<span class="fc" id="L31">		identificator = identificator2;</span>
+<span class="fc" id="L32">		name = name2;</span>
+<span class="fc" id="L33">		members = members2;</span>
+<span class="fc" id="L34">	}</span>
+
+	/**
+	 * Set identificator of Channel.
+	 * @param idNew Set idNew as identificator of Channel
+	 */
 	public void setId(final String idNew) {
-<span class="fc" id="L19">		identificator = idNew;</span>
-<span class="fc" id="L20">	}</span>
-	
+<span class="fc" id="L41">		identificator = idNew;</span>
+<span class="fc" id="L42">	}</span>
+
+	/**
+	 * Set name of Channel.
+	 * @param nameNew Set nameNew as name of Channel
+	 */
 	public void setName(final String nameNew) {
-<span class="fc" id="L23">		name = nameNew;</span>
-<span class="fc" id="L24">	}</span>
-	
+<span class="fc" id="L49">		name = nameNew;</span>
+<span class="fc" id="L50">	}</span>
+
+	/**
+	 * Set members of Channel.
+	 * @param membersNew Set membersNew as members of Channel
+	 */
 	public void setMembers(final List&lt;String&gt; membersNew) {
-<span class="fc" id="L27">		members = membersNew;</span>
-<span class="fc" id="L28">	}</span>
-	
+<span class="fc" id="L57">		members = membersNew;</span>
+<span class="fc" id="L58">	}</span>
+
+	/**
+	 * Get identificator of Channel.
+	 * @return identificator - Return identificator of channel
+	 */
 	public String getId() {
-<span class="fc" id="L31">		return identificator;</span>
+<span class="fc" id="L65">		return identificator;</span>
 	}
-	
+
+	/**
+	 * Get name of Channel.
+	 * @return name - Return name of channel
+	 */
 	public String getName() {
-<span class="fc" id="L35">		return name;</span>
+<span class="fc" id="L73">		return name;</span>
 	}
-	
+
+	/**
+	 * Get member of members in Channel.
+	 * @param index Index of specified member
+	 * @return member - Return specified member of members
+	 */
 	public String getMember(final int index) {
-<span class="fc" id="L39">		return members.get(index);</span>
+<span class="fc" id="L82">		return members.get(index);</span>
 	}
-	
+
+	/**
+	 * Get members of Channel.
+	 * @return members - Return members of Channel
+	 */
 	public List&lt;String&gt; getMembers() {
-<span class="fc" id="L43">		return members;</span>
+<span class="fc" id="L90">		return members;</span>
 	}
-	
+
+	/**
+	 * Get size of members in Channel.
+	 * @return size - Return size of members in Channel
+	 */
 	public int membersSize() {
-<span class="fc" id="L47">		return members.size();</span>
+<span class="fc" id="L98">		return members.size();</span>
 	}
-	
+
+	/**
+	 * Check if members is empty.
+	 * @return boolean - Return true or false if members is or isn't empty
+	 */
 	public boolean isEmpty() {
-<span class="fc" id="L51">		return members.isEmpty();</span>
+<span class="fc" id="L106">		return members.isEmpty();</span>
 	}
-	
-	public boolean isInChannel(final String identificator) {
-<span class="fc" id="L55">		return members.contains(identificator);</span>
+
+	/**
+	 * Check if specified member is in members.
+	 * @param identificatorNew Identificator of specified member
+	 * @return boolean - Return true or false if specified member is or isn't in members
+	 */
+	public boolean isInChannel(final String identificatorNew) {
+<span class="fc" id="L115">		return members.contains(identificatorNew);</span>
 	}
 
 }

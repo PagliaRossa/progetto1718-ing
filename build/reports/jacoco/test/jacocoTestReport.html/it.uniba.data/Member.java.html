@@ -1,29 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="it"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Member.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SNA4Slack</a> &gt; <a href="index.source.html" class="el_package">it.uniba.data</a> &gt; <span class="el_source">Member.java</span></div><h1>Member.java</h1><pre class="source lang-java linenums">package it.uniba.data;
 
-public class Member {
-	
-	private String identificator;
-	private String name;
-	
-<span class="fc" id="L8">	public Member(final String identificatorNew,final String nameNew) {</span>
-<span class="fc" id="L9">		identificator = identificatorNew;</span>
-<span class="fc" id="L10">		name = nameNew;</span>
-<span class="fc" id="L11">	}</span>
+/**
+ * Define a pojo class Member.
+ */
+public final class Member {
 
+	/**
+	 * Identificator of Member.
+	 */
+	private String identificator;
+	/**
+	 * Name of Member.
+	 */
+	private String name;
+
+	/**
+	 * Costruct a new object Member with identificatorNew and nameNew as identificator and name.
+	 * @param identificatorNew Set identificator as identificatorNew
+	 * @param nameNew Set name as nameNew
+	 */
+<span class="fc" id="L22">	public Member(final String identificatorNew, final String nameNew) {</span>
+<span class="fc" id="L23">		identificator = identificatorNew;</span>
+<span class="fc" id="L24">		name = nameNew;</span>
+<span class="fc" id="L25">	}</span>
+
+	/**
+	 * Set identificator of Member.
+	 * @param idNew Set identificator as idNew
+	 */
 	public void setId(final String idNew) {
-<span class="fc" id="L14">		identificator = idNew;</span>
-<span class="fc" id="L15">	}</span>
-	
+<span class="fc" id="L32">		identificator = idNew;</span>
+<span class="fc" id="L33">	}</span>
+
+	/**
+	 * Set name of Member.
+	 * @param nameNew Set name as nameNew
+	 */
 	public void setName(final String nameNew) {
-<span class="fc" id="L18">		name = nameNew;</span>
-<span class="fc" id="L19">	}</span>
-	
+<span class="fc" id="L40">		name = nameNew;</span>
+<span class="fc" id="L41">	}</span>
+
+	/**
+	 * Get identificator of Member.
+	 * @return identificator - Identificator of Member
+	 */
 	public String getId() {
-<span class="fc" id="L22">		return identificator;</span>
+<span class="fc" id="L48">		return identificator;</span>
 	}
-	
+
+	/**
+	 * Get name of Member.
+	 * @return name - Name of Member
+	 */
 	public String getName() {
-<span class="fc" id="L26">		return name;</span>
+<span class="fc" id="L56">		return name;</span>
 	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.0.201801022044</span></div></body></html>
