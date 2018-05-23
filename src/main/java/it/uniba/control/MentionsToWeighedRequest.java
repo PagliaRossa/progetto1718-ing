@@ -21,7 +21,7 @@ final class MentionsToWeighedRequest {
 	boolean showMentionsListToWeighed(final String... command) {
 		final ControllerUtil util = new ControllerUtil();
 		if (command.length == FIFTHARGUMENT) {
-			final int over = Integer.parseInt(util.getCommand(THIRDARGUMENT, command));
+			final int over = checkNumber(command);
 			if (over >= 0) {
 				final MentionsAnalysis request = new MentionsAnalysis();
 				if (request.mentionsList(util.getCommand(FOURTHARGUMENT, command))) {
@@ -37,7 +37,7 @@ final class MentionsToWeighedRequest {
 				System.out.println("Number not valid!");
 			}
 		} else if (command.length == SIXTHARGUMENT) {
-			final int over = Integer.parseInt(util.getCommand(FOURTHARGUMENT, command));
+			final int over = checkNumberChannel(command);
 			if (over >= 0) {
 				final MentionsAnalysis request = new MentionsAnalysis();
 				if (request.mentionsListChannel(util.getCommand(THIRDARGUMENT, command),
@@ -51,7 +51,7 @@ final class MentionsToWeighedRequest {
 					}
 				}
 			} else {
-				System.out.println("Number not valid");
+				System.out.println("Number not valid!");
 			}
 		} else {
 			System.out.println(needArguments);
@@ -85,6 +85,24 @@ final class MentionsToWeighedRequest {
 			System.out.println(memberNotFound);
 		}
 		return occurence;
+	}
+
+	private int checkNumber(final String...command) {
+		final ControllerUtil util = new ControllerUtil();
+		try {
+			return Integer.parseInt(util.getCommand(THIRDARGUMENT, command));
+		} catch (NumberFormatException e) {
+			return -1;
+		}
+	}
+
+	private int checkNumberChannel(final String...command) {
+		final ControllerUtil util = new ControllerUtil();
+		try {
+			return Integer.parseInt(util.getCommand(FOURTHARGUMENT, command));
+		} catch (NumberFormatException e) {
+			return -1;
+		}
 	}
 
 }
