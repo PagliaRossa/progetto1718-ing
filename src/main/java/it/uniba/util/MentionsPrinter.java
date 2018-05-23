@@ -167,10 +167,9 @@ public final class MentionsPrinter implements Printer {
 	 * @param list List of Mentions
 	 * @param member Specified Member
 	 * @param occur List of occurence
-	 * @param over Integer which define weight
-	 * @return String - List of mentions weighed to specified member over over
+	 * @return String - List of mentions weighed to specified member
 	 */
-	public String printToWeighed(final List<?> list, final String member, final List<Counter> occur, final int over) {
+	public String printToWeighed(final List<?> list, final String member, final List<Counter> occur) {
 		final MentionUtil util = new MentionUtil();
 		final StringBuffer buf = new StringBuffer();
 		Mention mention;
@@ -178,7 +177,7 @@ public final class MentionsPrinter implements Printer {
 		buf.append(str);
 		for (int i = 0; i < list.size(); i++) {
 			mention = (Mention) list.get(i);
-			if (util.compareTo(util.getMentionTo(mention), member) && util.getWeight(occur.get(i)) > over) {
+			if (util.compareTo(util.getMentionTo(mention), member)) {
 				buf.append(fromMember);
 				buf.append(util.getMentionFrom(mention));
 				buf.append(toMember);
@@ -189,7 +188,7 @@ public final class MentionsPrinter implements Printer {
 			}
 		}
 		if (buf.toString().equals(str)) {
-			return "Can't find mentions for this member over specified number !";
+			return "Can't find mentions for this member!";
 		} else {
 			return buf.toString();
 		}

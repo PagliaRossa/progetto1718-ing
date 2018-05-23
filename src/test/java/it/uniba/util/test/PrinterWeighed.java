@@ -38,7 +38,7 @@ public class PrinterWeighed {
 		final List<Mention> mentions = new ArrayList<>();
 		final List<Counter> occurence = new ArrayList<>();
 		final MentionsPrinter printer = new MentionsPrinter();
-		assertEquals("Can't find mentions for this member over specified number !",printer.printToWeighed(mentions,"ulisse1996", occurence,0));
+		assertEquals("Can't find mentions for this member!",printer.printToWeighed(mentions,"ulisse1996", occurence));
 	}
 
 }

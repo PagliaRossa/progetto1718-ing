@@ -23,28 +23,28 @@ public class ControlWeighedToFalseTest {
 	@Test
 	@DisplayName("Test bad user mentionsListToWeighed")
 	void badUser() {
-		final Controller request = new Controller(new String[] {command,"us","3",goodworkspace});
+		final Controller request = new Controller(new String[] {command,"us",goodworkspace});
 		assertFalse(request.showRequest());
 	}
 	
 	@Test
 	@DisplayName("Test bad user good channel mentionsListToWeighed")
 	void badUserChannel() {
-		final Controller request = new Controller(new String[] {command,"us","bernerslee","3",goodworkspace});
+		final Controller request = new Controller(new String[] {command,"us","bernerslee",goodworkspace});
 		assertFalse(request.showRequest());
 	}
 	
 	@Test
 	@DisplayName("Test bad user mentionsListToWeighed")
 	void badNumber() {
-		final Controller request = new Controller(new String[] {command,"us","-1",goodworkspace});
+		final Controller request = new Controller(new String[] {command,"us",goodworkspace});
 		assertFalse(request.showRequest());
 	}
 	
 	@Test
 	@DisplayName("Test bad user good channel mentionsListToWeighed")
 	void badNumberChannel() {
-		final Controller request = new Controller(new String[] {command,"us","bernerslee","-3",goodworkspace});
+		final Controller request = new Controller(new String[] {command,"us","bernerslee",goodworkspace});
 		assertFalse(request.showRequest());
 	}
 
