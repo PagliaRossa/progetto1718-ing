@@ -1,2 +1,10 @@
-
-main
+it.uniba.analysis
+it.uniba.analysis.test
+it.uniba.control
+it.uniba.control.test
+it.uniba.data
+it.uniba.data.test
+it.uniba.main
+it.uniba.main.test
+it.uniba.util
+it.uniba.util.test

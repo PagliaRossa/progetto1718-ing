@@ -1,12 +1,27 @@
 package it.uniba.util;
 
-public class ControllerUtil {
+/**
+ * Utils for Controller class.
+ */
+public final class ControllerUtil {
 
-	public String getCommand(final int index , final String...commands) {
+	/**
+	 * Get string of commands at index.
+	 * @param index Index of commands
+	 * @param commands Array of Strings
+	 * @return String - Return requested string
+	 */
+	public String getCommand(final int index, final String...commands) {
 		return commands[index];
 	}
-	
-	public boolean compareCommand(final String first,final String second) {
+
+	/**
+	 * Compare two Strings and return true or false if they are same.
+	 * @param first First String
+	 * @param second Second String
+	 * @return boolean - true or false if same
+	 */
+	public boolean compareCommand(final String first, final String second) {
 		return first.equals(second);
 	}
 }

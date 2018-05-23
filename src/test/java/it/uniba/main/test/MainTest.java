@@ -23,7 +23,7 @@ public class MainTest {
 	void mainCheck() {
 		final String[] test = {"membersList","res/file/test.zip"};
 		AppMain.main(test);
-		assertTrue(AppMain.check);
+		assertTrue(AppMain.isCheck());
 	}
 
 }

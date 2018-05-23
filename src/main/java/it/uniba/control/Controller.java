@@ -3,76 +3,81 @@ package it.uniba.control;
 import it.uniba.util.ControllerUtil;
 import it.uniba.util.HelpPrinter;
 
-public class Controller {
-	
-	private final String command[];
-	
+/**
+ * 
+ * Control and Delivers to Specific Control Class (in Control Package).
+ *
+ */
+public final class Controller {
+
+	private final String[] command;
+
+	/**
+	 * Constructor of Controller class.
+	 * @param commands String of Specific User Command
+	 */
 	public Controller(final String... commands) {
 		command = commands.clone();
 	}
-	
+
+	/**
+	 * Control Specific User Request.
+	 * @return Boolean of Accomplished (or not) Operation
+	 */
 	public boolean showRequest() {
-		
 		final ControllerUtil util = new ControllerUtil();
-		
-		if (util.compareCommand(util.getCommand(0,command),"membersList")) {
+		if (util.compareCommand(util.getCommand(0, command), "membersList")) {
 			final MembersRequest request = new MembersRequest();
 			return request.showMembersList(command);
 		} else {
 			return channels();
 		}
 	}
-	
+
 	private boolean channels() {
-		
 		final ControllerUtil util = new ControllerUtil();
-		
-		if (util.compareCommand(util.getCommand(0,command),"channelsList")) {
+		if (util.compareCommand(util.getCommand(0, command), "channelsList")) {
 			final ChannelsRequest request = new ChannelsRequest();
 			return request.showChannelsList(command);
-		} else if (util.compareCommand(util.getCommand(0,command),"membersChannel")) {
+		} else if (util.compareCommand(util.getCommand(0, command), "membersChannel")) {
 			final ChannelsRequest request = new ChannelsRequest();
 			return request.showMembersChannel(command);
-		} else if (util.compareCommand(util.getCommand(0,command),"membersSortedByChannel")) {
+		} else if (util.compareCommand(util.getCommand(0, command), "membersSortedByChannel")) {
 			final ChannelsRequest request = new ChannelsRequest();
 			return request.showMembersSortedByChannel(command);
 		} else {
 			return mentions();
 		}
 	}
-	
+
 	private boolean mentions() {
-		
 		final ControllerUtil util = new ControllerUtil();
-		
-		if (util.compareCommand(util.getCommand(0,command),"mentionsList")) {
+		if (util.compareCommand(util.getCommand(0, command), "mentionsList")) {
 			final MentionsRequest request = new MentionsRequest();
 			return request.showMentionsList(command);
-		} else if (util.compareCommand(util.getCommand(0,command),"mentionsListChannel")) {
+		} else if (util.compareCommand(util.getCommand(0, command), "mentionsListChannel")) {
 			final MentionsRequest request = new MentionsRequest();
 			return request.showMentionsListChannel(command);
-		} else if (util.compareCommand(util.getCommand(0,command),"mentionsListFrom")) {
+		} else if (util.compareCommand(util.getCommand(0, command), "mentionsListFrom")) {
 			final MentionsFromRequest request = new MentionsFromRequest();
 			return request.showMentionsListFrom(command);
-		} else if (util.compareCommand(util.getCommand(0,command),"mentionsListTo")) {
+		} else if (util.compareCommand(util.getCommand(0, command), "mentionsListTo")) {
 			final MentionsToRequest request = new MentionsToRequest();
 			return request.showMentionsListTo(command);
 		} else {
 			return weight();
 		}
 	}
-	
+
 	private boolean weight() {
-		
 		final ControllerUtil util = new ControllerUtil();
-		
 		if (util.compareCommand(util.getCommand(0, command), "mentionsListWeighed")) {
 			final MentionsWeighedRequest request = new MentionsWeighedRequest();
 			return request.showMentionsListWeighed(command);
 		} else if (util.compareCommand(util.getCommand(0, command), "mentionsListChannelWeighed")) {
 			final MentionsWeighedRequest request = new MentionsWeighedRequest();
 			return request.showMentionsListChannelWeighed(command);
-		} else if(util.compareCommand(util.getCommand(0, command), "mentionsListFromWeighed")) {
+		} else if (util.compareCommand(util.getCommand(0, command), "mentionsListFromWeighed")) {
 			final MentionsFromWeighedRequest request = new MentionsFromWeighedRequest();
 			return request.showMentionsListFromWeighed(command);
 		} else if (util.compareCommand(util.getCommand(0, command), "mentionsListToWeighed")) {
@@ -81,21 +86,18 @@ public class Controller {
 		} else {
 			return help();
 		}
-		
 	}
-	
+
 	private boolean help() {
-		
 		final ControllerUtil util = new ControllerUtil();
-		
-		if (util.compareCommand(util.getCommand(0,command),"sna4slack")) {
+		if (util.compareCommand(util.getCommand(0, command), "sna4slack")) {
 			return showHelp();
 		} else {
 			System.out.println("Wrong command, use sna4slack command for help");
 		}
 		return false;
 	}
-	
+
 	private boolean showHelp() {
 		if (command.length == 1) {
 			final HelpPrinter help = new HelpPrinter();
