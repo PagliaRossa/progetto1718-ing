@@ -56,5 +56,19 @@ public class ControlWeighedToTest {
 		final Controller request = new Controller(new String[] {command,member,"3","res/file/tet.zip"});
 		assertFalse(request.showRequest());
 	}
+	
+	@Test
+	@DisplayName("Test bad number") 
+	void badNumber() {
+		final Controller request = new Controller(new String[] {command,member,"ciao",goodworkspace});
+		assertFalse(request.showRequest());
+	}
+	
+	@Test
+	@DisplayName("Test bad number channel") 
+	void badNumberChannel() {
+		final Controller request = new Controller(new String[] {command,member,"bernerslee","ciao",goodworkspace});
+		assertFalse(request.showRequest());
+	}
 
 }
