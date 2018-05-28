@@ -45,8 +45,8 @@ Il package **Util** contiene le classi che gestiscono l'input e l'output e alcun
 ## 6 Riepilogo dei Test
 Le seguenti immagini mostrano la copertura dei test e il numero di test 
 effettuati 
-![TestCoverage](doc/drawings/coverageTest.png)
-![](doc\drawings\numberTest.png)
+![TestCoverage](drawings/coverageTest.png)
+![TestNumber](drawings/numberTest.png)
 
 ## 7 Manuale Utente
 Questa è la lista dei comandi eseguibili dall'utente
