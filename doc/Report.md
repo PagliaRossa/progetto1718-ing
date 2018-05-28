@@ -25,7 +25,7 @@ I requisiti specifici di SNA4Slack sono i seguenti :
 ## 4. Architettura
 L'applicativo utilizza lo stile architetturale "**Layered**" in cui ogni strato non ha conoscenza degli altri ma utilizza un API per richiamare una componente dello strato inferiore.
 L'applicativo è diviso nei seguenti package :
-**Immagine package**
+![package](drawings/package.png)
 **Immagine dei vari componenti**
 La scelta dello stile "**Layered**" è stata adottata per integrare i principi SOLID e rendere ogni strato indipendente e non ridondante.
 Ogni **package** contiene solo classi che rispettano le funzioni indicate dal nome.
@@ -45,8 +45,8 @@ Il package **Util** contiene le classi che gestiscono l'input e l'output e alcun
 ## 6 Riepilogo dei Test
 Le seguenti immagini mostrano la copertura dei test e il numero di test 
 effettuati 
-![](doc/drawings/coverageTest.png)
-![](doc/drawings/numberTest.png)
+![coverageTest](drawings/coverageTest.png)
+![numberTest](drawings/numberTest.png)
 
 ## 7 Manuale Utente
 Questa è la lista dei comandi eseguibili dall'utente
