@@ -41,7 +41,8 @@ Il package **Util** contiene le classi che gestiscono l'input e l'output e alcun
 > I/O : JSONReader , ZipReader e le classi che implementano l'interfaccia Printer
 
 ## 5 System Design
-**Diagramma delle funzionalita**
+- In qualità di utente voglio visualizzare la lista dei **Member**
+![membersList](drawings/membersList.png)
 
 ## 6 Riepilogo dei Test
 Le seguenti immagini mostrano la copertura dei test e il numero di test 
