@@ -56,6 +56,24 @@ Il package **Util** contiene le classi che gestiscono l'input e l'output e alcun
 - In qualità di utente voglio visualizzare la lista dei **@mention**
 ![mentionsList](drawings/mentionsList.svg)
 
+- In qualità di utente voglio visualizzare la lista dei **@mention** che partono da uno **User**
+![mentionsListFrom](drawings/mentionsFrom.svg)
+
+- In qualità di utente voglio visualizzare la lista dei **@mention** che arrivano a uno **User**
+![mentionsListTo](drawings/mentionsTo.svg)
+
+- In qualità di utente voglio visualizzare la lista pesata dei **@mention**
+![mentionsListWeighed](drawings/mentionsWeighed.svg)
+
+- In qualità di utente voglio visualizzare la lista pesata dei **@mention** che partono da uno **User**
+![mentionsFromWeighed](drawings/mentionsFromWeighed.svg)
+
+- In qualità di utente voglio visualizzare la lista pesata dei **@mention** che arrivano a uno **User**
+![mentionsToWeighed](drawings/mentionsToWeighed.svg)
+
+- In qualità di utente voglio poter avere informazioni di **Help**
+![Help](drawings/Help.svg)
+
 ## 6 Riepilogo dei Test
 Le seguenti immagini mostrano la copertura dei test e il numero di test 
 effettuati 
