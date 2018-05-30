@@ -127,9 +127,11 @@ Il package **Util** contiene le classi che gestiscono l'input e l'output e alcun
 ## 5 System Design
 - In qualità di utente voglio visualizzare la lista dei **Member**
 ![membersList](drawings/membersList.svg)
+![Sequence](drawings/membersListSequence.svg)
 
 - In qualità di utente voglio visualizzare la lista dei **Channel**
 ![channelsList](drawings/channelsList.svg)
+![Sequece](drawings/channelsListSequence.svg)
 
 - In qualità di utente voglio visualizzare la lista dei **Member** raggruppati per **Channel**
 ![membersChannel](drawings/membersChannel.svg)
