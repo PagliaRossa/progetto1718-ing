@@ -47,10 +47,10 @@ Il package **Util** contiene le classi che gestiscono l'input e l'output e alcun
 - In qualità di utente voglio visualizzare la lista dei **Channel**
 ![channelsList](drawings/channelsList.svg)
 
-- In qualità di utente voglio visualizzare la lista dei Member raggruppati per Channel
+- In qualità di utente voglio visualizzare la lista dei **Member** raggruppati per **Channel**
 ![membersChannel](drawings/membersChannel.svg)
 
-- In qualità di utente voglio visualizzare la lista dei Member di un Channel
+- In qualità di utente voglio visualizzare la lista dei **Member** di un **Channel**
 ![membersSorted](drawings/membersSorted.svg)
 
 ## 6 Riepilogo dei Test
