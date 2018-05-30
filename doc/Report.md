@@ -109,7 +109,9 @@ L'applicativo utilizza lo stile architetturale "**Layered**" in cui ogni strato 
 L'applicativo è diviso nei seguenti package :
 ![package](drawings/package.png)
 
-**Immagine dei vari componenti**
+Lista dei Componenti : 
+![Components](drawings/Components.svg)
+
 La scelta dello stile "**Layered**" è stata adottata per integrare i principi SOLID e rendere ogni strato indipendente e non ridondante.
 Ogni **package** contiene solo classi che rispettano le funzioni indicate dal nome.
 Nel package **Data** sono inserite tutte le classi che modellano le componenti atomiche di Slack e la classe Counter che memorizza il numero di mentions effettuate da un determinato Member (From) ad un altro (To).
