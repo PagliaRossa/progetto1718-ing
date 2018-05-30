@@ -14,9 +14,15 @@ I requisiti specifici di SNA4Slack sono i seguenti :
  > - Verificare che i Member siano visualizzati uno per riga
  > - Verificare che i Member del workspace siano tutti presenti
  > - Verificare che non siano visualizzati Member estranei al workspace
-
  - In qualità di utente voglio visualizzare la lista dei **Channel**
- - In qualità di utente voglio visualizzare la lista dei **Member**
+ > - Verificare che sia possibile fare la richiesta da linea di comando
+ > - Verificare che l'output sia visualizzato su standard output
+ > - Verificare che sia possibile specificare il workspace
+ > - Verificare che ci sia un file esportato associato al workspace
+ > - Verificare che i Channel siano visualizzati uno per riga
+ > - Verificare che i Channel del workspace siano tutti presenti
+ > - Verificare che non siano visualizzati Channel estranei al workspace
+ > - In qualità di utente voglio visualizzare la lista dei **Member**
    raggruppati per **Channel**
  - In qualità di utente voglio visualizzare la lista dei **Member** di un **Channel**
  - In qualità di utente voglio poter avere informazioni di **Help**
