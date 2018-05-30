@@ -15,6 +15,7 @@ I requisiti specifici di SNA4Slack sono i seguenti :
  > - Verificare che i Member del workspace siano tutti presenti
  > - Verificare che non siano visualizzati Member estranei al workspace
  - In qualità di utente voglio visualizzare la lista dei **Channel**
+ > Criteri di accettazione
  > - Verificare che sia possibile fare la richiesta da linea di comando
  > - Verificare che l'output sia visualizzato su standard output
  > - Verificare che sia possibile specificare il workspace
@@ -22,11 +23,42 @@ I requisiti specifici di SNA4Slack sono i seguenti :
  > - Verificare che i Channel siano visualizzati uno per riga
  > - Verificare che i Channel del workspace siano tutti presenti
  > - Verificare che non siano visualizzati Channel estranei al workspace
- > - In qualità di utente voglio visualizzare la lista dei **Member**
+ - In qualità di utente voglio visualizzare la lista dei **Member**
    raggruppati per **Channel**
+ > Criteri di accettazione
+ > - Verificare che sia possibile fare la richiesta da linea di comando
+ > - Verificare che l'output sia visualizzato su standard output
+ > - Verificare che sia possibile specificare il workspace
+ > - Verificare che ci sia un file esportato associato al workspace
+ > - Verificare che i Member e Channel siano visualizzati uno per riga , con i "Member" visualizzati subito dopo i "Channel" a cui appartengono
+ > - Verificare che sia possibile distinguere quale nome è un "Member" e quale è un Channel
+ > - Verificare che i Channel siano tutti presenti
+ > - Verificare che non siano visualizzati Channel estranei al workspace
+ > - Verificare che i Member di un Channel siano tutti presenti
+ > - Verificare che non siano visualizzati Member estranei al Channel
  - In qualità di utente voglio visualizzare la lista dei **Member** di un **Channel**
+ > Criteri di accettazione
+ > - Verificare che sia possibile fare la richiesta da linea di comando
+ > - Verificare che l'output sia visualizzato su standard output
+ > - Verificare che sia possibile specificare il workspace
+ > - Verificare che ci sia un file esportato associato al workspace
+ > - Verificare che sia possibile specificare il Channel
+ > - Verificare che i Member siano visualizzati uno per riga dopo il Channel specificato
+ > - Verificare che i Member del Channel specificato siano tutti presenti
+ > - Verificare che non siano visualizzati Member estranei al Channel specificato
  - In qualità di utente voglio poter avere informazioni di **Help**
+ > Criteri di accettazione
+ > - Verificare che l'help possa essere richiesto digitando il nome del programma senza parametri aggiuntivi
+ > - Verificare che l'help sia suggerito se un comando digitato non è valido
+ > - Verificare l'help sia mostrato su standard output
+ > - Verificare che siano presenti i comandi per tutte le funzionalità
  - In qualità di utente voglio visualizzare la lista dei **@mention**
+ > Criteri di accettazione
+ > - Verificare che per ogni @mention sia visualizzata una riga con la coppia (From, To) dove From è lo User che scrive il messaggio con il @mention e To è lo User menzionato.
+ > - Verificare che le coppie (From, To) non siano ripetute
+ > - Verificare che le coppie (From, To) corrispondenti a un @mention siano tutte presenti
+ > - Verificare che siano visualizzate solo coppie (From, To) corrispondenti a un @mention
+ > - Verificare che sia possibile specificare il Channel e, nel caso sia specificato, la lista sia ristretta ai soli @mention del Channel
  - In qualità di utente voglio visualizzare la lista dei **@mention** che
    partono da uno **User**
  - In qualità di utente voglio visualizzare la lista dei **@mention** che
