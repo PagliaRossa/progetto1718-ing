@@ -44,6 +44,9 @@ Il package **Util** contiene le classi che gestiscono l'input e l'output e alcun
 - In qualità di utente voglio visualizzare la lista dei **Member**
 ![membersList](drawings/membersList.png)
 
+- In qualità di utente voglio visualizzare la lista dei **Channel**
+![channelsList](drawings/channelsList.svg)
+
 ## 6 Riepilogo dei Test
 Le seguenti immagini mostrano la copertura dei test e il numero di test 
 effettuati 
