@@ -61,13 +61,48 @@ I requisiti specifici di SNA4Slack sono i seguenti :
  > - Verificare che sia possibile specificare il Channel e, nel caso sia specificato, la lista sia ristretta ai soli @mention del Channel
  - In qualità di utente voglio visualizzare la lista dei **@mention** che
    partono da uno **User**
+ > Criteri di accettazione:
+ > - Verificare che sia possibile specificare lo User da cui partono i @mention
+ > - Verificare che per ogni @mention sia visualizzata una riga con la coppia (From, To) dove From è lo User
+ specificato nel comando e To è lo User menzionato.
+ > - Verificare che le coppie (From, To) non siano ripetute
+ > - Verificare che le coppie (From, To) corrispondenti a un @mention siano tutte presenti
+ > - Verificare che siano visualizzate solo coppie (From, To) corrispondenti a un @mention
+ > - Verificare che sia possibile specificare il Channel e, nel caso sia specificato, la lista sia ristretta ai soli @mention del Channel
  - In qualità di utente voglio visualizzare la lista dei **@mention** che
    arrivano a uno **User**
+ > Criteri di accettazione:
+ > - Verificare che sia possibile specificare lo User a cui arrivano i @mention
+ > - Verificare che per ogni @mention sia visualizzata una riga con la coppia (From, To) dove è lo User che
+ scrive il messaggio con il @mention e To è lo User menzionato e specificato nel comando.
+ > - Verificare che le coppie (From, To) non siano ripetute
+ > - Verificare che le coppie (From, To) corrispondenti a un @mention siano tutte presenti
+ > - Verificare che siano visualizzate solo coppie (From, To) corrispondenti a un @mention
+ > - Verificare che sia possibile specificare il Channel e, nel caso sia specificato, la lista sia ristretta ai soli
+ @mention del Channe
  - In qualità di utente voglio visualizzare la lista pesata dei **@mention**
- - In qualità di utente voglio visualizzare la lista pesata dei **@mention**
-   che partono da uno **User**
- - In qualità di utente voglio visualizzare la lista pesata dei **@mention**
-   che arrivano a uno **User**
+ > Criteri di accettazione:
+ > - Verificare che per ogni @mention sia visualizzata una riga con la tripla**(From, To, Weight)** dove From è lo User che scrive il messaggio con il @mention, To è lo User menzionato, e Weight. è il peso associato che riporta il numero di mention da From a To:.
+ > - Verificare che le triple (From, To, Weight) non siano ripetute
+ > - Verificare che le triple (From, To, Weight) corrispondenti a un @mention siano tutte presenti
+ > - Verificare che siano visualizzate solo triple (From, To, Weight)* corrispondenti a un @mention
+ > - Verificare che sia possibile specificare il Channel e, nel caso sia specificato, la lista sia ristretta ai soli @mention del Channel
+ - In qualità di utente voglio visualizzare la lista pesata dei **@mention** che partono da uno **User**
+ > Criteri di accettazione : 
+ > - Verificare che sia possibile specificare lo User da cui partono i @mention 
+ > - Verificare che per ogni @mention sia visualizzata una riga con la tripla (From, To, Weight) dove From è lo User specificato nel comando e To è lo User menzionato, e Weight il numero di mention.
+ > - Verificare che le triple (From, To, Weight) non siano ripetute
+ > - Verificare che le triple (From, To, Weight) corrispondenti a un @mention siano tutte presenti
+ > - Verificare che siano visualizzate solo triple (From, To, Weight) corrispondenti a un @mention
+ > - Verificare che sia possibile specificare il Channel e, nel caso sia specificato, la lista sia ristretta ai soli @mention del Channel
+ - In qualità di utente voglio visualizzare la lista pesata dei **@mention** che arrivano a uno **User**
+ > Criteri di accettazione:
+ > - Verificare che sia possibile specificare lo User a cui arrivano i @mention
+ > - Verificare che per ogni @mention sia visualizzata una riga con a tripla (From, To, Weight) dove From è lo User che scrive il messaggio con il @mention, To è lo User menzionato e specificato nel comando e Weight il numero di mention.
+ > - Verificare che le triple (From, To, Weight) non siano ripetute
+ > - Verificare che le ctriple (From, To, Weight) corrispondenti a un @mention siano tutte presenti
+ > - Verificare che siano visualizzate solo triple (From, To, Weight) corrispondenti a un @mention
+ > - Verificare che sia possibile specificare il Channel e, nel caso sia specificato, la lista sia ristretta ai soli @mention del Channel
 
 ## 4. Architettura
 L'applicativo utilizza lo stile architetturale "**Layered**" in cui ogni strato non ha conoscenza degli altri ma utilizza un API per richiamare una componente dello strato inferiore.
