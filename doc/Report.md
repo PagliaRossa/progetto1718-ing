@@ -3,6 +3,8 @@
 SNA4Slack (Social Network Analysis for Slack) è un applicativo atto ad analizzare e mostrare risultati di eleborazioni richieste dall'utente sull'applicativo social "Slack".
 L'utente richiede le elaborazioni attraverso specifici comandi in input che rappresentano gli argomenti dell'applicativo durante l'esecuzione.
 ## 2. Modello Concettuale
+Modello Concettuale :
+![Conceptual](drawings/Conceptual.svg)
 ## 3. Requisiti Specifici 
 I requisiti specifici di SNA4Slack sono i seguenti :
  - In qualità di utente voglio visualizzare la lista dei **Member**
