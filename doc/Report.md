@@ -172,6 +172,7 @@ Il package **Util** contiene le classi che gestiscono l'input e l'output e alcun
 
 ![mentionsListToWeighedSequence](drawings/mentionsListToWeighedSequence.svg)
 - In qualità di utente voglio poter avere informazioni di **Help**
+
 ![Help](drawings/Help.svg)
 
 ![HelpSequence](drawings/helpSequence.svg)
