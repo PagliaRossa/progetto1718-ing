@@ -8,7 +8,7 @@ import it.uniba.data.Member;
 /**
  * Printer of Members.
  */
-public final class MembersPrinter {
+public final class MembersPrinter implements Printer {
 
 	/**
 	 * Override print method from interface Printer.
