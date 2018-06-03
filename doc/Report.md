@@ -5,7 +5,7 @@ L'utente richiede le elaborazioni attraverso specifici comandi in input che rapp
 ## 2. Modello Concettuale
 Modello Concettuale :
 ![Conceptual](drawings/Conceptual.svg)
-## 3. Requisiti Specifici 
+## 3. Requisiti Specifici
 I requisiti specifici di SNA4Slack sono i seguenti :
  - In qualità di utente voglio visualizzare la lista dei **Member**
  > Criteri di accettazione
@@ -90,8 +90,8 @@ I requisiti specifici di SNA4Slack sono i seguenti :
  > - Verificare che siano visualizzate solo triple (From, To, Weight)* corrispondenti a un @mention
  > - Verificare che sia possibile specificare il Channel e, nel caso sia specificato, la lista sia ristretta ai soli @mention del Channel
  - In qualità di utente voglio visualizzare la lista pesata dei **@mention** che partono da uno **User**
- > Criteri di accettazione : 
- > - Verificare che sia possibile specificare lo User da cui partono i @mention 
+ > Criteri di accettazione :
+ > - Verificare che sia possibile specificare lo User da cui partono i @mention
  > - Verificare che per ogni @mention sia visualizzata una riga con la tripla (From, To, Weight) dove From è lo User specificato nel comando e To è lo User menzionato, e Weight il numero di mention.
  > - Verificare che le triple (From, To, Weight) non siano ripetute
  > - Verificare che le triple (From, To, Weight) corrispondenti a un @mention siano tutte presenti
@@ -112,7 +112,7 @@ L'applicativo utilizza lo stile architetturale "**Layered**" in cui ogni strato 
 L'applicativo è diviso nei seguenti package :
 ![package](drawings/package.png)
 
-Lista dei Componenti : 
+Lista dei Componenti :
 ![Components](drawings/Components.svg)
 
 La scelta dello stile "**Layered**" è stata adottata per integrare i principi SOLID e rendere ogni strato indipendente e non ridondante.
@@ -133,43 +133,51 @@ Il package **Util** contiene le classi che gestiscono l'input e l'output e alcun
 ## 5 System Design
 - In qualità di utente voglio visualizzare la lista dei **Member**
 ![membersList](drawings/membersList.svg)
-![Sequence](drawings/membersListSequence.svg)
 
+![Sequence](drawings/membersListSequence.svg)
 - In qualità di utente voglio visualizzare la lista dei **Channel**
 ![channelsList](drawings/channelsList.svg)
+
 ![Sequece](drawings/channelsListSequence.svg)
-
 - In qualità di utente voglio visualizzare la lista dei **Member** raggruppati per **Channel**
-![membersChannel](drawings/membersChannel.svg)
-
-- In qualità di utente voglio visualizzare la lista dei **Member** di un **Channel**
 ![membersSorted](drawings/membersSorted.svg)
 
+![membersSortedSequence](drawings/membersSortedSequence.svg)
+- In qualità di utente voglio visualizzare la lista dei **Member** di un **Channel**
+![membersChannel](drawings/membersChannel.svg)
+
+![membersChannelSequence](drawings/membersChannelSequence.svg)
 - In qualità di utente voglio visualizzare la lista dei **@mention**
 ![mentionsList](drawings/mentionsList.svg)
 
+![mentionsListSequence](drawings/mentionsListSequence.svg)
 - In qualità di utente voglio visualizzare la lista dei **@mention** che partono da uno **User**
 ![mentionsListFrom](drawings/mentionsFrom.svg)
 
+![mentionsListFromSequence](drawings/mentionsListFromSequence.svg)
 - In qualità di utente voglio visualizzare la lista dei **@mention** che arrivano a uno **User**
 ![mentionsListTo](drawings/mentionsTo.svg)
 
+![mentionsListToSequence](drawings/mentionsListToSequence.svg)
 - In qualità di utente voglio visualizzare la lista pesata dei **@mention**
 ![mentionsListWeighed](drawings/mentionsWeighed.svg)
 
+![mentionsListWeighedSequence](drawings/mentionsListWeighedSequence.svg)
 - In qualità di utente voglio visualizzare la lista pesata dei **@mention** che partono da uno **User**
 ![mentionsFromWeighed](drawings/mentionsFromWeighed.svg)
 
+![mentionsListFromWeighedSequence](drawings/mentionsListFromWeighedSequence.svg)
 - In qualità di utente voglio visualizzare la lista pesata dei **@mention** che arrivano a uno **User**
 ![mentionsToWeighed](drawings/mentionsToWeighed.svg)
 
+![mentionsListToWeighedSequence](drawings/mentionsListToWeighedSequence.svg)
 - In qualità di utente voglio poter avere informazioni di **Help**
 ![Help](drawings/Help.svg)
 
 ![HelpSequence](drawings/helpSequence.svg)
 ## 6 Riepilogo dei Test
-Le seguenti immagini mostrano la copertura dei test e il numero di test 
-effettuati 
+Le seguenti immagini mostrano la copertura dei test e il numero di test
+effettuati
 ![TestCoverage](drawings/coverageTest.png)
 ![TestNumber](drawings/numberTest.png)
 
@@ -184,10 +192,10 @@ channelsList zipPath
 
 membersChannel channelName zipPath
 > Show member list in selected channel in selected workspace with zipPath
- 
+
 membersSortedByChannel zipPath
 > Show members sortedy by channel in selected workspace with zipPath
- 
+
 mentionsList zipPath
 >Show mentions list in selected workspace with zipPath
 
@@ -231,7 +239,7 @@ sna4slack
 
  - Progettazione e Implementazione
  > Donato Leone e Giacomo Diaferio
- 
+
  - Test e Revisione
  > Simone Cancellaro e Lorenzo Liberti
 
@@ -244,14 +252,14 @@ sna4slack
 - JUnit
 > Donato Leone e Giacomo Diaferio
 
-- Documentazione 
+- Documentazione
 > Simone Cancellaro e Lorenzo Liberti
 
-Il lavoro è stato svolto attraverso una serie di Meeting Face to Face 
-## 9. Analisi Retrospettiva 
+Il lavoro è stato svolto attraverso una serie di Meeting Face to Face
+## 9. Analisi Retrospettiva
 - Cosa ha funzionato bene e rifarei in futuro
 > Un ottimo team che ha diviso equamente i vari compiti durante i diversi Sprint
 - Cosa non ha funzionato bene e non rifarei in futuro
 > Consegna in largo anticipo
-- Cosa farei di nuovo 
+- Cosa farei di nuovo
 > Se dovesse ripalesarsi la possibilità di poter collaborare con qualcuno, sarebbe piacevole grazie a questa esperienza lavorare nuovamente con gli stessi elementi del team BernersLee
